@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Chai Nest · Header & Footer Recreation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .site-header {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .logo-text,
+    body.dark-mode .nav-links a,
+    body.dark-mode .header-actions a,
+    body.dark-mode .hamburger span {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .dropdown-content {
+      background: #2a2a2a;
+    }
+
+    body.dark-mode .dropdown-content a {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-menu {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-nav-link,
+    body.dark-mode .mobile-dropdown-toggle span:first-child {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-nav-item {
+      border-bottom-color: #333;
+    }
+
+    body.dark-mode .unique-footer {
+      background-color: #0a0a0a;
+    }
+    
+    /* Sticky Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7B4B2A;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    .logo-text span {
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      color: #000000;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 1.5px solid transparent;
+    }
+
+    .login-btn {
+      background: transparent;
+      border-color: #7B4B2A;
+      color: #7B4B2A;
+    }
+
+    .login-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn:hover {
+      background: #5a3a1f;
+    }
+
+    .dark-toggle, .rtl-toggle {
+      background: transparent;
+      border: 1.5px solid #7B4B2A;
+      border-radius: 40px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #7B4B2A;
+      transition: all 0.2s;
+    }
+
+    .dark-toggle:hover, .rtl-toggle:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #7B4B2A;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 999;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+    }
+
+    [dir="rtl"] .mobile-menu {
+      right: auto;
+      left: -100%;
+    }
+
+    [dir="rtl"] .mobile-menu.active {
+      left: 0;
+      right: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      text-decoration: none;
+      color: #111;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: block;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle span:first-child {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .mobile-dropdown-toggle span:last-child {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: #7B4B2A;
+    }
+
+    .mobile-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-content {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    .mobile-dropdown-content.active {
+      max-height: 300px;
+    }
+
+    .mobile-dropdown-content a {
+      display: block;
+      padding: 0.6rem 0;
+      text-decoration: none;
+      color: #000000;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .mobile-dropdown-content a:hover {
+      color: #7B4B2A;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #7B4B2A;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    [dir="rtl"] .close-menu {
+      right: auto;
+      left: 1.5rem;
+    }
+    
+    /* Footer styles - exact recreation */
+    .unique-footer {
+      background-color: #000000;
+      color: #ddd;
+      padding: 3rem 2rem 2rem;
+      font-size: 0.95rem;
+      border-top: 4px solid #7B4B2A;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand p {
+      margin: 1.2rem 0 1.8rem;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: #7B4B2A; }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #7B4B2A; }
+
+    .newsletter p {
+      color: #aaa;
+      margin-bottom: 1.2rem;
+    }
+
+    .newsletter-input {
+      display: flex;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.3rem 0;
+      width: 100%;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .newsletter-input input::placeholder {
+      color: #666;
+    }
+
+    .newsletter-input button {
+      background: transparent;
+      border: none;
+      color: #7B4B2A;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      padding-top: 1.8rem;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    [dir="rtl"] .footer-bottom a {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-bottom a:hover { color: #7B4B2A; }
+
+    [dir="rtl"] .dropdown-content {
+      left: auto;
+      right: -12px;
+    }
+
+    [dir="rtl"] .action-buttons {
+      flex-direction: row-reverse;
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links { gap: 1.2rem; }
+    }
+
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .site-header { padding: 0.8rem 1.5rem; }
+      .action-buttons { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+    }
+    
+    body.dark-mode .feature-card,
+    body.dark-mode .premium-card {
+      background: #1a1a1a;
+      border-color: #2c2c2c;
+    }
+    
+    /* Spacer to showcase header/footer without main content */
+    .demo-spacer {
+      max-width: 1280px;
+      margin: 4rem auto;
+      padding: 2rem;
+      text-align: center;
+      background: rgba(123, 75, 42, 0.05);
+      border-radius: 32px;
+    }
+    body.dark-mode .demo-spacer {
+      background: rgba(123, 75, 42, 0.15);
+    }
+    .demo-spacer h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #7B4B2A;
+    }
+    .demo-spacer p {
+      color: #666;
+    }
+    body.dark-mode .demo-spacer p {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER EXACT RECREATION -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Chai<span>Nest</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#">Home</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Home 1</a></li>
+            <li><a href="#">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Soulful Sips</a></li>
+        <li><a href="#">Tea Ritual</a></li>
+        <li><a href="#">contact</a></li>
+        <li class="nav-item">
+          <a href="#">Dashboard</a>
+          <ul class="dropdown-content">
+            <li><a href="#">User Dashboard</a></li>
+            <li><a href="#">Admin Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="header-actions">
+        <div class="action-buttons">
+          <a href="#" class="nav-btn login-btn">Login</a>
+          <a href="#" class="nav-btn signup-btn">Sign Up</a>
+          <div class="dark-toggle" id="darkToggleBtn">🌙</div>
+          <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU EXACT STRUCTURE -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn">✕</button>
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+          <span>Home</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown1">
+          <a href="#">Home 1</a>
+          <a href="#">Home 2</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Shop</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">New</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Journal</a></li>
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
+          <span>Collection</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown2">
+          <a href="#">Limited edit</a>
+          <a href="#">Essentials</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Stores</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Login</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Sign Up</a></li>
+      <li class="mobile-nav-item">
+        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
+          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
+          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Simple spacer to show header/footer context (no extra sections) -->
+  <div class="demo-spacer">
+    <h2>✦ Header & Footer Recreation ✦</h2>
+    <p>This page showcases the exact header and footer from the Chai Nest design.<br>All interactive features: Dark mode, RTL layout, mobile navigation, and dropdown menus are fully functional.</p>
+  </div>
+
+  <!-- FOOTER EXACT RECREATION -->
+  <footer class="unique-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+          <div class="logo-icon" style="background: #7B4B2A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
+        </div>
+        <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
+        <div class="social-links">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">New arrivals</a></li>
+          <li><a href="#">Best sellers</a></li>
+          <li><a href="#">Limited drops</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>First access</h4>
+        <p>Subscribe for early releases & 15% off.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chai Nest. All rights reserved</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode toggle (header and footer compatible)
+    const darkToggle = document.getElementById('darkToggleBtn');
+    const mobileDark = document.getElementById('mobileDarkToggle');
+    const rtlToggle = document.getElementById('rtlToggleBtn');
+    const mobileRtl = document.getElementById('mobileRtlToggle');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenuBtn');
+    
+    function setDarkMode(isDark) {
+      if(isDark) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+    }
+    if(darkToggle) darkToggle.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    if(mobileDark) mobileDark.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
+    
+    function setRTL(isRTL) {
+      if(isRTL) document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      localStorage.setItem('rtlMode', isRTL);
+      if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
+      if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
+    }
+    if(rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    if(mobileRtl) mobileRtl.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
+    
+    function toggleMobileMenu(open) {
+      if(open) mobileMenu.classList.add('active');
+      else mobileMenu.classList.remove('active');
+    }
+    if(hamburger) hamburger.addEventListener('click', () => toggleMobileMenu(true));
+    if(closeMenu) closeMenu.addEventListener('click', () => toggleMobileMenu(false));
+    
+    // Close mobile menu when clicking outside (optional)
+    document.addEventListener('click', function(event) {
+      if(mobileMenu && mobileMenu.classList.contains('active')) {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnHamburger = hamburger && hamburger.contains(event.target);
+        if(!isClickInsideMenu && !isClickOnHamburger) {
+          toggleMobileMenu(false);
+        }
+      }
+    });
+    
+    // Mobile dropdown toggles
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = toggle.getAttribute('data-dropdown');
+        const content = document.getElementById(targetId);
+        if(content) {
+          content.classList.toggle('active');
+          const arrow = toggle.querySelector('span:last-child');
+          if(arrow) {
+            arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.95rem;
+  }
+
+  .footer-col a {
+    font-size: 0.9rem;
+  }
+}
+
+   body.dark-mode .mobile-dropdown-content a {
+  color: #f0f0f0; /* change to white */
+}

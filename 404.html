@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · Chai Nest</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  background: #7B4B2A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Background glow */
+body::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  top: -150px;
+  left: -150px;
+  filter: blur(120px);
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  bottom: -120px;
+  right: -120px;
+  filter: blur(100px);
+}
+
+/* Card */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(18px);
+  padding: 3rem 2.5rem;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  max-width: 500px;
+  width: 90%;
+}
+
+/* 404 text */
+.error-code {
+  font-size: 6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -3px;
+}
+
+.error-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.error-sub {
+  font-size: 0.95rem;
+  color: #f0e6dc;
+  margin-bottom: 2rem;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 40px;
+  background: #fff;
+  color: #7B4B2A;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Tea cup icon */
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .error-code {
+    font-size: 4rem;
+  }
+
+  .error-text {
+    font-size: 1.3rem;
+  }
+
+  .container {
+    padding: 2rem 1.5rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="icon">☕</div>
+  <div class="error-code">404</div>
+  <div class="error-text">Oops! Page not found</div>
+  <div class="error-sub">
+    Looks like this page has wandered off... maybe went for a chai break ☕
+  </div>
+  
+  <a href="/" class="btn">Back to Home</a>
+</div>
+
+</body>
+</html>

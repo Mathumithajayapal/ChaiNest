@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Chai Nest · Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Theme Variables */
+    :root {
+      --bg-gradient-start: #0a0a0a;
+      --bg-gradient-end: #1a1a1a;
+      --card-bg: rgba(18, 18, 20, 0.9);
+      --card-border: rgba(123, 75, 42, 0.2);
+      --card-border-hover: rgba(123, 75, 42, 0.5);
+      --text-primary: white;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --input-bg: rgba(30, 30, 35, 0.8);
+      --input-border: rgba(123, 75, 42, 0.4);
+      --input-focus-bg: rgba(40, 40, 45, 0.9);
+      --placeholder-color: #6b7280;
+      --divider-color: #4b5563;
+      --divider-border: rgba(123, 75, 42, 0.25);
+      --checkbox-text: #9ca3af;
+      --register-text: #9ca3af;
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --body-before-gradient-1: rgba(123, 75, 42, 0.08);
+      --body-before-gradient-2: rgba(123, 75, 42, 0.05);
+    }
+
+    /* Light Mode */
+    body.light-mode {
+      --bg-gradient-start: #f5f7fa;
+      --bg-gradient-end: #e8edf5;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(123, 75, 42, 0.25);
+      --card-border-hover: rgba(123, 75, 42, 0.5);
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --input-bg: rgba(255, 255, 255, 0.9);
+      --input-border: rgba(123, 75, 42, 0.3);
+      --input-focus-bg: #ffffff;
+      --placeholder-color: #94a3b8;
+      --divider-color: #94a3b8;
+      --divider-border: rgba(123, 75, 42, 0.2);
+      --checkbox-text: #475569;
+      --register-text: #64748b;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --body-before-gradient-1: rgba(123, 75, 42, 0.05);
+      --body-before-gradient-2: rgba(123, 75, 42, 0.03);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.2s ease;
+    }
+
+    /* Animated background elements */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(circle at 20% 40%, var(--body-before-gradient-1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, var(--body-before-gradient-2) 0%, transparent 60%);
+      pointer-events: none;
+      transition: background-image 0.3s ease;
+    }
+
+    /* Control Panel - Top Right Outside Container */
+    .control-panel {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 0.8rem;
+      border-radius: 3rem;
+      border: 1px solid rgba(123, 75, 42, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .control-panel {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border-color: rgba(123, 75, 42, 0.3);
+    }
+
+    /* RTL mode - move control panel to left side */
+    body[dir="rtl"] .control-panel {
+      right: auto;
+      left: 1.5rem;
+    }
+
+    .control-btn {
+      background: rgba(123, 75, 42, 0.2);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #7B4B2A;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+
+    .control-btn:hover {
+      background: #7B4B2A;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .control-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* RTL Support - Proper icon alignment */
+    body[dir="rtl"] {
+      direction: rtl;
+    }
+
+    /* Input icon positioning - in RTL, icons stay on the LEFT side as requested */
+    body[dir="rtl"] .input-icon {
+      left: 1rem;
+      right: auto;
+    }
+
+    body[dir="rtl"] .input-field {
+      padding: 0.9rem 2.8rem 0.9rem 1rem;
+    }
+
+    /* For RTL, keep icons on left, but adjust text alignment */
+    body[dir="rtl"] .input-field {
+      text-align: right;
+    }
+
+    body[dir="rtl"] .form-options {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    body[dir="rtl"] .checkbox-label {
+      flex-direction: row;
+    }
+
+    /* Keep button icon direction natural - don't flip in RTL */
+    body[dir="rtl"] .login-btn i {
+      transform: none;
+    }
+
+    body[dir="rtl"] .error-message {
+      flex-direction: row;
+      border-left: 3px solid #dc2626;
+      border-right: none;
+    }
+
+    /* For RTL, keep demo badge icons on left side naturally */
+    body[dir="rtl"] .demo-badge span i {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+
+    /* Logo and branding remain centered */
+    .logo-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo-icon {
+      width: 70px;
+      height: 70px;
+      background: #7B4B2A;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 20px -8px rgba(123, 75, 42, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .logo-icon:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: white;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-top: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .logo-text span {
+      color: #7B4B2A;
+      position: relative;
+    }
+
+    .admin-badge {
+      display: inline-block;
+      background: rgba(123, 75, 42, 0.25);
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #c97e54;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Welcome text */
+    .welcome-text {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .welcome-text h2 {
+      color: var(--text-primary);
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
+    }
+
+    .welcome-text p {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    /* Main Login Container */
+    .login-container {
+      width: 100%;
+      max-width: 460px;
+      z-index: 2;
+      animation: fadeSlideUp 0.6s ease-out;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card Design */
+    .login-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 45px -12px var(--shadow-color), 0 0 0 1px var(--card-border);
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .login-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 30px 50px -15px var(--shadow-color);
+      border-color: var(--card-border-hover);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      color: #7B4B2A;
+      font-size: 1.1rem;
+      pointer-events: none;
+      transition: left 0.2s ease;
+      z-index: 1;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: #7B4B2A;
+      box-shadow: 0 0 0 3px rgba(123, 75, 42, 0.25);
+      background: var(--input-focus-bg);
+    }
+
+    .input-field::placeholder {
+      color: var(--placeholder-color);
+      font-weight: 400;
+    }
+
+    /* Options row */
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      font-size: 0.8rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--checkbox-text);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .checkbox-label input {
+      accent-color: #7B4B2A;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      color: #7B4B2A;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .forgot-link:hover {
+      color: #b97f55;
+      text-decoration: underline;
+    }
+
+    /* Login Button */
+    .login-btn {
+      width: 100%;
+      background: #7B4B2A;
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(123, 75, 42, 0.3);
+    }
+
+    .login-btn:hover {
+      background: #5a3a1f;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(123, 75, 42, 0.4);
+    }
+
+    .login-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--divider-color);
+      font-size: 0.75rem;
+      margin: 1.5rem 0;
+      transition: color 0.2s ease;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--divider-border);
+      transition: border-color 0.2s ease;
+    }
+
+    .divider span {
+      margin: 0 0.8rem;
+    }
+
+   
+    /* RTL: keep icons on left side of text in demo badges */
+    body[dir="rtl"] .demo-badge span i {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+
+    /* Footer / extra links */
+    .register-link {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: var(--register-text);
+      transition: color 0.2s ease;
+    }
+
+    .register-link a {
+      color: #7B4B2A;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Error message style */
+    .error-message {
+      background: rgba(220, 38, 38, 0.15);
+      border-left: 3px solid #dc2626;
+      color: #fecaca;
+      padding: 0.7rem 1rem;
+      border-radius: 0.8rem;
+      font-size: 0.8rem;
+      margin-bottom: 1.2rem;
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .error-message.show {
+      display: flex;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .login-card {
+        padding: 2rem 1.5rem;
+      }
+      .logo-text {
+        font-size: 1.8rem;
+      }
+      .logo-icon {
+        width: 60px;
+        height: 60px;
+      }
+      .logo-icon svg {
+        width: 32px;
+        height: 32px;
+      }
+      .control-panel {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.4rem 0.6rem;
+      }
+      body[dir="rtl"] .control-panel {
+        right: auto;
+        left: 1rem;
+      }
+      .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  
+
+  <!-- Control Panel - Top Right Outside Container -->
+  <div class="control-panel">
+    <button class="control-btn" id="darkModeToggle" title="Dark/Light Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="control-btn" id="rtlToggle" title="RTL/LTR Mode">
+      <i class="fas fa-text-width"></i>
+    </button>
+  </div>
+
+<div class="login-container">
+  <div class="login-card">
+    
+    <!-- Logo & Branding -->
+    <div class="logo-section">
+      <div class="logo-wrapper">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="logo-text">
+        Chai<span>Nest</span>
+      </div>
+      <div class="admin-badge">
+        <i class="fas fa-shield-alt" style="font-size: 0.65rem;"></i> Admin Portal
+      </div>
+    </div>
+
+    <!-- Welcome message -->
+    <div class="welcome-text">
+      <h2>Welcome back</h2>
+      <p>Sign in to manage your tea empire</p>
+    </div>
+
+    <!-- Error notification -->
+    <div id="errorBox" class="error-message">
+      <i class="fas fa-exclamation-circle"></i>
+      <span id="errorText">Invalid credentials. Please try again.</span>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" action="#" method="post">
+      <div class="form-group">
+        <div class="input-group">
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="emailInput" class="input-field" placeholder="Admin email address" value="admin@chainest.com" autocomplete="email">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" id="passwordInput" class="input-field" placeholder="Password" value="admin123" autocomplete="current-password">
+        </div>
+      </div>
+
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox" id="rememberCheckbox"> <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">
+        <i class="fas fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+
+    <div class="divider">
+      <span>secure access only</span>
+    </div>
+
+  
+
+    <div class="register-link">
+      Don't have an account? <a href="#" id="contactAdminLink">Contact super admin</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Hardcoded authentication for demo
+  const VALID_EMAIL = "admin@chainest.com";
+  const VALID_PASSWORD = "admin123";
+
+  // DOM elements
+  const loginForm = document.getElementById('loginForm');
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
+  const errorBox = document.getElementById('errorBox');
+  const errorTextSpan = document.getElementById('errorText');
+  const rememberCheckbox = document.getElementById('rememberCheckbox');
+  const forgotLink = document.getElementById('forgotPasswordLink');
+  const contactAdminLink = document.getElementById('contactAdminLink');
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const rtlToggle = document.getElementById('rtlToggle');
+
+  // Helper to show error message
+  function showError(message) {
+    errorTextSpan.innerText = message;
+    errorBox.classList.add('show');
+    setTimeout(() => {
+      errorBox.classList.remove('show');
+    }, 3500);
+  }
+
+  // Handle successful login
+  function handleSuccessfulLogin() {
+    if (rememberCheckbox.checked) {
+      localStorage.setItem('chaiNest_remembered', 'true');
+      localStorage.setItem('chaiNest_email', emailInput.value.trim());
+    } else {
+      localStorage.removeItem('chaiNest_remembered');
+      localStorage.removeItem('chaiNest_email');
+    }
+    
+    const btn = document.querySelector('.login-btn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Redirecting...';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      window.location.href = 'admin.html';
+    }, 800);
+  }
+
+  // Login submission handler
+  loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    
+    if (!email || !password) {
+      showError('Please enter both email and password.');
+      return;
+    }
+    
+    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+      handleSuccessfulLogin();
+    } else {
+      showError('Incorrect email or password. Please use admin@chainest.com / admin123');
+      const card = document.querySelector('.login-card');
+      card.style.transform = 'translateX(4px)';
+      setTimeout(() => { card.style.transform = ''; }, 100);
+      setTimeout(() => { card.style.transform = 'translateX(-4px)'; }, 150);
+      setTimeout(() => { card.style.transform = ''; }, 250);
+    }
+  });
+  
+  // Forgot password
+  forgotLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('🔐 Password reset link would be sent to admin@chainest.com. For demo, use admin123.');
+  });
+  
+  // Contact admin
+  contactAdminLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    alert('📧 For admin access requests, please contact: support@chainest.com\nDemo credentials are already prefilled.');
+  });
+  
+  // ==================== DARK MODE FUNCTIONALITY ====================
+  function initDarkMode() {
+    const savedMode = localStorage.getItem('chaiNest_darkMode');
+    if (savedMode === 'light') {
+      document.body.classList.add('light-mode');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      document.body.classList.remove('light-mode');
+      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  }
+  
+  function toggleDarkMode() {
+    if (document.body.classList.contains('light-mode')) {
+      document.body.classList.remove('light-mode');
+      localStorage.setItem('chaiNest_darkMode', 'dark');
+      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+      document.body.classList.add('light-mode');
+      localStorage.setItem('chaiNest_darkMode', 'light');
+      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  }
+  
+  // ==================== RTL FUNCTIONALITY ====================
+  function initRTL() {
+    const savedDir = localStorage.getItem('chaiNest_dir');
+    if (savedDir === 'rtl') {
+      document.body.setAttribute('dir', 'rtl');
+      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+      // Don't add extra text, keep icon only for consistency
+    } else {
+      document.body.setAttribute('dir', 'ltr');
+      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+    }
+  }
+  
+  function toggleRTL() {
+    if (document.body.getAttribute('dir') === 'rtl') {
+      document.body.setAttribute('dir', 'ltr');
+      localStorage.setItem('chaiNest_dir', 'ltr');
+      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+    } else {
+      document.body.setAttribute('dir', 'rtl');
+      localStorage.setItem('chaiNest_dir', 'rtl');
+      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+    }
+  }
+  
+  // Add event listeners
+  darkModeToggle.addEventListener('click', toggleDarkMode);
+  rtlToggle.addEventListener('click', toggleRTL);
+  
+  // Prefill from localStorage if "remember me" was previously set
+  window.addEventListener('DOMContentLoaded', function() {
+    initDarkMode();
+    initRTL();
+    
+    const remembered = localStorage.getItem('chaiNest_remembered');
+    if (remembered === 'true') {
+      const savedEmail = localStorage.getItem('chaiNest_email');
+      if (savedEmail) {
+        emailInput.value = savedEmail;
+        rememberCheckbox.checked = true;
+      }
+    }
+    
+    // Focus effects
+    const inputs = document.querySelectorAll('.input-field');
+    inputs.forEach(input => {
+      input.addEventListener('focus', () => {
+        input.parentElement.style.transform = 'scale(1.01)';
+      });
+      input.addEventListener('blur', () => {
+        input.parentElement.style.transform = '';
+      });
+    });
+  });
+  
+  // Logo hover effect
+  const logoIcon = document.querySelector('.logo-icon');
+  if (logoIcon) {
+    logoIcon.addEventListener('mouseenter', () => {
+      logoIcon.style.transform = 'rotate(2deg) scale(1.02)';
+    });
+    logoIcon.addEventListener('mouseleave', () => {
+      logoIcon.style.transform = '';
+    });
+  }
+</script>
+</body>
+</html>

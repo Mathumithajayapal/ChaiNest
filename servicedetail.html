@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Chai Nest · Soulful Sips · Masala Chai Gold</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Prevent scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .site-header {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .logo-text,
+    body.dark-mode .nav-links a,
+    body.dark-mode .header-actions a,
+    body.dark-mode .hamburger span {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .dropdown-content {
+      background: #2a2a2a;
+    }
+
+    body.dark-mode .dropdown-content a {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-menu {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-nav-link,
+    body.dark-mode .mobile-dropdown-toggle span:first-child {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-nav-item {
+      border-bottom-color: #333;
+    }
+
+    body.dark-mode .unique-footer {
+      background-color: #0a0a0a;
+    }
+    
+    body.dark-mode .glass-card-hero {
+      background: rgba(30, 30, 30, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    
+    body.dark-mode .product-detail-card {
+      background: #1a1a1a;
+      border-color: #2c2c2c;
+    }
+    
+    body.dark-mode .detail-item {
+      border-bottom-color: #2c2c2c;
+    }
+    
+    body.dark-mode .price-tag {
+      color: #e8dccc;
+    }
+    
+    body.dark-mode .spec-badge {
+      background: #2a2a2a;
+      color: #c28a5c;
+    }
+    
+    body.dark-mode .benefits-section {
+      background: #1a1a1a;
+      border-color: #2c2c2c;
+    }
+    
+    body.dark-mode .benefit-card {
+      background: #252525;
+    }
+    
+    body.dark-mode .brew-step-card {
+      background: #252525;
+    }
+    
+    /* Sticky Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7B4B2A;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    .logo-text span {
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      color: #000000;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 1.5px solid transparent;
+    }
+
+    .login-btn {
+      background: transparent;
+      border-color: #7B4B2A;
+      color: #7B4B2A;
+    }
+
+    .login-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn:hover {
+      background: #5a3a1f;
+    }
+
+    .dark-toggle, .rtl-toggle {
+      background: transparent;
+      border: 1.5px solid #7B4B2A;
+      border-radius: 40px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #7B4B2A;
+      transition: all 0.2s;
+    }
+
+    .dark-toggle:hover, .rtl-toggle:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #7B4B2A;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    body.menu-open .mobile-menu-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 1001;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    [dir="rtl"] .mobile-menu {
+      right: auto;
+      left: -100%;
+    }
+
+    [dir="rtl"] .mobile-menu.active {
+      left: 0;
+      right: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      text-decoration: none;
+      color: #111;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: block;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle span:first-child {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .mobile-dropdown-toggle span:last-child {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: #7B4B2A;
+    }
+
+    .mobile-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-content {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    .mobile-dropdown-content.active {
+      max-height: 300px;
+    }
+
+    .mobile-dropdown-content a {
+      display: block;
+      padding: 0.6rem 0;
+      text-decoration: none;
+      color: #000000;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .mobile-dropdown-content a:hover {
+      color: #7B4B2A;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #7B4B2A;
+      background: none;
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .close-menu:hover {
+      background: rgba(123, 75, 42, 0.1);
+    }
+
+    [dir="rtl"] .close-menu {
+      right: auto;
+      left: 1.5rem;
+    }
+    
+    /* HERO BANNER */
+    .hero-banner {
+      position: relative;
+      height: 85vh;
+      background: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .glass-card-hero {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 3rem 2.5rem;
+      max-width: 650px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .glass-card-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .glass-card-hero p {
+      color: #eee;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero-btn.primary {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .hero-btn.primary:hover {
+      background: #5a3a1f;
+    }
+
+    .hero-btn.secondary {
+      border: 1.5px solid #fff;
+      color: #fff;
+    }
+
+    .hero-btn.secondary:hover {
+      background: #fff;
+      color: #000;
+    }
+    
+    /* PRODUCT DETAIL SECTION - SINGLE CARD */
+    .product-detail-section {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+      color: #7B4B2A;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: #7B4B2A;
+      font-weight: 500;
+      margin-bottom: 3rem;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .product-detail-card {
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      border: 1px solid #f0e6dc;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      transition: all 0.3s;
+    }
+    
+    .product-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 450px;
+    }
+    
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .product-detail-card:hover .product-image img {
+      transform: scale(1.03);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      background: #7B4B2A;
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      z-index: 2;
+    }
+    
+    .product-info {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    
+    .product-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #7B4B2A;
+      letter-spacing: -0.5px;
+    }
+    
+    .price-tag {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #7B4B2A;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+    
+    .price-tag small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #888;
+    }
+    
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #f5a623;
+    }
+    
+    .rating span {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    .description {
+      color: #555;
+      line-height: 1.7;
+      margin: 0.5rem 0;
+    }
+    
+    .detail-list {
+      list-style: none;
+      margin: 0.5rem 0;
+    }
+    
+    .detail-item {
+      display: flex;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #f0e6dc;
+      gap: 1rem;
+    }
+    
+    .detail-label {
+      font-weight: 700;
+      width: 100px;
+      color: #7B4B2A;
+    }
+    
+    .detail-value {
+      color: #555;
+      flex: 1;
+    }
+    
+    .spec-badge {
+      display: inline-block;
+      background: #f9f3ed;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #7B4B2A;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .action-buttons-product {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn-add-cart {
+      flex: 1;
+      background: #7B4B2A;
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-add-cart:hover {
+      background: #5a3a1f;
+      transform: translateY(-2px);
+    }
+    
+    .btn-wishlist {
+      background: transparent;
+      border: 2px solid #7B4B2A;
+      color: #7B4B2A;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .btn-wishlist:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+    
+    /* NEW SECTION: Health Benefits & Brewing Guide */
+    .benefits-brew-section {
+      max-width: 1280px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .benefits-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      border: 1px solid #f0e6dc;
+      transition: transform 0.3s;
+    }
+    
+    .benefits-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+    
+    .benefits-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #7B4B2A;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .benefit-list {
+      list-style: none;
+    }
+    
+    .benefit-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #f0e6dc;
+    }
+    
+    .benefit-icon {
+      font-size: 1.5rem;
+      min-width: 45px;
+    }
+    
+    .benefit-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #7B4B2A;
+    }
+    
+    .benefit-text p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .brew-steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .brew-step-card {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1rem;
+      background: #fefaf5;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    
+    .brew-step-card:hover {
+      transform: translateX(5px);
+      background: #fdf6ed;
+    }
+    
+    .step-number {
+      width: 45px;
+      height: 45px;
+      background: #7B4B2A;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #7B4B2A;
+    }
+    
+    .step-content p {
+      font-size: 0.85rem;
+      color: #666;
+    }
+    
+    /* Footer styles */
+    .unique-footer {
+      background-color: #000000;
+      color: #ddd;
+      padding: 3rem 2rem 2rem;
+      font-size: 0.95rem;
+      border-top: 4px solid #7B4B2A;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand p {
+      margin: 1.2rem 0 1.8rem;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: #7B4B2A; }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #7B4B2A; }
+
+    .newsletter p {
+      color: #aaa;
+      margin-bottom: 1.2rem;
+    }
+
+    .newsletter-input {
+      display: flex;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.3rem 0;
+      width: 100%;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .newsletter-input input::placeholder {
+      color: #666;
+    }
+
+    .newsletter-input button {
+      background: transparent;
+      border: none;
+      color: #7B4B2A;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      padding-top: 1.8rem;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    [dir="rtl"] .footer-bottom a {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-bottom a:hover { color: #7B4B2A; }
+
+    [dir="rtl"] .dropdown-content {
+      left: auto;
+      right: -12px;
+    }
+
+    [dir="rtl"] .action-buttons {
+      flex-direction: row-reverse;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .nav-links a {
+        font-size: 0.85rem;
+      }
+      .action-buttons {
+        gap: 0.5rem;
+      }
+      .nav-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+      }
+      .dark-toggle, .rtl-toggle {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+      }
+      .product-detail-card {
+        grid-template-columns: 1fr;
+      }
+      .product-image {
+        min-height: 380px;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.8rem;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .action-buttons {
+        display: none;
+      }
+      .site-header {
+        padding: 0.8rem 1.5rem;
+      }
+      .glass-card-hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner {
+        height: 70vh;
+      }
+      .glass-card-hero h1 {
+        font-size: 2rem;
+      }
+      .glass-card-hero {
+        padding: 2rem;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .product-name {
+        font-size: 1.6rem;
+      }
+      .price-tag {
+        font-size: 1.5rem;
+      }
+      .product-info {
+        padding: 1.5rem;
+      }
+      .detail-item {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .detail-label {
+        width: auto;
+      }
+      .action-buttons-product {
+        flex-direction: column;
+      }
+      .benefits-card {
+        padding: 1.5rem;
+      }
+      .brew-step-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 1.2rem;
+      }
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+      }
+      .glass-card-hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-btn {
+        width: 80%;
+      }
+      .product-image {
+        min-height: 280px;
+      }
+      .product-name {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Chai<span>Nest</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#">Home</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Home 1</a></li>
+            <li><a href="#">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Soulful Sips</a></li>
+        <li><a href="#">Tea Ritual</a></li>
+        <li><a href="#">Contact</a></li>
+        <li class="nav-item">
+          <a href="#">Dashboard</a>
+          <ul class="dropdown-content">
+            <li><a href="#">User Dashboard</a></li>
+            <li><a href="#">Admin Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="header-actions">
+        <div class="action-buttons">
+          <a href="#" class="nav-btn login-btn">Login</a>
+          <a href="#" class="nav-btn signup-btn">Sign Up</a>
+          <div class="dark-toggle" id="darkToggleBtn">🌙</div>
+          <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn" aria-label="Close menu">✕</button>
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+          <span>Home</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown1">
+          <a href="#">Home 1</a>
+          <a href="#">Home 2</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
+          <span>Dashboard</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown2">
+          <a href="#">User Dashboard</a>
+          <a href="#">Admin Dashboard</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item">
+        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
+          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%; cursor:pointer;">🌙 Dark</div>
+          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%; cursor:pointer;">LTR</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="glass-card-hero">
+        <h1>Relax. Sip. Connect.</h1>
+        <p>Experience the authentic warmth of handcrafted masala chai, brewed with love and tradition.</p>
+        <div class="hero-buttons">
+          <a href="#" class="hero-btn primary">Explore Menu</a>
+          <a href="#" class="hero-btn secondary">Visit Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Detail Section - Single Card -->
+  <div class="product-detail-section">
+    <h2 class="section-title">Masala Chai Gold</h2>
+    <div class="section-subtitle">━━ the soul of Indian tea houses in every sip ━━</div>
+    
+    <div class="product-detail-card">
+      <div class="product-image">
+        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=800&h=600&fit=crop" alt="Masala Chai Gold">
+        <div class="product-badge">✨ Bestseller 2026</div>
+      </div>
+      <div class="product-info">
+        <h1 class="product-name">Masala Chai Gold</h1>
+        <div class="price-tag">
+          $24.99 <small>/ 250g tin</small>
+        </div>
+        <div class="rating">
+          ★★★★★ <span>(1,284 reviews)</span>
+        </div>
+        <p class="description">
+          Our signature blend that captures the true essence of Indian chai. Whole cardamom, cinnamon, 
+          ginger, and cloves are masterfully blended with robust Assam CTC tea leaves. Each sip delivers 
+          a warming, aromatic experience that comforts the soul and awakens the senses.
+        </p>
+        
+        <ul class="detail-list">
+          <li class="detail-item">
+            <span class="detail-label">🌿 Origin</span>
+            <span class="detail-value">Assam Valley, India · Single Estate</span>
+          </li>
+          <li class="detail-item">
+            <span class="detail-label">🍃 Type</span>
+            <span class="detail-value">CTC Black Tea · Spice Infused</span>
+          </li>
+          <li class="detail-item">
+            <span class="detail-label">⏱️ Brew Time</span>
+            <span class="detail-value">3-5 minutes at 95°C</span>
+          </li>
+          <li class="detail-item">
+            <span class="detail-label">☕ Caffeine</span>
+            <span class="detail-value">Medium-High · Perfect morning cup</span>
+          </li>
+          <li class="detail-item">
+            <span class="detail-label">📦 Contains</span>
+            <span class="detail-value">Cardamom, Cinnamon, Ginger, Cloves, Black Pepper, Assam Tea</span>
+          </li>
+        </ul>
+        
+        <div class="spec-badge">🌱 Organic Certified</div>
+        <div class="spec-badge">♻️ Eco-friendly tin</div>
+        <div class="spec-badge">🏆 Award Winner 2025</div>
+        
+        <div class="action-buttons-product">
+          <button class="btn-add-cart" id="addToCartBtn">🛒 Add to Cart - $24.99</button>
+          <button class="btn-wishlist" id="wishlistBtn">❤️ Wishlist</button>
+        </div>
+        <p style="font-size: 0.8rem; color: #7B4B2A; margin-top: 0.5rem;">✓ Free shipping on orders $50+ | ✓ 30-day returns</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW SECTION: Health Benefits & Brewing Guide -->
+  <div class="benefits-brew-section">
+    <div class="benefits-grid">
+      <!-- Health Benefits Card -->
+      <div class="benefits-card">
+        <h3><span>🌿</span> Health Benefits</h3>
+        <ul class="benefit-list">
+          <li class="benefit-item">
+            <div class="benefit-icon">❤️</div>
+            <div class="benefit-text">
+              <h4>Boosts Immunity</h4>
+              <p>Rich in antioxidants and anti-inflammatory spices that strengthen your immune system naturally.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-icon">💪</div>
+            <div class="benefit-text">
+              <h4>Improves Digestion</h4>
+              <p>Ginger, cardamom, and cloves aid digestion and reduce bloating after meals.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-icon">🧠</div>
+            <div class="benefit-text">
+              <h4>Enhances Mental Clarity</h4>
+              <p>Caffeine combined with adaptogenic spices provides focused energy without jitters.</p>
+            </div>
+          </li>
+          <li class="benefit-item">
+            <div class="benefit-icon">🔥</div>
+            <div class="benefit-text">
+              <h4>Reduces Inflammation</h4>
+              <p>Cinnamon and ginger help combat chronic inflammation and support joint health.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Brewing Guide Card -->
+      <div class="benefits-card">
+        <h3><span>🍵</span> Perfect Brew Guide</h3>
+        <div class="brew-steps-grid">
+          <div class="brew-step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Heat Fresh Water</h4>
+              <p>Bring filtered water to 95°C (just below boiling). Fresh water ensures pure flavor.</p>
+            </div>
+          </div>
+          <div class="brew-step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Measure Your Tea</h4>
+              <p>Add 1 teaspoon of Masala Chai Gold per cup (250ml) to a teapot or infuser.</p>
+            </div>
+          </div>
+          <div class="brew-step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Steep with Patience</h4>
+              <p>Pour water over leaves and steep for 3-5 minutes. Longer steep = stronger spice notes.</p>
+            </div>
+          </div>
+          <div class="brew-step-card">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Add Milk (Optional)</h4>
+              <p>For traditional chai, add warm milk and sweeten with honey or jaggery to taste.</p>
+            </div>
+          </div>
+          <div class="brew-step-card">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>Sip Mindfully</h4>
+              <p>Pour, pause, and savor the aroma before each sip. Let it warm your soul.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="unique-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+          <div class="logo-icon" style="background: #7B4B2A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
+        </div>
+        <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
+        <div class="social-links">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">New arrivals</a></li>
+          <li><a href="#">Best sellers</a></li>
+          <li><a href="#">Limited drops</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>First access</h4>
+        <p>Subscribe for early releases & 15% off.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chai Nest. All rights reserved</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const darkToggle = document.getElementById('darkToggleBtn');
+    const mobileDark = document.getElementById('mobileDarkToggle');
+    const rtlToggle = document.getElementById('rtlToggleBtn');
+    const mobileRtl = document.getElementById('mobileRtlToggle');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenuBtn');
+    const overlay = document.getElementById('mobileOverlay');
+
+    function setBodyScrollLock(lock) {
+      if (lock) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
+    }
+
+    function openMenu() {
+      mobileMenu.classList.add('active');
+      setBodyScrollLock(true);
+    }
+
+    function closeMenuFn() {
+      mobileMenu.classList.remove('active');
+      setBodyScrollLock(false);
+      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
+    }
+
+    hamburger?.addEventListener('click', openMenu);
+    closeMenu?.addEventListener('click', closeMenuFn);
+    overlay?.addEventListener('click', closeMenuFn);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
+    });
+
+    function setDarkMode(isDark) {
+      if(isDark) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+    }
+    darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
+    
+    function setRTL(isRTL) {
+      if(isRTL) document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      localStorage.setItem('rtlMode', isRTL);
+      if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
+      if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
+    }
+    rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
+    
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = toggle.getAttribute('data-dropdown');
+        const content = document.getElementById(targetId);
+        if(content) {
+          content.classList.toggle('active');
+          const arrow = toggle.querySelector('span:last-child');
+          if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+        }
+      });
+    });
+    
+    // Add to cart button
+    const addToCartBtn = document.getElementById('addToCartBtn');
+    if(addToCartBtn) {
+      addToCartBtn.addEventListener('click', () => {
+        alert('✨ Masala Chai Gold added to your cart! ✨\n\nProceed to checkout to complete your order.');
+      });
+    }
+    
+    // Wishlist button
+    const wishlistBtn = document.getElementById('wishlistBtn');
+    if(wishlistBtn) {
+      wishlistBtn.addEventListener('click', () => {
+        alert('❤️ Masala Chai Gold added to your wishlist! Sign in to save permanently.');
+      });
+    }
+  </script>
+</body>
+</html>

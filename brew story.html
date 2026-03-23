@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Chai Nest · Tea Ritual | The Art of Mindful Brewing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Prevent scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Dark Mode - Enhanced text visibility */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #ffffff;
+    }
+
+    body.dark-mode .site-header {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .logo-text,
+    body.dark-mode .nav-links a,
+    body.dark-mode .header-actions a,
+    body.dark-mode .hamburger span {
+      color: #ffffff;
+    }
+
+    body.dark-mode .dropdown-content {
+      background: #2a2a2a;
+    }
+
+    body.dark-mode .dropdown-content a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .dropdown-content a:hover {
+      background-color: #3a3a3a;
+    }
+
+    body.dark-mode .mobile-menu {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-nav-link,
+    body.dark-mode .mobile-dropdown-toggle span:first-child {
+      color: #ffffff;
+    }
+
+    body.dark-mode .mobile-nav-item {
+      border-bottom-color: #333;
+    }
+
+    body.dark-mode .mobile-dropdown-content a {
+      color: #ffffff;
+    }
+
+    body.dark-mode .mobile-dropdown-content a:hover {
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .unique-footer {
+      background-color: #0a0a0a;
+    }
+    
+    body.dark-mode .step-card,
+    body.dark-mode .tea-card,
+    body.dark-mode .tool-item {
+      background: #1a1a1a;
+      border-color: #2c2c2c;
+    }
+    
+    body.dark-mode .step-content p,
+    body.dark-mode .tea-card p,
+    body.dark-mode .tool-item p {
+      color: #cccccc;
+    }
+    
+    body.dark-mode .section-title {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .step-tip {
+      background: rgba(123, 75, 42, 0.2);
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .temp-badge {
+      background: rgba(123, 75, 42, 0.25);
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .step-number {
+      background: #7B4B2A;
+      color: #ffffff;
+    }
+    
+    body.dark-mode .step-content h3 {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .tea-card h4 {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .tool-item h4 {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .section-subtitle {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-brand p,
+    body.dark-mode .footer-bottom,
+    body.dark-mode .footer-bottom a,
+    body.dark-mode .newsletter p {
+      color: #cccccc;
+    }
+    
+    body.dark-mode .footer-col a:hover,
+    body.dark-mode .footer-bottom a:hover {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .footer-col h4 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input::placeholder {
+      color: #888;
+    }
+    
+    body.dark-mode .hero-btn.secondary {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+    
+    body.dark-mode .hero-btn.secondary:hover {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    /* Sticky Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7B4B2A;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    .logo-text span {
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      color: #000000;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 1.5px solid transparent;
+    }
+
+    .login-btn {
+      background: transparent;
+      border-color: #7B4B2A;
+      color: #7B4B2A;
+    }
+
+    .login-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn:hover {
+      background: #5a3a1f;
+    }
+
+    .dark-toggle, .rtl-toggle {
+      background: transparent;
+      border: 1.5px solid #7B4B2A;
+      border-radius: 40px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #7B4B2A;
+      transition: all 0.2s;
+    }
+
+    .dark-toggle:hover, .rtl-toggle:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #7B4B2A;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    body.menu-open .mobile-menu-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 1001;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    [dir="rtl"] .mobile-menu {
+      right: auto;
+      left: -100%;
+    }
+
+    [dir="rtl"] .mobile-menu.active {
+      left: 0;
+      right: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      text-decoration: none;
+      color: #111;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: block;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle span:first-child {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .mobile-dropdown-toggle span:last-child {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: #7B4B2A;
+    }
+
+    .mobile-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-content {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    .mobile-dropdown-content.active {
+      max-height: 300px;
+    }
+
+    .mobile-dropdown-content a {
+      display: block;
+      padding: 0.6rem 0;
+      text-decoration: none;
+      color: #000000;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .mobile-dropdown-content a:hover {
+      color: #7B4B2A;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #7B4B2A;
+      background: none;
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .close-menu:hover {
+      background: rgba(123, 75, 42, 0.1);
+    }
+
+    [dir="rtl"] .close-menu {
+      right: auto;
+      left: 1.5rem;
+    }
+    
+    /* Footer styles */
+    .unique-footer {
+      background-color: #000000;
+      color: #ddd;
+      padding: 3rem 2rem 2rem;
+      font-size: 0.95rem;
+      border-top: 4px solid #7B4B2A;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand p {
+      margin: 1.2rem 0 1.8rem;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: #7B4B2A; }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #7B4B2A; }
+
+    .newsletter p {
+      color: #aaa;
+      margin-bottom: 1.2rem;
+    }
+
+    .newsletter-input {
+      display: flex;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.3rem 0;
+      width: 100%;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .newsletter-input input::placeholder {
+      color: #666;
+    }
+
+    .newsletter-input button {
+      background: transparent;
+      border: none;
+      color: #7B4B2A;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      padding-top: 1.8rem;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    [dir="rtl"] .footer-bottom a {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-bottom a:hover { color: #7B4B2A; }
+
+    [dir="rtl"] .dropdown-content {
+      left: auto;
+      right: -12px;
+    }
+
+    [dir="rtl"] .action-buttons {
+      flex-direction: row-reverse;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+      .footer-bottom a {
+        margin: 0 0.75rem;
+      }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      height: 95vh;
+      background: url('images/imgchai (1).jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .glass-card {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .glass-card h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .glass-card p {
+      color: #eee;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero-btn.primary {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .hero-btn.primary:hover {
+      background: #5a3a1f;
+    }
+
+    .hero-btn.secondary {
+      border: 1.5px solid #fff;
+      color: #fff;
+    }
+
+    .hero-btn.secondary:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* Ritual Steps */
+    .ritual-steps {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+    
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+    
+    .step-card {
+      display: flex;
+      gap: 2rem;
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid #f0e6dc;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+    }
+    
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(123,75,42,0.1);
+    }
+    
+    .step-number {
+      background: #7B4B2A;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: 800;
+      min-width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    
+    .step-content {
+      padding: 2rem;
+      flex: 1;
+    }
+    
+    .step-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #7B4B2A;
+    }
+    
+    .step-content p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    
+    .step-tip {
+      background: rgba(123, 75, 42, 0.08);
+      padding: 0.8rem 1rem;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      color: #7B4B2A;
+      display: inline-block;
+    }
+    
+    /* Tea Types Section */
+    .tea-types {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111;
+    }
+    
+    .section-subtitle {
+      color: #7B4B2A;
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+    
+    .tea-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .tea-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 28px;
+      transition: all 0.3s;
+      border: 1px solid #f0e6dc;
+    }
+    
+    .tea-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .tea-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .tea-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #7B4B2A;
+    }
+    
+    .tea-card p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .temp-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.3rem 1rem;
+      background: rgba(123, 75, 42, 0.1);
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #7B4B2A;
+    }
+    
+    /* Mindfulness Quote */
+    .mindfulness-quote {
+      background: linear-gradient(135deg, #2a2418 0%, #1a120b 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 5rem 0;
+    }
+    
+    .quote-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #e8dccc;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    
+    .quote-author {
+      margin-top: 1.5rem;
+      color: #c97e5a;
+      letter-spacing: 2px;
+    }
+    
+    /* Ritual Tools */
+    .ritual-tools {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .tool-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 24px;
+      transition: all 0.3s;
+      border: 1px solid #f0e6dc;
+    }
+    
+    .tool-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .tool-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .tool-item h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #7B4B2A;
+    }
+    
+    .tool-item p {
+      color: #666;
+      font-size: 0.85rem;
+    }
+    
+    /* CTA Section */
+    .ritual-cta {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 3rem;
+      background: linear-gradient(135deg, #7B4B2A 0%, #5a3a1f 100%);
+      border-radius: 48px;
+      text-align: center;
+      color: white;
+    }
+    
+    .ritual-cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .ritual-cta p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      color: white;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #7B4B2A;
+      padding: 0.9rem 2rem;
+      border-radius: 48px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.85rem; }
+      .action-buttons { gap: 0.5rem; }
+      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
+      .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .action-buttons { display: none; }
+      .site-header { padding: 0.8rem 1.5rem; }
+      .glass-card h1 { font-size: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner { height: 70vh; }
+      .glass-card h1 { font-size: 2rem; }
+      .glass-card { padding: 2rem; }
+      .glass-card p { font-size: 1rem; }
+      .step-card { flex-direction: column; }
+      .step-number { padding: 1rem; font-size: 1.8rem; min-width: auto; }
+      .step-content h3 { font-size: 1.3rem; }
+      .section-title { font-size: 1.6rem; }
+      .tea-grid { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .ritual-cta { margin: 3rem 1.5rem; padding: 2rem; }
+      .ritual-cta h2 { font-size: 1.6rem; }
+      .quote-text { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-icon { width: 32px; height: 32px; }
+      .glass-card h1 { font-size: 1.6rem; }
+      .step-content { padding: 1.2rem; }
+      .step-content h3 { font-size: 1.1rem; }
+      .tools-grid { grid-template-columns: 1fr; }
+      .ritual-cta { padding: 1.5rem; }
+      .cta-button { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+      .quote-text { font-size: 1.1rem; }
+    }
+    .tea-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
+  gap: 2rem;
+  margin-top: 2rem;
+}.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+body.dark-mode .dropdown-content a {
+  color: #fa720af5;
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Chai<span>Nest</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#">Home</a>
+          <ul class="dropdown-content">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html">Soulful Sips</a></li>
+        <li><a href="brew story.html">Tea Ritual</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-item">
+          <a href="#">Dashboard</a>
+          <ul class="dropdown-content">
+            <li><a href="user.html">User Dashboard</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="header-actions">
+        <div class="action-buttons">
+          <a href="login.html" class="nav-btn login-btn">Login</a>
+          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
+          <div class="dark-toggle" id="darkToggleBtn">🌙</div>
+          <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn">✕</button>
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+          <span>Home</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown1">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
+          <span>Dashboard</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown2">
+          <a href="user.html">User Dashboard</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+      </li>
+   
+      <li class="mobile-nav-item">
+        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
+          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
+          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="glass-card">
+        <h1>Brew your moment.</h1>
+        <p>Slow down, inhale the aroma, and let every sip become a ritual of peace and presence.</p>
+        <div class="hero-buttons">
+          <a href="#" class="hero-btn primary">Discover Rituals</a>
+          <a href="#" class="hero-btn secondary">Start Brewing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Ritual Steps -->
+  <div class="ritual-steps">
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>Awaken the senses</h3>
+          <p>Begin by creating a sacred space. Clear your mind, take three deep breaths, and set an intention for your tea ritual. Choose your vessel mindfully — each cup holds energy.</p>
+          <div class="step-tip">✨ Tip: Light a candle or play soft music to set the mood</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>Measure with intention</h3>
+          <p>Scoop your Chai Nest tea leaves — one teaspoon per cup. Observe the leaves: their color, texture, and aroma. This moment of connection honors the journey from leaf to cup.</p>
+          <div class="step-tip">🍃 Tip: Use filtered water at the correct temperature for your tea type</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>Pour with presence</h3>
+          <p>Pour water slowly over the leaves. Watch them unfurl — a dance of transformation. Listen to the sound of water. Inhale the rising steam. This is where the magic begins.</p>
+          <div class="step-tip">💧 Tip: Pour in a circular motion to awaken the leaves evenly</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h3>Steep in patience</h3>
+          <p>Wait in stillness. Let the tea steep for the recommended time. Use this moment to pause, breathe, and appreciate the anticipation. Good tea cannot be rushed.</p>
+          <div class="step-tip">⏱️ Tip: Set a timer and use it as a meditation bell</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <h3>Sip with gratitude</h3>
+          <p>Hold your cup with both hands. Feel its warmth. Take three small sips — first to taste, second to feel, third to thank. Let each sip be a moment of pure presence.</p>
+          <div class="step-tip">🙏 Tip: Express gratitude for the hands that grew and crafted your tea</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Tea Types -->
+  <div class="tea-types">
+    <h2 class="section-title">Rituals for every leaf</h2>
+    <div class="section-subtitle">━━ brew with intention ━━</div>
+    <div class="tea-grid">
+      <div class="tea-card">
+        <div class="tea-icon">🍃</div>
+        <h4>Green Tea</h4>
+        <p>Delicate & awakening — 70-80°C, 2-3 minutes. Best brewed with patience and gentle attention.</p>
+        <div class="temp-badge">🌡️ 75°C · 2-3 min</div>
+      </div>
+      <div class="tea-card">
+        <div class="tea-icon">🖤</div>
+        <h4>Black Tea</h4>
+        <p>Bold & grounding — 95-100°C, 3-5 minutes. A robust ritual for focus and clarity.</p>
+        <div class="temp-badge">🌡️ 100°C · 3-5 min</div>
+      </div>
+      <div class="tea-card">
+        <div class="tea-icon">🤍</div>
+        <h4>White Tea</h4>
+        <p>Subtle & ethereal — 70-80°C, 4-6 minutes. A meditation in stillness.</p>
+        <div class="temp-badge">🌡️ 75°C · 4-6 min</div>
+      </div>
+      <div class="tea-card">
+        <div class="tea-icon">✨</div>
+        <h4>Masala Chai</h4>
+        <p>Warm & invigorating — simmer with spices, 5-8 minutes. A ritual of connection.</p>
+        <div class="temp-badge">🔥 Simmer · 5-8 min</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mindfulness Quote -->
+  <div class="mindfulness-quote">
+    <div class="quote-text">“Every cup of tea is a ceremony. A moment stolen from time to simply be — to breathe, to taste, to return to yourself.”</div>
+    <div class="quote-author">— Chai Nest Ritual Philosophy</div>
+  </div>
+  
+  <!-- Ritual Tools -->
+  <div class="ritual-tools">
+    <h2 class="section-title">Essentials for your ritual</h2>
+    <div class="section-subtitle">━━ tools that elevate the experience ━━</div>
+    <div class="tools-grid">
+      <div class="tool-item">
+        <div class="tool-icon">🏺</div>
+        <h4>Clay Teapot</h4>
+        <p>Traditional & porous — enhances flavor naturally</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🍵</div>
+        <h4>Handcrafted Cups</h4>
+        <p>Feel the warmth in your palms</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">🌡️</div>
+        <h4>Temperature Kettle</h4>
+        <p>Precision brewing for perfect extraction</p>
+      </div>
+      <div class="tool-item">
+        <div class="tool-icon">📖</div>
+        <h4>Tea Journal</h4>
+        <p>Record your rituals and reflections</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CTA Section -->
+  <div class="ritual-cta">
+    <h2>Begin your ritual journey</h2>
+    <p>Discover our curated collection of ceremonial-grade teas and ritual tools</p>
+    <a href="#" class="cta-button">Explore ritual collection →</a>
+  </div>
+
+  <footer class="unique-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+          <div class="logo-icon" style="background: #7B4B2A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
+        </div>
+        <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
+        <div class="social-links">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">New arrivals</a></li>
+          <li><a href="#">Best sellers</a></li>
+          <li><a href="#">Limited drops</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>First access</h4>
+        <p>Subscribe for early releases & 15% off.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chai Nest. All rights reserved</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const darkToggle = document.getElementById('darkToggleBtn');
+    const mobileDark = document.getElementById('mobileDarkToggle');
+    const rtlToggle = document.getElementById('rtlToggleBtn');
+    const mobileRtl = document.getElementById('mobileRtlToggle');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenuBtn');
+    const overlay = document.getElementById('mobileOverlay');
+
+    function setBodyScrollLock(lock) {
+      if (lock) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
+    }
+
+    function openMenu() {
+      mobileMenu.classList.add('active');
+      setBodyScrollLock(true);
+    }
+
+    function closeMenuFn() {
+      mobileMenu.classList.remove('active');
+      setBodyScrollLock(false);
+      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
+    }
+
+    hamburger?.addEventListener('click', openMenu);
+    closeMenu?.addEventListener('click', closeMenuFn);
+    overlay?.addEventListener('click', closeMenuFn);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
+    });
+
+    function setDarkMode(isDark) {
+      if(isDark) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙';
+      if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
+    }
+    
+    darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
+    
+    function setRTL(isRTL) {
+      if(isRTL) document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      localStorage.setItem('rtlMode', isRTL);
+      if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
+      if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
+    }
+    
+    rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
+    
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = toggle.getAttribute('data-dropdown');
+        const content = document.getElementById(targetId);
+        if(content) {
+          content.classList.toggle('active');
+          const arrow = toggle.querySelector('span:last-child');
+          if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

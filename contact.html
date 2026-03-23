@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Chai Nest · Contact Us | Get in Touch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Prevent scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .site-header {
+      background-color: #1a1a1a;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .logo-text,
+    body.dark-mode .nav-links a,
+    body.dark-mode .header-actions a,
+    body.dark-mode .hamburger span {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .dropdown-content {
+      background: #2a2a2a;
+    }
+
+    body.dark-mode .dropdown-content a {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-menu {
+      background-color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-nav-link,
+    body.dark-mode .mobile-dropdown-toggle span:first-child {
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .mobile-nav-item {
+      border-bottom-color: #333;
+    }
+
+    body.dark-mode .unique-footer {
+      background-color: #0a0a0a;
+    }
+    
+    body.dark-mode .info-card,
+    body.dark-mode .contact-form-wrapper,
+    body.dark-mode .faq-item {
+      background: #1a1a1a;
+      border-color: #2c2c2c;
+    }
+    
+    body.dark-mode .info-details p,
+    body.dark-mode .info-details a,
+    body.dark-mode .faq-answer {
+      color: #aaa;
+    }
+    
+    body.dark-mode .contact-form-wrapper h2 {
+      color: #f0f0f0;
+    }
+    
+    body.dark-mode .form-group input,
+    body.dark-mode .form-group select,
+    body.dark-mode .form-group textarea {
+      background: #2a2a2a;
+      border-color: #3a3a3a;
+      color: #f0f0f0;
+    }
+    
+    body.dark-mode .map-container {
+      border-color: #2c2c2c;
+    }
+    
+    /* Sticky Navbar */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7B4B2A;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    .logo-text span {
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.5rem 0;
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      background: white;
+      min-width: 200px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 100;
+    }
+
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      color: #000000;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      border: 1.5px solid transparent;
+    }
+
+    .login-btn {
+      background: transparent;
+      border-color: #7B4B2A;
+      color: #7B4B2A;
+    }
+
+    .login-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .signup-btn:hover {
+      background: #5a3a1f;
+    }
+
+    .dark-toggle, .rtl-toggle {
+      background: transparent;
+      border: 1.5px solid #7B4B2A;
+      border-radius: 40px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #7B4B2A;
+      transition: all 0.2s;
+    }
+
+    .dark-toggle:hover, .rtl-toggle:hover {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+      padding: 0;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #7B4B2A;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    body.menu-open .mobile-menu-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 1001;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    }
+
+    [dir="rtl"] .mobile-menu {
+      right: auto;
+      left: -100%;
+    }
+
+    [dir="rtl"] .mobile-menu.active {
+      left: 0;
+      right: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      text-decoration: none;
+      color: #111;
+      font-size: 1.1rem;
+      font-weight: 500;
+      display: block;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+    }
+
+    .mobile-dropdown-toggle span:first-child {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #111;
+    }
+
+    .mobile-dropdown-toggle span:last-child {
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+      color: #7B4B2A;
+    }
+
+    .mobile-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    [dir="rtl"] .mobile-dropdown-content {
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+
+    .mobile-dropdown-content.active {
+      max-height: 300px;
+    }
+
+    .mobile-dropdown-content a {
+      display: block;
+      padding: 0.6rem 0;
+      text-decoration: none;
+      color: #000000;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+
+    .mobile-dropdown-content a:hover {
+      color: #7B4B2A;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #7B4B2A;
+      background: none;
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .close-menu:hover {
+      background: rgba(123, 75, 42, 0.1);
+    }
+
+    [dir="rtl"] .close-menu {
+      right: auto;
+      left: 1.5rem;
+    }
+    
+    /* Footer styles */
+    .unique-footer {
+      background-color: #000000;
+      color: #ddd;
+      padding: 3rem 2rem 2rem;
+      font-size: 0.95rem;
+      border-top: 4px solid #7B4B2A;
+      margin-top: 3rem;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand p {
+      margin: 1.2rem 0 1.8rem;
+      color: #aaa;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: #7B4B2A; }
+
+    .footer-col h4 {
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-col a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover { color: #7B4B2A; }
+
+    .newsletter p {
+      color: #aaa;
+      margin-bottom: 1.2rem;
+    }
+
+    .newsletter-input {
+      display: flex;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.3rem 0;
+      width: 100%;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .newsletter-input input::placeholder {
+      color: #666;
+    }
+
+    .newsletter-input button {
+      background: transparent;
+      border: none;
+      color: #7B4B2A;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      padding-top: 1.8rem;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    .footer-bottom a {
+      color: #999;
+      text-decoration: none;
+      margin-left: 1.5rem;
+    }
+
+    [dir="rtl"] .footer-bottom a {
+      margin-left: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-bottom a:hover { color: #7B4B2A; }
+
+    [dir="rtl"] .dropdown-content {
+      left: auto;
+      right: -12px;
+    }
+
+    [dir="rtl"] .action-buttons {
+      flex-direction: row-reverse;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 900px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.8rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+      .footer-bottom a {
+        margin: 0 0.75rem;
+      }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      height: 95vh;
+      background: url('images/imgchai (2).jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .glass-card {
+      backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 30px;
+      padding: 3rem 2.5rem;
+      max-width: 600px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .glass-card h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .glass-card p {
+      color: #eee;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 0.8rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .hero-btn.primary {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .hero-btn.primary:hover {
+      background: #5a3a1f;
+    }
+
+    .hero-btn.secondary {
+      border: 1.5px solid #fff;
+      color: #fff;
+    }
+
+    .hero-btn.secondary:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* Contact Grid */
+    .contact-grid {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .info-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.3s;
+      border: 1px solid #f0e6dc;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+    
+    .info-card:hover {
+      transform: translateX(5px);
+    }
+    
+    .info-icon {
+      width: 55px;
+      height: 55px;
+      background: rgba(123, 75, 42, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    
+    .info-details h3 {
+      font-size: 1.1rem;
+      color: #7B4B2A;
+      margin-bottom: 0.3rem;
+    }
+    
+    .info-details p, .info-details a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .info-details a:hover {
+      color: #7B4B2A;
+    }
+    
+    .contact-form-wrapper {
+      background: white;
+      padding: 2rem;
+      border-radius: 32px;
+      border: 1px solid #f0e6dc;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    
+    .contact-form-wrapper h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: #2a2418;
+    }
+    
+    .form-subtitle {
+      color: #7B4B2A;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid #e0d6cc;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      background: #fff;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #7B4B2A;
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .submit-btn {
+      background: #7B4B2A;
+      color: white;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .submit-btn:hover {
+      background: #5a3a1f;
+      transform: translateY(-2px);
+    }
+    
+    /* Map Section */
+    .map-section {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+    
+    .map-container {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid #f0e6dc;
+      height: 450px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    
+    body.dark-mode .map-container iframe {
+      filter: brightness(0.85) contrast(1.05);
+    }
+    
+    /* FAQ Section - ONE BY ONE CARDS (vertical stacked on mobile, grid on desktop) */
+    .faq-section {
+      max-width: 1280px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .faq-item {
+      background: white;
+      padding: 1.8rem 2rem;
+      border-radius: 28px;
+      text-align: left;
+      transition: all 0.3s;
+      border: 1px solid #f0e6dc;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      cursor: pointer;
+    }
+    
+    .faq-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: #7B4B2A;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .faq-question .faq-icon {
+      font-size: 1.3rem;
+      transition: transform 0.3s ease;
+      color: #7B4B2A;
+    }
+    
+    .faq-item.active .faq-question .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      color: #666;
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, margin-top 0.3s ease;
+      margin-top: 0;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      margin-top: 0.8rem;
+    }
+    
+    body.dark-mode .faq-answer {
+      color: #aaa;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .section-subtitle {
+      color: #7B4B2A;
+      margin-bottom: 2rem;
+    }
+    
+    /* Responsive breakpoints for all devices */
+    @media (max-width: 1024px) {
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.85rem; }
+      .action-buttons { gap: 0.5rem; }
+      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
+      .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
+      .map-container { height: 380px; }
+      .faq-item { padding: 1.5rem; }
+      .faq-question { font-size: 1.1rem; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .action-buttons { display: none; }
+      .site-header { padding: 0.8rem 1.5rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .glass-card h1 { font-size: 2.5rem; }
+      .map-container { height: 350px; }
+    }
+
+    /* 768px tablet portrait */
+    @media (max-width: 768px) {
+      .hero-banner { height: 70vh; }
+      .glass-card h1 { font-size: 2rem; }
+      .glass-card { padding: 2rem; }
+      .glass-card p { font-size: 1rem; }
+      .contact-grid { margin: 3rem auto; padding: 0 1.5rem; }
+      .info-card { padding: 1.2rem; }
+      .info-icon { width: 45px; height: 45px; font-size: 1.3rem; }
+      .contact-form-wrapper { padding: 1.5rem; }
+      .contact-form-wrapper h2 { font-size: 1.4rem; }
+      .section-title { font-size: 1.6rem; }
+      .map-container { height: 300px; }
+      .faq-grid { gap: 1rem; }
+      .faq-item { padding: 1.2rem 1.5rem; }
+      .faq-question { font-size: 1rem; }
+    }
+    
+    /* 800x1280 specific (tablet portrait) */
+    @media (min-width: 769px) and (max-width: 900px) and (min-height: 1200px) {
+      .hero-banner { height: 60vh; }
+      .contact-grid { margin: 4rem auto; }
+      .map-container { height: 380px; }
+    }
+    
+    /* 1024x1366 laptop/tablet landscape */
+    @media (min-width: 1024px) and (max-width: 1200px) and (min-height: 1300px) {
+      .hero-banner { height: 70vh; }
+      .contact-grid { margin: 4rem auto; }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-icon { width: 32px; height: 32px; }
+      .glass-card h1 { font-size: 1.6rem; }
+      .info-card { flex-direction: column; text-align: center; }
+      .info-icon { margin-bottom: 0.5rem; }
+      .form-group input, .form-group select, .form-group textarea { padding: 0.7rem 0.9rem; }
+      .map-container { height: 220px; }
+      .faq-item { padding: 1rem 1.2rem; }
+      .faq-question { font-size: 0.95rem; flex-wrap: wrap; }
+      .faq-answer { font-size: 0.9rem; }
+      .section-title { font-size: 1.4rem; }
+      .section-subtitle { font-size: 0.8rem; }
+      .hero-banner { height: 60vh; }
+      .glass-card { padding: 1.5rem; }
+    }
+  body.dark-mode .dropdown-content a {
+  color: #fa720af5;
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Chai<span>Nest</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#">Home</a>
+          <ul class="dropdown-content">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html">Soulful Sips</a></li>
+        <li><a href="brew story.html">Tea Ritual</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-item">
+          <a href="#">Dashboard</a>
+          <ul class="dropdown-content">
+            <li><a href="user.html">User Dashboard</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="header-actions">
+        <div class="action-buttons">
+          <a href="login.html" class="nav-btn login-btn">Login</a>
+          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
+          <div class="dark-toggle" id="darkToggleBtn">🌙</div>
+          <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn">✕</button>
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+          <span>Home</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown1">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
+          <span>Dashboard</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown2">
+          <a href="user.html">User Dashboard</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+      </li>
+   
+      <li class="mobile-nav-item">
+        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
+          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
+          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="glass-card">
+        <h1>Let’s Connect Over Chai</h1>
+        <p>Have a question, a story, or just want to say hello? We’re always here to listen — just like a good cup of tea</p>
+        <div class="hero-buttons">
+          <a href="#" class="hero-btn primary">Get in Touch</a>
+          <a href="#" class="hero-btn secondary">Visit Our Store</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Grid -->
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div class="info-details">
+          <h3>Visit Our Flagship Store</h3>
+          <p>42 Chai Lane, Koregaon Park<br>Pune, Maharashtra 411001<br>India</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div class="info-details">
+          <h3>Call Us</h3>
+          <p><a href="tel:+912012345678">+91 20 1234 5678</a><br>Mon-Sat, 10AM - 7PM IST</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div class="info-details">
+          <h3>Email Us</h3>
+          <p><a href="mailto:hello@chainest.com">hello@chainest.com</a><br>For wholesale: <a href="mailto:wholesale@chainest.com">wholesale@chainest.com</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">⏰</div>
+        <div class="info-details">
+          <h3>Store Hours</h3>
+          <p>Monday - Friday: 10:00 AM - 8:00 PM<br>Saturday - Sunday: 11:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form-wrapper">
+      <h2>Send us a message</h2>
+      <div class="form-subtitle">━━ we'll brew a reply within 24 hours ━━</div>
+      <form id="contactForm" action="#" method="post">
+        <div class="form-group">
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email address" required>
+        </div>
+        <div class="form-group">
+          <select>
+            <option value="">Select inquiry type</option>
+            <option value="product">Product inquiry</option>
+            <option value="wholesale">Wholesale partnership</option>
+            <option value="collaboration">Collaboration</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Tell us what's on your mind..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Map Section -->
+  <div class="map-section">
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.838665848895!2d73.873897874706!3d18.54476976769245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c0e8b7f7e8d9%3A0x6f6a5e5f5e5f5e5f!2sKoregaon%20Park%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        allowfullscreen="" 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Chai Nest Store Location Map">
+      </iframe>
+    </div>
+  </div>
+  
+  <!-- FAQ Section - ONE BY ONE CARDS (accordion style) -->
+  <div class="faq-section">
+    <h2 class="section-title">Frequently asked questions</h2>
+    <div class="section-subtitle">━━ quick answers to common questions ━━</div>
+    <div class="faq-grid" id="faqGrid">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>☕ Do you ship internationally?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">Yes! We ship worldwide. International shipping typically takes 5-10 business days. Free shipping on orders over $75. We use eco-friendly packaging for all international orders.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🍵 Do you ship globally?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">Absolutely! Our flagship store in Pune offers daily tastings from 11 AM to 6 PM. Walk-ins welcome, or you can book a private chai ceremony for groups of 4+ people. Contact us to reserve your spot.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🤝Do you deliver internationally?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">Yes, we partner with cafes, hotels, and retailers worldwide. Email wholesale@chainest.com with your business details, estimated volume, and location to get started with a custom wholesale account.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🌱Can you ship overseas?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">Yes! All our teas are ethically sourced from certified organic farms. We partner directly with small-scale farmers to ensure fair trade practices and sustainable agriculture. Our packaging is 100% compostable.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>🎁 Do you ship abroad?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">Yes! We offer digital gift cards starting at $25. Our monthly tea subscription box delivers curated blends to your doorstep. Choose from 3, 6, or 12-month plans with free shipping.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="unique-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+          <div class="logo-icon" style="background: #7B4B2A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
+        </div>
+        <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
+        <div class="social-links">
+          <a href="#">📘</a>
+          <a href="#">📷</a>
+          <a href="#">🐦</a>
+          <a href="#">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">New arrivals</a></li>
+          <li><a href="#">Best sellers</a></li>
+          <li><a href="#">Limited drops</a></li>
+          <li><a href="#">Sustainability</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter">
+        <h4>First access</h4>
+        <p>Subscribe for early releases & 15% off.</p>
+        <div class="newsletter-input">
+          <input type="email" placeholder="Your email">
+          <button>→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Chai Nest. All rights reserved</span>
+      <span>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode and RTL logic
+    const darkToggle = document.getElementById('darkToggleBtn');
+    const mobileDark = document.getElementById('mobileDarkToggle');
+    const rtlToggle = document.getElementById('rtlToggleBtn');
+    const mobileRtl = document.getElementById('mobileRtlToggle');
+    const hamburger = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenuBtn');
+    const overlay = document.getElementById('mobileOverlay');
+
+    function setBodyScrollLock(lock) {
+      if (lock) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
+    }
+
+    function openMenu() {
+      mobileMenu.classList.add('active');
+      setBodyScrollLock(true);
+    }
+
+    function closeMenuFn() {
+      mobileMenu.classList.remove('active');
+      setBodyScrollLock(false);
+      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
+    }
+
+    hamburger?.addEventListener('click', openMenu);
+    closeMenu?.addEventListener('click', closeMenuFn);
+    overlay?.addEventListener('click', closeMenuFn);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
+    });
+
+    function setDarkMode(isDark) {
+      if(isDark) document.body.classList.add('dark-mode');
+      else document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+    }
+    darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
+    if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
+    
+    function setRTL(isRTL) {
+      if(isRTL) document.documentElement.setAttribute('dir', 'rtl');
+      else document.documentElement.setAttribute('dir', 'ltr');
+      localStorage.setItem('rtlMode', isRTL);
+      if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
+      if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
+    }
+    rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+    if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
+    
+    // Mobile dropdown toggles
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = toggle.getAttribute('data-dropdown');
+        const content = document.getElementById(targetId);
+        if(content) {
+          content.classList.toggle('active');
+          const arrow = toggle.querySelector('span:last-child');
+          if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+        }
+      });
+    });
+    
+    // FAQ Accordion - ONE BY ONE (only one open at a time)
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const questionDiv = item.querySelector('.faq-question');
+      questionDiv.addEventListener('click', () => {
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+    
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('✨ Thank you for reaching out! Our tea sommelier will respond within 24 hours. ✨');
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>

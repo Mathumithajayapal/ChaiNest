@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Chai Nest · Premium Tea Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- RESET & BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.5;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* ---------- DARK MODE ---------- */
+    body.dark-mode {
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+    }
+    body.dark-mode .site-header { background-color: #1a1a1a; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    body.dark-mode .logo-text,
+    body.dark-mode .nav-links a { color: #f0f0f0; }
+    body.dark-mode .dropdown-content { background: #2a2a2a; box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
+    body.dark-mode .dropdown-content a { color: #f0f0f0; }
+    body.dark-mode .login-btn { border-color: #7B4B2A; color: #7B4B2A; }
+    body.dark-mode .login-btn:hover { background: #7B4B2A; color: white; }
+    body.dark-mode .signup-btn { background: #7B4B2A; color: white; }
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle { border-color: #7B4B2A; color: #7B4B2A; }
+    body.dark-mode .hamburger span { background-color: #f0f0f0; }
+    body.dark-mode .mobile-menu { background-color: #1a1a1a; }
+    body.dark-mode .mobile-nav-link,
+    body.dark-mode .mobile-dropdown-toggle span:first-child { color: #f0f0f0; }
+    body.dark-mode .mobile-nav-item { border-bottom-color: #333; }
+    body.dark-mode .brew-section,
+    body.dark-mode .quiz-section,
+    body.dark-mode .exp-card,
+    body.dark-mode .testimonial-card,
+    body.dark-mode .glass-card .glass-content { background: #1a1a1a; border-color: #333; }
+    body.dark-mode .brew-section { background: #1a1a1a; }
+    body.dark-mode .quiz-section { background: #5a3a1f; }
+    body.dark-mode .testimonial-card { background: #2a2a2a; }
+    body.dark-mode .testimonial-text { color: #ccc; }
+    body.dark-mode .exp-card p { color: #aaa; }
+    body.dark-mode .unique-footer { background-color: #0a0a0a; }
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-brand p { color: #aaa; }
+    body.dark-mode .glass-content { background: rgba(0, 0, 0, 0.6); }
+
+    /* ---------- HEADER & NAVIGATION ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      padding: 0.8rem 2rem;
+      z-index: 1000;
+    }
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #7B4B2A;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-icon svg { width: 24px; height: 24px; }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+    .logo-text span { color: #7B4B2A; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-item { position: relative; }
+    .nav-links a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      background: white;
+      min-width: 200px;
+      border-radius: 12px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 100;
+    }
+    .nav-item:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(4px);
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+      color: #000000;
+      text-decoration: none;
+    }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
+    .action-buttons { display: flex; align-items: center; gap: 0.8rem; }
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .login-btn { background: transparent; border-color: #7B4B2A; color: #7B4B2A; }
+    .signup-btn { background: #7B4B2A; color: white; }
+    .dark-toggle, .rtl-toggle {
+      background: transparent;
+      border: 1.5px solid #7B4B2A;
+      border-radius: 40px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #7B4B2A;
+      transition: all 0.2s;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 22px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 100%;
+      height: 2px;
+      background-color: #7B4B2A;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* ---------- MOBILE MENU WITH OVERLAY ---------- */
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    body.menu-open .mobile-menu-overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 85%;
+      max-width: 400px;
+      height: 100vh;
+      background-color: #ffffff;
+      z-index: 1001;
+      padding: 5rem 2rem 2rem;
+      overflow-y: auto;
+      transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+    }
+    [dir="rtl"] .mobile-menu {
+      right: auto;
+      left: -100%;
+    }
+    [dir="rtl"] .mobile-menu.active {
+      left: 0;
+      right: auto;
+    }
+    .mobile-menu.active {
+      right: 0;
+    }
+    .close-menu {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #7B4B2A;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .close-menu:hover {
+      background: rgba(123, 75, 42, 0.1);
+    }
+    [dir="rtl"] .close-menu {
+      right: auto;
+      left: 1.5rem;
+    }
+    .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .mobile-nav-item { border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+    .mobile-nav-link { text-decoration: none; color: #111; font-size: 1.1rem; font-weight: 500; display: block; padding: 0.75rem 0; }
+    .mobile-dropdown-toggle { cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; }
+    .mobile-dropdown-toggle span:first-child { font-size: 1.1rem; font-weight: 500; color: #111; }
+    .mobile-dropdown-toggle span:last-child { font-size: 1rem; transition: transform 0.3s ease; color: #7B4B2A; }
+    .mobile-dropdown-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding-left: 1rem; }
+    [dir="rtl"] .mobile-dropdown-content { padding-left: 0; padding-right: 1rem; }
+    .mobile-dropdown-content.active { max-height: 300px; }
+    .mobile-dropdown-content a { display: block; padding: 0.6rem 0; text-decoration: none; color: #555; font-size: 0.95rem; }
+    .mobile-dropdown-content a:hover { color: #7B4B2A; }
+
+    /* ---------- SECTION CONTAINER ---------- */
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section-spacing {
+      margin-bottom: 50px;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero-banner {
+      position: relative;
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      isolation: isolate;
+      margin-bottom: 50px;
+    }
+    .hero-slider {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+    }
+    .slider-image {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .slider-image.active { opacity: 1; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(123,75,42,0.4), rgba(0,0,0,0.55));
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #fff;
+      z-index: 2;
+      padding: 1rem;
+    }
+    .society-tag {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content h1 span {
+      font-weight: 400;
+      font-style: italic;
+      display: block;
+      font-size: 3.5rem;
+      color: #f0e6d2;
+    }
+    .first-time {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .code {
+      background: rgba(123,75,42,0.85);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.5rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .slider-dots {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dot.active { background: #7B4B2A; transform: scale(1.3); }
+
+    /* ---------- BREW RITUAL SECTION ---------- */
+    .brew-section {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      background: #fff;
+      padding: 3rem;
+      border-radius: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+    .brew-left h2 { font-size: 2.3rem; color: #7B4B2A; margin-bottom: 1rem; }
+    .brew-step {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    .brew-step span {
+      background: #7B4B2A;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .brew-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7B4B2A, #5a3a1f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0 auto;
+    }
+
+    /* ---------- QUIZ SECTION ---------- */
+    .quiz-section {
+      background: #7B4B2A;
+      border-radius: 48px;
+      padding: 3rem;
+      text-align: center;
+      color: white;
+    }
+    .quiz-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
+    .quiz-description { font-size: 1rem; opacity: 0.9; margin-bottom: 1rem; }
+    .quiz-options {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .quiz-option {
+      padding: 0.8rem 2rem;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid white;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .quiz-option:hover { background: white; color: #7B4B2A; transform: scale(1.05); }
+    .quiz-result {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      background: rgba(0,0,0,0.3);
+      display: inline-block;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+    }
+
+    /* ---------- GLASS IMAGE CARDS - 3x2 GRID on desktop, 1x6 on mobile ---------- */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #7B4B2A;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .glass-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .glass-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 320px;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    .glass-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .glass-card:hover img { transform: scale(1.1); }
+    .glass-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.5);
+      border-top: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .glass-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.4rem; }
+
+    /* ---------- EXPERIENCE SECTION ---------- */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .exp-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 28px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
+    .exp-card:hover { transform: translateY(-6px); }
+    .exp-card h3 { color: #7B4B2A; margin-bottom: 0.75rem; font-size: 1.4rem; }
+    .exp-card p { color: #555; line-height: 1.6; }
+    .exp-card.full-width { grid-column: span 2; text-align: center; }
+
+    /* ---------- TESTIMONIALS - 3x1 on desktop, 1x3 on mobile ---------- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover { transform: translateY(-5px); }
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background-size: cover;
+      background-position: center;
+    }
+    .testimonial-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; color: #7B4B2A; }
+    .testimonial-text { color: #666; font-style: italic; line-height: 1.6; }
+
+    /* ---------- FRIENDS SECTION ---------- */
+    .friends-section {
+      background: linear-gradient(135deg, #2a2418, #1a120b);
+      border-radius: 40px;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .friends-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: auto;
+    }
+    .friends-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .friends-text { font-size: 1.1rem; color: #e0d6c8; line-height: 1.7; margin-bottom: 1.5rem; }
+    .friends-highlight { color: #c97e5a; font-weight: 600; margin-bottom: 2rem; }
+    .friends-btn {
+      display: inline-block;
+      background: white;
+      color: #7B4B2A;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .friends-btn:hover { transform: scale(1.05); }
+
+    /* ---------- FOOTER ---------- */
+    .unique-footer {
+      background-color: #000000;
+      color: #ddd;
+      padding: 3rem 2rem 2rem;
+      border-top: 4px solid #7B4B2A;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem;
+    }
+    .footer-brand p { margin: 1.2rem 0 1.8rem; color: #aaa; }
+    .social-links { display: flex; gap: 1.4rem; }
+    .social-links a { color: #ccc; text-decoration: none; font-size: 1.2rem; }
+    .footer-col h4 { color: white; font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; text-transform: uppercase; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.7rem; }
+    .footer-col a { color: #aaa; text-decoration: none; }
+    .footer-col a:hover, .social-links a:hover { color: #7B4B2A; }
+    .newsletter-input {
+      display: flex;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+    }
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: white;
+      width: 100%;
+      outline: none;
+    }
+    .newsletter-input button {
+      background: transparent;
+      border: none;
+      color: #7B4B2A;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      padding-top: 1.8rem;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 0.85rem;
+    }
+    .footer-bottom a { color: #999; text-decoration: none; margin-left: 1.5rem; }
+    .footer-bottom a:hover { color: #7B4B2A; }
+
+    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+    @media (max-width: 1024px) {
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: 0.85rem; }
+      .action-buttons { gap: 0.5rem; }
+      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
+    }
+    
+    @media (max-width: 900px) {
+      .nav-links, .action-buttons { display: none; }
+      .hamburger { display: flex; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); }
+      .brew-section { grid-template-columns: 1fr; text-align: center; }
+      .brew-step { justify-content: center; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-content h1 span { font-size: 2.2rem; }
+    }
+    
+    /* Mobile view: 800x1280 and below - cards become 1 per row */
+    @media (max-width: 850px) {
+      .glass-card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+      .exp-card.full-width {
+        grid-column: span 1;
+      }
+      .section-title {
+        font-size: 2rem;
+      }
+      .brew-left h2 {
+        font-size: 1.8rem;
+      }
+      .quiz-section {
+        padding: 2rem;
+      }
+      .quiz-title {
+        font-size: 1.8rem;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      .hero-content h1 span {
+        font-size: 1.8rem;
+      }
+      .glass-card {
+        height: 280px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-banner {
+        min-height: 500px;
+      }
+      .glass-card {
+        height: 260px;
+      }
+      .friends-content h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+      }
+      .footer-bottom a {
+        margin: 0 0.75rem;
+      }
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+      .logo-text {
+        font-size: 1.3rem;
+      }
+      .site-header {
+        padding: 0.6rem 1rem;
+      }
+      .glass-card {
+        height: 240px;
+      }
+    }
+    
+    body.dark-mode .dropdown-content a {
+  color: #fa720af5;
+}
+    
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="logo-text">Chai<span>Nest</span></span>
+      </a>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="#">Home</a>
+          <ul class="dropdown-content">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html">Soulful Sips</a></li>
+        <li><a href="brew story.html">Tea Ritual</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-item">
+          <a href="#">Dashboard</a>
+          <ul class="dropdown-content">
+            <li><a href="user.html">User Dashboard</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <div class="header-actions">
+        <div class="action-buttons">
+          <a href="login.html" class="nav-btn login-btn">Login</a>
+          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
+          <div class="dark-toggle" id="darkToggleBtn">🌙</div>
+          <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
+        </div>
+      </div>
+      
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenuBtn">✕</button>
+    <ul class="mobile-nav-links">
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+          <span>Home</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown1">
+          <a href="index.html">Home 1</a>
+          <a href="home2.html">Home 2</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
+            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+
+      <li class="mobile-nav-item">
+        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
+          <span>Dashboard</span>
+          <span>▼</span>
+        </div>
+        <div class="mobile-dropdown-content" id="dropdown2">
+          <a href="user.html">User Dashboard</a>
+          <a href="admin.html">Admin Dashboard</a>
+        </div>
+      </li>
+   
+      <li class="mobile-nav-item">
+        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
+          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
+          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Hero Slider -->
+  <section class="hero-banner">
+    <div class="hero-slider">
+      <div class="slider-image active" style="background-image: url('images/img (1).jpg');"></div>
+      <div class="slider-image" style="background-image: url('images/img (2).jpg');"></div>
+      <div class="slider-image" style="background-image: url('images/img (3).jpg');"></div>
+      <div class="slider-image" style="background-image: url('images/img (4).jpg');"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="society-tag">CHAI NEST</div>
+      <h1>First time here?<span>We're not letting you</span>go empty handed.</h1>
+      <p class="first-time">15% off on your first purchase</p>
+      <div class="code">Use code CHAI15</div>
+    </div>
+    <div class="slider-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </section>
+
+  <div class="section-container section-spacing">
+    <div class="brew-section">
+      <div class="brew-left">
+        <h2>🍵 The Perfect Brew Ritual</h2>
+        <p>Follow our 3-step ritual to unlock the full essence of your tea.</p>
+        <div class="brew-steps">
+          <div class="brew-step"><span>01</span><p>Heat water to temperature</p></div>
+          <div class="brew-step"><span>02</span><p>Steep for perfect duration</p></div>
+          <div class="brew-step"><span>03</span><p>Savor aroma & taste slowly</p></div>
+        </div>
+      </div>
+      <div class="brew-right"><div class="brew-circle"><span>3 min</span></div></div>
+    </div>
+  </div>
+
+  <div class="section-container section-spacing">
+    <div class="quiz-section">
+      <h2 class="quiz-title">🍃 Find Your Perfect Tea</h2>
+      <p class="quiz-description">Answer 3 simple questions and get personalized recommendations</p>
+      <div class="quiz-options">
+        <div class="quiz-option" data-mood="🌅 Morning Ritual">🌅 Morning Ritual</div>
+        <div class="quiz-option" data-mood="🌙 Evening Relaxation">🌙 Evening Relaxation</div>
+        <div class="quiz-option" data-mood="💪 Energy Boost">💪 Energy Boost</div>
+        <div class="quiz-option" data-mood="🧘 Wellness Focus">🧘 Wellness Focus</div>
+      </div>
+      <div class="quiz-result" id="quizResult">✨ Click any option to discover your match ✨</div>
+    </div>
+  </div>
+
+  <div class="section-container section-spacing">
+    <div class="section-title">☕ Our Essentials</div>
+    <div class="glass-card-grid">
+      <div class="glass-card"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
+      <div class="glass-card"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
+      <div class="glass-card"><img src="https://images.unsplash.com/photo-1541976076758-347942db1979" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
+    </div>
+  </div>
+
+  <div class="section-container section-spacing">
+    <div class="section-title">✨ The Chai Experience</div>
+    <div class="experience-grid">
+      <div class="exp-card"><h3>🌿 Handpicked Leaves</h3><p>Sourced directly from high-altitude organic farms for unmatched purity.</p></div>
+      <div class="exp-card"><h3>🎨 Artisan Blends</h3><p>Crafted in small batches with traditional techniques.</p></div>
+      <div class="exp-card"><h3>🧘 Wellness First</h3><p>Boost immunity and calm mind with antioxidant-rich teas.</p></div>
+      <div class="exp-card"><h3>🌎 Ethical Sourcing</h3><p>Direct trade partnerships ensure fair wages and sustainability.</p></div>
+      <div class="exp-card full-width"><h3>🚜 From Farm to Cup — Full Transparency</h3><p>Traceable sourcing ensures every sip tells a story. QR code reveals the exact garden and harvest date.</p></div>
+    </div>
+  </div>
+
+  <div class="section-container section-spacing">
+    <div class="section-title">❤️ What Our Tea Lovers Say</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/1.jpg');"></div><div class="testimonial-name">Priya Sharma</div><div class="testimonial-text">"The masala chai is absolutely divine! Tastes just like my grandmother's recipe."</div></div>
+      <div class="testimonial-card"><div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/2.jpg');"></div><div class="testimonial-name">Michael Chen</div><div class="testimonial-text">"Best Darjeeling tea I've ever had outside of India. Exceptional quality."</div></div>
+      <div class="testimonial-card"><div class="testimonial-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/3.jpg');"></div><div class="testimonial-name">Sarah Johnson</div><div class="testimonial-text">"The matcha is smooth and vibrant. Best ceremonial grade I've tried."</div></div>
+    </div>
+  </div>
+
+  <div class="section-container section-spacing">
+    <div class="friends-section">
+      <div class="friends-content">
+        <h2>☕ A Place to Connect</h2>
+        <p class="friends-text">This isn't just a coffee shop — it's where conversations flow, laughter echoes, and memories are made. Bring your friends, sip slowly, and stay a little longer.</p>
+        <p class="friends-highlight">✨ The perfect place to spend time with friends</p>
+        <a href="#" class="friends-btn">Visit Us →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="unique-footer">
+    <div class="footer-container">
+      <div class="footer-brand"><div style="display:flex; align-items:center; gap:8px;"><div class="logo-icon" style="background:#7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color:white; font-size:1.6rem; font-weight:700;">Chai<span style="color:#7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">🎵</a></div></div>
+      <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">New arrivals</a></li><li><a href="#">Best sellers</a></li><li><a href="#">Limited drops</a></li><li><a href="#">Sustainability</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
+      <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div>
+  </footer>
+
+  <script>
+    (function() {
+      // Dark Mode
+      const darkToggle = document.getElementById('darkToggleBtn');
+      const mobileDark = document.getElementById('mobileDarkToggle');
+      const setDark = (on) => { if (on) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode'); localStorage.setItem('darkMode', on); };
+      if (localStorage.getItem('darkMode') === 'true') setDark(true);
+      darkToggle?.addEventListener('click', () => setDark(!document.body.classList.contains('dark-mode')));
+      mobileDark?.addEventListener('click', () => setDark(!document.body.classList.contains('dark-mode')));
+
+      // RTL
+      const rtlToggle = document.getElementById('rtlToggleBtn');
+      const mobileRtl = document.getElementById('mobileRtlToggle');
+      const setRTL = (rtl) => { document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr'); localStorage.setItem('rtlMode', rtl); if (rtlToggle) rtlToggle.innerText = rtl ? 'RTL' : 'LTR'; if (mobileRtl) mobileRtl.innerText = rtl ? 'RTL' : 'LTR'; };
+      if (localStorage.getItem('rtlMode') === 'true') setRTL(true);
+      rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+      mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+      // Mobile Menu with scroll lock
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('mobileOverlay');
+      const closeMenu = document.getElementById('closeMenuBtn');
+      const toggleMobile = (open) => {
+        if (open) { mobileMenu.classList.add('active'); document.body.classList.add('menu-open'); }
+        else { mobileMenu.classList.remove('active'); document.body.classList.remove('menu-open'); }
+      };
+      hamburger?.addEventListener('click', () => toggleMobile(true));
+      closeMenu?.addEventListener('click', () => toggleMobile(false));
+      overlay?.addEventListener('click', () => toggleMobile(false));
+      document.querySelectorAll('.mobile-nav-link, .mobile-dropdown-content a').forEach(link => link.addEventListener('click', () => toggleMobile(false)));
+      
+      // Mobile dropdowns
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = toggle.getAttribute('data-dropdown');
+          const content = document.getElementById(targetId);
+          if (content) {
+            content.classList.toggle('active');
+            const arrow = toggle.querySelector('span:last-child');
+            if (arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
+          }
+        });
+      });
+
+      // Hero Slider
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slider-image');
+      const dots = document.querySelectorAll('.dot');
+      const showSlide = (index) => { slides.forEach((s, i) => s.classList.toggle('active', i === index)); dots.forEach((d, i) => d.classList.toggle('active', i === index)); currentSlide = index; };
+      dots.forEach((dot, i) => dot.addEventListener('click', () => showSlide(i)));
+      setInterval(() => { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }, 5000);
+
+      // Quiz Interaction
+      const quizResult = document.getElementById('quizResult');
+      const quizOptions = document.querySelectorAll('.quiz-option');
+      const recommendations = {
+        '🌅 Morning Ritual': '🌿 Assam CTC or Masala Chai — bold, energizing, perfect start!',
+        '🌙 Evening Relaxation': '🍃 Chamomile or White Tea — calming, gentle, unwind naturally.',
+        '💪 Energy Boost': '⚡ Matcha Green Tea — sustained focus and natural energy.',
+        '🧘 Wellness Focus': '🌸 Tulsi & Ginger — immune boosting, soothing and detoxifying.'
+      };
+      quizOptions.forEach(opt => {
+        opt.addEventListener('click', () => {
+          const mood = opt.getAttribute('data-mood');
+          const rec = recommendations[mood] || '✨ Discover your perfect blend with our tea guide!';
+          quizResult.innerHTML = `✨ ${mood}: ${rec} ✨`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
