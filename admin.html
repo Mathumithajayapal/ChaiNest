@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Chai Nest · Admin Dashboard</title>
+  <title>Chai Nest · Admin Dashboard | Complete Control Panel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -33,7 +32,7 @@
       height: 100%;
     }
 
-    /* Dark Mode - All Text Becomes White */
+    /* Dark Mode - Complete */
     body.dark-mode {
       background-color: #0a0a0a;
       color: #f1f5f9;
@@ -43,7 +42,6 @@
       background-color: #0a0a0a;
     }
 
-    /* Sidebar Dark Mode */
     body.dark-mode .sidebar {
       background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
       border-right: 1px solid rgba(255,255,255,0.1);
@@ -62,12 +60,6 @@
       color: #fbbf24;
     }
 
-    body.dark-mode .sidebar .logout-btn {
-      background: rgba(220, 38, 38, 0.2);
-      color: #f87171;
-    }
-
-    /* Top Bar Dark Mode */
     body.dark-mode .top-bar {
       background: #1e1e2a;
       border-color: #2d2d3a;
@@ -78,7 +70,6 @@
       color: #f1f5f9;
     }
 
-    /* Stat Cards Dark Mode */
     body.dark-mode .stat-card {
       background: #1e1e2a;
       border-color: #2d2d3a;
@@ -93,7 +84,6 @@
       color: #fbbf24;
     }
 
-    /* Data Tables Dark Mode */
     body.dark-mode .data-table {
       background: #1e1e2a;
       border-color: #2d2d3a;
@@ -113,39 +103,25 @@
       border-bottom-color: #2d2d3a;
     }
 
-    /* Status Badges Dark Mode */
-    body.dark-mode .status-badge.status-active {
-      background: #166534;
-      color: #86efac;
-    }
-    
-    body.dark-mode .status-badge.status-pending {
-      background: #854d0e;
-      color: #fde047;
-    }
-    
-    body.dark-mode .status-badge.status-processing {
-      background: #1e40af;
-      color: #93c5fd;
-    }
-    
-    body.dark-mode .status-badge.status-completed {
-      background: #166534;
-      color: #86efac;
+    body.dark-mode .status-badge.status-active { background: #166534; color: #86efac; }
+    body.dark-mode .status-badge.status-banned { background: #7f1a1a; color: #fecaca; }
+    body.dark-mode .status-badge.status-pending { background: #854d0e; color: #fde047; }
+    body.dark-mode .status-badge.status-processing { background: #1e40af; color: #93c5fd; }
+    body.dark-mode .status-badge.status-completed { background: #166534; color: #86efac; }
+
+    body.dark-mode .info-card {
+      background: #1e1e2a;
+      border-color: #2d2d3a;
     }
 
-    /* Recent Activity Dark Mode */
-    body.dark-mode #recentActivity div,
-    body.dark-mode #topProductsList div {
-      border-bottom-color: #2d2d3a !important;
-    }
-    
-    body.dark-mode #recentActivity p strong,
-    body.dark-mode #topProductsList p strong {
-      color: #fbbf24;
+    body.dark-mode .info-item {
+      border-bottom-color: #2d2d3a;
     }
 
-    /* Modal Dark Mode */
+    body.dark-mode .info-item span:first-child {
+      color: #94a3b8;
+    }
+
     body.dark-mode .modal-content {
       background: #1e1e2a;
       color: #f1f5f9;
@@ -170,6 +146,11 @@
       background: #7B4B2A;
     }
 
+    body.dark-mode .btn-secondary {
+      background: #334155;
+      color: white;
+    }
+
     /* Admin Container */
     .admin-container {
       display: flex;
@@ -177,7 +158,7 @@
       position: relative;
     }
 
-    /* Sidebar - Full height with no gaps */
+    /* Sidebar */
     .sidebar {
       width: 280px;
       background: #ffffff;
@@ -193,7 +174,6 @@
       transform: translateX(0);
     }
 
-    /* Mobile Sidebar State - Hidden by default */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
@@ -239,6 +219,11 @@
 
     .logo-text span {
       color: #7B4B2A;
+    }
+
+    .logo-text a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .admin-badge {
@@ -296,32 +281,28 @@
       border-top: 1px solid rgba(0,0,0,0.06);
     }
 
-    .action-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
     .sidebar-action-btn {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 0.7rem 1rem;
-      border-radius: 14px;
-      background: transparent;
-      border: none;
+      padding: 0.75rem 1.5rem;
+      margin: 1rem 0 1.5rem 0;
+      color: #475569;
+      text-decoration: none;
       font-weight: 500;
+      transition: all 0.3s;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      width: 100%;
-      text-align: left;
-      font-family: inherit;
+      border-top: 1px solid #eef2ff;
     }
 
-    .sidebar-action-btn i {
-      width: 24px;
-      font-size: 1.1rem;
+    body.dark-mode .sidebar-action-btn {
+      color: #cbd5e1;
+      border-top-color: rgba(255,255,255,0.1);
+    }
+
+    .sidebar-action-btn:hover {
+      background: rgba(123, 75, 42, 0.08);
+      color: #7B4B2A;
     }
 
     .logout-btn {
@@ -347,7 +328,6 @@
       .main-content {
         margin-left: 0;
         padding: 1rem;
-        margin-top: 0;
       }
     }
 
@@ -384,41 +364,29 @@
       flex-wrap: wrap;
     }
 
-    .rtl-toggle-btn {
-      background: linear-gradient(135deg, #7B4B2A 0%, #9B5E2E 100%);
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      font-family: inherit;
-    }
-
-    .rtl-toggle-btn:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, #9B5E2E 0%, #7B4B2A 100%);
-    }
-
-    .dark-mode-toggle-btn {
+    .rtl-toggle-btn, .dark-mode-toggle-btn {
       background: rgba(0, 0, 0, 0.08);
       border: none;
       padding: 0.6rem 1.2rem;
       border-radius: 40px;
       font-size: 0.85rem;
       font-weight: 600;
-      color: #1e293b;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
       transition: all 0.3s ease;
       font-family: inherit;
+    }
+
+    .rtl-toggle-btn {
+      background: #7B4B2A;
+      color: white;
+    }
+
+    .rtl-toggle-btn:hover {
+      background: #9B5E2E;
+      transform: translateY(-2px);
     }
 
     .dark-mode-toggle-btn:hover {
@@ -468,12 +436,10 @@
       cursor: pointer;
       font-size: 1.2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: all 0.2s;
     }
 
     .menu-toggle:hover {
       transform: scale(1.05);
-      background: #9B5E2E;
     }
 
     @media (max-width: 768px) {
@@ -484,7 +450,6 @@
       }
     }
 
-    /* Overlay for mobile when sidebar is open */
     .sidebar-overlay {
       display: none;
       position: fixed;
@@ -496,7 +461,6 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
       z-index: 999;
-      transition: all 0.3s ease;
       cursor: pointer;
     }
 
@@ -543,13 +507,6 @@
     body.rtl-active .nav-link.active {
       border-left: none;
       border-right-color: #7B4B2A;
-    }
-
-    body.rtl-active .admin-profile {
-      border-left: none;
-      border-right: 2px solid #eef2ff;
-      padding-left: 0;
-      padding-right: 1rem;
     }
 
     /* Page Container */
@@ -628,7 +585,7 @@
       font-size: 0.85rem;
     }
 
-    /* Tables - IMPROVED ALIGNMENT */
+    /* Tables */
     .data-table {
       background: white;
       border-radius: 20px;
@@ -679,7 +636,6 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 0.75rem;
-      transition: all 0.2s;
     }
 
     .btn-danger:hover {
@@ -695,26 +651,10 @@
       cursor: pointer;
       margin-right: 0.5rem;
       font-size: 0.75rem;
-      transition: all 0.2s;
     }
 
     .btn-edit:hover {
       background: #2563eb;
-    }
-
-    .btn-success {
-      background: #10b981;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.75rem;
-      transition: all 0.2s;
-    }
-
-    .btn-success:hover {
-      background: #059669;
     }
 
     table {
@@ -797,20 +737,6 @@
       font-weight: 600;
     }
 
-    body.dark-mode .info-card {
-      background: #1e1e2a;
-      border-color: #2d2d3a;
-    }
-
-    body.dark-mode .info-item {
-      border-bottom-color: #2d2d3a;
-    }
-
-    body.dark-mode .info-item span:first-child {
-      color: #94a3b8;
-    }
-
-    /* Action Buttons Group */
     .action-group {
       display: flex;
       gap: 0.5rem;
@@ -876,29 +802,12 @@
       .stats-grid { grid-template-columns: 1fr; }
       .top-bar { flex-direction: column; text-align: center; }
       .admin-actions { justify-content: center; }
-      .table-header { flex-direction: column; text-align: center; }
       th, td { padding: 0.75rem; }
-      .action-group { justify-content: center; }
     }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
-    .logo-text a {
-  text-decoration: none;   /* remove underline */
-  color: rgb(0, 0, 0);            /* make "Chai" white */
-}
-
-.logo-text a span {
-  color: #7B4B2A;          /* keep "Nest" brown */
-}
-.sidebar-action-btn a {
-  text-decoration: none;
-  color: inherit; /* keeps button text color */
-}
-.sidebar-action-btn {
-  text-decoration: none;
-}
   </style>
 </head>
 <body>
@@ -932,13 +841,14 @@
         <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-cog"></i><span>System Settings</span></a></li>
       </ul>
 
-    <a href="signup.html" class="sidebar-action-btn logout-btn">
-  <i class="fas fa-sign-out-alt"></i>
-  <span>Logout</span>
-</a>
+      <a href="signup.html" class="sidebar-action-btn logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
     </aside>
 
     <main class="main-content">
+      <!-- Overview Page -->
       <div id="overview-page" class="page-container active-page">
         <div class="top-bar">
           <div class="page-title">
@@ -969,6 +879,7 @@
         </div>
       </div>
 
+      <!-- Users Page -->
       <div id="users-page" class="page-container">
         <div class="top-bar">
           <div class="page-title"><h2>User Management</h2><p>Manage all registered users and their permissions</p></div>
@@ -980,6 +891,7 @@
         </div>
       </div>
       
+      <!-- Orders Page -->
       <div id="orders-page" class="page-container">
         <div class="top-bar">
           <div class="page-title"><h2>Order Management</h2><p>Track and manage all customer orders</p></div>
@@ -991,6 +903,7 @@
         </div>
       </div>
       
+      <!-- Products Page -->
       <div id="products-page" class="page-container">
         <div class="top-bar">
           <div class="page-title"><h2>Product Catalog</h2><p>Manage tea products and inventory</p></div>
@@ -1002,6 +915,7 @@
         </div>
       </div>
       
+      <!-- Reports Page -->
       <div id="reports-page" class="page-container">
         <div class="top-bar">
           <div class="page-title"><h2>Reports & Analytics</h2><p>Business insights and performance metrics</p></div>
@@ -1012,6 +926,7 @@
         </div>
       </div>
       
+      <!-- Settings Page -->
       <div id="settings-page" class="page-container">
         <div class="top-bar">
           <div class="page-title"><h2>System Settings</h2><p>Configure admin preferences and store settings</p></div>
@@ -1019,23 +934,26 @@
         <div class="data-table">
           <div class="form-group"><label>Store Name</label><input type="text" id="storeName" value="Chai Nest Tea Co."></div>
           <div class="form-group"><label>Admin Email</label><input type="email" id="adminEmail" value="admin@chainest.com"></div>
-          <div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option></select></div>
+          <div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option><option>EUR (€)</option></select></div>
           <button class="btn-primary" onclick="saveSettings()">Save Changes</button>
         </div>
       </div>
     </main>
   </div>
 
+  <!-- Modals -->
   <div id="userModal" class="modal"><div class="modal-content"><h3>Add New User</h3><div class="form-group"><label>Full Name</label><input type="text" id="userName" placeholder="Full name"></div><div class="form-group"><label>Email Address</label><input type="email" id="userEmail" placeholder="Email address"></div><div class="form-group"><label>Role</label><select id="userRole"><option>Customer</option><option>Admin</option><option>VIP</option></select></div><div class="modal-buttons"><button class="btn-primary" onclick="addUser()">Add User</button><button class="btn-primary" style="background:#64748b;" onclick="closeModal('userModal')">Cancel</button></div></div></div>
   <div id="productModal" class="modal"><div class="modal-content"><h3>Add New Product</h3><div class="form-group"><label>Product Name</label><input type="text" id="productName" placeholder="Product name"></div><div class="form-group"><label>Price ($)</label><input type="number" id="productPrice" placeholder="Price"></div><div class="form-group"><label>Stock Quantity</label><input type="number" id="productStock" placeholder="Stock"></div><div class="modal-buttons"><button class="btn-primary" onclick="addProduct()">Add Product</button><button class="btn-primary" style="background:#64748b;" onclick="closeModal('productModal')">Cancel</button></div></div></div>
 
   <script>
+    // Data Models
     let users = [
       { id: 1, name: 'Priya Sharma', email: 'priya@email.com', role: 'Customer', status: 'Active', orders: 12, joined: '2024-01-15' },
       { id: 2, name: 'Michael Chen', email: 'michael@email.com', role: 'Customer', status: 'Active', orders: 8, joined: '2024-02-20' },
       { id: 3, name: 'Sarah Johnson', email: 'sarah@email.com', role: 'VIP', status: 'Active', orders: 24, joined: '2023-11-10' },
       { id: 4, name: 'Admin User', email: 'admin@chainest.com', role: 'Admin', status: 'Active', orders: 0, joined: '2023-01-01' }
     ];
+    
     let orders = [
       { id: '#ORD-001', customer: 'Priya Sharma', date: '2024-03-15', items: 3, total: 45.00, status: 'Completed' },
       { id: '#ORD-002', customer: 'Michael Chen', date: '2024-03-14', items: 2, total: 32.50, status: 'Processing' },
@@ -1043,6 +961,7 @@
       { id: '#ORD-004', customer: 'Rajesh Kumar', date: '2024-03-13', items: 4, total: 28.75, status: 'Pending' },
       { id: '#ORD-005', customer: 'Emma Wilson', date: '2024-03-12', items: 2, total: 39.90, status: 'Completed' }
     ];
+    
     let products = [
       { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342 },
       { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287 },
@@ -1050,34 +969,43 @@
       { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156 }
     ];
 
+    // Render Functions
     function renderOverview() {
-      const totalOrders = orders.length, totalRevenue = orders.reduce((s, o) => s + o.total, 0), activeUsers = users.filter(u => u.status === 'Active').length;
-      document.getElementById('overviewStats').innerHTML = `<div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">${totalOrders}</div><div class="stat-label">Total Orders</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Revenue</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${activeUsers}</div><div class="stat-label">Active Users</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-leaf"></i></div><div class="stat-value">${products.length}</div><div class="stat-label">Products</div></div>`;
+      const totalOrders = orders.length;
+      const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
+      const activeUsers = users.filter(u => u.status === 'Active').length;
+      document.getElementById('overviewStats').innerHTML = `
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">${totalOrders}</div><div class="stat-label">Total Orders</div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Revenue</div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${activeUsers}</div><div class="stat-label">Active Users</div></div>
+        <div class="stat-card"><div class="stat-icon"><i class="fas fa-leaf"></i></div><div class="stat-value">${products.length}</div><div class="stat-label">Products</div></div>`;
       
-      document.getElementById('recentOrdersTable').innerHTML = `<table style="width:100%"><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td></tr>`).join('')}</tbody></table>`;
+      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td></tr>`).join('')}</tbody></table>`;
       
       const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
       document.getElementById('topProductsList').innerHTML = `<div class="info-list">${sortedProducts.map(p => `<div class="info-item"><span>${p.name}</span><span>${p.sold} units sold</span></div>`).join('')}</div>`;
       
-      const completed = orders.filter(o => o.status === 'Completed'), pending = orders.filter(o => o.status === 'Pending'), processing = orders.filter(o => o.status === 'Processing');
+      const completed = orders.filter(o => o.status === 'Completed');
+      const pending = orders.filter(o => o.status === 'Pending');
+      const processing = orders.filter(o => o.status === 'Processing');
       document.getElementById('revenueSummary').innerHTML = `<div class="info-list"><div class="info-item"><span>✅ Completed Orders</span><span>${completed.length} ($${completed.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>⏳ Processing Orders</span><span>${processing.length} ($${processing.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>🕐 Pending Orders</span><span>${pending.length} ($${pending.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>📊 Average Order Value</span><span>$${(totalRevenue/totalOrders).toFixed(2)}</span></div></div>`;
       
       document.getElementById('recentActivity').innerHTML = users.slice(0, 3).map(u => `<div style="display:flex; gap:1rem; padding:0.8rem 0; border-bottom:1px solid #eef2ff;"><div style="width:40px;height:40px;background:rgba(123,75,42,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user-plus"></i></div><div><p><strong>${u.name}</strong> joined as ${u.role}</p><span style="font-size:0.75rem; color:#94a3b8;">${u.joined}</span></div></div>`).join('');
     }
     
     function renderUsers() { 
-      document.getElementById('usersTable').innerHTML = `<table style="width:100%"><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Orders</th><th>Status</th><th>Actions</th></tr></thead><tbody>${users.map(u => `<tr><td>${u.id}</td><td><strong>${u.name}</strong></td><td>${u.email}</td><td>${u.role}</td><td>${u.orders}</td><td><span class="status-badge status-active">${u.status}</span></td><td><div class="action-group"><button class="btn-edit" onclick="banUser(${u.id})"><i class="fas fa-ban"></i> ${u.status === 'Active' ? 'Ban' : 'Unban'}</button><button class="btn-danger" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i> Delete</button></div></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('usersTable').innerHTML = `<table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Orders</th><th>Status</th><th>Actions</th></tr></thead><tbody>${users.map(u => `<tr><td>${u.id}</td><td><strong>${u.name}</strong></td><td>${u.email}</td><td>${u.role}</td><td>${u.orders}</td><td><span class="status-badge status-active">${u.status}</span></td><td><div class="action-group"><button class="btn-edit" onclick="banUser(${u.id})"><i class="fas fa-ban"></i> ${u.status === 'Active' ? 'Ban' : 'Unban'}</button><button class="btn-danger" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i> Delete</button></div></td></tr>`).join('')}</tbody></table>`; 
     }
     
     function renderOrders() { 
       const rev = orders.reduce((s,o)=>s+o.total,0); 
       document.getElementById('orderStats').innerHTML = `<div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">${orders.length}</div><div class="stat-label">Total Orders</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${rev.toLocaleString()}</div><div class="stat-label">Total Revenue</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${orders.filter(o=>o.status==='Pending').length}</div><div class="stat-label">Pending</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${orders.filter(o=>o.status==='Completed').length}</div><div class="stat-label">Completed</div></div>`; 
       
-      document.getElementById('ordersTable').innerHTML = `<table style="width:100%"><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td><button class="btn-edit" onclick="updateOrderStatus('${o.id}')"><i class="fas fa-sync-alt"></i> Update Status</button></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('ordersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td><button class="btn-edit" onclick="updateOrderStatus('${o.id}')"><i class="fas fa-sync-alt"></i> Update</button></td></tr>`).join('')}</tbody></table>`; 
     }
     
     function renderProducts() { 
-      document.getElementById('productsTable').innerHTML = `<table style="width:100%"><thead><tr><th>ID</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Units Sold</th><th>Revenue</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td>${p.id}</td><td><strong>${p.name}</strong></td><td>$${p.price}</td><td>${p.stock}</td><td>${p.sold}</td><td>$${(p.price * p.sold).toFixed(2)}</td><td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('productsTable').innerHTML = `<table><thead><tr><th>ID</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Units Sold</th><th>Revenue</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td>${p.id}</td><td><strong>${p.name}</strong></td><td>$${p.price}</td><td>${p.stock}</td><td>${p.sold}</td><td>$${(p.price * p.sold).toFixed(2)}</td><td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button></td></tr>`).join('')}</tbody></table>`; 
     }
     
     function showPage(pageId) { 
@@ -1173,7 +1101,6 @@
     
     document.querySelectorAll('.dark-mode-toggle-btn').forEach(btn => btn.addEventListener('click', toggleDarkMode));
     document.querySelectorAll('.rtl-toggle-btn').forEach(btn => btn.addEventListener('click', toggleRTL));
-    document.getElementById('logoutBtn').addEventListener('click', () => { if(confirm('Are you sure you want to logout?')){ alert('Logged out successfully!'); window.location.reload(); } });
     document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
     
     const menuToggle = document.getElementById('menuToggle');
@@ -1194,11 +1121,8 @@
     
     menuToggle.addEventListener('click', (e) => { 
       e.stopPropagation();
-      if (sidebar.classList.contains('mobile-open')) { 
-        closeSidebar(); 
-      } else { 
-        openSidebar(); 
-      } 
+      if (sidebar.classList.contains('mobile-open')) { closeSidebar(); } 
+      else { openSidebar(); } 
     });
     
     overlay.addEventListener('click', closeSidebar);

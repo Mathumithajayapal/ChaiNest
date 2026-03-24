@@ -7,8 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -60,17 +59,66 @@
       color: #f0f0f0;
     }
 
+    /* ========== FIX: Dark mode mobile menu text colors ========== */
     body.dark-mode .mobile-menu {
       background-color: #1a1a1a;
     }
 
     body.dark-mode .mobile-nav-link,
-    body.dark-mode .mobile-dropdown-toggle span:first-child {
-      color: #0b0b0b;
+    body.dark-mode .mobile-dropdown-toggle span:first-child,
+    body.dark-mode .mobile-dropdown-content a,
+    body.dark-mode .mobile-nav-item .mobile-nav-link {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .mobile-dropdown-toggle span:last-child {
+      color: #c97e5a;
     }
 
     body.dark-mode .mobile-nav-item {
       border-bottom-color: #333;
+    }
+
+    body.dark-mode .mobile-dropdown-content a:hover {
+      color: #c97e5a !important;
+    }
+
+    body.dark-mode .mobile-btn.login-mobile {
+      border-color: #c97e5a;
+      color: #c97e5a;
+    }
+
+    body.dark-mode .mobile-btn.login-mobile:hover {
+      background: #c97e5a;
+      color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-btn.signup-mobile {
+      background: #c97e5a;
+      color: #1a1a1a;
+    }
+
+    body.dark-mode .mobile-btn.signup-mobile:hover {
+      background: #a55e3a;
+      color: #ffffff;
+    }
+
+    body.dark-mode .close-menu {
+      color: #c97e5a;
+    }
+
+    body.dark-mode .close-menu:hover {
+      background: rgba(201, 126, 90, 0.2);
+    }
+
+    body.dark-mode .mobile-toggle-btn {
+      border-color: #c97e5a;
+      color: #c97e5a;
+    }
+
+    body.dark-mode .mobile-toggle-btn:hover {
+      background: #c97e5a;
+      color: #1a1a1a;
     }
 
     body.dark-mode .unique-footer {
@@ -819,6 +867,7 @@
       margin-bottom: 1rem;
       display: inline-block;
       animation: float 3s ease-in-out infinite;
+      color: #7B4B2A;
     }
     
     @keyframes float {
@@ -1046,63 +1095,82 @@
       .cinematic-content h1 { font-size: 1.8rem; }
       .timeline-year { font-size: 1.8rem; }
     }
-    body.dark-mode .mobile-dropdown-content a {
-  color: #ffffff; /* change to white */
-}
-/* Tablet view - force 2x2 grid */
-@media (min-width: 768px) and (max-width: 1100px) {
-  .kinetic-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-}
-/* Tablet & mobile - show one card per row */
-@media (max-width: 1100px) {
-  .white-grid {
-    grid-template-columns: 1fr;
-  }
-}
-body.dark-mode .dropdown-content a {
-  color: #fa720af5;
-}
-.mobile-auth-buttons {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-}
 
-.mobile-btn {
-  flex: 1;
-  text-align: center;
-  padding: 0.7rem;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
+    /* Tablet view - force 2x2 grid */
+    @media (min-width: 768px) and (max-width: 1100px) {
+      .kinetic-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 1100px) {
+      .white-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-/* Login style */
-.login-mobile {
-  border: 1.5px solid #7B4B2A;
-  color: #7B4B2A;
-  background: transparent;
-}
+    .mobile-auth-buttons {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
 
-.login-mobile:hover {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
 
-/* Signup style */
-.signup-mobile {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .login-mobile {
+      border: 1.5px solid #7B4B2A;
+      color: #7B4B2A;
+      background: transparent;
+    }
 
-.signup-mobile:hover {
-  background: #5a3a1f;
-}
+    .login-mobile:hover {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile:hover {
+      background: #5a3a1f;
+    }
+
+    .mobile-toggle-row {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .mobile-toggle-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 1.5px solid #7B4B2A;
+      background: transparent;
+      color: #7B4B2A;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-toggle-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -1129,7 +1197,7 @@ body.dark-mode .dropdown-content a {
         <li><a href="about.html">About</a></li>
         <li><a href="service.html">Service</a></li>
         <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="brew story.html">Tea Ritual</a></li>
+        <li><a href="teaRitual.html">Tea Ritual</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
           <a href="#">Dashboard</a>
@@ -1175,9 +1243,8 @@ body.dark-mode .dropdown-content a {
       <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
       <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
       <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
-            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
           <span>Dashboard</span>
@@ -1188,16 +1255,16 @@ body.dark-mode .dropdown-content a {
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   <li class="mobile-nav-item">
-  <div class="mobile-auth-buttons">
-    <a href="login.html" class="mobile-btn login-mobile">Login</a>
-    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-  </div>
-</li>
       <li class="mobile-nav-item">
-        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
-          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
-          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
+        <div class="mobile-auth-buttons">
+          <a href="login.html" class="mobile-btn login-mobile">Login</a>
+          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item">
+        <div class="mobile-toggle-row">
+          <div class="mobile-toggle-btn" id="mobileDarkToggle">🌙 Dark Mode</div>
+          <div class="mobile-toggle-btn" id="mobileRtlToggle">🔄 RTL Mode</div>
         </div>
       </li>
     </ul>
@@ -1231,46 +1298,32 @@ body.dark-mode .dropdown-content a {
     </div>
   </div>
   
- <div class="kinetic-values">
-  <h2 class="section-title">Our kinetic philosophy</h2>
-  <div class="section-subtitle">━━ where tradition moves forward ━━</div>
-
-  <div class="kinetic-grid">
-
-    <div class="kinetic-item">
-      <div class="kinetic-icon">
-        <i class="fa-solid fa-leaf"></i>
+  <div class="kinetic-values">
+    <h2 class="section-title">Our kinetic philosophy</h2>
+    <div class="section-subtitle">━━ where tradition moves forward ━━</div>
+    <div class="kinetic-grid">
+      <div class="kinetic-item">
+        <div class="kinetic-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3>Regenerative</h3>
+        <p>We give back more than we take — nurturing soil, farmers, and future harvests.</p>
       </div>
-      <h3>Regenerative</h3>
-      <p>We give back more than we take — nurturing soil, farmers, and future harvests.</p>
-    </div>
-
-    <div class="kinetic-item">
-      <div class="kinetic-icon">
-        <i class="fa-solid fa-mug-hot"></i>
+      <div class="kinetic-item">
+        <div class="kinetic-icon"><i class="fa-solid fa-mug-hot"></i></div>
+        <h3>Handcrafted</h3>
+        <p>No machines, no shortcuts. Every blend is touched by human intuition.</p>
       </div>
-      <h3>Handcrafted</h3>
-      <p>No machines, no shortcuts. Every blend is touched by human intuition.</p>
-    </div>
-
-    <div class="kinetic-item">
-      <div class="kinetic-icon">
-        <i class="fa-solid fa-spa"></i>
+      <div class="kinetic-item">
+        <div class="kinetic-icon"><i class="fa-solid fa-spa"></i></div>
+        <h3>Ritualistic</h3>
+        <p>We design teas that demand presence — slow down, inhale, connect.</p>
       </div>
-      <h3>Ritualistic</h3>
-      <p>We design teas that demand presence — slow down, inhale, connect.</p>
-    </div>
-
-    <div class="kinetic-item">
-      <div class="kinetic-icon">
-        <i class="fa-solid fa-seedling"></i>
+      <div class="kinetic-item">
+        <div class="kinetic-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Honest</h3>
+        <p>Transparent sourcing, real ingredients, zero hidden additives.</p>
       </div>
-      <h3>Honest</h3>
-      <p>Transparent sourcing, real ingredients, zero hidden additives.</p>
     </div>
-
   </div>
-</div>
   
   <div class="parallax-quote">
     <div class="quote-text">“Tea is the alchemy that turns a moment into a memory. We are simply the guardians of that magic.”</div>
@@ -1316,7 +1369,6 @@ body.dark-mode .dropdown-content a {
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenu = document.getElementById('closeMenuBtn');
-    const overlay = document.getElementById('mobileOverlay');
 
     function setBodyScrollLock(lock) {
       if (lock) document.body.classList.add('menu-open');
@@ -1336,7 +1388,6 @@ body.dark-mode .dropdown-content a {
 
     hamburger?.addEventListener('click', openMenu);
     closeMenu?.addEventListener('click', closeMenuFn);
-    overlay?.addEventListener('click', closeMenuFn);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();

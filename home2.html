@@ -7,8 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -140,7 +139,7 @@
       color: #c97e54;
     }
 
-    /* Sticky Navbar - EXACT COPY FROM about.html (preserving all gaps, paddings, font-sizes) */
+    /* Sticky Navbar */
     .site-header {
       position: sticky;
       top: 0;
@@ -215,6 +214,37 @@
       padding: 0.5rem 0;
       display: inline-block;
       white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for desktop */
+    .nav-links a.active {
+      color: #7B4B2A;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #7B4B2A;
+      border-radius: 2px;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #c97e54;
+    }
+
+    body.dark-mode .nav-links a.active::after {
+      background: #c97e54;
     }
 
     .dropdown-content {
@@ -337,7 +367,7 @@
       border-radius: 2px;
     }
 
-    /* Mobile Menu Overlay - click to close */
+    /* Mobile Menu Overlay */
     .mobile-menu-overlay {
       position: fixed;
       top: 0;
@@ -405,6 +435,17 @@
       font-weight: 500;
       display: block;
       padding: 0.75rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for mobile */
+    .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle {
@@ -419,6 +460,12 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #111;
+      transition: color 0.2s;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -484,7 +531,44 @@
       left: 1.5rem;
     }
 
-    /* Responsive styles from about.html */
+    .mobile-auth-buttons {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .login-mobile {
+      border: 1.5px solid #7B4B2A;
+      color: #7B4B2A;
+      background: transparent;
+    }
+
+    .login-mobile:hover {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile:hover {
+      background: #5a3a1f;
+    }
+
+    /* Responsive styles */
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.85rem; }
@@ -500,7 +584,7 @@
       .site-header { padding: 0.8rem 1.5rem; }
     }
     
-    /* HERO BANNER (unchanged) */
+    /* Hero Banner */
     .hero-banner {
       background: linear-gradient(115deg, #f9efe2 0%, #e8dccc 100%);
       min-height: 620px;
@@ -656,35 +740,17 @@
       background: #e8dccc;
     }
     
-    /* Responsive hero */
     @media (max-width: 1024px) {
-      .hero-content h1 {
-        font-size: 3rem;
-      }
-      .hero-banner {
-        min-height: 550px;
-      }
+      .hero-content h1 { font-size: 3rem; }
+      .hero-banner { min-height: 550px; }
     }
     
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.4rem;
-      }
-      .hero-banner {
-        min-height: auto;
-        padding: 2rem 0;
-      }
-      .hero-grid {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-desc {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-buttons {
-        justify-content: center;
-      }
+      .hero-content h1 { font-size: 2.4rem; }
+      .hero-banner { min-height: auto; padding: 2rem 0; }
+      .hero-grid { flex-direction: column; text-align: center; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
     }
     
     /* Premium Cards Section */
@@ -1111,125 +1177,39 @@
       flex-direction: row-reverse;
     }
 
-    /* Responsive Footer */
     @media (max-width: 900px) {
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1.8rem;
-      }
+      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
     }
 
     @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 0.8rem;
-        text-align: center;
-      }
-      .footer-bottom a {
-        margin: 0 0.75rem;
-      }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .footer-bottom a { margin: 0 0.75rem; }
     }
 
     @media (max-width: 768px) {
-      .story-grid {
-        flex-direction: column;
-        text-align: center;
-      }
-      .section-title {
-        font-size: 1.8rem;
-      }
-      .experience-section {
-        background-attachment: scroll;
-        min-height: 400px;
-      }
-      .experience-overlay h2 {
-        font-size: 1.8rem;
-      }
-      .experience-overlay {
-        padding: 2rem;
-        margin: 1rem;
-      }
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-      .testimonial-card {
-        width: 100%;
-        max-width: 320px;
-      }
+      .story-grid { flex-direction: column; text-align: center; }
+      .section-title { font-size: 1.8rem; }
+      .experience-section { background-attachment: scroll; min-height: 400px; }
+      .experience-overlay h2 { font-size: 1.8rem; }
+      .experience-overlay { padding: 2rem; margin: 1rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .testimonial-card { width: 100%; max-width: 320px; }
     }
 
     @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 2rem;
-      }
-      .logo-text {
-        font-size: 1.2rem;
-      }
-      .logo-icon {
-        width: 32px;
-        height: 32px;
-      }
+      .hero-content h1 { font-size: 2rem; }
+      .logo-text { font-size: 1.2rem; }
+      .logo-icon { width: 32px; height: 32px; }
     }
     
     @media (max-width: 1024px) {
-      .premium-grid {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto;
-      }
+      .premium-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
     }
-    
-    @media (max-width: 1024px) and (min-width: 600px) {
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .mobile-auth-buttons {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-}
-
-.mobile-btn {
-  flex: 1;
-  text-align: center;
-  padding: 0.7rem;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-/* Login style */
-.login-mobile {
-  border: 1.5px solid #7B4B2A;
-  color: #7B4B2A;
-  background: transparent;
-}
-
-.login-mobile:hover {
-  background: #7B4B2A;
-  color: #fff;
-}
-
-/* Signup style */
-.signup-mobile {
-  background: #7B4B2A;
-  color: #fff;
-}
-
-.signup-mobile:hover {
-  background: #5a3a1f;
-}
   </style>
 </head>
 <body>
-  <!-- HEADER - EXACT COPY FROM about.html (preserving every gap, class, structure) -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="logo">
@@ -1243,21 +1223,19 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home</a>
-          <span>▼</span>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="brew story.html">Tea Ritual</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" id="navAbout">About</a></li>
+        <li><a href="service.html" id="navService">Service</a></li>
+        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
+        <li><a href="brew story.html" id="navBrew">Tea Ritual</a></li>
+        <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard</a>
-          <span>▼</span>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1282,42 +1260,42 @@
     </div>
   </header>
   
-  <!-- Mobile Menu Overlay + Panel - EXACT COPY FROM about.html -->
+  <!-- Mobile Menu -->
   <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn" aria-label="Close menu">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span>Home</span>
+        <div class="mobile-dropdown-toggle" data-dropdown="mobileDropdown1">
+          <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
-        <div class="mobile-dropdown-content" id="dropdown1">
+        <div class="mobile-dropdown-content" id="mobileDropdown1">
           <a href="index.html">Home 1</a>
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
-      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link" id="mobileBrew">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
       <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span>Dashboard</span>
+        <div class="mobile-dropdown-toggle" data-dropdown="mobileDropdown2">
+          <span id="mobileDashboardText">Dashboard</span>
           <span>▼</span>
         </div>
-        <div class="mobile-dropdown-content" id="dropdown2">
+        <div class="mobile-dropdown-content" id="mobileDropdown2">
           <a href="user.html">User Dashboard</a>
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
       <li class="mobile-nav-item">
-  <div class="mobile-auth-buttons">
-    <a href="login.html" class="mobile-btn login-mobile">Login</a>
-    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-  </div>
-</li>
+        <div class="mobile-auth-buttons">
+          <a href="login.html" class="mobile-btn login-mobile">Login</a>
+          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+        </div>
+      </li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%; cursor:pointer;">🌙 Dark</div>
@@ -1327,7 +1305,7 @@
     </ul>
   </div>
 
-  <!-- HERO BANNER (unchanged) -->
+  <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="hero-container">
       <div class="hero-grid">
@@ -1391,13 +1369,10 @@
   <section class="feature-section">
     <h2 class="section-title">Artisanal quality, curated for you</h2>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-hot"></i>
-</div><h3>Single Origin</h3><p>Direct from highland estates in Assam & Darjeeling</p></div>
-      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-saucer"></i>
-</div><h3>Handcrafted blends</h3><p>Master blenders with 20+ years expertise</p></div>
-      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-glass-water"></i>
-</div><h3>Zero-waste commitment</h3><p>Biodegradable & compostable packaging</p></div>
-      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-wine-glass"></i> <!-- for premium feel --></div><h3>Ceremonial grade</h3><p>Matcha & whole-leaf curated rituals</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-hot"></i></div><h3>Single Origin</h3><p>Direct from highland estates in Assam & Darjeeling</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-saucer"></i></div><h3>Handcrafted blends</h3><p>Master blenders with 20+ years expertise</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-glass-water"></i></div><h3>Zero-waste commitment</h3><p>Biodegradable & compostable packaging</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-wine-glass"></i></div><h3>Ceremonial grade</h3><p>Matcha & whole-leaf curated rituals</p></div>
     </div>
   </section>
 
@@ -1412,6 +1387,100 @@
   </footer>
 
   <script>
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const pageName = currentPage.toLowerCase();
+    
+    // Function to set active class on desktop nav links
+    function setActiveNavLink() {
+      // Remove all active classes first
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Check each nav link's href
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navService = document.getElementById('navService');
+      const navSoulful = document.getElementById('navSoulful');
+      const navBrew = document.getElementById('navBrew');
+      const navContact = document.getElementById('navContact');
+      const navDashboard = document.getElementById('navDashboard');
+      
+      // Home page (index.html or empty)
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (navHome) navHome.classList.add('active');
+      }
+      // About page
+      else if (pageName === 'about.html') {
+        if (navAbout) navAbout.classList.add('active');
+      }
+      // Service page
+      else if (pageName === 'service.html') {
+        if (navService) navService.classList.add('active');
+      }
+      // Soulful Sips page
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (navSoulful) navSoulful.classList.add('active');
+      }
+      // Brew Story / Tea Ritual page
+      else if (pageName === 'brew story.html' || pageName === 'brew%20story.html') {
+        if (navBrew) navBrew.classList.add('active');
+      }
+      // Contact page
+      else if (pageName === 'contact.html') {
+        if (navContact) navContact.classList.add('active');
+      }
+      // Dashboard pages (user.html or admin.html)
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (navDashboard) navDashboard.classList.add('active');
+      }
+    }
+    
+    // Function to set active class on mobile nav links
+    function setMobileActiveLink() {
+      // Remove all active classes from mobile links
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Remove active class from dropdown toggles
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active-toggle');
+      });
+      
+      const mobileAbout = document.getElementById('mobileAbout');
+      const mobileService = document.getElementById('mobileService');
+      const mobileSoulful = document.getElementById('mobileSoulful');
+      const mobileBrew = document.getElementById('mobileBrew');
+      const mobileContact = document.getElementById('mobileContact');
+      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
+      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
+      
+      if (pageName === 'about.html') {
+        if (mobileAbout) mobileAbout.classList.add('active');
+      }
+      else if (pageName === 'service.html') {
+        if (mobileService) mobileService.classList.add('active');
+      }
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (mobileSoulful) mobileSoulful.classList.add('active');
+      }
+      else if (pageName === 'brew story.html' || pageName === 'brew%20story.html') {
+        if (mobileBrew) mobileBrew.classList.add('active');
+      }
+      else if (pageName === 'contact.html') {
+        if (mobileContact) mobileContact.classList.add('active');
+      }
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
+      }
+      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
+      }
+    }
+    
+    // Dark mode and RTL toggles
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1490,6 +1559,10 @@
         closeMenuFn();
       }
     });
+    
+    // Initialize active links on page load
+    setActiveNavLink();
+    setMobileActiveLink();
   </script>
 </body>
 </html>

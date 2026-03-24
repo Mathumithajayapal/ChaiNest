@@ -1085,6 +1085,18 @@ body.dark-mode .dropdown-content a {
 .signup-mobile:hover {
   background: #5a3a1f;
 }
+.tea-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .tea-grid {
+    grid-template-columns: 1fr; /* ONE CARD PER ROW */
+  }
+}
   </style>
 </head>
 <body>
@@ -1111,7 +1123,7 @@ body.dark-mode .dropdown-content a {
         <li><a href="about.html">About</a></li>
         <li><a href="service.html">Service</a></li>
         <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="brew story.html">Tea Ritual</a></li>
+        <li><a href="teaRitual.html">Tea Ritual</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
           <a href="#">Dashboard</a>
@@ -1157,7 +1169,7 @@ body.dark-mode .dropdown-content a {
       <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
       <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
       <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
             <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
 
       <li class="mobile-nav-item">

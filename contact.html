@@ -6,8 +6,7 @@
   <title>Chai Nest · Contact Us | Get in Touch</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -180,6 +179,37 @@
       padding: 0.5rem 0;
       display: inline-block;
       white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for desktop */
+    .nav-links a.active {
+      color: #7B4B2A;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #7B4B2A;
+      border-radius: 2px;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #c97e54;
+    }
+
+    body.dark-mode .nav-links a.active::after {
+      background: #c97e54;
     }
 
     .dropdown-content {
@@ -370,6 +400,17 @@
       font-weight: 500;
       display: block;
       padding: 0.75rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for mobile */
+    .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle {
@@ -384,6 +425,12 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #111;
+      transition: color 0.2s;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -838,7 +885,7 @@
       filter: brightness(0.85) contrast(1.05);
     }
     
-    /* FAQ Section - ONE BY ONE CARDS (vertical stacked on mobile, grid on desktop) */
+    /* FAQ Section */
     .faq-section {
       max-width: 1280px;
       margin: 5rem auto;
@@ -922,7 +969,7 @@
       margin-bottom: 2rem;
     }
     
-    /* Responsive breakpoints for all devices */
+    /* Responsive breakpoints */
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.85rem; }
@@ -944,7 +991,6 @@
       .map-container { height: 350px; }
     }
 
-    /* 768px tablet portrait */
     @media (max-width: 768px) {
       .hero-banner { height: 70vh; }
       .glass-card h1 { font-size: 2rem; }
@@ -960,19 +1006,6 @@
       .faq-grid { gap: 1rem; }
       .faq-item { padding: 1.2rem 1.5rem; }
       .faq-question { font-size: 1rem; }
-    }
-    
-    /* 800x1280 specific (tablet portrait) */
-    @media (min-width: 769px) and (max-width: 900px) and (min-height: 1200px) {
-      .hero-banner { height: 60vh; }
-      .contact-grid { margin: 4rem auto; }
-      .map-container { height: 380px; }
-    }
-    
-    /* 1024x1366 laptop/tablet landscape */
-    @media (min-width: 1024px) and (max-width: 1200px) and (min-height: 1300px) {
-      .hero-banner { height: 70vh; }
-      .contact-grid { margin: 4rem auto; }
     }
 
     @media (max-width: 480px) {
@@ -991,47 +1024,47 @@
       .hero-banner { height: 60vh; }
       .glass-card { padding: 1.5rem; }
     }
-  body.dark-mode .dropdown-content a {
-  color: #fa720af5;
-}
-.mobile-auth-buttons {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-}
+    
+    body.dark-mode .dropdown-content a {
+      color: #fa720af5;
+    }
+    
+    .mobile-auth-buttons {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
 
-.mobile-btn {
-  flex: 1;
-  text-align: center;
-  padding: 0.7rem;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
 
-/* Login style */
-.login-mobile {
-  border: 1.5px solid #7B4B2A;
-  color: #7B4B2A;
-  background: transparent;
-}
+    .login-mobile {
+      border: 1.5px solid #7B4B2A;
+      color: #7B4B2A;
+      background: transparent;
+    }
 
-.login-mobile:hover {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .login-mobile:hover {
+      background: #7B4B2A;
+      color: #fff;
+    }
 
-/* Signup style */
-.signup-mobile {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .signup-mobile {
+      background: #7B4B2A;
+      color: #fff;
+    }
 
-.signup-mobile:hover {
-  background: #5a3a1f;
-}
+    .signup-mobile:hover {
+      background: #5a3a1f;
+    }
   </style>
 </head>
 <body>
@@ -1048,21 +1081,19 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home</a>
-          <span>▼</span>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="brew story.html">Tea Ritual</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" id="navAbout">About</a></li>
+        <li><a href="service.html" id="navService">Service</a></li>
+        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
+        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
+        <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard</a>
-          <span>▼</span>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1088,12 +1119,13 @@
   </header>
 
   <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span>Home</span>
+          <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown1">
@@ -1101,15 +1133,14 @@
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
-            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span>Dashboard</span>
+          <span id="mobileDashboardText">Dashboard</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown2">
@@ -1117,12 +1148,12 @@
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   <li class="mobile-nav-item">
-  <div class="mobile-auth-buttons">
-    <a href="login.html" class="mobile-btn login-mobile">Login</a>
-    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-  </div>
-</li>
+      <li class="mobile-nav-item">
+        <div class="mobile-auth-buttons">
+          <a href="login.html" class="mobile-btn login-mobile">Login</a>
+          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+        </div>
+      </li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
@@ -1221,7 +1252,7 @@
     </div>
   </div>
   
-  <!-- FAQ Section - ONE BY ONE CARDS (accordion style) -->
+  <!-- FAQ Section -->
   <div class="faq-section">
     <h2 class="section-title">Frequently asked questions</h2>
     <div class="section-subtitle">━━ quick answers to common questions ━━</div>
@@ -1242,14 +1273,14 @@
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <span>🤝Do you deliver internationally?</span>
+          <span>🤝 Do you deliver internationally?</span>
           <span class="faq-icon">▼</span>
         </div>
         <div class="faq-answer">Yes, we partner with cafes, hotels, and retailers worldwide. Email wholesale@chainest.com with your business details, estimated volume, and location to get started with a custom wholesale account.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question">
-          <span>🌱Can you ship overseas?</span>
+          <span>🌱 Can you ship overseas?</span>
           <span class="faq-icon">▼</span>
         </div>
         <div class="faq-answer">Yes! All our teas are ethically sourced from certified organic farms. We partner directly with small-scale farmers to ensure fair trade practices and sustainable agriculture. Our packaging is 100% compostable.</div>
@@ -1321,6 +1352,75 @@
   </footer>
 
   <script>
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
+    const pageName = currentPage.toLowerCase();
+    
+    // Function to set active class on desktop nav links
+    function setActiveNavLink() {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navService = document.getElementById('navService');
+      const navSoulful = document.getElementById('navSoulful');
+      const navTeaRitual = document.getElementById('navTeaRitual');
+      const navContact = document.getElementById('navContact');
+      const navDashboard = document.getElementById('navDashboard');
+      
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (navHome) navHome.classList.add('active');
+      } else if (pageName === 'about.html') {
+        if (navAbout) navAbout.classList.add('active');
+      } else if (pageName === 'service.html') {
+        if (navService) navService.classList.add('active');
+      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (navSoulful) navSoulful.classList.add('active');
+      } else if (pageName === 'tearitual.html' || pageName === 'teaRitual.html') {
+        if (navTeaRitual) navTeaRitual.classList.add('active');
+      } else if (pageName === 'contact.html') {
+        if (navContact) navContact.classList.add('active');
+      } else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (navDashboard) navDashboard.classList.add('active');
+      }
+    }
+    
+    // Function to set active class on mobile nav links
+    function setMobileActiveLink() {
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active-toggle');
+      });
+      
+      const mobileAbout = document.getElementById('mobileAbout');
+      const mobileService = document.getElementById('mobileService');
+      const mobileSoulful = document.getElementById('mobileSoulful');
+      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
+      const mobileContact = document.getElementById('mobileContact');
+      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
+      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
+      
+      if (pageName === 'about.html') {
+        if (mobileAbout) mobileAbout.classList.add('active');
+      } else if (pageName === 'service.html') {
+        if (mobileService) mobileService.classList.add('active');
+      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (mobileSoulful) mobileSoulful.classList.add('active');
+      } else if (pageName === 'tearitual.html' || pageName === 'teaRitual.html') {
+        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
+      } else if (pageName === 'contact.html') {
+        if (mobileContact) mobileContact.classList.add('active');
+      } else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
+      } else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
+      }
+    }
+    
     // Dark mode and RTL logic
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
@@ -1359,7 +1459,10 @@
       if(isDark) document.body.classList.add('dark-mode');
       else document.body.classList.remove('dark-mode');
       localStorage.setItem('darkMode', isDark);
+      if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙';
+      if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
     }
+    
     darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
     mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
     if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
@@ -1371,6 +1474,7 @@
       if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
       if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
     }
+    
     rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
     mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
     if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
@@ -1389,18 +1493,16 @@
       });
     });
     
-    // FAQ Accordion - ONE BY ONE (only one open at a time)
+    // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
       const questionDiv = item.querySelector('.faq-question');
       questionDiv.addEventListener('click', () => {
-        // Close all other items
         faqItems.forEach(otherItem => {
           if (otherItem !== item && otherItem.classList.contains('active')) {
             otherItem.classList.remove('active');
           }
         });
-        // Toggle current item
         item.classList.toggle('active');
       });
     });
@@ -1414,6 +1516,10 @@
         contactForm.reset();
       });
     }
+    
+    // Initialize active links
+    setActiveNavLink();
+    setMobileActiveLink();
   </script>
 </body>
 </html>

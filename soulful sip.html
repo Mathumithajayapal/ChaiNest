@@ -6,8 +6,7 @@
   <title>Chai Nest · Soulful Sips · Tea & Tranquility</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -33,7 +32,7 @@
       height: 100%;
     }
 
-    /* Dark Mode - COMPLETE FIX FOR ALL SECTIONS */
+    /* Dark Mode */
     body.dark-mode {
       background-color: #0f0f0f;
       color: #f0f0f0;
@@ -88,7 +87,6 @@
     
     body.dark-mode .glass-card h1 {
       color: #ffffff;
-      text-shadow: 0 2px 15px rgba(0,0,0,0.5);
     }
     
     body.dark-mode .glass-card p {
@@ -148,7 +146,7 @@
     body.dark-mode .gallery-subtitle {
       color: #c97e5a;
     }
-    
+
     /* Sticky Navbar */
     .site-header {
       position: sticky;
@@ -224,6 +222,37 @@
       padding: 0.5rem 0;
       display: inline-block;
       white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for desktop */
+    .nav-links a.active {
+      color: #7B4B2A;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #7B4B2A;
+      border-radius: 2px;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #c97e54;
+    }
+
+    body.dark-mode .nav-links a.active::after {
+      background: #c97e54;
     }
 
     .dropdown-content {
@@ -414,6 +443,17 @@
       font-weight: 500;
       display: block;
       padding: 0.75rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for mobile */
+    .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle {
@@ -428,6 +468,12 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #111;
+      transition: color 0.2s;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -1060,47 +1106,60 @@
       .hero-buttons { gap: 0.8rem; }
       .hero-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
     }
-     body.dark-mode .dropdown-content a {
-  color: #fa720af5;
-}
-.mobile-auth-buttons {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-}
+    
+    body.dark-mode .dropdown-content a {
+      color: #fa720af5;
+    }
+    
+    .mobile-auth-buttons {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
 
-.mobile-btn {
-  flex: 1;
-  text-align: center;
-  padding: 0.7rem;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
 
-/* Login style */
-.login-mobile {
-  border: 1.5px solid #7B4B2A;
-  color: #7B4B2A;
-  background: transparent;
-}
+    .login-mobile {
+      border: 1.5px solid #7B4B2A;
+      color: #7B4B2A;
+      background: transparent;
+    }
 
-.login-mobile:hover {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .login-mobile:hover {
+      background: #7B4B2A;
+      color: #fff;
+    }
 
-/* Signup style */
-.signup-mobile {
-  background: #7B4B2A;
-  color: #fff;
-}
+    .signup-mobile {
+      background: #7B4B2A;
+      color: #fff;
+    }
 
-.signup-mobile:hover {
-  background: #5a3a1f;
-}
+    .signup-mobile:hover {
+      background: #5a3a1f;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      .footer-col h4 {
+        font-size: 0.95rem;
+      }
+      .footer-col a {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1117,21 +1176,19 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home</a>
-          <span>▼</span>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="brew story.html">Tea Ritual</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" id="navAbout">About</a></li>
+        <li><a href="service.html" id="navService">Service</a></li>
+        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
+        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
+        <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard</a>
-          <span>▼</span>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1157,12 +1214,13 @@
   </header>
 
   <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span>Home</span>
+          <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown1">
@@ -1170,31 +1228,28 @@
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="brew story.html" class="mobile-nav-link">TeaRitual</a></li>
-            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span>Dashboard</span>
+          <span id="mobileDashboardText">Dashboard</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown2">
-          
           <a href="user.html">User Dashboard</a>
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   
-     <li class="mobile-nav-item">
-  <div class="mobile-auth-buttons">
-    <a href="login.html" class="mobile-btn login-mobile">Login</a>
-    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-  </div>
-</li>
-       <li class="mobile-nav-item">
+      <li class="mobile-nav-item">
+        <div class="mobile-auth-buttons">
+          <a href="login.html" class="mobile-btn login-mobile">Login</a>
+          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
           <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
@@ -1203,14 +1258,13 @@
     </ul>
   </div>
 
-
   <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="glass-card">
         <h1>Sips that soothe the soul.</h1>
-        <p>Every cup is more than a drink — it’s a pause, a breath, a moment of quiet joy crafted just for you.</p>
+        <p>Every cup is more than a drink — it's a pause, a breath, a moment of quiet joy crafted just for you.</p>
         <div class="hero-buttons">
           <a href="#" class="hero-btn primary">Explore Blends</a>
           <a href="#" class="hero-btn secondary">Find Your Sip</a>
@@ -1281,6 +1335,87 @@
   </footer>
 
   <script>
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'soulful sip.html';
+    const pageName = currentPage.toLowerCase();
+    
+    // Function to set active class on desktop nav links
+    function setActiveNavLink() {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navService = document.getElementById('navService');
+      const navSoulful = document.getElementById('navSoulful');
+      const navTeaRitual = document.getElementById('navTeaRitual');
+      const navContact = document.getElementById('navContact');
+      const navDashboard = document.getElementById('navDashboard');
+      
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (navHome) navHome.classList.add('active');
+      }
+      else if (pageName === 'about.html') {
+        if (navAbout) navAbout.classList.add('active');
+      }
+      else if (pageName === 'service.html') {
+        if (navService) navService.classList.add('active');
+      }
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (navSoulful) navSoulful.classList.add('active');
+      }
+      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (navTeaRitual) navTeaRitual.classList.add('active');
+      }
+      else if (pageName === 'contact.html') {
+        if (navContact) navContact.classList.add('active');
+      }
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (navDashboard) navDashboard.classList.add('active');
+      }
+    }
+    
+    // Function to set active class on mobile nav links
+    function setMobileActiveLink() {
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active-toggle');
+      });
+      
+      const mobileAbout = document.getElementById('mobileAbout');
+      const mobileService = document.getElementById('mobileService');
+      const mobileSoulful = document.getElementById('mobileSoulful');
+      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
+      const mobileContact = document.getElementById('mobileContact');
+      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
+      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
+      
+      if (pageName === 'about.html') {
+        if (mobileAbout) mobileAbout.classList.add('active');
+      }
+      else if (pageName === 'service.html') {
+        if (mobileService) mobileService.classList.add('active');
+      }
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (mobileSoulful) mobileSoulful.classList.add('active');
+      }
+      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
+      }
+      else if (pageName === 'contact.html') {
+        if (mobileContact) mobileContact.classList.add('active');
+      }
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
+      }
+      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
+      }
+    }
+    
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1319,6 +1454,8 @@
       if(isDark) document.body.classList.add('dark-mode');
       else document.body.classList.remove('dark-mode');
       localStorage.setItem('darkMode', isDark);
+      if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙';
+      if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
     }
     darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
     mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
@@ -1351,6 +1488,10 @@
     if(viewMoreBtn) {
       viewMoreBtn.addEventListener('click', () => alert('✨ Discover more soulful blends coming soon! Stay tuned for our new collection. ✨'));
     }
+    
+    // Initialize active links on page load
+    setActiveNavLink();
+    setMobileActiveLink();
   </script>
 </body>
 </html>
