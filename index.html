@@ -6,6 +6,8 @@
   <title>Chai Nest · Premium Tea Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     /* ---------- RESET & BASE ---------- */
@@ -715,6 +717,44 @@
     body.dark-mode .dropdown-content a {
   color: #fa720af5;
 }
+.mobile-auth-buttons {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.mobile-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Login style */
+.login-mobile {
+  border: 1.5px solid #7B4B2A;
+  color: #7B4B2A;
+  background: transparent;
+}
+
+.login-mobile:hover {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+/* Signup style */
+.signup-mobile {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+.signup-mobile:hover {
+  background: #5a3a1f;
+}
     
   </style>
 </head>
@@ -722,7 +762,7 @@
 
   <header class="site-header">
     <div class="header-container">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -733,7 +773,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home</a>
+          <a href="#">Home ▼</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -745,7 +785,7 @@
         <li><a href="brew story.html">Tea Ritual</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard</a>
+          <a href="#">Dashboard▼</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -800,7 +840,12 @@
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   
+   <li class="mobile-nav-item">
+  <div class="mobile-auth-buttons">
+    <a href="login.html" class="mobile-btn login-mobile">Login</a>
+    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+  </div>
+</li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
@@ -860,9 +905,9 @@
   <div class="section-container section-spacing">
     <div class="section-title">☕ Our Essentials</div>
     <div class="glass-card-grid">
-      <div class="glass-card"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
-      <div class="glass-card"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
-      <div class="glass-card"><img src="https://images.unsplash.com/photo-1541976076758-347942db1979" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
+      <div class="glass-card"><img src="images\imgchai (3).jpg" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
+      <div class="glass-card"><img src="images\imgchai (4).jpg" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
+      <div class="glass-card"><img src="images\imgchai (5).jpg" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
     </div>
   </div>
 

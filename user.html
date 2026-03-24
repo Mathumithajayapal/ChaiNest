@@ -6,6 +6,8 @@
   <title>Chai Nest · Complete Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -99,27 +101,26 @@
       color: #f1f5f9;
     }
 
-    .dashboard-container {
-      display: flex;
-      min-height: 100vh;
-    }
-
     /* Sidebar */
     .sidebar {
       width: 280px;
-      background-color: #000000;
-      color: #ffffff;
+      background-color: #ffffff;
+      color: #1e293b;
       position: fixed;
       height: 100vh;
       overflow-y: auto;
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 100;
       transform: translateX(0);
+      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+      border-right: 1px solid #eef2ff;
     }
 
     body.dark-mode .sidebar {
-      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+      background: linear-gradient(180deg, #1a1a2a 0%, #0f0f1a 100%);
+      color: #f1f5f9;
       border-right: 1px solid rgba(255,255,255,0.1);
+      box-shadow: none;
     }
 
     @media (max-width: 768px) {
@@ -155,7 +156,11 @@
 
     .sidebar-header {
       padding: 1.5rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid #eef2ff;
+    }
+
+    body.dark-mode .sidebar-header {
+      border-bottom-color: rgba(255,255,255,0.1);
     }
 
     .logo {
@@ -183,7 +188,11 @@
     .logo-text {
       font-size: 1.4rem;
       font-weight: 700;
-      color: white;
+      color: #1e293b;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff;
     }
 
     .logo-text span {
@@ -204,16 +213,26 @@
       align-items: center;
       gap: 12px;
       padding: 0.75rem 1.5rem;
-      color: rgba(255,255,255,0.7);
+      color: #475569;
       text-decoration: none;
       transition: all 0.3s;
       font-weight: 500;
       cursor: pointer;
+      border-radius: 0 12px 12px 0;
+    }
+
+    body.dark-mode .nav-link {
+      color: #cbd5e1;
     }
 
     .nav-link:hover {
+      background: rgba(123, 75, 42, 0.08);
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .nav-link:hover {
       background: rgba(123, 75, 42, 0.2);
-      color: white;
+      color: #c97e54;
     }
 
     .nav-link.active {
@@ -221,7 +240,46 @@
       color: white;
     }
 
+    body.dark-mode .nav-link.active {
+      background: #7B4B2A;
+      color: white;
+    }
+
     .nav-link i {
+      width: 24px;
+      font-size: 1.2rem;
+    }
+
+    .sidebar-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem 1.5rem;
+      margin: 1rem 0 1.5rem 0;
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      cursor: pointer;
+      border-top: 1px solid #eef2ff;
+    }
+
+    body.dark-mode .sidebar-action-btn {
+      color: #cbd5e1;
+      border-top-color: rgba(255,255,255,0.1);
+    }
+
+    .sidebar-action-btn:hover {
+      background: rgba(123, 75, 42, 0.08);
+      color: #7B4B2A;
+    }
+
+    body.dark-mode .sidebar-action-btn:hover {
+      background: rgba(123, 75, 42, 0.2);
+      color: #c97e54;
+    }
+
+    .sidebar-action-btn i {
       width: 24px;
       font-size: 1.2rem;
     }
@@ -243,7 +301,7 @@
       }
     }
 
-    /* RTL Support */
+    /* RTL Support - only affects layout direction */
     body.rtl-active {
       direction: rtl;
     }
@@ -456,6 +514,52 @@
       color: white;
     }
 
+    /* RTL Toggle Button - Fixed: always shows exchange icon */
+    .rtl-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #5a3e2b;
+      background: #f5efe7;
+      border: 1px solid #e0d5c6;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* Icon inside RTL button - never changes, always exchange-alt */
+    .rtl-toggle-btn i {
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .rtl-toggle-btn:hover {
+      background: #8b5e3c;
+      color: #fff;
+      border-color: #8b5e3c;
+      transform: translateY(-2px);
+    }
+
+    .rtl-toggle-btn:active {
+      transform: scale(0.96);
+    }
+
+    body.dark-mode .rtl-toggle-btn {
+      background: #2a2a35;
+      border-color: #3a3a4a;
+      color: #c97e54;
+    }
+
+    body.dark-mode .rtl-toggle-btn:hover {
+      background: #7B4B2A;
+      color: white;
+      border-color: #7B4B2A;
+    }
+
     .user-profile {
       display: flex;
       align-items: center;
@@ -531,12 +635,6 @@
       font-weight: 700;
       color: #1e293b;
       margin-bottom: 0.25rem;
-    }
-
-    @media (max-width: 480px) {
-      .stat-value {
-        font-size: 1.5rem;
-      }
     }
 
     .stat-label {
@@ -827,6 +925,15 @@
     }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
+    
+    .logo-text a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .sidebar-action-btn {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -844,7 +951,7 @@
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <span class="logo-text">Chai<span>Nest</span></span>
+          <span class="logo-text"><a href="index.html">Chai<span>Nest</span></a></span>
         </div>
       </div>
       
@@ -856,6 +963,10 @@
         <li class="nav-item" data-page="analytics"><a class="nav-link"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
         <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-cog"></i><span>Settings</span></a></li>
       </ul>
+      <a href="signup.html" class="sidebar-action-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
     </aside>
 
     <main class="main-content">
@@ -867,7 +978,7 @@
             <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
             <div class="toggle-buttons">
               <button class="toggle-btn" id="darkModeToggleBtn" title="Dark/Light Mode"><i class="fas fa-moon"></i></button>
-              <button class="toggle-btn" id="rtlToggleBtn" title="RTL/LTR Mode"><i class="fas fa-text-width"></i></button>
+              <button id="rtlToggleBtn" class="rtl-toggle-btn"><i class="fas fa-exchange-alt"></i> <span>RTL Mode</span></button>
             </div>
             <div class="user-profile"><div class="user-avatar"><i class="fas fa-user"></i></div><span>Admin</span></div>
           </div>
@@ -895,7 +1006,12 @@
       <div id="orders-page" class="page-container">
         <div class="top-header"><div class="page-title"><h1>Orders Management</h1><p>Track and manage all customer orders</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders..."></div></div></div>
         <div class="stats-grid" id="orderStats"></div>
-        <div class="data-table"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody id="ordersTableBody"></tbody></table></div>
+        <div class="data-table">
+          <table>
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="ordersTableBody"></tbody>
+          </table>
+        </div>
       </div>
 
       <!-- Products Page -->
@@ -908,7 +1024,12 @@
       <div id="customers-page" class="page-container">
         <div class="top-header"><div class="page-title"><h1>Customer Base</h1><p>View and manage your customers</p></div></div>
         <div class="stats-grid" id="customerStats"></div>
-        <div class="data-table"><table><thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th></tr></thead><tbody id="customersTableBody"></tbody></table></div>
+        <div class="data-table">
+          <table>
+            <thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th></tr></thead>
+            <tbody id="customersTableBody"></tbody>
+          </table>
+        </div>
       </div>
 
       <!-- Analytics Page -->
@@ -938,10 +1059,10 @@
     ];
     
     const products = [
-      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=300' },
-      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'https://images.pexels.com/photos/161963/chinese-tea-ceremony-tea-cup-tea-161963.jpeg?w=300' },
-      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=300' },
-      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=300' }
+      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'images/imgchai (1).jpg' },
+      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'images/imgchai (5).jpg' },
+      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'images/imgchai (6).jpg' },
+      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'images/imgchai (7).jpg' }
     ];
     
     const customers = [
@@ -965,15 +1086,13 @@
       localStorage.setItem('chaiNest_darkMode', isDark);
     }
     
-    // RTL Toggle
+    // RTL Toggle - ONLY toggles direction, NEVER changes the button icon
     function toggleRTL() {
       document.body.classList.toggle('rtl-active');
       const isRTL = document.body.classList.contains('rtl-active');
-      const rtlToggleBtn = document.getElementById('rtlToggleBtn');
-      if (rtlToggleBtn) {
-        rtlToggleBtn.innerHTML = '<i class="fas fa-text-width"></i>';
-      }
       localStorage.setItem('chaiNest_rtl', isRTL);
+      // IMPORTANT: Do NOT modify the button's inner HTML - icon stays as exchange-alt
+      // The button already has the correct icon structure, we keep it unchanged
     }
     
     // Initialize Dark Mode and RTL from localStorage
@@ -990,6 +1109,15 @@
       const savedRTL = localStorage.getItem('chaiNest_rtl');
       if (savedRTL === 'true') {
         document.body.classList.add('rtl-active');
+      }
+      // Ensure RTL button always shows exchange-alt icon (it already does in HTML)
+      const rtlBtn = document.getElementById('rtlToggleBtn');
+      if (rtlBtn) {
+        // Verify the icon is exchange-alt - if somehow changed, restore it
+        const icon = rtlBtn.querySelector('i');
+        if (icon && !icon.classList.contains('fa-exchange-alt')) {
+          icon.className = 'fas fa-exchange-alt';
+        }
       }
     }
     
@@ -1059,7 +1187,7 @@
     // Dashboard Components
     const recentOrdersDiv = document.getElementById('recentOrdersTable');
     if (recentOrdersDiv) {
-      recentOrdersDiv.innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody>`;
+      recentOrdersDiv.innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table>`;
     }
     
     const topProductsDiv = document.getElementById('topProductsList');
@@ -1080,7 +1208,7 @@
     
     const topProductsTable = document.getElementById('topProductsTable');
     if (topProductsTable) {
-      topProductsTable.innerHTML = `<table style="width:100%"><thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th></tr></thead><tbody>${topProducts.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sales}</td><td>$${(p.sales * 28).toLocaleString()}</td><td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td></tr>`).join('')}</tbody>`;
+      topProductsTable.innerHTML = `<table style="width:100%"><thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th></tr></thead><tbody>${topProducts.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sales}</td><td>$${(p.sales * 28).toLocaleString()}</td><td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td></tr>`).join('')}</tbody></table>`;
     }
     
     function saveSettings() {
@@ -1162,6 +1290,8 @@
     renderOrdersPage();
     renderProductsPage();
     renderCustomersPage();
+    
+    window.showPage = showPage;
   </script>
 </body>
 </html>

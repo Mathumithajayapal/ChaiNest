@@ -6,6 +6,8 @@
   <title>Chai Nest · Admin Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -518,6 +520,18 @@
         font-size: 1rem;
       }
     }
+    .logo-text a {
+  text-decoration: none;   /* remove underline */
+  color: rgb(0, 0, 0);            /* "Chai" white */
+}
+
+.logo-text a span {
+  color: #7B4B2A;          /* "Nest" brown */
+}
+/* Dark mode மட்டும் change ஆகணும் */
+body:not(.light-mode) .logo-text a {
+  color: white;
+}
     
   </style>
 </head>
@@ -547,7 +561,7 @@
         </div>
       </div>
       <div class="logo-text">
-        Chai<span>Nest</span>
+       <a href="index.html"> Chai<span>Nest</span></a>
       </div>
       <div class="admin-badge">
         <i class="fas fa-shield-alt" style="font-size: 0.65rem;"></i> Admin Portal

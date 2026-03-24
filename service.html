@@ -6,6 +6,8 @@
   <title>Chai Nest · Soulful Sips · Tea & Tranquility</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -876,12 +878,50 @@
      body.dark-mode .dropdown-content a {
   color: #fa720af5;
 }
+.mobile-auth-buttons {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.mobile-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Login style */
+.login-mobile {
+  border: 1.5px solid #7B4B2A;
+  color: #7B4B2A;
+  background: transparent;
+}
+
+.login-mobile:hover {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+/* Signup style */
+.signup-mobile {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+.signup-mobile:hover {
+  background: #5a3a1f;
+}
   </style>
 </head>
 <body>
    <header class="site-header">
     <div class="header-container">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -893,6 +933,7 @@
       <ul class="nav-links">
         <li class="nav-item">
           <a href="#">Home</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -905,6 +946,7 @@
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
           <a href="#">Dashboard</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -959,7 +1001,12 @@
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   
+   <li class="mobile-nav-item">
+  <div class="mobile-auth-buttons">
+    <a href="login.html" class="mobile-btn login-mobile">Login</a>
+    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+  </div>
+</li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
@@ -991,7 +1038,7 @@
     <div class="glass-card-grid">
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=400&fit=crop" alt="Masala Chai">
+          <img src="images\gathering frnds (1).jpg" alt="Masala Chai">
           <span class="card-tag">Bestseller</span>
         </div>
         <div class="glass-content">
@@ -1002,7 +1049,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1531936868970-3a6e50a6b66a?w=600&h=400&fit=crop" alt="Matcha Ceremonial">
+          <img src="images\gathering frnds (2).jpg" alt="Matcha Ceremonial">
           <span class="card-tag">Limited</span>
         </div>
         <div class="glass-content">
@@ -1013,7 +1060,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop" alt="Silver Needle White">
+          <img src="images\img (1).jpg" alt="Silver Needle White">
           <span class="card-tag">Rare</span>
         </div>
         <div class="glass-content">
@@ -1024,7 +1071,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=400&fit=crop" alt="Assam Black Tea">
+          <img src="images\imgchai (3).jpg" alt="Assam Black Tea">
           <span class="card-tag">Classic</span>
         </div>
         <div class="glass-content">
@@ -1035,7 +1082,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&h=400&fit=crop" alt="Jasmine Pearl Tea">
+          <img src="images\imgchai (4).jpg" alt="Jasmine Pearl Tea">
           <span class="card-tag">Aromatic</span>
         </div>
         <div class="glass-content">
@@ -1046,7 +1093,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="https://images.unsplash.com/photo-1541976076758-347942db1979?w=600&h=400&fit=crop" alt="Earl Grey">
+          <img src="images\imgchai (7).jpg" alt="Earl Grey">
           <span class="card-tag">Signature</span>
         </div>
         <div class="glass-content">

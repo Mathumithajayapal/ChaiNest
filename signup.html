@@ -6,6 +6,8 @@
   <title>Chai Nest · Create Account</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -15,33 +17,8 @@
       box-sizing: border-box;
     }
 
-    /* Theme Variables */
+    /* Theme Variables - DEFAULT LIGHT MODE */
     :root {
-      --bg-gradient-start: #0a0a0a;
-      --bg-gradient-end: #1a1a1a;
-      --card-bg: rgba(18, 18, 20, 0.9);
-      --card-border: rgba(123, 75, 42, 0.2);
-      --card-border-hover: rgba(123, 75, 42, 0.5);
-      --text-primary: white;
-      --text-secondary: #9ca3af;
-      --text-muted: #6b7280;
-      --input-bg: rgba(30, 30, 35, 0.8);
-      --input-border: rgba(123, 75, 42, 0.4);
-      --input-focus-bg: rgba(40, 40, 45, 0.9);
-      --placeholder-color: #6b7280;
-      --divider-color: #4b5563;
-      --divider-border: rgba(123, 75, 42, 0.25);
-      --checkbox-text: #9ca3af;
-      --register-text: #9ca3af;
-      --shadow-color: rgba(0, 0, 0, 0.5);
-      --body-before-gradient-1: rgba(123, 75, 42, 0.08);
-      --body-before-gradient-2: rgba(123, 75, 42, 0.05);
-      --error-color: #f87171;
-      --success-color: #4ade80;
-    }
-
-    /* Light Mode */
-    body.light-mode {
       --bg-gradient-start: #f5f7fa;
       --bg-gradient-end: #e8edf5;
       --card-bg: rgba(255, 255, 255, 0.95);
@@ -61,6 +38,31 @@
       --shadow-color: rgba(0, 0, 0, 0.1);
       --body-before-gradient-1: rgba(123, 75, 42, 0.05);
       --body-before-gradient-2: rgba(123, 75, 42, 0.03);
+      --error-color: #f87171;
+      --success-color: #4ade80;
+    }
+
+    /* Dark Mode Override */
+    body.dark-mode {
+      --bg-gradient-start: #0a0a0a;
+      --bg-gradient-end: #1a1a1a;
+      --card-bg: rgba(18, 18, 20, 0.9);
+      --card-border: rgba(123, 75, 42, 0.2);
+      --card-border-hover: rgba(123, 75, 42, 0.5);
+      --text-primary: white;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --input-bg: rgba(30, 30, 35, 0.8);
+      --input-border: rgba(123, 75, 42, 0.4);
+      --input-focus-bg: rgba(40, 40, 45, 0.9);
+      --placeholder-color: #6b7280;
+      --divider-color: #4b5563;
+      --divider-border: rgba(123, 75, 42, 0.25);
+      --checkbox-text: #9ca3af;
+      --register-text: #9ca3af;
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --body-before-gradient-1: rgba(123, 75, 42, 0.08);
+      --body-before-gradient-2: rgba(123, 75, 42, 0.05);
     }
 
     body {
@@ -110,6 +112,17 @@
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(8px);
       border-color: rgba(123, 75, 42, 0.3);
+    }
+
+    /* Light mode class for control panel */
+    body:not(.dark-mode) .control-panel {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-color: rgba(123, 75, 42, 0.3);
+    }
+
+    body.dark-mode .control-panel {
+      background: rgba(0, 0, 0, 0.5);
     }
 
     /* RTL mode - move control panel to left side */
@@ -484,7 +497,7 @@
     .error-message {
       background: rgba(220, 38, 38, 0.15);
       border-left: 3px solid #dc2626;
-      color: #fecaca;
+      color: #dc2626;
       padding: 0.5rem 0.8rem;
       border-radius: 0.7rem;
       font-size: 0.7rem;
@@ -492,6 +505,11 @@
       display: none;
       align-items: center;
       gap: 0.4rem;
+    }
+
+    body.dark-mode .error-message {
+      color: #fecaca;
+      background: rgba(220, 38, 38, 0.2);
     }
 
     .error-message.show {
@@ -724,6 +742,15 @@
         margin-bottom: 0.5rem;
       }
     }
+
+    .logo-text a {
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .logo-text a span {
+      color: #7B4B2A;
+    }
   </style>
 </head>
 <body>
@@ -751,7 +778,7 @@
         </div>
       </div>
       <div class="logo-text">
-        Chai<span>Nest</span>
+        <a href="index.html">Chai<span>Nest</span></a>
       </div>
       <div class="admin-badge">
         <i class="fas fa-user-plus" style="font-size: 0.55rem;"></i> Create Account
@@ -1057,26 +1084,32 @@
     }
   });
   
-  // Dark Mode Functionality
+  // Dark Mode Functionality - DEFAULT LIGHT MODE (no dark mode on load)
   function initDarkMode() {
     const savedMode = localStorage.getItem('chaiNest_darkMode');
-    if (savedMode === 'light') {
-      document.body.classList.add('light-mode');
+    // Only apply dark mode if savedMode is explicitly 'dark', otherwise stay in light mode
+    if (savedMode === 'dark') {
+      document.body.classList.add('dark-mode');
       darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     } else {
-      document.body.classList.remove('light-mode');
+      // Default: light mode (no dark-mode class)
+      document.body.classList.remove('dark-mode');
       darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      // Ensure localStorage is set to 'light' for consistency if not set
+      if (!savedMode) {
+        localStorage.setItem('chaiNest_darkMode', 'light');
+      }
     }
   }
   
   function toggleDarkMode() {
-    if (document.body.classList.contains('light-mode')) {
-      document.body.classList.remove('light-mode');
-      localStorage.setItem('chaiNest_darkMode', 'dark');
+    if (document.body.classList.contains('dark-mode')) {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('chaiNest_darkMode', 'light');
       darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
     } else {
-      document.body.classList.add('light-mode');
-      localStorage.setItem('chaiNest_darkMode', 'light');
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('chaiNest_darkMode', 'dark');
       darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
   }
@@ -1109,7 +1142,7 @@
   darkModeToggle.addEventListener('click', toggleDarkMode);
   rtlToggle.addEventListener('click', toggleRTL);
   
-  // Initialize
+  // Initialize - Light mode by default
   window.addEventListener('DOMContentLoaded', function() {
     initDarkMode();
     initRTL();

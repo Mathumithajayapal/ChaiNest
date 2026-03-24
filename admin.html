@@ -6,6 +6,8 @@
   <title>Chai Nest · Admin Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -882,6 +884,21 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
+    .logo-text a {
+  text-decoration: none;   /* remove underline */
+  color: rgb(0, 0, 0);            /* make "Chai" white */
+}
+
+.logo-text a span {
+  color: #7B4B2A;          /* keep "Nest" brown */
+}
+.sidebar-action-btn a {
+  text-decoration: none;
+  color: inherit; /* keeps button text color */
+}
+.sidebar-action-btn {
+  text-decoration: none;
+}
   </style>
 </head>
 <body>
@@ -900,7 +917,7 @@
             </svg>
           </div>
           <div>
-            <span class="logo-text">Chai<span>Nest</span></span>
+            <span class="logo-text"><a href="index.html">Chai<span>Nest</span></a></span>
             <div class="admin-badge">Admin Panel</div>
           </div>
         </div>
@@ -915,13 +932,10 @@
         <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-cog"></i><span>System Settings</span></a></li>
       </ul>
 
-      <div class="sidebar-footer">
-        <div class="action-buttons">
-          <button id="logoutBtn" class="sidebar-action-btn logout-btn">
-            <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
-          </button>
-        </div>
-      </div>
+    <a href="signup.html" class="sidebar-action-btn logout-btn">
+  <i class="fas fa-sign-out-alt"></i>
+  <span>Logout</span>
+</a>
     </aside>
 
     <main class="main-content">

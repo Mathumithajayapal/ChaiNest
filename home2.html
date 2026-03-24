@@ -6,6 +6,9 @@
   <title>Chai Nest · Premium Tea Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -852,7 +855,7 @@
     /* Experience Section */
     .experience-section {
       min-height: 500px;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1597481499750-3e6b8c4cfc02?w=1200&h=500&fit=crop');
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/imgchai (3).jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -1185,13 +1188,51 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+    .mobile-auth-buttons {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.mobile-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Login style */
+.login-mobile {
+  border: 1.5px solid #7B4B2A;
+  color: #7B4B2A;
+  background: transparent;
+}
+
+.login-mobile:hover {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+/* Signup style */
+.signup-mobile {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+.signup-mobile:hover {
+  background: #5a3a1f;
+}
   </style>
 </head>
 <body>
   <!-- HEADER - EXACT COPY FROM about.html (preserving every gap, class, structure) -->
   <header class="site-header">
     <div class="header-container">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
@@ -1203,6 +1244,7 @@
       <ul class="nav-links">
         <li class="nav-item">
           <a href="#">Home</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1215,6 +1257,7 @@
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
           <a href="#">Dashboard</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1270,6 +1313,12 @@
         </div>
       </li>
       <li class="mobile-nav-item">
+  <div class="mobile-auth-buttons">
+    <a href="login.html" class="mobile-btn login-mobile">Login</a>
+    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+  </div>
+</li>
+      <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%; cursor:pointer;">🌙 Dark</div>
           <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%; cursor:pointer;">LTR</div>
@@ -1305,15 +1354,15 @@
     <div class="section-subtitle">━━ artisanal blends for the connoisseur ━━</div>
     <div class="premium-grid">
       <div class="premium-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&h=400&fit=crop" alt="Masala Chai"><span class="card-tag">Bestseller</span></div>
+        <div class="card-image"><img src="images\imgchai (11).jpg" alt="Masala Chai"><span class="card-tag">Bestseller</span></div>
         <div class="card-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p><div class="card-price">$24.90</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop" alt="Matcha"><span class="card-tag">Limited</span></div>
+        <div class="card-image"><img src="images\imgchai (10).jpg" alt="Matcha"><span class="card-tag">Limited</span></div>
         <div class="card-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p><div class="card-price">$42.00</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=600&h=400&fit=crop" alt="White Tea"><span class="card-tag">Rare</span></div>
+        <div class="card-image"><img src="images\imgchai (9).jpg" alt="White Tea"><span class="card-tag">Rare</span></div>
         <div class="card-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p><div class="card-price">$38.00</div></div>
       </div>
     </div>
@@ -1321,7 +1370,7 @@
 
   <section class="story-section">
     <div class="story-grid">
-      <div class="story-image"><img src="https://images.unsplash.com/photo-1597481499750-3e6b8c4cfc02?w=600&h=450&fit=crop" alt="Tea plantation heritage"></div>
+      <div class="story-image"><img src="images\imgchai (6).jpg" alt="Tea plantation heritage"></div>
       <div class="story-text"><h2>Rooted in heritage,<br>steeped in passion</h2><p>For three generations, our family has nurtured relationships with tea growers across Assam, Darjeeling, and beyond. Every leaf is ethically sourced, hand-plucked, and master-blended to honor ancient traditions while embracing modern craftsmanship.</p><a href="#" class="story-btn">Our story →</a></div>
     </div>
   </section>
@@ -1342,10 +1391,13 @@
   <section class="feature-section">
     <h2 class="section-title">Artisanal quality, curated for you</h2>
     <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🌱</div><h3>Single Origin</h3><p>Direct from highland estates in Assam & Darjeeling</p></div>
-      <div class="feature-card"><div class="feature-icon">🍃</div><h3>Handcrafted blends</h3><p>Master blenders with 20+ years expertise</p></div>
-      <div class="feature-card"><div class="feature-icon">♻️</div><h3>Zero-waste commitment</h3><p>Biodegradable & compostable packaging</p></div>
-      <div class="feature-card"><div class="feature-icon">☕</div><h3>Ceremonial grade</h3><p>Matcha & whole-leaf curated rituals</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-hot"></i>
+</div><h3>Single Origin</h3><p>Direct from highland estates in Assam & Darjeeling</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mug-saucer"></i>
+</div><h3>Handcrafted blends</h3><p>Master blenders with 20+ years expertise</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-glass-water"></i>
+</div><h3>Zero-waste commitment</h3><p>Biodegradable & compostable packaging</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-wine-glass"></i> <!-- for premium feel --></div><h3>Ceremonial grade</h3><p>Matcha & whole-leaf curated rituals</p></div>
     </div>
   </section>
 

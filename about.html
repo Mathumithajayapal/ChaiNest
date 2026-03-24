@@ -6,6 +6,9 @@
   <title>Chai Nest · About Us | The Art of Chai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -1062,6 +1065,44 @@
 body.dark-mode .dropdown-content a {
   color: #fa720af5;
 }
+.mobile-auth-buttons {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.mobile-btn {
+  flex: 1;
+  text-align: center;
+  padding: 0.7rem;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* Login style */
+.login-mobile {
+  border: 1.5px solid #7B4B2A;
+  color: #7B4B2A;
+  background: transparent;
+}
+
+.login-mobile:hover {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+/* Signup style */
+.signup-mobile {
+  background: #7B4B2A;
+  color: #fff;
+}
+
+.signup-mobile:hover {
+  background: #5a3a1f;
+}
   </style>
 </head>
 <body>
@@ -1079,6 +1120,7 @@ body.dark-mode .dropdown-content a {
       <ul class="nav-links">
         <li class="nav-item">
           <a href="#">Home</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1091,6 +1133,7 @@ body.dark-mode .dropdown-content a {
         <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
           <a href="#">Dashboard</a>
+          <span>▼</span>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1145,7 +1188,12 @@ body.dark-mode .dropdown-content a {
           <a href="admin.html">Admin Dashboard</a>
         </div>
       </li>
-   
+   <li class="mobile-nav-item">
+  <div class="mobile-auth-buttons">
+    <a href="login.html" class="mobile-btn login-mobile">Login</a>
+    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+  </div>
+</li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
@@ -1183,16 +1231,46 @@ body.dark-mode .dropdown-content a {
     </div>
   </div>
   
-  <div class="kinetic-values">
-    <h2 class="section-title">Our kinetic philosophy</h2>
-    <div class="section-subtitle">━━ where tradition moves forward ━━</div>
-    <div class="kinetic-grid">
-      <div class="kinetic-item"><div class="kinetic-icon">🍃</div><h3>Regenerative</h3><p>We give back more than we take — nurturing soil, farmers, and future harvests.</p></div>
-      <div class="kinetic-item"><div class="kinetic-icon">🫖</div><h3>Handcrafted</h3><p>No machines, no shortcuts. Every blend is touched by human intuition.</p></div>
-      <div class="kinetic-item"><div class="kinetic-icon">🧘‍♀️</div><h3>Ritualistic</h3><p>We design teas that demand presence — slow down, inhale, connect.</p></div>
-      <div class="kinetic-item"><div class="kinetic-icon">🌿</div><h3>Honest</h3><p>Transparent sourcing, real ingredients, zero hidden additives.</p></div>
+ <div class="kinetic-values">
+  <h2 class="section-title">Our kinetic philosophy</h2>
+  <div class="section-subtitle">━━ where tradition moves forward ━━</div>
+
+  <div class="kinetic-grid">
+
+    <div class="kinetic-item">
+      <div class="kinetic-icon">
+        <i class="fa-solid fa-leaf"></i>
+      </div>
+      <h3>Regenerative</h3>
+      <p>We give back more than we take — nurturing soil, farmers, and future harvests.</p>
     </div>
+
+    <div class="kinetic-item">
+      <div class="kinetic-icon">
+        <i class="fa-solid fa-mug-hot"></i>
+      </div>
+      <h3>Handcrafted</h3>
+      <p>No machines, no shortcuts. Every blend is touched by human intuition.</p>
+    </div>
+
+    <div class="kinetic-item">
+      <div class="kinetic-icon">
+        <i class="fa-solid fa-spa"></i>
+      </div>
+      <h3>Ritualistic</h3>
+      <p>We design teas that demand presence — slow down, inhale, connect.</p>
+    </div>
+
+    <div class="kinetic-item">
+      <div class="kinetic-icon">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+      <h3>Honest</h3>
+      <p>Transparent sourcing, real ingredients, zero hidden additives.</p>
+    </div>
+
   </div>
+</div>
   
   <div class="parallax-quote">
     <div class="quote-text">“Tea is the alchemy that turns a moment into a memory. We are simply the guardians of that magic.”</div>
@@ -1216,7 +1294,7 @@ body.dark-mode .dropdown-content a {
       <h1>Not just tea.<br><span>An experience.</span></h1>
       <p class="about-text">Chai Nest was born from a simple belief — tea is not just something you drink, it's something you feel. From the quiet hills of Darjeeling to your cup, every leaf carries a story of patience, care, and tradition.</p>
       <p class="about-text">We don't mass produce. We craft moments — slow, meaningful, unforgettable. Because the best conversations don't start with coffee… they start with chai.</p>
-      <div class="about-highlight">✨ 40+ Years Legacy &nbsp;&nbsp; • &nbsp;&nbsp; 🌱 200+ Farmers &nbsp;&nbsp; • &nbsp;&nbsp; ❤️ Made with Passion</div>
+      <div class="about-highlight"> 40+ Years Legacy &nbsp;&nbsp; • &nbsp;&nbsp;  200+ Farmers &nbsp;&nbsp; • &nbsp;&nbsp;  Made with Passion</div>
     </div>
   </section>
   
