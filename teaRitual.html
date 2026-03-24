@@ -7,8 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -34,7 +33,7 @@
       height: 100%;
     }
 
-    /* Dark Mode - Enhanced text visibility */
+    /* Dark Mode */
     body.dark-mode {
       background-color: #0f0f0f;
       color: #ffffff;
@@ -60,10 +59,6 @@
       color: #ffffff;
     }
 
-    body.dark-mode .dropdown-content a:hover {
-      background-color: #3a3a3a;
-    }
-
     body.dark-mode .mobile-menu {
       background-color: #1a1a1a;
     }
@@ -75,14 +70,6 @@
 
     body.dark-mode .mobile-nav-item {
       border-bottom-color: #333;
-    }
-
-    body.dark-mode .mobile-dropdown-content a {
-      color: #ffffff;
-    }
-
-    body.dark-mode .mobile-dropdown-content a:hover {
-      color: #7B4B2A;
     }
 
     body.dark-mode .unique-footer {
@@ -136,40 +123,50 @@
     body.dark-mode .section-subtitle {
       color: #e6b17e;
     }
-    
-    body.dark-mode .footer-col a,
-    body.dark-mode .footer-brand p,
-    body.dark-mode .footer-bottom,
-    body.dark-mode .footer-bottom a,
-    body.dark-mode .newsletter p {
-      color: #cccccc;
+
+    /* Active link style for desktop */
+    .nav-links a.active {
+      color: #7B4B2A;
+      font-weight: 700;
+      position: relative;
     }
-    
-    body.dark-mode .footer-col a:hover,
-    body.dark-mode .footer-bottom a:hover {
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #7B4B2A;
+      border-radius: 2px;
+    }
+
+    body.dark-mode .nav-links a.active {
       color: #e6b17e;
     }
-    
-    body.dark-mode .footer-col h4 {
-      color: #ffffff;
+
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
     }
-    
-    body.dark-mode .newsletter-input input {
-      color: #ffffff;
+
+    /* Active link style for mobile */
+    .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
     }
-    
-    body.dark-mode .newsletter-input input::placeholder {
-      color: #888;
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
-    
-    body.dark-mode .hero-btn.secondary {
-      border-color: #ffffff;
-      color: #ffffff;
+
+    body.dark-mode .mobile-nav-link.active {
+      color: #e6b17e;
     }
-    
-    body.dark-mode .hero-btn.secondary:hover {
-      background: #ffffff;
-      color: #000000;
+
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #e6b17e;
     }
 
     /* Sticky Navbar */
@@ -247,6 +244,11 @@
       padding: 0.5rem 0;
       display: inline-block;
       white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #7B4B2A;
     }
 
     .dropdown-content {
@@ -437,6 +439,11 @@
       font-weight: 500;
       display: block;
       padding: 0.75rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #7B4B2A;
     }
 
     .mobile-dropdown-toggle {
@@ -451,6 +458,7 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #111;
+      transition: color 0.2s;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -839,7 +847,7 @@
     
     .tea-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
       margin-top: 2rem;
     }
@@ -907,49 +915,6 @@
       letter-spacing: 2px;
     }
     
-    /* Ritual Tools */
-    .ritual-tools {
-      max-width: 1280px;
-      margin: 5rem auto;
-      padding: 0 2rem;
-      text-align: center;
-    }
-    
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .tool-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 24px;
-      transition: all 0.3s;
-      border: 1px solid #f0e6dc;
-    }
-    
-    .tool-item:hover {
-      transform: translateY(-5px);
-    }
-    
-    .tool-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.8rem;
-    }
-    
-    .tool-item h4 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: #7B4B2A;
-    }
-    
-    .tool-item p {
-      color: #666;
-      font-size: 0.85rem;
-    }
-    
     /* CTA Section */
     .ritual-cta {
       max-width: 1280px;
@@ -989,6 +954,44 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     
+    /* Mobile Auth Buttons */
+    .mobile-auth-buttons {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .mobile-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .login-mobile {
+      border: 1.5px solid #7B4B2A;
+      color: #7B4B2A;
+      background: transparent;
+    }
+
+    .login-mobile:hover {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile {
+      background: #7B4B2A;
+      color: #fff;
+    }
+
+    .signup-mobile:hover {
+      background: #5a3a1f;
+    }
+    
     /* Responsive */
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
@@ -1016,10 +1019,10 @@
       .step-content h3 { font-size: 1.3rem; }
       .section-title { font-size: 1.6rem; }
       .tea-grid { grid-template-columns: 1fr; }
-      .tools-grid { grid-template-columns: repeat(2, 1fr); }
       .ritual-cta { margin: 3rem 1.5rem; padding: 2rem; }
       .ritual-cta h2 { font-size: 1.6rem; }
       .quote-text { font-size: 1.3rem; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     }
 
     @media (max-width: 480px) {
@@ -1028,75 +1031,15 @@
       .glass-card h1 { font-size: 1.6rem; }
       .step-content { padding: 1.2rem; }
       .step-content h3 { font-size: 1.1rem; }
-      .tools-grid { grid-template-columns: 1fr; }
       .ritual-cta { padding: 1.5rem; }
       .cta-button { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
       .quote-text { font-size: 1.1rem; }
+      .footer-container { grid-template-columns: 1fr; }
     }
-    .tea-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
-  gap: 2rem;
-  margin-top: 2rem;
-}.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
-  gap: 2rem;
-  margin-top: 2rem;
-}
-body.dark-mode .dropdown-content a {
-  color: #fa720af5;
-}
-.mobile-auth-buttons {
-  display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
-}
-
-.mobile-btn {
-  flex: 1;
-  text-align: center;
-  padding: 0.7rem;
-  border-radius: 40px;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-/* Login style */
-.login-mobile {
-  border: 1.5px solid #7B4B2A;
-  color: #7B4B2A;
-  background: transparent;
-}
-
-.login-mobile:hover {
-  background: #7B4B2A;
-  color: #fff;
-}
-
-/* Signup style */
-.signup-mobile {
-  background: #7B4B2A;
-  color: #fff;
-}
-
-.signup-mobile:hover {
-  background: #5a3a1f;
-}
-.tea-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-/* Mobile view */
-@media (max-width: 768px) {
-  .tea-grid {
-    grid-template-columns: 1fr; /* ONE CARD PER ROW */
-  }
-}
+    
+    body.dark-mode .dropdown-content a {
+      color: #fa720af5;
+    }
   </style>
 </head>
 <body>
@@ -1113,21 +1056,19 @@ body.dark-mode .dropdown-content a {
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home</a>
-          <span>▼</span>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="teaRitual.html">Tea Ritual</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" id="navAbout">About</a></li>
+        <li><a href="service.html" id="navService">Service</a></li>
+        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
+        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
+        <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard</a>
-          <span>▼</span>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1153,12 +1094,13 @@ body.dark-mode .dropdown-content a {
   </header>
 
   <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span>Home</span>
+          <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown1">
@@ -1166,15 +1108,14 @@ body.dark-mode .dropdown-content a {
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
-            <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span>Dashboard</span>
+          <span id="mobileDashboardText">Dashboard</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown2">
@@ -1183,12 +1124,11 @@ body.dark-mode .dropdown-content a {
         </div>
       </li>
       <li class="mobile-nav-item">
-  <div class="mobile-auth-buttons">
-    <a href="login.html" class="mobile-btn login-mobile">Login</a>
-    <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-  </div>
-</li>
-   
+        <div class="mobile-auth-buttons">
+          <a href="login.html" class="mobile-btn login-mobile">Login</a>
+          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
+        </div>
+      </li>
       <li class="mobile-nav-item">
         <div style="display: flex; gap: 1rem; padding: 1rem 0;">
           <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
@@ -1265,28 +1205,25 @@ body.dark-mode .dropdown-content a {
     <div class="section-subtitle">━━ brew with intention ━━</div>
     <div class="tea-grid">
       <div class="tea-card">
-        <div class="tea-icon"><div class="kinetic-icon"><i class="fa-solid fa-leaf"></i></div>
-</div>
+        <div class="tea-icon"><i class="fa-solid fa-leaf"></i></div>
         <h4>Green Tea</h4>
         <p>Delicate & awakening — 70-80°C, 2-3 minutes. Best brewed with patience and gentle attention.</p>
         <div class="temp-badge">🌡️ 75°C · 2-3 min</div>
       </div>
       <div class="tea-card">
-        <div class="tea-icon"><div class="kinetic-icon"><i class="fa-solid fa-bolt"></i></div>
-</div>
+        <div class="tea-icon"><i class="fa-solid fa-bolt"></i></div>
         <h4>Black Tea</h4>
         <p>Bold & grounding — 95-100°C, 3-5 minutes. A robust ritual for focus and clarity.</p>
         <div class="temp-badge">🌡️ 100°C · 3-5 min</div>
       </div>
       <div class="tea-card">
-        <div class="tea-icon"><div class="kinetic-icon"><i class="fa-solid fa-earth-asia"></i></div>
-</div>
+        <div class="tea-icon"><i class="fa-solid fa-earth-asia"></i></div>
         <h4>White Tea</h4>
         <p>Subtle & ethereal — 70-80°C, 4-6 minutes. A meditation in stillness.</p>
         <div class="temp-badge">🌡️ 75°C · 4-6 min</div>
       </div>
       <div class="tea-card">
-        <div class="tea-icon"><div class="kinetic-icon"><i class="fa-solid fa-droplet"></i></div></div>
+        <div class="tea-icon"><i class="fa-solid fa-droplet"></i></div>
         <h4>Masala Chai</h4>
         <p>Warm & invigorating — simmer with spices, 5-8 minutes. A ritual of connection.</p>
         <div class="temp-badge">🔥 Simmer · 5-8 min</div>
@@ -1364,6 +1301,87 @@ body.dark-mode .dropdown-content a {
   </footer>
 
   <script>
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'teaRitual.html';
+    const pageName = currentPage.toLowerCase();
+    
+    // Function to set active class on desktop nav links
+    function setActiveNavLink() {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navService = document.getElementById('navService');
+      const navSoulful = document.getElementById('navSoulful');
+      const navTeaRitual = document.getElementById('navTeaRitual');
+      const navContact = document.getElementById('navContact');
+      const navDashboard = document.getElementById('navDashboard');
+      
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (navHome) navHome.classList.add('active');
+      }
+      else if (pageName === 'about.html') {
+        if (navAbout) navAbout.classList.add('active');
+      }
+      else if (pageName === 'service.html') {
+        if (navService) navService.classList.add('active');
+      }
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (navSoulful) navSoulful.classList.add('active');
+      }
+      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (navTeaRitual) navTeaRitual.classList.add('active');
+      }
+      else if (pageName === 'contact.html') {
+        if (navContact) navContact.classList.add('active');
+      }
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (navDashboard) navDashboard.classList.add('active');
+      }
+    }
+    
+    // Function to set active class on mobile nav links
+    function setMobileActiveLink() {
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active-toggle');
+      });
+      
+      const mobileAbout = document.getElementById('mobileAbout');
+      const mobileService = document.getElementById('mobileService');
+      const mobileSoulful = document.getElementById('mobileSoulful');
+      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
+      const mobileContact = document.getElementById('mobileContact');
+      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
+      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
+      
+      if (pageName === 'about.html') {
+        if (mobileAbout) mobileAbout.classList.add('active');
+      }
+      else if (pageName === 'service.html') {
+        if (mobileService) mobileService.classList.add('active');
+      }
+      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (mobileSoulful) mobileSoulful.classList.add('active');
+      }
+      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
+      }
+      else if (pageName === 'contact.html') {
+        if (mobileContact) mobileContact.classList.add('active');
+      }
+      else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
+      }
+      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
+      }
+    }
+    
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1433,6 +1451,10 @@ body.dark-mode .dropdown-content a {
         }
       });
     });
+    
+    // Initialize active links on page load
+    setActiveNavLink();
+    setMobileActiveLink();
   </script>
 </body>
 </html>
