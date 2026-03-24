@@ -6,8 +6,7 @@
   <title>Chai Nest · Admin Login</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -445,7 +444,6 @@
       margin: 0 0.8rem;
     }
 
-   
     /* RTL: keep icons on left side of text in demo badges */
     body[dir="rtl"] .demo-badge span i {
       margin-right: 0;
@@ -520,23 +518,23 @@
         font-size: 1rem;
       }
     }
-    .logo-text a {
-  text-decoration: none;   /* remove underline */
-  color: rgb(0, 0, 0);            /* "Chai" white */
-}
-
-.logo-text a span {
-  color: #7B4B2A;          /* "Nest" brown */
-}
-/* Dark mode மட்டும் change ஆகணும் */
-body:not(.light-mode) .logo-text a {
-  color: white;
-}
     
+    .logo-text a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+    }
+
+    .logo-text a span {
+      color: #7B4B2A;
+    }
+    
+    /* Dark mode only change */
+    body:not(.light-mode) .logo-text a {
+      color: white;
+    }
   </style>
 </head>
 <body>
-  
 
   <!-- Control Panel - Top Right Outside Container -->
   <div class="control-panel">
@@ -561,7 +559,7 @@ body:not(.light-mode) .logo-text a {
         </div>
       </div>
       <div class="logo-text">
-       <a href="index.html"> Chai<span>Nest</span></a>
+        <a href="index.html">Chai<span>Nest</span></a>
       </div>
       <div class="admin-badge">
         <i class="fas fa-shield-alt" style="font-size: 0.65rem;"></i> Admin Portal
@@ -603,19 +601,17 @@ body:not(.light-mode) .logo-text a {
         <a href="#" class="forgot-link" id="forgotPasswordLink">Forgot password?</a>
       </div>
 
-      <button type="submit" class="login-btn">
-        <i class="fas fa-arrow-right-to-bracket"></i> Sign In
-      </button>
+     <button type="button" class="login-btn">
+  <i class="fas fa-arrow-right-to-bracket"></i> Sign In
+</button>
     </form>
 
     <div class="divider">
       <span>secure access only</span>
     </div>
 
-  
-
     <div class="register-link">
-      Don't have an account? <a href="signup.html" id="contactAdminLink">Create an account?</a>
+      Don't have an account? <a href="signup.html" id="createAccountLink">Create an account</a>
     </div>
   </div>
 </div>
@@ -633,7 +629,7 @@ body:not(.light-mode) .logo-text a {
   const errorTextSpan = document.getElementById('errorText');
   const rememberCheckbox = document.getElementById('rememberCheckbox');
   const forgotLink = document.getElementById('forgotPasswordLink');
-  const contactAdminLink = document.getElementById('contactAdminLink');
+  const createAccountLink = document.getElementById('createAccountLink');
   const darkModeToggle = document.getElementById('darkModeToggle');
   const rtlToggle = document.getElementById('rtlToggle');
 
@@ -646,7 +642,7 @@ body:not(.light-mode) .logo-text a {
     }, 3500);
   }
 
-  // Handle successful login
+  // Handle successful login - Redirect to admin dashboard
   function handleSuccessfulLogin() {
     if (rememberCheckbox.checked) {
       localStorage.setItem('chaiNest_remembered', 'true');
@@ -665,7 +661,7 @@ body:not(.light-mode) .logo-text a {
     }, 800);
   }
 
-  // Login submission handler
+  // Login submission handler - Redirects to admin dashboard
   loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -689,16 +685,17 @@ body:not(.light-mode) .logo-text a {
     }
   });
   
-  // Forgot password
+  // Forgot password - Demo alert
   forgotLink.addEventListener('click', function(e) {
     e.preventDefault();
     alert('🔐 Password reset link would be sent to admin@chainest.com. For demo, use admin123.');
   });
   
-  // Contact admin
-  contactAdminLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    alert('📧 For admin access requests, please contact: support@chainest.com\nDemo credentials are already prefilled.');
+  // Create account link - Redirect to signup page
+  createAccountLink.addEventListener('click', function(e) {
+    // This already has href="signup.html", but we prevent default to ensure proper navigation
+    // The href already handles navigation, so we don't need to prevent default
+    // Just let the browser navigate to signup.html
   });
   
   // ==================== DARK MODE FUNCTIONALITY ====================
@@ -731,7 +728,6 @@ body:not(.light-mode) .logo-text a {
     if (savedDir === 'rtl') {
       document.body.setAttribute('dir', 'rtl');
       rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
-      // Don't add extra text, keep icon only for consistency
     } else {
       document.body.setAttribute('dir', 'ltr');
       rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
