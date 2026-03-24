@@ -8,8 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-            <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <style>
     * {
       margin: 0;
@@ -25,10 +24,10 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Dark Mode Styles */
+    /* ========== DARK MODE - COMPLETE BLACK BACKGROUND & WHITE TEXT ========== */
     body.dark-mode {
-      background-color: #0f0f0f;
-      color: #f1f5f9;
+      background-color: #000000 !important;
+      color: #ffffff !important;
     }
 
     body.dark-mode .stat-card,
@@ -36,54 +35,69 @@
     body.dark-mode .data-table,
     body.dark-mode .settings-form,
     body.dark-mode .product-card {
-      background: #1e1e2a;
-      border-color: #2d2d3a;
+      background: #0a0a0a !important;
+      border-color: #2a2a2a !important;
     }
 
     body.dark-mode .stat-value,
     body.dark-mode .card-header h3,
     body.dark-mode .page-title h1,
     body.dark-mode .product-title,
-    body.dark-mode .form-group label {
-      color: #f1f5f9;
+    body.dark-mode .form-group label,
+    body.dark-mode .info-card h3,
+    body.dark-mode .table-header h3,
+    body.dark-mode .top-product-name,
+    body.dark-mode .top-product-sales,
+    body.dark-mode .activity-content p {
+      color: #ffffff !important;
     }
 
     body.dark-mode .stat-label,
     body.dark-mode .page-title p,
     body.dark-mode .product-stock,
-    body.dark-mode .activity-time {
-      color: #94a3b8;
+    body.dark-mode .activity-time,
+    body.dark-mode .info-item span:first-child,
+    body.dark-mode th {
+      color: #aaaaaa !important;
     }
 
     body.dark-mode .stat-icon {
-      background: rgba(123, 75, 42, 0.2);
+      background: rgba(187, 134, 88, 0.2) !important;
+    }
+
+    body.dark-mode .stat-icon i {
+      color: #bb8658 !important;
     }
 
     body.dark-mode th,
     body.dark-mode td {
-      color: #e2e8f0;
-      border-bottom-color: #2d2d3a;
+      color: #ffffff !important;
+      border-bottom-color: #2a2a2a !important;
     }
 
     body.dark-mode .search-bar {
-      background: #2a2a35;
-      border-color: #3a3a4a;
+      background: #1a1a1a !important;
+      border-color: #3a3a3a !important;
     }
 
     body.dark-mode .search-bar input {
-      background: transparent;
-      color: #f1f5f9;
+      background: transparent !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .search-bar i {
+      color: #bb8658 !important;
     }
 
     body.dark-mode .action-btn {
-      background: #2a2a35;
-      border-color: #3a3a4a;
-      color: #c97e54;
+      background: #1a1a1a !important;
+      border-color: #3a3a3a !important;
+      color: #bb8658 !important;
     }
 
     body.dark-mode .action-btn:hover {
-      background: #7B4B2A;
-      color: white;
+      background: #7B4B2A !important;
+      color: white !important;
     }
 
     body.dark-mode .status-completed { background: #166534; color: #86efac; }
@@ -91,17 +105,149 @@
     body.dark-mode .status-processing { background: #1e40af; color: #93c5fd; }
 
     body.dark-mode .activity-icon {
-      background: rgba(123, 75, 42, 0.2);
+      background: rgba(187, 134, 88, 0.2) !important;
+    }
+
+    body.dark-mode .activity-icon i {
+      color: #bb8658 !important;
     }
 
     body.dark-mode .form-group input,
     body.dark-mode .form-group select {
-      background: #2a2a35;
-      border-color: #3a3a4a;
-      color: #f1f5f9;
+      background: #1a1a1a !important;
+      border-color: #3a3a3a !important;
+      color: #ffffff !important;
     }
 
-    /* Sidebar - improved mobile behavior */
+    body.dark-mode .form-group input::placeholder {
+      color: #888888 !important;
+    }
+
+    body.dark-mode .progress-bar-container {
+      background: #2a2a2a !important;
+    }
+
+    body.dark-mode .progress-bar-fill {
+      background: #bb8658 !important;
+    }
+
+    body.dark-mode .top-product-sales {
+      color: #bb8658 !important;
+    }
+
+    /* Sidebar Dark Mode */
+    body.dark-mode .sidebar {
+      background: #000000 !important;
+      border-right: 1px solid #2a2a2a !important;
+    }
+
+    body.dark-mode .sidebar-header {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .logo-text {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .nav-link {
+      color: #aaaaaa !important;
+    }
+
+    body.dark-mode .nav-link:hover {
+      background: rgba(187, 134, 88, 0.15) !important;
+      color: #bb8658 !important;
+    }
+
+    body.dark-mode .nav-link.active {
+      background: #7B4B2A !important;
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .sidebar-action-btn {
+      border-top-color: #2a2a2a !important;
+      color: #aaaaaa !important;
+    }
+
+    body.dark-mode .sidebar-action-btn:hover {
+      background: rgba(187, 134, 88, 0.15) !important;
+      color: #bb8658 !important;
+    }
+
+    body.dark-mode .sidebar-overlay {
+      background: rgba(0, 0, 0, 0.8) !important;
+    }
+
+    /* Top Bar Dark Mode */
+    body.dark-mode .top-header .page-title h1 {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .user-profile span {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .user-avatar {
+      background: #7B4B2A !important;
+    }
+
+    /* Button Dark Mode */
+    body.dark-mode .btn-primary {
+      background: #7B4B2A !important;
+      color: white !important;
+    }
+
+    body.dark-mode .btn-primary:hover {
+      background: #9B5E2E !important;
+    }
+
+    body.dark-mode .btn-edit {
+      background: #3b82f6 !important;
+    }
+
+    body.dark-mode .btn-danger {
+      background: #dc2626 !important;
+    }
+
+    /* Info Card Dark Mode */
+    body.dark-mode .info-card {
+      background: #0a0a0a !important;
+      border-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .info-item {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    body.dark-mode .info-item span:last-child {
+      color: #ffffff !important;
+    }
+
+    /* Activity Feed Dark Mode */
+    body.dark-mode .activity-item {
+      border-bottom-color: #2a2a2a !important;
+    }
+
+    /* Chart Dark Mode - adjust canvas text colors */
+    body.dark-mode canvas {
+      filter: brightness(0.9);
+    }
+
+    /* Modal Dark Mode */
+    body.dark-mode .modal-content {
+      background: #0a0a0a !important;
+      color: #ffffff !important;
+      border: 1px solid #2a2a2a !important;
+    }
+
+    body.dark-mode .modal-content h3 {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .close-modal {
+      color: #ffffff !important;
+    }
+
+    /* Sidebar */
     .sidebar {
       width: 280px;
       background-color: #ffffff;
@@ -116,12 +262,6 @@
       transform: translateX(0);
       box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
       border-right: 1px solid #eef2ff;
-    }
-
-    body.dark-mode .sidebar {
-      background: linear-gradient(180deg, #1a1a2a 0%, #0f0f1a 100%);
-      color: #f1f5f9;
-      border-right: 1px solid rgba(255,255,255,0.1);
     }
 
     @media (max-width: 768px) {
@@ -184,10 +324,7 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: #1e293b;
-    }
-
-    body.dark-mode .logo-text {
-      color: #ffffff;
+      text-decoration: none;
     }
 
     .logo-text span {
@@ -214,6 +351,10 @@
       font-weight: 500;
       cursor: pointer;
       border-radius: 0 12px 12px 0;
+    }
+
+    body.rtl-active .nav-link {
+      border-radius: 12px 0 0 12px;
     }
 
     .nav-link:hover {
@@ -250,7 +391,7 @@
       color: #7B4B2A;
     }
 
-    /* Main Content - improved spacing for mobile */
+    /* Main Content */
     .main-content {
       flex: 1;
       margin-left: 280px;
@@ -277,6 +418,8 @@
     body.rtl-active .sidebar {
       left: auto;
       right: 0;
+      border-right: none;
+      border-left: 1px solid #eef2ff;
     }
 
     body.rtl-active .main-content {
@@ -347,7 +490,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Top Header - FULLY RESPONSIVE FIX */
+    /* Top Header */
     .top-header {
       display: flex;
       justify-content: space-between;
@@ -368,7 +511,6 @@
     .page-title h1 {
       font-size: 1.8rem;
       font-weight: 600;
-      color: #1e293b;
     }
 
     @media (max-width: 480px) {
@@ -378,7 +520,6 @@
     }
 
     .page-title p {
-      color: #64748b;
       font-size: 0.85rem;
       margin-top: 0.25rem;
     }
@@ -427,12 +568,6 @@
       background: transparent;
     }
 
-    @media (max-width: 768px) {
-      .search-bar input {
-        width: 100%;
-      }
-    }
-
     .toggle-buttons {
       display: flex;
       gap: 0.5rem;
@@ -444,47 +579,42 @@
       }
     }
 
-    .toggle-btn {
-      background: rgba(0, 0, 0, 0.08);
-      border: 1px solid #e2e8f0;
-      border-radius: 40px;
-      width: 38px;
-      height: 38px;
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #b07a4f;
+      background: transparent;
+      color: #b07a4f;
+      font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 1rem;
-      color: #7B4B2A;
-      transition: all 0.2s;
-    }
-
-    .rtl-toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #5a3e2b;
-      background: #f5efe7;
-      border: 1px solid #e0d5c6;
-      border-radius: 30px;
-      cursor: pointer;
       transition: all 0.3s ease;
     }
 
-    @media (max-width: 768px) {
-      .rtl-toggle-btn {
-        justify-content: center;
-        width: auto;
-        flex: 1;
-      }
+    .text-btn {
+      font-size: 14px;
+      font-weight: 600;
+      width: auto;
+      border-radius: 40px;
+      padding: 0 16px;
     }
 
-    .rtl-toggle-btn:hover {
-      background: #8b5e3c;
+    .icon-btn:hover {
+      background: #b07a4f;
       color: #fff;
+    }
+
+    body.dark-mode .icon-btn {
+      border-color: #bb8658;
+      color: #bb8658;
+    }
+
+    body.dark-mode .icon-btn:hover {
+      background: #bb8658;
+      color: #000000;
     }
 
     .user-profile {
@@ -492,12 +622,6 @@
       align-items: center;
       gap: 0.75rem;
       cursor: pointer;
-    }
-
-    @media (max-width: 768px) {
-      .user-profile {
-        justify-content: center;
-      }
     }
 
     .user-avatar {
@@ -512,7 +636,7 @@
       font-weight: 600;
     }
 
-    /* Stats Grid - fully responsive */
+    /* Stats Grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -537,7 +661,6 @@
       background: white;
       border-radius: 20px;
       padding: 1.2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       transition: transform 0.2s;
       border: 1px solid #eef2ff;
     }
@@ -553,19 +676,22 @@
       margin-bottom: 0.8rem;
     }
 
+    .stat-icon i {
+      font-size: 1.4rem;
+      color: #7B4B2A;
+    }
+
     .stat-value {
       font-size: 1.8rem;
       font-weight: 700;
-      color: #1e293b;
     }
 
     .stat-label {
-      color: #64748b;
       font-size: 0.8rem;
       font-weight: 500;
     }
 
-    /* ===== FIXED: Mobile-friendly charts section ===== */
+    /* Charts Section */
     .charts-section {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -573,57 +699,16 @@
       margin-bottom: 2rem;
     }
 
-    /* On tablet screens, keep side by side but with adjusted proportions */
     @media (max-width: 1024px) and (min-width: 769px) {
       .charts-section {
         grid-template-columns: 1.5fr 1fr;
-        gap: 1.2rem;
       }
     }
 
-    /* On mobile: stack vertically AND ensure each card takes full width without overflow */
     @media (max-width: 768px) {
       .charts-section {
         grid-template-columns: 1fr;
         gap: 1.2rem;
-      }
-      
-      /* Fix for Sales Overview card - canvas container responsive */
-      .chart-card {
-        padding: 1rem;
-        width: 100%;
-        overflow-x: hidden;
-      }
-      
-      .chart-card canvas {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-      
-      /* Ensure the top products list inside chart card is readable */
-      .top-product-item {
-        width: 100%;
-      }
-      
-      .top-product-header {
-        flex-wrap: wrap;
-        gap: 0.25rem;
-      }
-    }
-
-    /* Extra small devices (below 480px) - extra padding safety */
-    @media (max-width: 480px) {
-      .charts-section {
-        gap: 1rem;
-      }
-      .chart-card {
-        padding: 0.9rem;
-      }
-      .card-header h3 {
-        font-size: 0.9rem;
-      }
-      .top-product-name, .top-product-sales {
-        font-size: 0.8rem;
       }
     }
 
@@ -631,9 +716,7 @@
       background: white;
       border-radius: 20px;
       padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2ff;
-      transition: all 0.2s;
     }
 
     .card-header {
@@ -648,10 +731,9 @@
     .card-header h3 {
       font-size: 1rem;
       font-weight: 600;
-      color: #1e293b;
     }
 
-    /* Top Products List - Mobile friendly */
+    /* Top Products */
     .top-product-item {
       margin-bottom: 1rem;
       width: 100%;
@@ -691,12 +773,11 @@
       border-radius: 10px;
     }
 
-    /* Tables - horizontal scroll on mobile */
+    /* Tables */
     .data-table {
       background: white;
       border-radius: 20px;
       padding: 1.2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2ff;
       margin-bottom: 2rem;
       overflow-x: auto;
@@ -726,7 +807,6 @@
 
     th {
       font-weight: 600;
-      color: #475569;
       font-size: 0.8rem;
     }
 
@@ -742,7 +822,7 @@
     .status-pending { background: #fef9c3; color: #854d0e; }
     .status-processing { background: #dbeafe; color: #1e40af; }
 
-    /* Products Grid - responsive cards */
+    /* Products Grid */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -753,7 +833,6 @@
     @media (max-width: 640px) {
       .products-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
       }
     }
 
@@ -761,7 +840,6 @@
       background: white;
       border-radius: 20px;
       overflow: hidden;
-      transition: transform 0.2s;
       border: 1px solid #eef2ff;
     }
 
@@ -769,6 +847,7 @@
       height: 160px;
       background-size: cover;
       background-position: center;
+      background-color: #f1f5f9;
     }
 
     .product-info {
@@ -785,7 +864,12 @@
       font-weight: 600;
     }
 
-    /* Quick Actions - stack on mobile */
+    .product-stock {
+      font-size: 0.75rem;
+      margin-top: 0.3rem;
+    }
+
+    /* Quick Actions */
     .quick-actions {
       display: flex;
       gap: 1rem;
@@ -812,7 +896,6 @@
       border-radius: 16px;
       font-weight: 600;
       color: #7B4B2A;
-      text-decoration: none;
       transition: all 0.2s;
       cursor: pointer;
     }
@@ -829,16 +912,6 @@
       gap: 1rem;
       padding: 0.8rem 0;
       border-bottom: 1px solid #f1f5f9;
-    }
-
-    @media (max-width: 640px) {
-      .activity-item {
-        gap: 0.8rem;
-      }
-      .activity-icon {
-        width: 32px;
-        height: 32px;
-      }
     }
 
     .activity-icon {
@@ -914,7 +987,6 @@
       border-radius: 12px;
       font-weight: 600;
       cursor: pointer;
-      width: auto;
     }
 
     @media (max-width: 640px) {
@@ -929,7 +1001,6 @@
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
     
-    /* Additional fix for chart container on mobile to avoid overflow */
     .chart-card canvas {
       max-width: 100%;
       height: auto;
@@ -951,7 +1022,7 @@
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-         <a href="index.html" style="text-decoration: none;"> <span class="logo-text">Chai<span>Nest</span></span></a>
+          <a href="index.html" style="text-decoration: none;"><span class="logo-text">Chai<span>Nest</span></span></a>
         </div>
       </div>
       <ul class="nav-menu">
@@ -990,10 +1061,10 @@
     ];
     
     const productsData = [
-      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'images/imgchai (9).jpg' },
-      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'images/imgchai (10).jpg' },
-      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'images/imgchai (3).jpg' },
-      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'images/imgchai (12).jpg' }
+      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'https://placehold.co/400x300/7B4B2A/white?text=Masala+Chai' },
+      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'https://placehold.co/400x300/7B4B2A/white?text=Darjeeling' },
+      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'https://placehold.co/400x300/7B4B2A/white?text=Matcha' },
+      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'https://placehold.co/400x300/7B4B2A/white?text=Herbal' }
     ];
     
     const customersData = [
@@ -1019,67 +1090,72 @@
     ];
     
     let salesChartInstance = null;
+    let revenueChartInstance = null;
+    let categoryChartInstance = null;
     
-    function renderDashboard() {
-      const dashboardDiv = document.getElementById('dashboard-page');
-      dashboardDiv.innerHTML = `
-        <div class="top-header"><div class="page-title"><h1>Dashboard</h1><p>Welcome back! Here's your business overview</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div><div class="toggle-buttons"><button class="toggle-btn" id="darkModeToggleBtn"><i class="fas fa-moon"></i></button><button id="rtlToggleBtn" class="rtl-toggle-btn"><i class="fas fa-exchange-alt"></i> <span>RTL Mode</span></button></div><div class="user-profile"><div class="user-avatar"><i class="fas fa-user"></i></div><span>Admin</span></div></div></div>
-        <div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">1,284</div><div class="stat-label">Total Orders</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$48,592</div><div class="stat-label">Total Revenue</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">3,241</div><div class="stat-label">Active Customers</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">+23.5%</div><div class="stat-label">Growth Rate</div></div></div>
-        <div class="quick-actions"><button class="action-btn" id="addProductQuickBtn"><i class="fas fa-plus-circle"></i>Add Product</button><button class="action-btn"><i class="fas fa-truck"></i>Track Orders</button><button class="action-btn"><i class="fas fa-envelope"></i>Newsletter</button></div>
-        <div class="charts-section"><div class="chart-card"><div class="card-header"><h3>Sales Overview</h3><span style="color:#7B4B2A; font-size:0.8rem;">Last 7 days</span></div><div style="width:100%; height: 220px; position:relative;"><canvas id="salesChart" style="max-width:100%; height:auto; width:100%;"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Top Products</h3></div><div id="topProductsList"></div></div></div>
-        <div class="data-table"><div class="card-header"><h3>Recent Orders</h3><a href="#" style="color:#7B4B2A; font-size:0.8rem;" onclick="showPage('orders'); return false;">View All →</a></div><div id="recentOrdersTable"></div></div>
-        <div class="chart-card"><div class="card-header"><h3>Recent Activity</h3></div><div id="activityFeed"></div></div>
-      `;
-      
-      const container = document.getElementById('topProductsList');
-      if(container) container.innerHTML = topProductsList.map(p => `<div class="top-product-item"><div class="top-product-header"><span class="top-product-name">${p.name}</span><span class="top-product-sales">${p.sales} sales</span></div><div class="progress-bar-container"><div class="progress-bar-fill" style="width: ${p.percent}%;"></div></div></div>`).join('');
-      
-      const recentDiv = document.getElementById('recentOrdersTable');
-      recentDiv.innerHTML = `<table style="width:100%"><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th></tr></thead><tbody>${ordersData.slice(0,4).map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table>`;
-      
-      const activityDiv = document.getElementById('activityFeed');
-      activityDiv.innerHTML = activitiesFeed.map(a => `<div class="activity-item"><div class="activity-icon"><i class="fas fa-${a.icon}"></i></div><div class="activity-content"><p>${a.text}</p><span class="activity-time">${a.time}</span></div></div>`).join('');
-      
+    // Toggle Functions
+    function toggleDarkMode() { 
+      document.body.classList.toggle('dark-mode'); 
+      localStorage.setItem('chaiNest_darkMode', document.body.classList.contains('dark-mode'));
+      const darkIcon = document.getElementById('darkModeIconBtn');
+      if(darkIcon) darkIcon.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+      // Refresh charts to apply dark mode styling
+      refreshCharts();
+    }
+    
+    function toggleRTL() { 
+      document.body.classList.toggle('rtl-active'); 
+      localStorage.setItem('chaiNest_rtl', document.body.classList.contains('rtl-active'));
+      const rtlBtn = document.getElementById('rtlIconBtn');
+      if(rtlBtn) rtlBtn.innerHTML = document.body.classList.contains('rtl-active') ? 'RTL' : 'LTR';
+    }
+    
+    function refreshCharts() {
+      // Refresh sales chart
       const salesCtx = document.getElementById('salesChart')?.getContext('2d');
-      if(salesCtx) {
-        if(salesChartInstance) salesChartInstance.destroy();
+      if(salesCtx && salesChartInstance) {
+        salesChartInstance.destroy();
         salesChartInstance = new Chart(salesCtx, { 
           type: 'line', 
           data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Sales ($)', data: [1250,1480,1320,1890,2150,2780,2450], borderColor: '#7B4B2A', backgroundColor: 'rgba(123,75,42,0.1)', fill: true, tension: 0.4 }] }, 
-          options: { responsive: true, maintainAspectRatio: true, aspectRatio: 1.8 } 
+          options: { responsive: true, maintainAspectRatio: true } 
+        });
+      }
+      
+      // Refresh revenue chart
+      const revCtx = document.getElementById('revenueChart')?.getContext('2d');
+      if(revCtx && revenueChartInstance) {
+        revenueChartInstance.destroy();
+        revenueChartInstance = new Chart(revCtx, { 
+          type: 'bar', 
+          data: { labels: ['Jan','Feb','Mar','Apr','May','Jun'], datasets: [{ label: 'Revenue', data: [12500,14800,16200,18900,21500,24500], backgroundColor: '#7B4B2A' }] }, 
+          options: { responsive: true } 
+        });
+      }
+      
+      // Refresh category chart
+      const catCtx = document.getElementById('categoryChart')?.getContext('2d');
+      if(catCtx && categoryChartInstance) {
+        categoryChartInstance.destroy();
+        categoryChartInstance = new Chart(catCtx, { 
+          type: 'doughnut', 
+          data: { labels: ['Masala Chai','Darjeeling','Matcha','Herbal'], datasets: [{ data: [42,28,18,12], backgroundColor: ['#7B4B2A','#9B6B3A','#B88B5A','#D4A97A'] }] }, 
+          options: { responsive: true } 
         });
       }
     }
     
-    function renderOrders() { /* same as original but compact */ 
-      const totalRevenue = ordersData.reduce((s,o)=> s + o.total,0);
-      const pending = ordersData.filter(o=>o.status==='Pending').length;
-      const processing = ordersData.filter(o=>o.status==='Processing').length;
-      const completed = ordersData.filter(o=>o.status==='Completed').length;
-      document.getElementById('orders-page').innerHTML = `
-        <div class="top-header"><div class="page-title"><h1>Orders Management</h1><p>Track and manage all customer orders</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders..."></div></div></div>
-        <div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${pending}</div><div class="stat-label">Pending</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-truck"></i></div><div class="stat-value">${processing}</div><div class="stat-label">Processing</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${completed}</div><div class="stat-label">Completed</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Total Value</div></div></div>
-        <div class="data-table"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody>${ordersData.map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table></div>
-      `;
+    function closeSidebar() { 
+      sidebar.classList.remove('mobile-open'); 
+      overlay.classList.remove('active'); 
+      document.body.classList.remove('sidebar-open');
     }
-    function renderProducts() {
-      document.getElementById('products-page').innerHTML = `
-        <div class="top-header"><div class="page-title"><h1>Product Catalog</h1><p>Manage your tea collection</p></div><div class="header-actions"><button class="action-btn" id="addProductBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Product</button></div></div>
-        <div class="products-grid" id="productsGrid"></div>
-      `;
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = productsData.map(p => `<div class="product-card"><div class="product-image" style="background-image:url('${p.image}')"></div><div class="product-info"><div class="product-title">${p.name}</div><div class="product-price">$${p.price}</div><div class="product-stock">Stock: ${p.stock} units</div></div></div>`).join('');
+    
+    function openSidebar() { 
+      sidebar.classList.add('mobile-open'); 
+      overlay.classList.add('active'); 
+      document.body.classList.add('sidebar-open');
     }
-    function renderCustomers() {
-      const total = customersData.length, vip = customersData.filter(c=>c.status==='VIP').length, active = customersData.filter(c=>c.status==='Active').length;
-      document.getElementById('customers-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Customer Base</h1><p>View and manage your customers</p></div></div><div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${total}</div><div class="stat-label">Total Customers</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-value">${vip}</div><div class="stat-label">VIP Members</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-user-check"></i></div><div class="stat-value">${active}</div><div class="stat-label">Active</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">68%</div><div class="stat-label">Retention</div></div></div><div class="data-table"><table><thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th></tr></thead><tbody>${customersData.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.orders}</td><td>$${c.spent}</td><td><span class="status-badge status-${c.status === 'VIP' ? 'completed' : 'active'}">${c.status}</span></td></tr>`).join('')}</tbody></table></div>`;
-    }
-    function renderAnalytics() {
-      document.getElementById('analytics-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Analytics</h1><p>Deep insights into your business</p></div></div><div class="analytics-grid"><div class="chart-card"><div class="card-header"><h3>Monthly Revenue</h3></div><div style="height: 220px;"><canvas id="revenueChart"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Category Performance</h3></div><div style="height: 220px;"><canvas id="categoryChart"></canvas></div></div></div><div class="data-table"><div class="card-header"><h3>Top Performing Products</h3></div><table><thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th></tr></thead><tbody>${topProductsList.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sales}</td><td>$${(p.sales * 28).toLocaleString()}</td><td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td></tr>`).join('')}</tbody></table></div>`;
-      const revCtx = document.getElementById('revenueChart')?.getContext('2d'); if(revCtx) new Chart(revCtx, { type: 'bar', data: { labels: ['Jan','Feb','Mar','Apr','May','Jun'], datasets: [{ label: 'Revenue', data: [12500,14800,16200,18900,21500,24500], backgroundColor: '#7B4B2A' }] }, options: { responsive: true } });
-      const catCtx = document.getElementById('categoryChart')?.getContext('2d'); if(catCtx) new Chart(catCtx, { type: 'doughnut', data: { labels: ['Masala Chai','Darjeeling','Matcha','Herbal'], datasets: [{ data: [42,28,18,12], backgroundColor: ['#7B4B2A','#9B6B3A','#B88B5A','#D4A97A'] }] }, options: { responsive: true } });
-    }
-    function renderSettings() { document.getElementById('settings-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Settings</h1><p>Manage your store preferences</p></div></div><div class="settings-form"><h3 style="margin-bottom:1rem;">Store Information</h3><div class="form-group"><label>Store Name</label><input type="text" id="storeName" value="Chai Nest Tea Co."></div><div class="form-group"><label>Store Email</label><input type="email" id="storeEmail" value="hello@chainest.com"></div><div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option><option>EUR (€)</option></select></div><div class="form-group"><label>Default Tax Rate</label><input type="text" id="taxRate" value="10%"></div><button class="save-btn" onclick="alert('Settings saved!')">Save Changes</button></div>`; }
     
     window.showPage = function(pageId) {
       const pages = ['dashboard', 'orders', 'products', 'customers', 'analytics', 'settings'];
@@ -1090,28 +1166,135 @@
       if(window.innerWidth <= 768) closeSidebar();
     };
     
-    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); localStorage.setItem('chaiNest_darkMode', document.body.classList.contains('dark-mode')); }
-    function toggleRTL() { document.body.classList.toggle('rtl-active'); localStorage.setItem('chaiNest_rtl', document.body.classList.contains('rtl-active')); }
-    function closeSidebar() { sidebar.classList.remove('mobile-open'); overlay.classList.remove('active'); document.body.classList.remove('sidebar-open'); }
-    function openSidebar() { sidebar.classList.add('mobile-open'); overlay.classList.add('active'); document.body.classList.add('sidebar-open'); }
+    // Render Functions
+    function renderDashboard() {
+      const dashboardDiv = document.getElementById('dashboard-page');
+      dashboardDiv.innerHTML = `
+        <div class="top-header">
+          <div class="page-title"><h1>Dashboard</h1><p>Welcome back! Here's your business overview</p></div>
+          <div class="header-actions">
+            <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+            <div class="toggle-buttons">
+              <button class="icon-btn" id="darkModeIconBtn">🌙</button>
+              <button class="icon-btn text-btn" id="rtlIconBtn">LTR</button>
+            </div>
+            <div class="user-profile"><div class="user-avatar"><i class="fas fa-user"></i></div><span>Admin</span></div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">1,284</div><div class="stat-label">Total Orders</div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$48,592</div><div class="stat-label">Total Revenue</div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">3,241</div><div class="stat-label">Active Customers</div></div>
+          <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">+23.5%</div><div class="stat-label">Growth Rate</div></div>
+        </div>
+        <div class="quick-actions">
+          <button class="action-btn" id="addProductQuickBtn"><i class="fas fa-plus-circle"></i>Add Product</button>
+          <button class="action-btn"><i class="fas fa-truck"></i>Track Orders</button>
+          <button class="action-btn"><i class="fas fa-envelope"></i>Newsletter</button>
+        </div>
+        <div class="charts-section">
+          <div class="chart-card"><div class="card-header"><h3>Sales Overview</h3><span style="color:#7B4B2A; font-size:0.8rem;">Last 7 days</span></div><div style="width:100%; height: 220px; position:relative;"><canvas id="salesChart"></canvas></div></div>
+          <div class="chart-card"><div class="card-header"><h3>Top Products</h3></div><div id="topProductsList"></div></div>
+        </div>
+        <div class="data-table"><div class="card-header"><h3>Recent Orders</h3><a href="#" style="color:#7B4B2A; font-size:0.8rem;" onclick="showPage('orders'); return false;">View All →</a></div><div id="recentOrdersTable"></div></div>
+        <div class="chart-card"><div class="card-header"><h3>Recent Activity</h3></div><div id="activityFeed"></div></div>
+      `;
+      
+      document.getElementById('topProductsList').innerHTML = topProductsList.map(p => `<div class="top-product-item"><div class="top-product-header"><span class="top-product-name">${p.name}</span><span class="top-product-sales">${p.sales} sales</span></div><div class="progress-bar-container"><div class="progress-bar-fill" style="width: ${p.percent}%;"></div></div></div>`).join('');
+      
+      document.getElementById('recentOrdersTable').innerHTML = `\n          <thead>\n            <th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th>\n          </thead><tbody>${ordersData.slice(0,4).map(o => `<tr>\n            <td>${o.id}</td>\n            <td>${o.customer}</td>\n            <td>${o.items}</td>\n            <td>$${o.total}</td>\n            <td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td>\n          </tr>`).join('')}</tbody>\n        `;
+      
+      document.getElementById('activityFeed').innerHTML = activitiesFeed.map(a => `<div class="activity-item"><div class="activity-icon"><i class="fas fa-${a.icon}"></i></div><div class="activity-content"><p>${a.text}</p><span class="activity-time">${a.time}</span></div></div>`).join('');
+      
+      const salesCtx = document.getElementById('salesChart')?.getContext('2d');
+      if(salesCtx) {
+        if(salesChartInstance) salesChartInstance.destroy();
+        salesChartInstance = new Chart(salesCtx, { 
+          type: 'line', 
+          data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Sales ($)', data: [1250,1480,1320,1890,2150,2780,2450], borderColor: '#7B4B2A', backgroundColor: 'rgba(123,75,42,0.1)', fill: true, tension: 0.4 }] }, 
+          options: { responsive: true, maintainAspectRatio: true } 
+        });
+      }
+      
+      document.getElementById('darkModeIconBtn')?.addEventListener('click', toggleDarkMode);
+      document.getElementById('rtlIconBtn')?.addEventListener('click', toggleRTL);
+      document.getElementById('addProductQuickBtn')?.addEventListener('click', () => alert('Add Product feature coming soon!'));
+    }
     
+    function renderOrders() {
+      const totalRevenue = ordersData.reduce((s,o)=> s + o.total,0);
+      const pending = ordersData.filter(o=>o.status==='Pending').length;
+      const processing = ordersData.filter(o=>o.status==='Processing').length;
+      const completed = ordersData.filter(o=>o.status==='Completed').length;
+      document.getElementById('orders-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Orders Management</h1><p>Track and manage all customer orders</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders..."></div></div></div>
+        <div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${pending}</div><div class="stat-label">Pending</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-truck"></i></div><div class="stat-value">${processing}</div><div class="stat-label">Processing</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${completed}</div><div class="stat-label">Completed</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Total Value</div></div></div>
+        <div class="data-table">\n          <thead>\n            <th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th>\n          </thead><tbody>${ordersData.map(o => `<tr>\n            <td>${o.id}</td>\n            <td>${o.customer}</td>\n            <td>${o.date}</td>\n            <td>${o.items}</td>\n            <td>$${o.total}</td>\n            <td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td>\n          </tr>`).join('')}</tbody>\n        </div>
+      `;
+    }
+    
+    function renderProducts() {
+      document.getElementById('products-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Product Catalog</h1><p>Manage your tea collection</p></div><div class="header-actions"><button class="action-btn" id="addProductBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Product</button></div></div>
+        <div class="products-grid" id="productsGrid"></div>
+      `;
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = productsData.map(p => `<div class="product-card"><div class="product-image" style="background-image:url('${p.image}'); background-size:cover;"></div><div class="product-info"><div class="product-title">${p.name}</div><div class="product-price">$${p.price}</div><div class="product-stock">Stock: ${p.stock} units</div></div></div>`).join('');
+      document.getElementById('addProductBtn')?.addEventListener('click', () => alert('Add Product feature coming soon!'));
+    }
+    
+    function renderCustomers() {
+      const total = customersData.length, vip = customersData.filter(c=>c.status==='VIP').length, active = customersData.filter(c=>c.status==='Active').length;
+      document.getElementById('customers-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Customer Base</h1><p>View and manage your customers</p></div></div><div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${total}</div><div class="stat-label">Total Customers</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-value">${vip}</div><div class="stat-label">VIP Members</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-user-check"></i></div><div class="stat-value">${active}</div><div class="stat-label">Active</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">68%</div><div class="stat-label">Retention</div></div></div><div class="data-table">\n          <thead>\n            <th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th>\n          </thead><tbody>${customersData.map(c => `<tr>\n            <td><strong>${c.name}</strong></td>\n            <td>${c.email}</td>\n            <td>${c.orders}</td>\n            <td>$${c.spent}</td>\n            <td><span class="status-badge ${c.status === 'VIP' ? 'status-completed' : 'status-active'}">${c.status}</span></td>\n          </tr>`).join('')}</tbody>\n        </div>`;
+    }
+    
+    function renderAnalytics() {
+      document.getElementById('analytics-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Analytics</h1><p>Deep insights into your business</p></div></div><div class="analytics-grid"><div class="chart-card"><div class="card-header"><h3>Monthly Revenue</h3></div><div style="height: 220px;"><canvas id="revenueChart"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Category Performance</h3></div><div style="height: 220px;"><canvas id="categoryChart"></canvas></div></div></div><div class="data-table"><div class="card-header"><h3>Top Performing Products</h3></div>\n          <thead>\n            <th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th>\n          </thead><tbody>${topProductsList.map(p => `<tr>\n            <td><strong>${p.name}</strong></td>\n            <td>${p.sales}</td>\n            <td>$${(p.sales * 28).toLocaleString()}</td>\n            <td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td>\n          </tr>`).join('')}</tbody>\n        </div>`;
+      const revCtx = document.getElementById('revenueChart')?.getContext('2d'); 
+      if(revCtx) {
+        if(revenueChartInstance) revenueChartInstance.destroy();
+        revenueChartInstance = new Chart(revCtx, { 
+          type: 'bar', 
+          data: { labels: ['Jan','Feb','Mar','Apr','May','Jun'], datasets: [{ label: 'Revenue', data: [12500,14800,16200,18900,21500,24500], backgroundColor: '#7B4B2A' }] }, 
+          options: { responsive: true } 
+        });
+      }
+      const catCtx = document.getElementById('categoryChart')?.getContext('2d'); 
+      if(catCtx) {
+        if(categoryChartInstance) categoryChartInstance.destroy();
+        categoryChartInstance = new Chart(catCtx, { 
+          type: 'doughnut', 
+          data: { labels: ['Masala Chai','Darjeeling','Matcha','Herbal'], datasets: [{ data: [42,28,18,12], backgroundColor: ['#7B4B2A','#9B6B3A','#B88B5A','#D4A97A'] }] }, 
+          options: { responsive: true } 
+        });
+      }
+    }
+    
+    function renderSettings() { 
+      document.getElementById('settings-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Settings</h1><p>Manage your store preferences</p></div></div><div class="settings-form"><h3 style="margin-bottom:1rem;">Store Information</h3><div class="form-group"><label>Store Name</label><input type="text" id="storeName" value="Chai Nest Tea Co."></div><div class="form-group"><label>Store Email</label><input type="email" id="storeEmail" value="hello@chainest.com"></div><div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option><option>EUR (€)</option></select></div><div class="form-group"><label>Default Tax Rate</label><input type="text" id="taxRate" value="10%"></div><button class="save-btn" onclick="alert('Settings saved!')">Save Changes</button></div>`; 
+    }
+    
+    // Navigation
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
+    
+    // Mobile sidebar controls
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebarOverlay');
     menuToggle?.addEventListener('click', () => sidebar.classList.contains('mobile-open') ? closeSidebar() : openSidebar());
     overlay?.addEventListener('click', closeSidebar);
     
-    document.addEventListener('click', (e) => {
-      if(e.target.closest('#darkModeToggleBtn')) toggleDarkMode();
-      if(e.target.closest('#rtlToggleBtn')) toggleRTL();
-      if(e.target.closest('#addProductBtn') || e.target.closest('#addProductQuickBtn')) alert('Add Product feature coming soon!');
-    });
-    
-    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
-    
-    renderDashboard(); renderOrders(); renderProducts(); renderCustomers(); renderAnalytics(); renderSettings();
+    // Load saved preferences
     if(localStorage.getItem('chaiNest_darkMode') === 'true') document.body.classList.add('dark-mode');
     if(localStorage.getItem('chaiNest_rtl') === 'true') document.body.classList.add('rtl-active');
+    
+    // Initialize all pages
+    renderDashboard();
+    renderOrders();
+    renderProducts();
+    renderCustomers();
+    renderAnalytics();
+    renderSettings();
   </script>
 </body>
 </html>

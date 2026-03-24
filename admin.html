@@ -328,6 +328,7 @@
       .main-content {
         margin-left: 0;
         padding: 1rem;
+        padding-top: 70px;
       }
     }
 
@@ -364,39 +365,47 @@
       flex-wrap: wrap;
     }
 
-    .rtl-toggle-btn, .dark-mode-toggle-btn {
-      background: rgba(0, 0, 0, 0.08);
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
+    .top-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #7B4B2A;
+      background: transparent;
+      color: #7B4B2A;
+      font-size: 18px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      cursor: pointer;
       transition: all 0.3s ease;
-      font-family: inherit;
     }
 
-    .rtl-toggle-btn {
+    .text-btn {
+      font-size: 14px;
+      font-weight: 600;
+      width: auto;
+      border-radius: 40px;
+      padding: 0 16px;
+    }
+
+    .icon-btn:hover {
       background: #7B4B2A;
-      color: white;
+      color: #fff;
     }
 
-    .rtl-toggle-btn:hover {
-      background: #9B5E2E;
-      transform: translateY(-2px);
+    body.dark-mode .icon-btn {
+      border-color: #fbbf24;
+      color: #fbbf24;
     }
 
-    .dark-mode-toggle-btn:hover {
-      background: #1e293b;
-      color: white;
-    }
-
-    body.dark-mode .dark-mode-toggle-btn {
-      background: rgba(255, 255, 255, 0.15);
-      color: #f5f7fb;
+    body.dark-mode .icon-btn:hover {
+      background: #fbbf24;
+      color: #1e1e2a;
     }
 
     .admin-profile {
@@ -476,6 +485,13 @@
     body.rtl-active .sidebar {
       left: auto;
       right: 0;
+      border-right: none;
+      border-left: 1px solid #eef2ff;
+    }
+
+    body.dark-mode.rtl-active .sidebar {
+      border-left: 1px solid rgba(255,255,255,0.1);
+      border-right: none;
     }
 
     body.rtl-active .main-content {
@@ -509,6 +525,27 @@
       border-right-color: #7B4B2A;
     }
 
+    body.rtl-active .admin-profile {
+      padding-left: 0;
+      padding-right: 1rem;
+      border-left: none;
+      border-right: 2px solid #eef2ff;
+    }
+
+    body.dark-mode.rtl-active .admin-profile {
+      border-right-color: #2d2d3a;
+    }
+
+    body.rtl-active .stat-card::before {
+      left: auto;
+      right: 0;
+    }
+
+    body.rtl-active th, 
+    body.rtl-active td {
+      text-align: right;
+    }
+
     /* Page Container */
     .page-container {
       display: none;
@@ -524,12 +561,24 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Stats Cards */
+    /* Stats Cards - Vertical grid */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-bottom: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .stat-card {
@@ -585,7 +634,7 @@
       font-size: 0.85rem;
     }
 
-    /* Tables */
+    /* Tables - Full width, vertical stacking */
     .data-table {
       background: white;
       border-radius: 20px;
@@ -593,6 +642,7 @@
       margin-bottom: 2rem;
       border: 1px solid #eef2ff;
       overflow-x: auto;
+      width: 100%;
     }
 
     .table-header {
@@ -680,6 +730,13 @@
       font-size: 0.9rem;
     }
 
+    @media (max-width: 768px) {
+      th, td {
+        padding: 0.75rem;
+        font-size: 0.8rem;
+      }
+    }
+
     .status-badge {
       display: inline-block;
       padding: 0.25rem 0.75rem;
@@ -694,11 +751,18 @@
     .status-processing { background: #dbeafe; color: #1e40af; }
     .status-completed { background: #dcfce7; color: #166534; }
 
+    /* Two Columns - Vertical stacking on mobile */
     .two-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
       margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .two-columns {
+        grid-template-columns: 1fr;
+      }
     }
 
     .info-card {
@@ -793,19 +857,9 @@
       margin-top: 1.5rem;
     }
 
-    @media (max-width: 1024px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .two-columns { grid-template-columns: 1fr; }
+    ::-webkit-scrollbar {
+      width: 6px;
     }
-
-    @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: 1fr; }
-      .top-bar { flex-direction: column; text-align: center; }
-      .admin-actions { justify-content: center; }
-      th, td { padding: 0.75rem; }
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
   </style>
@@ -840,7 +894,7 @@
         <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-cog"></i><span>System Settings</span></a></li>
       </ul>
 
-      <a href="signup.html" class="sidebar-action-btn logout-btn">
+      <a href="#" class="sidebar-action-btn logout-btn" id="logoutBtn">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
       </a>
@@ -855,8 +909,10 @@
             <p>Welcome back, Administrator! Here's your dashboard summary</p>
           </div>
           <div class="admin-actions">
-            <button id="darkModeToggleBtn" class="dark-mode-toggle-btn"><i class="fas fa-moon"></i> <span>Dark Mode</span></button>
-            <button id="rtlToggleBtn" class="rtl-toggle-btn"><i class="fas fa-exchange-alt"></i> <span>RTL Mode</span></button>
+            <div class="top-icons">
+              <button class="icon-btn" id="darkModeIconBtn">🌙</button>
+              <button class="icon-btn text-btn" id="rtlIconBtn">LTR</button>
+            </div>
             <div class="admin-profile">
               <div class="admin-avatar">A</div>
               <div><strong>Admin User</strong><br><span style="font-size:0.75rem;">Super Admin</span></div>
@@ -945,7 +1001,6 @@
   <div id="productModal" class="modal"><div class="modal-content"><h3>Add New Product</h3><div class="form-group"><label>Product Name</label><input type="text" id="productName" placeholder="Product name"></div><div class="form-group"><label>Price ($)</label><input type="number" id="productPrice" placeholder="Price"></div><div class="form-group"><label>Stock Quantity</label><input type="number" id="productStock" placeholder="Stock"></div><div class="modal-buttons"><button class="btn-primary" onclick="addProduct()">Add Product</button><button class="btn-primary" style="background:#64748b;" onclick="closeModal('productModal')">Cancel</button></div></div></div>
 
   <script>
-    // Data Models
     let users = [
       { id: 1, name: 'Priya Sharma', email: 'priya@email.com', role: 'Customer', status: 'Active', orders: 12, joined: '2024-01-15' },
       { id: 2, name: 'Michael Chen', email: 'michael@email.com', role: 'Customer', status: 'Active', orders: 8, joined: '2024-02-20' },
@@ -968,8 +1023,7 @@
       { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156 }
     ];
 
-    // Render Functions
-    function renderOverview() {
+    function renderOverview() { 
       const totalOrders = orders.length;
       const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
       const activeUsers = users.filter(u => u.status === 'Active').length;
@@ -979,17 +1033,17 @@
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${activeUsers}</div><div class="stat-label">Active Users</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-leaf"></i></div><div class="stat-value">${products.length}</div><div class="stat-label">Products</div></div>`;
       
-      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td></tr>`).join('')}</tbody></table>`;
+      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></tr></thead><tbody>${orders.slice(0,4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td></tr>`).join('')}</tbody></table>`;
       
-      const sortedProducts = [...products].sort((a, b) => b.sold - a.sold);
+      const sortedProducts = [...products].sort((a,b)=>b.sold-a.sold);
       document.getElementById('topProductsList').innerHTML = `<div class="info-list">${sortedProducts.map(p => `<div class="info-item"><span>${p.name}</span><span>${p.sold} units sold</span></div>`).join('')}</div>`;
       
-      const completed = orders.filter(o => o.status === 'Completed');
-      const pending = orders.filter(o => o.status === 'Pending');
-      const processing = orders.filter(o => o.status === 'Processing');
+      const completed = orders.filter(o=>o.status==='Completed');
+      const pending = orders.filter(o=>o.status==='Pending');
+      const processing = orders.filter(o=>o.status==='Processing');
       document.getElementById('revenueSummary').innerHTML = `<div class="info-list"><div class="info-item"><span>✅ Completed Orders</span><span>${completed.length} ($${completed.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>⏳ Processing Orders</span><span>${processing.length} ($${processing.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>🕐 Pending Orders</span><span>${pending.length} ($${pending.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>📊 Average Order Value</span><span>$${(totalRevenue/totalOrders).toFixed(2)}</span></div></div>`;
       
-      document.getElementById('recentActivity').innerHTML = users.slice(0, 3).map(u => `<div style="display:flex; gap:1rem; padding:0.8rem 0; border-bottom:1px solid #eef2ff;"><div style="width:40px;height:40px;background:rgba(123,75,42,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user-plus"></i></div><div><p><strong>${u.name}</strong> joined as ${u.role}</p><span style="font-size:0.75rem; color:#94a3b8;">${u.joined}</span></div></div>`).join('');
+      document.getElementById('recentActivity').innerHTML = users.slice(0,3).map(u => `<div style="display:flex; gap:1rem; padding:0.8rem 0; border-bottom:1px solid #eef2ff;"><div style="width:40px;height:40px;background:rgba(123,75,42,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user-plus"></i></div><div><p><strong>${u.name}</strong> joined as ${u.role}</p><span style="font-size:0.75rem; color:#94a3b8;">${u.joined}</span></div></div>`).join('');
     }
     
     function renderUsers() { 
@@ -1012,7 +1066,7 @@
       document.getElementById(`${pageId}-page`).classList.add('active-page'); 
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active')); 
       document.querySelector(`[data-page="${pageId}"] .nav-link`).classList.add('active'); 
-      if (window.innerWidth <= 768) { closeSidebar(); } 
+      if (window.innerWidth <= 768) closeSidebar(); 
       if (pageId === 'overview') renderOverview(); 
       if (pageId === 'users') renderUsers(); 
       if (pageId === 'orders') renderOrders(); 
@@ -1030,8 +1084,8 @@
       users.push({id:users.length+1,name:n,email:e,role:r,status:'Active',orders:0,joined:new Date().toISOString().split('T')[0]}); 
       renderUsers(); 
       closeModal('userModal'); 
-      document.getElementById('userName').value = '';
-      document.getElementById('userEmail').value = '';
+      document.getElementById('userName').value=''; 
+      document.getElementById('userEmail').value=''; 
       alert('User added successfully!'); 
     };
     
@@ -1062,9 +1116,9 @@
       products.push({id:products.length+1,name:n,price:p,stock:s,sold:0}); 
       renderProducts(); 
       closeModal('productModal'); 
-      document.getElementById('productName').value = '';
-      document.getElementById('productPrice').value = '';
-      document.getElementById('productStock').value = '';
+      document.getElementById('productName').value=''; 
+      document.getElementById('productPrice').value=''; 
+      document.getElementById('productStock').value=''; 
       alert('Product added successfully!'); 
     };
     
@@ -1082,25 +1136,26 @@
     window.openModal = (id) => document.getElementById(id).classList.add('active');
     window.closeModal = (id) => document.getElementById(id).classList.remove('active');
     
-    function toggleDarkMode() { 
-      document.body.classList.toggle('dark-mode'); 
-      const isDark = document.body.classList.contains('dark-mode'); 
-      document.querySelectorAll('.dark-mode-toggle-btn').forEach(btn => { 
-        btn.innerHTML = isDark ? '<i class="fas fa-sun"></i> <span>Light Mode</span>' : '<i class="fas fa-moon"></i> <span>Dark Mode</span>'; 
-      }); 
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      const darkIconBtn = document.getElementById('darkModeIconBtn');
+      if(darkIconBtn) darkIconBtn.innerHTML = isDark ? '☀️' : '🌙';
     }
     
-    function toggleRTL() { 
-      document.body.classList.toggle('rtl-active'); 
-      const isRTL = document.body.classList.contains('rtl-active'); 
-      document.querySelectorAll('.rtl-toggle-btn').forEach(btn => { 
-        btn.innerHTML = isRTL ? '<i class="fas fa-exchange-alt"></i> <span>LTR Mode</span>' : '<i class="fas fa-exchange-alt"></i> <span>RTL Mode</span>'; 
-      }); 
+    function toggleRTL() {
+      document.body.classList.toggle('rtl-active');
+      const isRTL = document.body.classList.contains('rtl-active');
+      const rtlBtn = document.getElementById('rtlIconBtn');
+      if(rtlBtn) rtlBtn.innerHTML = isRTL ? 'RTL' : 'LTR';
     }
     
-    document.querySelectorAll('.dark-mode-toggle-btn').forEach(btn => btn.addEventListener('click', toggleDarkMode));
-    document.querySelectorAll('.rtl-toggle-btn').forEach(btn => btn.addEventListener('click', toggleRTL));
+    document.getElementById('darkModeIconBtn')?.addEventListener('click', toggleDarkMode);
+    document.getElementById('rtlIconBtn')?.addEventListener('click', toggleRTL);
     document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
+    document.getElementById('addUserBtn')?.addEventListener('click', () => openModal('userModal'));
+    document.getElementById('addProductBtn')?.addEventListener('click', () => openModal('productModal'));
+    document.getElementById('logoutBtn')?.addEventListener('click', (e) => { e.preventDefault(); alert('Logged out successfully!'); });
     
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
@@ -1114,20 +1169,17 @@
     
     function openSidebar() { 
       sidebar.classList.add('mobile-open'); 
-      overlay.classList.add('active');
+      overlay.classList.add('active'); 
       document.body.classList.add('sidebar-open');
     }
     
-    menuToggle.addEventListener('click', (e) => { 
-      e.stopPropagation();
-      if (sidebar.classList.contains('mobile-open')) { closeSidebar(); } 
-      else { openSidebar(); } 
+    menuToggle?.addEventListener('click', (e) => { 
+      e.stopPropagation(); 
+      if (sidebar.classList.contains('mobile-open')) closeSidebar(); 
+      else openSidebar(); 
     });
     
-    overlay.addEventListener('click', closeSidebar);
-    
-    document.getElementById('addUserBtn')?.addEventListener('click', () => openModal('userModal'));
-    document.getElementById('addProductBtn')?.addEventListener('click', () => openModal('productModal'));
+    overlay?.addEventListener('click', closeSidebar);
     
     renderOverview(); 
     showPage('overview');

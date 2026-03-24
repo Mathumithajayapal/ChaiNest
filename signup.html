@@ -6,7 +6,7 @@
   <title>Chai Nest · Create Account</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -754,18 +754,58 @@
         margin-bottom: 0.5rem;
       }
     }
+    .top-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid #b07a4f;
+      background: transparent;
+      color: #b07a4f;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    /* Text version (LTR) */
+    .text-btn {
+      font-size: 14px;
+      font-weight: 600;
+      width: auto;
+      border-radius: 40px;
+      padding: 0 16px;
+    }
+
+    /* Hover effect */
+    .icon-btn:hover {
+      background: #b07a4f;
+      color: #fff;
+    }
+
+    body.dark-mode .icon-btn {
+      border-color: #fbbf24;
+      color: #fbbf24;
+    }
+
+    body.dark-mode .icon-btn:hover {
+      background: #fbbf24;
+      color: #1e1e2a;
+    }
   </style>
 </head>
 <body>
 
   <!-- Control Panel - Top Right Outside Container -->
   <div class="control-panel">
-    <button class="control-btn" id="darkModeToggle" title="Dark/Light Mode">
-      <i class="fas fa-moon"></i>
-    </button>
-    <button class="control-btn" id="rtlToggle" title="RTL/LTR Mode">
-      <i class="fas fa-text-width"></i>
-    </button>
+    <button class="icon-btn" id="darkModeToggleBtn">🌙</button>
+    <button class="icon-btn text-btn" id="rtlToggleBtn">LTR</button>
   </div>
 
 <div class="signup-container">
@@ -890,9 +930,9 @@
   const confirmError = document.getElementById('confirmError');
   const termsError = document.getElementById('termsError');
   
-  // Dark mode and RTL elements
-  const darkModeToggle = document.getElementById('darkModeToggle');
-  const rtlToggle = document.getElementById('rtlToggle');
+  // Toggle buttons
+  const darkModeToggleBtn = document.getElementById('darkModeToggleBtn');
+  const rtlToggleBtn = document.getElementById('rtlToggleBtn');
   
   // Password strength elements
   const strengthFill = document.getElementById('strengthFill');
@@ -1090,21 +1130,16 @@
     }
   });
   
-  // Dark Mode Functionality - DEFAULT LIGHT MODE (no dark mode on load)
+  // Dark Mode Functionality - FIXED
   function initDarkMode() {
     const savedMode = localStorage.getItem('chaiNest_darkMode');
-    // Only apply dark mode if savedMode is explicitly 'dark', otherwise stay in light mode
     if (savedMode === 'dark') {
       document.body.classList.add('dark-mode');
-      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      if (darkModeToggleBtn) darkModeToggleBtn.innerHTML = '☀️';
     } else {
-      // Default: light mode (no dark-mode class)
       document.body.classList.remove('dark-mode');
-      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      // Ensure localStorage is set to 'light' for consistency if not set
-      if (!savedMode) {
-        localStorage.setItem('chaiNest_darkMode', 'light');
-      }
+      if (darkModeToggleBtn) darkModeToggleBtn.innerHTML = '🌙';
+      if (!savedMode) localStorage.setItem('chaiNest_darkMode', 'light');
     }
   }
   
@@ -1112,23 +1147,23 @@
     if (document.body.classList.contains('dark-mode')) {
       document.body.classList.remove('dark-mode');
       localStorage.setItem('chaiNest_darkMode', 'light');
-      darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      if (darkModeToggleBtn) darkModeToggleBtn.innerHTML = '🌙';
     } else {
       document.body.classList.add('dark-mode');
       localStorage.setItem('chaiNest_darkMode', 'dark');
-      darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      if (darkModeToggleBtn) darkModeToggleBtn.innerHTML = '☀️';
     }
   }
   
-  // RTL Functionality
+  // RTL Functionality - FIXED
   function initRTL() {
     const savedDir = localStorage.getItem('chaiNest_dir');
     if (savedDir === 'rtl') {
       document.body.setAttribute('dir', 'rtl');
-      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+      if (rtlToggleBtn) rtlToggleBtn.innerHTML = 'RTL';
     } else {
       document.body.setAttribute('dir', 'ltr');
-      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+      if (rtlToggleBtn) rtlToggleBtn.innerHTML = 'LTR';
     }
   }
   
@@ -1136,19 +1171,19 @@
     if (document.body.getAttribute('dir') === 'rtl') {
       document.body.setAttribute('dir', 'ltr');
       localStorage.setItem('chaiNest_dir', 'ltr');
-      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+      if (rtlToggleBtn) rtlToggleBtn.innerHTML = 'LTR';
     } else {
       document.body.setAttribute('dir', 'rtl');
       localStorage.setItem('chaiNest_dir', 'rtl');
-      rtlToggle.innerHTML = '<i class="fas fa-text-width"></i>';
+      if (rtlToggleBtn) rtlToggleBtn.innerHTML = 'RTL';
     }
   }
   
-  // Add event listeners
-  darkModeToggle.addEventListener('click', toggleDarkMode);
-  rtlToggle.addEventListener('click', toggleRTL);
+  // Add event listeners for toggle buttons
+  if (darkModeToggleBtn) darkModeToggleBtn.addEventListener('click', toggleDarkMode);
+  if (rtlToggleBtn) rtlToggleBtn.addEventListener('click', toggleRTL);
   
-  // Initialize - Light mode by default
+  // Initialize - Light mode and LTR by default
   window.addEventListener('DOMContentLoaded', function() {
     initDarkMode();
     initRTL();
