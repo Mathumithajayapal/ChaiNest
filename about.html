@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -82,6 +81,17 @@
 
     body.dark-mode .mobile-dropdown-content a:hover {
       color: #c97e5a !important;
+    }
+
+    /* ========== FIX: Dark mode active mobile link styles ========== */
+    body.dark-mode .mobile-nav-link.active {
+      color: #c97e54 !important;
+      font-weight: 700;
+    }
+
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #c97e54 !important;
+      font-weight: 700;
     }
 
     body.dark-mode .mobile-btn.login-mobile {
@@ -214,7 +224,6 @@
     }
 
     /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
-    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
     @media (max-width: 1199px) {
       .nav-links {
         display: none !important;
@@ -233,7 +242,6 @@
       }
     }
     
-    /* Desktop: Show desktop nav only on screens 1200px and above */
     @media (min-width: 1200px) {
       .nav-links {
         display: flex !important;
@@ -271,7 +279,6 @@
       color: #7B4B2A;
     }
 
-    /* Active link style for desktop */
     .nav-links a.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -417,7 +424,7 @@
       border-radius: 2px;
     }
 
-    /* Mobile Menu Overlay - click to close */
+    /* Mobile Menu */
     .mobile-menu-overlay {
       position: fixed;
       top: 0;
@@ -492,7 +499,13 @@
       color: #7B4B2A;
     }
 
+    /* ========== Light mode active mobile link styles ========== */
     .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
       color: #7B4B2A;
       font-weight: 700;
     }
@@ -510,11 +523,6 @@
       font-weight: 500;
       color: #111;
       transition: color 0.2s;
-    }
-
-    .mobile-dropdown-toggle.active-toggle span:first-child {
-      color: #7B4B2A;
-      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -609,13 +617,24 @@
     }
 
     .social-links a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
       color: #ccc;
+      font-size: 16px;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
 
-    .social-links a:hover { color: #7B4B2A; }
+    .social-links a:hover {
+      background: #7B4B2A;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
     .footer-col h4 {
       color: white;
@@ -1255,52 +1274,6 @@
       background: #7B4B2A;
       color: white;
     }
-    .social-links a {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  color: #ccc;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: #7B4B2A;
-  color: #fff;
-  transform: translateY(-3px);
-}
-.dropdown-content {
-  list-style: none;   /* 🔥 removes bullet */
-  margin: 0;
-  padding: 0.8rem 0; /* keep your spacing */
-}
-
-.dropdown-content li {
-  list-style: none;   /* extra safety */
-}
-
-   body.dark-mode .mobile-dropdown-content a {
-  color: #f0f0f0; /* change to white */
-}
-/* 🌙 Dark mode active link (mobile) */
-body.dark-mode .mobile-nav-link.active {
-  color: #c97e54;   /* highlight color */
-  font-weight: 700;
-}
-
-/* 🌙 Dark mode active dropdown toggle (mobile) */
-body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-  color: #c97e54;
-  font-weight: 700;
-}
   </style>
 </head>
 <body>

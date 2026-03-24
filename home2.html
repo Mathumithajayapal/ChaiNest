@@ -1278,6 +1278,12 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
   color: #c97e54;
   font-weight: 700;
 }
+/* Tablet view → 2x2 grid */
+@media (max-width: 1024px) and (min-width: 600px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
   </style>
 </head>
 <body>

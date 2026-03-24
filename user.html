@@ -3,11 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-  <title>Chai Nest · Complete Dashboard</title>
+  <title>Chai Nest · Responsive Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -101,16 +99,18 @@
       color: #f1f5f9;
     }
 
-    /* Sidebar */
+    /* Sidebar - improved mobile behavior */
     .sidebar {
       width: 280px;
       background-color: #ffffff;
       color: #1e293b;
       position: fixed;
+      top: 0;
+      left: 0;
       height: 100vh;
       overflow-y: auto;
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 100;
+      z-index: 1000;
       transform: translateX(0);
       box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
       border-right: 1px solid #eef2ff;
@@ -120,12 +120,12 @@
       background: linear-gradient(180deg, #1a1a2a 0%, #0f0f1a 100%);
       color: #f1f5f9;
       border-right: 1px solid rgba(255,255,255,0.1);
-      box-shadow: none;
     }
 
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
+        z-index: 1001;
       }
       .sidebar.mobile-open {
         transform: translateX(0);
@@ -141,7 +141,7 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(4px);
-      z-index: 99;
+      z-index: 999;
       transition: all 0.3s ease;
     }
     .sidebar-overlay.active {
@@ -149,18 +149,11 @@
     }
     body.sidebar-open {
       overflow: hidden;
-      position: fixed;
-      width: 100%;
-      height: 100%;
     }
 
     .sidebar-header {
       padding: 1.5rem;
       border-bottom: 1px solid #eef2ff;
-    }
-
-    body.dark-mode .sidebar-header {
-      border-bottom-color: rgba(255,255,255,0.1);
     }
 
     .logo {
@@ -221,26 +214,12 @@
       border-radius: 0 12px 12px 0;
     }
 
-    body.dark-mode .nav-link {
-      color: #cbd5e1;
-    }
-
     .nav-link:hover {
       background: rgba(123, 75, 42, 0.08);
       color: #7B4B2A;
     }
 
-    body.dark-mode .nav-link:hover {
-      background: rgba(123, 75, 42, 0.2);
-      color: #c97e54;
-    }
-
     .nav-link.active {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    body.dark-mode .nav-link.active {
       background: #7B4B2A;
       color: white;
     }
@@ -264,44 +243,31 @@
       border-top: 1px solid #eef2ff;
     }
 
-    body.dark-mode .sidebar-action-btn {
-      color: #cbd5e1;
-      border-top-color: rgba(255,255,255,0.1);
-    }
-
     .sidebar-action-btn:hover {
       background: rgba(123, 75, 42, 0.08);
       color: #7B4B2A;
     }
 
-    body.dark-mode .sidebar-action-btn:hover {
-      background: rgba(123, 75, 42, 0.2);
-      color: #c97e54;
-    }
-
-    .sidebar-action-btn i {
-      width: 24px;
-      font-size: 1.2rem;
-    }
-
-    /* Main Content */
+    /* Main Content - improved spacing for mobile */
     .main-content {
       flex: 1;
       margin-left: 280px;
       padding: 1.5rem 2rem;
       transition: margin-left 0.3s ease;
       min-height: 100vh;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 768px) {
       .main-content {
         margin-left: 0;
         padding: 1rem;
-        margin-top: 0;
+        padding-top: 70px;
       }
     }
 
-    /* RTL Support - only affects layout direction */
+    /* RTL Support */
     body.rtl-active {
       direction: rtl;
     }
@@ -332,25 +298,13 @@
       }
     }
 
-    body.rtl-active .nav-link {
-      flex-direction: row-reverse;
-    }
-
-    body.rtl-active .card-header {
-      flex-direction: row-reverse;
-    }
-
-    body.rtl-active .activity-item {
-      flex-direction: row-reverse;
-    }
-
     /* Mobile Menu Toggle Button */
     .menu-toggle {
       display: none;
       position: fixed;
       top: 1rem;
       left: 1rem;
-      z-index: 110;
+      z-index: 1100;
       background: #7B4B2A;
       color: white;
       border: none;
@@ -391,7 +345,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Top Header */
+    /* Top Header - FULLY RESPONSIVE FIX */
     .top-header {
       display: flex;
       justify-content: space-between;
@@ -401,10 +355,11 @@
       gap: 1rem;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .top-header {
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
       }
     }
 
@@ -433,10 +388,11 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .header-actions {
-        flex-direction: column;
         width: 100%;
+        flex-direction: column;
+        gap: 0.8rem;
       }
     }
 
@@ -448,9 +404,11 @@
       border-radius: 12px;
       padding: 0.5rem 1rem;
       gap: 0.5rem;
+      flex: 1;
+      min-width: 180px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .search-bar {
         width: 100%;
       }
@@ -459,27 +417,29 @@
       }
     }
 
-    .search-bar i {
-      color: #94a3b8;
-    }
-
     .search-bar input {
       border: none;
       outline: none;
       font-size: 0.9rem;
       width: 200px;
+      background: transparent;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .search-bar input {
         width: 100%;
       }
     }
 
-    /* Toggle Buttons */
     .toggle-buttons {
       display: flex;
       gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .toggle-buttons {
+        justify-content: center;
+      }
     }
 
     .toggle-btn {
@@ -497,29 +457,11 @@
       transition: all 0.2s;
     }
 
-    .toggle-btn:hover {
-      background: #7B4B2A;
-      color: white;
-      border-color: #7B4B2A;
-    }
-
-    body.dark-mode .toggle-btn {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #3a3a4a;
-      color: #c97e54;
-    }
-
-    body.dark-mode .toggle-btn:hover {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    /* RTL Toggle Button - Fixed: always shows exchange icon */
     .rtl-toggle-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 8px 16px;
       font-size: 14px;
       font-weight: 500;
       color: #5a3e2b;
@@ -528,36 +470,19 @@
       border-radius: 30px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
-    /* Icon inside RTL button - never changes, always exchange-alt */
-    .rtl-toggle-btn i {
-      font-size: 14px;
-      transition: transform 0.3s ease;
+    @media (max-width: 768px) {
+      .rtl-toggle-btn {
+        justify-content: center;
+        width: auto;
+        flex: 1;
+      }
     }
 
     .rtl-toggle-btn:hover {
       background: #8b5e3c;
       color: #fff;
-      border-color: #8b5e3c;
-      transform: translateY(-2px);
-    }
-
-    .rtl-toggle-btn:active {
-      transform: scale(0.96);
-    }
-
-    body.dark-mode .rtl-toggle-btn {
-      background: #2a2a35;
-      border-color: #3a3a4a;
-      color: #c97e54;
-    }
-
-    body.dark-mode .rtl-toggle-btn:hover {
-      background: #7B4B2A;
-      color: white;
-      border-color: #7B4B2A;
     }
 
     .user-profile {
@@ -565,6 +490,12 @@
       align-items: center;
       gap: 0.75rem;
       cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .user-profile {
+        justify-content: center;
+      }
     }
 
     .user-avatar {
@@ -579,7 +510,7 @@
       font-weight: 600;
     }
 
-    /* Stats Cards */
+    /* Stats Grid - fully responsive */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -609,11 +540,6 @@
       border: 1px solid #eef2ff;
     }
 
-    .stat-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    }
-
     .stat-icon {
       width: 48px;
       height: 48px;
@@ -625,16 +551,10 @@
       margin-bottom: 0.8rem;
     }
 
-    .stat-icon i {
-      font-size: 1.5rem;
-      color: #7B4B2A;
-    }
-
     .stat-value {
       font-size: 1.8rem;
       font-weight: 700;
       color: #1e293b;
-      margin-bottom: 0.25rem;
     }
 
     .stat-label {
@@ -643,7 +563,7 @@
       font-weight: 500;
     }
 
-    /* Charts Section */
+    /* ===== FIXED: Mobile-friendly charts section ===== */
     .charts-section {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -651,9 +571,57 @@
       margin-bottom: 2rem;
     }
 
-    @media (max-width: 1024px) {
+    /* On tablet screens, keep side by side but with adjusted proportions */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .charts-section {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 1.2rem;
+      }
+    }
+
+    /* On mobile: stack vertically AND ensure each card takes full width without overflow */
+    @media (max-width: 768px) {
       .charts-section {
         grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      
+      /* Fix for Sales Overview card - canvas container responsive */
+      .chart-card {
+        padding: 1rem;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      
+      .chart-card canvas {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      
+      /* Ensure the top products list inside chart card is readable */
+      .top-product-item {
+        width: 100%;
+      }
+      
+      .top-product-header {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+      }
+    }
+
+    /* Extra small devices (below 480px) - extra padding safety */
+    @media (max-width: 480px) {
+      .charts-section {
+        gap: 1rem;
+      }
+      .chart-card {
+        padding: 0.9rem;
+      }
+      .card-header h3 {
+        font-size: 0.9rem;
+      }
+      .top-product-name, .top-product-sales {
+        font-size: 0.8rem;
       }
     }
 
@@ -663,6 +631,7 @@
       padding: 1.5rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2ff;
+      transition: all 0.2s;
     }
 
     .card-header {
@@ -680,7 +649,47 @@
       color: #1e293b;
     }
 
-    /* Tables */
+    /* Top Products List - Mobile friendly */
+    .top-product-item {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .top-product-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .top-product-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .top-product-sales {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #7B4B2A;
+    }
+
+    .progress-bar-container {
+      background: #e2e8f0;
+      border-radius: 10px;
+      height: 6px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: #7B4B2A;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* Tables - horizontal scroll on mobile */
     .data-table {
       background: white;
       border-radius: 20px;
@@ -697,6 +706,16 @@
       min-width: 500px;
     }
 
+    @media (max-width: 640px) {
+      table {
+        min-width: 100%;
+      }
+      th, td {
+        padding: 0.6rem;
+        font-size: 0.75rem;
+      }
+    }
+
     th, td {
       padding: 0.8rem;
       text-align: left;
@@ -707,11 +726,6 @@
       font-weight: 600;
       color: #475569;
       font-size: 0.8rem;
-    }
-
-    td {
-      color: #334155;
-      font-size: 0.85rem;
     }
 
     .status-badge {
@@ -725,10 +739,8 @@
     .status-completed { background: #dcfce7; color: #166534; }
     .status-pending { background: #fef9c3; color: #854d0e; }
     .status-processing { background: #dbeafe; color: #1e40af; }
-    .status-active { background: #dcfce7; color: #166534; }
-    .status-inactive { background: #fee2e2; color: #991b1b; }
 
-    /* Product Cards */
+    /* Products Grid - responsive cards */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -739,6 +751,7 @@
     @media (max-width: 640px) {
       .products-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
       }
     }
 
@@ -747,13 +760,7 @@
       border-radius: 20px;
       overflow: hidden;
       transition: transform 0.2s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2ff;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
     }
 
     .product-image {
@@ -769,21 +776,14 @@
     .product-title {
       font-weight: 700;
       margin-bottom: 0.3rem;
-      font-size: 1rem;
     }
 
     .product-price {
       color: #7B4B2A;
       font-weight: 600;
-      margin-bottom: 0.3rem;
     }
 
-    .product-stock {
-      font-size: 0.75rem;
-      color: #64748b;
-    }
-
-    /* Quick Actions */
+    /* Quick Actions - stack on mobile */
     .quick-actions {
       display: flex;
       gap: 1rem;
@@ -794,6 +794,7 @@
     @media (max-width: 640px) {
       .quick-actions {
         flex-direction: column;
+        gap: 0.8rem;
       }
     }
 
@@ -828,6 +829,16 @@
       border-bottom: 1px solid #f1f5f9;
     }
 
+    @media (max-width: 640px) {
+      .activity-item {
+        gap: 0.8rem;
+      }
+      .activity-icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
     .activity-icon {
       width: 36px;
       height: 36px;
@@ -841,12 +852,10 @@
 
     .activity-icon i {
       color: #7B4B2A;
-      font-size: 0.9rem;
     }
 
     .activity-content p {
       font-weight: 500;
-      margin-bottom: 0.2rem;
       font-size: 0.85rem;
     }
 
@@ -885,8 +894,6 @@
       display: block;
       font-weight: 500;
       margin-bottom: 0.4rem;
-      color: #1e293b;
-      font-size: 0.85rem;
     }
 
     .form-group input, .form-group select {
@@ -895,12 +902,6 @@
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       font-family: inherit;
-      outline: none;
-      font-size: 0.9rem;
-    }
-
-    .form-group input:focus, .form-group select:focus {
-      border-color: #7B4B2A;
     }
 
     .save-btn {
@@ -911,28 +912,25 @@
       border-radius: 12px;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
-      font-size: 0.9rem;
+      width: auto;
     }
 
-    .save-btn:hover {
-      background: #5a3a1f;
+    @media (max-width: 640px) {
+      .save-btn {
+        width: 100%;
+      }
     }
 
     ::-webkit-scrollbar {
       width: 6px;
-      height: 6px;
     }
     ::-webkit-scrollbar-track { background: #f1f1f1; }
     ::-webkit-scrollbar-thumb { background: #7B4B2A; border-radius: 3px; }
     
-    .logo-text a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .sidebar-action-btn {
-      text-decoration: none;
+    /* Additional fix for chart container on mobile to avoid overflow */
+    .chart-card canvas {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -951,10 +949,9 @@
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <span class="logo-text"><a href="index.html">Chai<span>Nest</span></a></span>
+          <span class="logo-text">Chai<span>Nest</span></span>
         </div>
       </div>
-      
       <ul class="nav-menu">
         <li class="nav-item" data-page="dashboard"><a class="nav-link active"><i class="fas fa-chart-line"></i><span>Dashboard</span></a></li>
         <li class="nav-item" data-page="orders"><a class="nav-link"><i class="fas fa-shopping-bag"></i><span>Orders</span></a></li>
@@ -963,94 +960,26 @@
         <li class="nav-item" data-page="analytics"><a class="nav-link"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
         <li class="nav-item" data-page="settings"><a class="nav-link"><i class="fas fa-cog"></i><span>Settings</span></a></li>
       </ul>
-      <a href="signup.html" class="sidebar-action-btn">
+      <a href="#" class="sidebar-action-btn" id="logoutBtn">
         <i class="fas fa-sign-out-alt"></i>
         <span>Logout</span>
       </a>
     </aside>
 
-    <main class="main-content">
-      <!-- Dashboard Page -->
-      <div id="dashboard-page" class="page-container active-page">
-        <div class="top-header">
-          <div class="page-title"><h1>Dashboard</h1><p>Welcome back! Here's your business overview</p></div>
-          <div class="header-actions">
-            <div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
-            <div class="toggle-buttons">
-              <button class="toggle-btn" id="darkModeToggleBtn" title="Dark/Light Mode"><i class="fas fa-moon"></i></button>
-              <button id="rtlToggleBtn" class="rtl-toggle-btn"><i class="fas fa-exchange-alt"></i> <span>RTL Mode</span></button>
-            </div>
-            <div class="user-profile"><div class="user-avatar"><i class="fas fa-user"></i></div><span>Admin</span></div>
-          </div>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">1,284</div><div class="stat-label">Total Orders</div></div>
-          <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$48,592</div><div class="stat-label">Total Revenue</div></div>
-          <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">3,241</div><div class="stat-label">Active Customers</div></div>
-          <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">+23.5%</div><div class="stat-label">Growth Rate</div></div>
-        </div>
-        <div class="quick-actions">
-          <button class="action-btn" id="addProductQuickBtn"><i class="fas fa-plus-circle"></i>Add Product</button>
-          <button class="action-btn"><i class="fas fa-truck"></i>Track Orders</button>
-          <button class="action-btn"><i class="fas fa-envelope"></i>Newsletter</button>
-        </div>
-        <div class="charts-section">
-          <div class="chart-card"><div class="card-header"><h3>Sales Overview</h3><span style="color:#7B4B2A; font-size:0.8rem;">Last 7 days</span></div><div style="height: 220px;"><canvas id="salesChart"></canvas></div></div>
-          <div class="chart-card"><div class="card-header"><h3>Top Products</h3></div><div id="topProductsList"></div></div>
-        </div>
-        <div class="data-table"><div class="card-header"><h3>Recent Orders</h3><a href="#" style="color:#7B4B2A; font-size:0.8rem;" onclick="showPage('orders'); return false;">View All →</a></div><div id="recentOrdersTable"></div></div>
-        <div class="chart-card"><div class="card-header"><h3>Recent Activity</h3></div><div id="activityFeed"></div></div>
-      </div>
-
-      <!-- Orders Page -->
-      <div id="orders-page" class="page-container">
-        <div class="top-header"><div class="page-title"><h1>Orders Management</h1><p>Track and manage all customer orders</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders..."></div></div></div>
-        <div class="stats-grid" id="orderStats"></div>
-        <div class="data-table">
-          <table>
-            <thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
-            <tbody id="ordersTableBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Products Page -->
-      <div id="products-page" class="page-container">
-        <div class="top-header"><div class="page-title"><h1>Product Catalog</h1><p>Manage your tea collection</p></div><div class="header-actions"><button class="action-btn" id="addProductBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Product</button></div></div>
-        <div class="products-grid" id="productsGrid"></div>
-      </div>
-
-      <!-- Customers Page -->
-      <div id="customers-page" class="page-container">
-        <div class="top-header"><div class="page-title"><h1>Customer Base</h1><p>View and manage your customers</p></div></div>
-        <div class="stats-grid" id="customerStats"></div>
-        <div class="data-table">
-          <table>
-            <thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th></tr></thead>
-            <tbody id="customersTableBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Analytics Page -->
-      <div id="analytics-page" class="page-container">
-        <div class="top-header"><div class="page-title"><h1>Analytics</h1><p>Deep insights into your business</p></div></div>
-        <div class="analytics-grid"><div class="chart-card"><div class="card-header"><h3>Monthly Revenue</h3></div><div style="height: 220px;"><canvas id="revenueChart"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Category Performance</h3></div><div style="height: 220px;"><canvas id="categoryChart"></canvas></div></div></div>
-        <div class="data-table"><div class="card-header"><h3>Top Performing Products</h3></div><div id="topProductsTable"></div></div>
-      </div>
-
-      <!-- Settings Page -->
-      <div id="settings-page" class="page-container">
-        <div class="top-header"><div class="page-title"><h1>Settings</h1><p>Manage your store preferences</p></div></div>
-        <div class="settings-form"><h3 style="margin-bottom:1rem; font-size:1.2rem;">Store Information</h3><div class="form-group"><label>Store Name</label><input type="text" id="storeName" value="Chai Nest Tea Co."></div><div class="form-group"><label>Store Email</label><input type="email" id="storeEmail" value="hello@chainest.com"></div><div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option><option>EUR (€)</option></select></div><div class="form-group"><label>Default Tax Rate</label><input type="text" id="taxRate" value="10%"></div><button class="save-btn" onclick="saveSettings()">Save Changes</button></div>
-      </div>
+    <main class="main-content" id="mainContent">
+      <div id="dashboard-page" class="page-container active-page"></div>
+      <div id="orders-page" class="page-container"></div>
+      <div id="products-page" class="page-container"></div>
+      <div id="customers-page" class="page-container"></div>
+      <div id="analytics-page" class="page-container"></div>
+      <div id="settings-page" class="page-container"></div>
     </main>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Data
-    const orders = [
+    // ---------- DATA ----------
+    const ordersData = [
       { id: '#CHAI-001', customer: 'Priya Sharma', date: '2024-01-15', items: 3, total: 45.00, status: 'Completed' },
       { id: '#CHAI-002', customer: 'Michael Chen', date: '2024-01-14', items: 2, total: 32.50, status: 'Processing' },
       { id: '#CHAI-003', customer: 'Sarah Johnson', date: '2024-01-14', items: 1, total: 58.00, status: 'Completed' },
@@ -1058,14 +987,14 @@
       { id: '#CHAI-005', customer: 'Emma Wilson', date: '2024-01-12', items: 2, total: 39.90, status: 'Completed' }
     ];
     
-    const products = [
-      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'images/imgchai (1).jpg' },
-      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'images/imgchai (5).jpg' },
-      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'images/imgchai (6).jpg' },
-      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'images/imgchai (7).jpg' }
+    const productsData = [
+      { id: 1, name: 'Masala Chai', price: 24.99, stock: 156, sold: 342, image: 'images/imgchai (9).jpg' },
+      { id: 2, name: 'Darjeeling Tea', price: 32.50, stock: 89, sold: 287, image: 'images/imgchai (10).jpg' },
+      { id: 3, name: 'Matcha Green', price: 58.00, stock: 45, sold: 198, image: 'himages/imgchai (11).jpg' },
+      { id: 4, name: 'Herbal Blend', price: 28.75, stock: 234, sold: 156, image: 'images/imgchai (12).jpg' }
     ];
     
-    const customers = [
+    const customersData = [
       { name: 'Priya Sharma', email: 'priya@email.com', orders: 12, spent: 456.00, status: 'Active' },
       { name: 'Michael Chen', email: 'michael@email.com', orders: 8, spent: 289.50, status: 'Active' },
       { name: 'Sarah Johnson', email: 'sarah@email.com', orders: 15, spent: 678.00, status: 'VIP' },
@@ -1073,225 +1002,114 @@
       { name: 'Emma Wilson', email: 'emma@email.com', orders: 9, spent: 245.30, status: 'Active' }
     ];
     
-    const topProducts = [{ name: 'Masala Chai', sales: 342, percent: 78 }, { name: 'Darjeeling Tea', sales: 287, percent: 65 }, { name: 'Matcha Green', sales: 198, percent: 45 }, { name: 'Herbal Blend', sales: 156, percent: 35 }];
+    const topProductsList = [
+      { name: 'Masala Chai', sales: 342, percent: 78 },
+      { name: 'Darjeeling Tea', sales: 287, percent: 65 },
+      { name: 'Matcha Green', sales: 198, percent: 45 },
+      { name: 'Herbal Blend', sales: 156, percent: 35 }
+    ];
     
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      const darkToggleBtn = document.getElementById('darkModeToggleBtn');
-      if (darkToggleBtn) {
-        darkToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-      }
-      localStorage.setItem('chaiNest_darkMode', isDark);
-    }
-    
-    // RTL Toggle - ONLY toggles direction, NEVER changes the button icon
-    function toggleRTL() {
-      document.body.classList.toggle('rtl-active');
-      const isRTL = document.body.classList.contains('rtl-active');
-      localStorage.setItem('chaiNest_rtl', isRTL);
-      // IMPORTANT: Do NOT modify the button's inner HTML - icon stays as exchange-alt
-      // The button already has the correct icon structure, we keep it unchanged
-    }
-    
-    // Initialize Dark Mode and RTL from localStorage
-    function initDarkMode() {
-      const savedDarkMode = localStorage.getItem('chaiNest_darkMode');
-      if (savedDarkMode === 'true') {
-        document.body.classList.add('dark-mode');
-        const darkToggleBtn = document.getElementById('darkModeToggleBtn');
-        if (darkToggleBtn) darkToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-      }
-    }
-    
-    function initRTL() {
-      const savedRTL = localStorage.getItem('chaiNest_rtl');
-      if (savedRTL === 'true') {
-        document.body.classList.add('rtl-active');
-      }
-      // Ensure RTL button always shows exchange-alt icon (it already does in HTML)
-      const rtlBtn = document.getElementById('rtlToggleBtn');
-      if (rtlBtn) {
-        // Verify the icon is exchange-alt - if somehow changed, restore it
-        const icon = rtlBtn.querySelector('i');
-        if (icon && !icon.classList.contains('fa-exchange-alt')) {
-          icon.className = 'fas fa-exchange-alt';
-        }
-      }
-    }
-    
-    // Page Navigation
-    function showPage(pageId) {
-      const pages = ['dashboard', 'orders', 'products', 'customers', 'analytics', 'settings'];
-      pages.forEach(p => {
-        const el = document.getElementById(`${p}-page`);
-        if (el) el.classList.remove('active-page');
-      });
-      document.getElementById(`${pageId}-page`).classList.add('active-page');
-      
-      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-      document.querySelector(`[data-page="${pageId}"] .nav-link`).classList.add('active');
-      
-      if (window.innerWidth <= 768) {
-        document.getElementById('sidebar').classList.remove('mobile-open');
-        document.getElementById('sidebarOverlay').classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-      }
-      
-      if (pageId === 'orders') renderOrdersPage();
-      if (pageId === 'products') renderProductsPage();
-      if (pageId === 'customers') renderCustomersPage();
-    }
-    
-    function renderOrdersPage() {
-      const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
-      const pending = orders.filter(o => o.status === 'Pending').length;
-      const processing = orders.filter(o => o.status === 'Processing').length;
-      const completed = orders.filter(o => o.status === 'Completed').length;
-      document.getElementById('orderStats').innerHTML = `
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${pending}</div><div class="stat-label">Pending</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-truck"></i></div><div class="stat-value">${processing}</div><div class="stat-label">Processing</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${completed}</div><div class="stat-label">Completed</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Total Value</div></div>
-      `;
-      document.getElementById('ordersTableBody').innerHTML = orders.map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('');
-    }
-    
-    function renderProductsPage() {
-      document.getElementById('productsGrid').innerHTML = products.map(p => `
-        <div class="product-card">
-          <div class="product-image" style="background-image:url('${p.image}')"></div>
-          <div class="product-info">
-            <div class="product-title">${p.name}</div>
-            <div class="product-price">$${p.price}</div>
-            <div class="product-stock">Stock: ${p.stock} units</div>
-          </div>
-        </div>
-      `).join('');
-    }
-    
-    function renderCustomersPage() {
-      const total = customers.length;
-      const vip = customers.filter(c => c.status === 'VIP').length;
-      const active = customers.filter(c => c.status === 'Active').length;
-      document.getElementById('customerStats').innerHTML = `
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${total}</div><div class="stat-label">Total Customers</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-value">${vip}</div><div class="stat-label">VIP Members</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-user-check"></i></div><div class="stat-value">${active}</div><div class="stat-label">Active</div></div>
-        <div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">68%</div><div class="stat-label">Retention</div></div>
-      `;
-      document.getElementById('customersTableBody').innerHTML = customers.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.orders}</td><td>$${c.spent}</td><td><span class="status-badge status-${c.status === 'VIP' ? 'completed' : 'active'}">${c.status}</span></td></tr>`).join('');
-    }
-    
-    // Dashboard Components
-    const recentOrdersDiv = document.getElementById('recentOrdersTable');
-    if (recentOrdersDiv) {
-      recentOrdersDiv.innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th></tr></thead><tbody>${orders.slice(0, 4).map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table>`;
-    }
-    
-    const topProductsDiv = document.getElementById('topProductsList');
-    if (topProductsDiv) {
-      topProductsDiv.innerHTML = topProducts.map(p => `<div style="margin-bottom:1rem;"><div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;"><span style="font-size:0.85rem;">${p.name}</span><span style="font-weight:600; font-size:0.85rem;">${p.sales} sales</span></div><div style="background:#e2e8f0; border-radius:10px; height:6px;"><div style="width:${p.percent}%; background:#7B4B2A; height:100%; border-radius:10px;"></div></div></div>`).join('');
-    }
-    
-    const activities = [
+    const activitiesFeed = [
       { icon: 'shopping-cart', text: 'New order #CHAI-006 received from David Miller', time: '5 minutes ago' },
       { icon: 'leaf', text: 'Masala Chai stock updated - 150 units added', time: '2 hours ago' },
       { icon: 'user-plus', text: 'New customer registered: Olivia Martinez', time: 'Yesterday, 3:45 PM' },
       { icon: 'truck', text: 'Order #CHAI-002 shipped via FedEx', time: 'Yesterday, 10:30 AM' }
     ];
-    const activityFeed = document.getElementById('activityFeed');
-    if (activityFeed) {
-      activityFeed.innerHTML = activities.map(a => `<div class="activity-item"><div class="activity-icon"><i class="fas fa-${a.icon}"></i></div><div class="activity-content"><p>${a.text}</p><span class="activity-time">${a.time}</span></div></div>`).join('');
+    
+    let salesChartInstance = null;
+    
+    function renderDashboard() {
+      const dashboardDiv = document.getElementById('dashboard-page');
+      dashboardDiv.innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Dashboard</h1><p>Welcome back! Here's your business overview</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div><div class="toggle-buttons"><button class="toggle-btn" id="darkModeToggleBtn"><i class="fas fa-moon"></i></button><button id="rtlToggleBtn" class="rtl-toggle-btn"><i class="fas fa-exchange-alt"></i> <span>RTL Mode</span></button></div><div class="user-profile"><div class="user-avatar"><i class="fas fa-user"></i></div><span>Admin</span></div></div></div>
+        <div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-value">1,284</div><div class="stat-label">Total Orders</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$48,592</div><div class="stat-label">Total Revenue</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">3,241</div><div class="stat-label">Active Customers</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">+23.5%</div><div class="stat-label">Growth Rate</div></div></div>
+        <div class="quick-actions"><button class="action-btn" id="addProductQuickBtn"><i class="fas fa-plus-circle"></i>Add Product</button><button class="action-btn"><i class="fas fa-truck"></i>Track Orders</button><button class="action-btn"><i class="fas fa-envelope"></i>Newsletter</button></div>
+        <div class="charts-section"><div class="chart-card"><div class="card-header"><h3>Sales Overview</h3><span style="color:#7B4B2A; font-size:0.8rem;">Last 7 days</span></div><div style="width:100%; height: 220px; position:relative;"><canvas id="salesChart" style="max-width:100%; height:auto; width:100%;"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Top Products</h3></div><div id="topProductsList"></div></div></div>
+        <div class="data-table"><div class="card-header"><h3>Recent Orders</h3><a href="#" style="color:#7B4B2A; font-size:0.8rem;" onclick="showPage('orders'); return false;">View All →</a></div><div id="recentOrdersTable"></div></div>
+        <div class="chart-card"><div class="card-header"><h3>Recent Activity</h3></div><div id="activityFeed"></div></div>
+      `;
+      
+      const container = document.getElementById('topProductsList');
+      if(container) container.innerHTML = topProductsList.map(p => `<div class="top-product-item"><div class="top-product-header"><span class="top-product-name">${p.name}</span><span class="top-product-sales">${p.sales} sales</span></div><div class="progress-bar-container"><div class="progress-bar-fill" style="width: ${p.percent}%;"></div></div></div>`).join('');
+      
+      const recentDiv = document.getElementById('recentOrdersTable');
+      recentDiv.innerHTML = `<table style="width:100%"><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Status</th></tr></thead><tbody>${ordersData.slice(0,4).map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table>`;
+      
+      const activityDiv = document.getElementById('activityFeed');
+      activityDiv.innerHTML = activitiesFeed.map(a => `<div class="activity-item"><div class="activity-icon"><i class="fas fa-${a.icon}"></i></div><div class="activity-content"><p>${a.text}</p><span class="activity-time">${a.time}</span></div></div>`).join('');
+      
+      const salesCtx = document.getElementById('salesChart')?.getContext('2d');
+      if(salesCtx) {
+        if(salesChartInstance) salesChartInstance.destroy();
+        salesChartInstance = new Chart(salesCtx, { 
+          type: 'line', 
+          data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ label: 'Sales ($)', data: [1250,1480,1320,1890,2150,2780,2450], borderColor: '#7B4B2A', backgroundColor: 'rgba(123,75,42,0.1)', fill: true, tension: 0.4 }] }, 
+          options: { responsive: true, maintainAspectRatio: true, aspectRatio: 1.8 } 
+        });
+      }
     }
     
-    const topProductsTable = document.getElementById('topProductsTable');
-    if (topProductsTable) {
-      topProductsTable.innerHTML = `<table style="width:100%"><thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th></tr></thead><tbody>${topProducts.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sales}</td><td>$${(p.sales * 28).toLocaleString()}</td><td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td></tr>`).join('')}</tbody></table>`;
+    function renderOrders() { /* same as original but compact */ 
+      const totalRevenue = ordersData.reduce((s,o)=> s + o.total,0);
+      const pending = ordersData.filter(o=>o.status==='Pending').length;
+      const processing = ordersData.filter(o=>o.status==='Processing').length;
+      const completed = ordersData.filter(o=>o.status==='Completed').length;
+      document.getElementById('orders-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Orders Management</h1><p>Track and manage all customer orders</p></div><div class="header-actions"><div class="search-bar"><i class="fas fa-search"></i><input type="text" placeholder="Search orders..."></div></div></div>
+        <div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${pending}</div><div class="stat-label">Pending</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-truck"></i></div><div class="stat-value">${processing}</div><div class="stat-label">Processing</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${completed}</div><div class="stat-label">Completed</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalRevenue.toLocaleString()}</div><div class="stat-label">Total Value</div></div></div>
+        <div class="data-table"><table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody>${ordersData.map(o => `<tr><td>${o.id}</td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td></tr>`).join('')}</tbody></table></div>
+      `;
     }
-    
-    function saveSettings() {
-      alert('Settings saved successfully!');
+    function renderProducts() {
+      document.getElementById('products-page').innerHTML = `
+        <div class="top-header"><div class="page-title"><h1>Product Catalog</h1><p>Manage your tea collection</p></div><div class="header-actions"><button class="action-btn" id="addProductBtn" style="width:auto;"><i class="fas fa-plus"></i> Add Product</button></div></div>
+        <div class="products-grid" id="productsGrid"></div>
+      `;
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = productsData.map(p => `<div class="product-card"><div class="product-image" style="background-image:url('${p.image}')"></div><div class="product-info"><div class="product-title">${p.name}</div><div class="product-price">$${p.price}</div><div class="product-stock">Stock: ${p.stock} units</div></div></div>`).join('');
     }
-    
-    // Chart Initialization
-    const salesCtx = document.getElementById('salesChart')?.getContext('2d');
-    if (salesCtx) {
-      new Chart(salesCtx, {
-        type: 'line',
-        data: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], datasets: [{ label: 'Sales ($)', data: [1250, 1480, 1320, 1890, 2150, 2780, 2450], borderColor: '#7B4B2A', backgroundColor: 'rgba(123, 75, 42, 0.1)', borderWidth: 2, fill: true, tension: 0.4, pointBackgroundColor: '#7B4B2A' }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: v => '$' + v } } } }
-      });
+    function renderCustomers() {
+      const total = customersData.length, vip = customersData.filter(c=>c.status==='VIP').length, active = customersData.filter(c=>c.status==='Active').length;
+      document.getElementById('customers-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Customer Base</h1><p>View and manage your customers</p></div></div><div class="stats-grid"><div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${total}</div><div class="stat-label">Total Customers</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-star"></i></div><div class="stat-value">${vip}</div><div class="stat-label">VIP Members</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-user-check"></i></div><div class="stat-value">${active}</div><div class="stat-label">Active</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">68%</div><div class="stat-label">Retention</div></div></div><div class="data-table"><table><thead><tr><th>Customer</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Status</th></tr></thead><tbody>${customersData.map(c => `<tr><td><strong>${c.name}</strong></td><td>${c.email}</td><td>${c.orders}</td><td>$${c.spent}</td><td><span class="status-badge status-${c.status === 'VIP' ? 'completed' : 'active'}">${c.status}</span></td></tr>`).join('')}</tbody></table></div>`;
     }
-    
-    const revenueCtx = document.getElementById('revenueChart')?.getContext('2d');
-    if (revenueCtx) {
-      new Chart(revenueCtx, {
-        type: 'bar',
-        data: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], datasets: [{ label: 'Revenue', data: [12500, 14800, 16200, 18900, 21500, 24500], backgroundColor: '#7B4B2A', borderRadius: 8 }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v => '$' + v } } } }
-      });
+    function renderAnalytics() {
+      document.getElementById('analytics-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Analytics</h1><p>Deep insights into your business</p></div></div><div class="analytics-grid"><div class="chart-card"><div class="card-header"><h3>Monthly Revenue</h3></div><div style="height: 220px;"><canvas id="revenueChart"></canvas></div></div><div class="chart-card"><div class="card-header"><h3>Category Performance</h3></div><div style="height: 220px;"><canvas id="categoryChart"></canvas></div></div></div><div class="data-table"><div class="card-header"><h3>Top Performing Products</h3></div><table><thead><tr><th>Product</th><th>Units Sold</th><th>Revenue</th><th>Growth</th></tr></thead><tbody>${topProductsList.map(p => `<tr><td><strong>${p.name}</strong></td><td>${p.sales}</td><td>$${(p.sales * 28).toLocaleString()}</td><td style="color:#10b981;">+${Math.floor(Math.random() * 30) + 10}%</td></tr>`).join('')}</tbody></table></div>`;
+      const revCtx = document.getElementById('revenueChart')?.getContext('2d'); if(revCtx) new Chart(revCtx, { type: 'bar', data: { labels: ['Jan','Feb','Mar','Apr','May','Jun'], datasets: [{ label: 'Revenue', data: [12500,14800,16200,18900,21500,24500], backgroundColor: '#7B4B2A' }] }, options: { responsive: true } });
+      const catCtx = document.getElementById('categoryChart')?.getContext('2d'); if(catCtx) new Chart(catCtx, { type: 'doughnut', data: { labels: ['Masala Chai','Darjeeling','Matcha','Herbal'], datasets: [{ data: [42,28,18,12], backgroundColor: ['#7B4B2A','#9B6B3A','#B88B5A','#D4A97A'] }] }, options: { responsive: true } });
     }
+    function renderSettings() { document.getElementById('settings-page').innerHTML = `<div class="top-header"><div class="page-title"><h1>Settings</h1><p>Manage your store preferences</p></div></div><div class="settings-form"><h3 style="margin-bottom:1rem;">Store Information</h3><div class="form-group"><label>Store Name</label><input type="text" id="storeName" value="Chai Nest Tea Co."></div><div class="form-group"><label>Store Email</label><input type="email" id="storeEmail" value="hello@chainest.com"></div><div class="form-group"><label>Currency</label><select id="currency"><option>USD ($)</option><option>INR (₹)</option><option>EUR (€)</option></select></div><div class="form-group"><label>Default Tax Rate</label><input type="text" id="taxRate" value="10%"></div><button class="save-btn" onclick="alert('Settings saved!')">Save Changes</button></div>`; }
     
-    const categoryCtx = document.getElementById('categoryChart')?.getContext('2d');
-    if (categoryCtx) {
-      new Chart(categoryCtx, {
-        type: 'doughnut',
-        data: { labels: ['Masala Chai', 'Darjeeling', 'Matcha', 'Herbal'], datasets: [{ data: [42, 28, 18, 12], backgroundColor: ['#7B4B2A', '#9B6B3A', '#B88B5A', '#D4A97A'] }] },
-        options: { responsive: true, maintainAspectRatio: false }
-      });
-    }
+    window.showPage = function(pageId) {
+      const pages = ['dashboard', 'orders', 'products', 'customers', 'analytics', 'settings'];
+      pages.forEach(p => document.getElementById(`${p}-page`).classList.remove('active-page'));
+      document.getElementById(`${pageId}-page`).classList.add('active-page');
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelector(`[data-page="${pageId}"] .nav-link`).classList.add('active');
+      if(window.innerWidth <= 768) closeSidebar();
+    };
     
-    // Event Listeners
-    document.querySelectorAll('.nav-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const page = item.getAttribute('data-page');
-        showPage(page);
-      });
-    });
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); localStorage.setItem('chaiNest_darkMode', document.body.classList.contains('dark-mode')); }
+    function toggleRTL() { document.body.classList.toggle('rtl-active'); localStorage.setItem('chaiNest_rtl', document.body.classList.contains('rtl-active')); }
+    function closeSidebar() { sidebar.classList.remove('mobile-open'); overlay.classList.remove('active'); document.body.classList.remove('sidebar-open'); }
+    function openSidebar() { sidebar.classList.add('mobile-open'); overlay.classList.add('active'); document.body.classList.add('sidebar-open'); }
     
-    document.getElementById('darkModeToggleBtn')?.addEventListener('click', toggleDarkMode);
-    document.getElementById('rtlToggleBtn')?.addEventListener('click', toggleRTL);
-    document.getElementById('addProductBtn')?.addEventListener('click', () => alert('Add Product feature coming soon!'));
-    document.getElementById('addProductQuickBtn')?.addEventListener('click', () => alert('Add Product feature coming soon!'));
-    
-    // Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('sidebarOverlay');
-    
-    function closeSidebar() {
-      sidebar.classList.remove('mobile-open');
-      overlay.classList.remove('active');
-      document.body.classList.remove('sidebar-open');
-    }
-    
-    function openSidebar() {
-      sidebar.classList.add('mobile-open');
-      overlay.classList.add('active');
-      document.body.classList.add('sidebar-open');
-    }
-    
-    menuToggle?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (sidebar.classList.contains('mobile-open')) {
-        closeSidebar();
-      } else {
-        openSidebar();
-      }
-    });
-    
+    menuToggle?.addEventListener('click', () => sidebar.classList.contains('mobile-open') ? closeSidebar() : openSidebar());
     overlay?.addEventListener('click', closeSidebar);
     
-    // Initialize
-    initDarkMode();
-    initRTL();
-    renderOrdersPage();
-    renderProductsPage();
-    renderCustomersPage();
+    document.addEventListener('click', (e) => {
+      if(e.target.closest('#darkModeToggleBtn')) toggleDarkMode();
+      if(e.target.closest('#rtlToggleBtn')) toggleRTL();
+      if(e.target.closest('#addProductBtn') || e.target.closest('#addProductQuickBtn')) alert('Add Product feature coming soon!');
+    });
     
-    window.showPage = showPage;
+    document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
+    
+    renderDashboard(); renderOrders(); renderProducts(); renderCustomers(); renderAnalytics(); renderSettings();
+    if(localStorage.getItem('chaiNest_darkMode') === 'true') document.body.classList.add('dark-mode');
+    if(localStorage.getItem('chaiNest_rtl') === 'true') document.body.classList.add('rtl-active');
   </script>
 </body>
 </html>
