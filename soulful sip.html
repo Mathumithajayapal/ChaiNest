@@ -2,11 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Chai Nest · Soulful Sips · Tea & Tranquility</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -202,6 +203,33 @@
 
     body.dark-mode .logo-text {
       color: #ffffff;
+    }
+
+    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
+    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+    }
+    
+    /* Desktop: Show desktop nav only on screens 1200px and above */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
     }
 
     .nav-links {
@@ -558,7 +586,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('images/imgchai (12).jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
       z-index: 0;
     }
     
@@ -1059,23 +1087,16 @@
 
     .footer-bottom a:hover { color: #7B4B2A; }
 
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.85rem; }
-      .action-buttons { gap: 0.5rem; }
-      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
-      .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .glass-card h1 { font-size: 2.5rem; }
+      .glass-card h1 { font-size: 2.2rem; }
+      .hero-banner { min-height: 70vh; height: auto; }
+      .glass-card-grid { gap: 1.5rem; }
     }
 
     @media (max-width: 900px) {
       .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .action-buttons { display: none; }
-      .site-header { padding: 0.8rem 1.5rem; }
       .glass-card-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: 1fr; }
       .glass-card { padding: 2rem; }
@@ -1095,6 +1116,13 @@
       .mindfulness-section { padding: 2rem; }
       .mindfulness-section h2 { font-size: 1.6rem; }
       .gallery-section { padding: 2rem; }
+      .glass-card-item { height: auto; min-height: 360px; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1105,6 +1133,7 @@
       .glass-content h3 { font-size: 1.2rem; }
       .hero-buttons { gap: 0.8rem; }
       .hero-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+      .site-header { padding: 0.8rem 1rem; }
     }
     
     body.dark-mode .dropdown-content a {
@@ -1147,19 +1176,28 @@
     .signup-mobile:hover {
       background: #5a3a1f;
     }
-    
-    @media (max-width: 768px) {
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-      .footer-col h4 {
-        font-size: 0.95rem;
-      }
-      .footer-col a {
-        font-size: 0.9rem;
-      }
-    }
+    .social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -1176,7 +1214,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1188,7 +1226,7 @@
         <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
         <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1278,10 +1316,10 @@
     <h2 class="section-title">Soulful Selections</h2>
     <div class="section-subtitle">━━ handcrafted blends for the mindful soul ━━</div>
     <div class="glass-card-grid">
-      <div class="glass-card-item"><div class="card-image"><img src="images\img (1).jpg" alt="Masala Chai"><span class="card-tag">Bestseller</span></div><div class="glass-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\img (2).jpg" alt="Matcha"><span class="card-tag">Limited</span></div><div class="glass-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\img (3).jpg" alt="White Tea"><span class="card-tag">Rare</span></div><div class="glass-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\img (4).jpg" alt="Assam"><span class="card-tag">Classic</span></div><div class="glass-content"><h3>Assam Bold</h3><p>Malty, full-bodied & robust — the perfect morning awakening cup.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=400&h=300&fit=crop" alt="Masala Chai"><span class="card-tag">Bestseller</span></div><div class="glass-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=400&h=300&fit=crop" alt="Matcha"><span class="card-tag">Limited</span></div><div class="glass-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/161963/chinese-tea-ceremony-tea-cup-tea-161963.jpeg?w=400&h=300&fit=crop" alt="White Tea"><span class="card-tag">Rare</span></div><div class="glass-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=400&h=300&fit=crop" alt="Assam"><span class="card-tag">Classic</span></div><div class="glass-content"><h3>Assam Bold</h3><p>Malty, full-bodied & robust — the perfect morning awakening cup.</p></div></div>
     </div>
     <div class="view-more-wrapper"><button class="view-more-btn" id="viewMoreBtn">View More →</button></div>
   </div>
@@ -1289,7 +1327,7 @@
   <!-- Story Section -->
   <div class="story-section">
     <div class="story-image">
-      <img src="images\img (5).jpg" alt="Tea plantation heritage">
+      <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Tea plantation heritage">
     </div>
     <div class="story-text">
       <h2>Rooted in heritage, steeped in passion</h2>
@@ -1313,7 +1351,7 @@
     <div class="gallery-grid">
       <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" alt="Tea ceremony"></div>
       <div class="gallery-item"><img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400&h=300&fit=crop" alt="Pouring tea"></div>
-      <div class="gallery-item"><img src="images\imgchai (8).jpg" alt="Tea meditation"></div>
+      <div class="gallery-item"><img src="https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=400&h=300&fit=crop" alt="Tea meditation"></div>
     </div>
   </div>
 
@@ -1325,8 +1363,12 @@
           <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
         </div>
         <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
-        <div class="social-links"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">🎵</a></div>
-      </div>
+<div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div>      </div>
       <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">New arrivals</a></li><li><a href="#">Best sellers</a></li><li><a href="#">Limited drops</a></li><li><a href="#">Sustainability</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
       <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>

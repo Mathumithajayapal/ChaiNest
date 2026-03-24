@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Chai Nest · Premium Tea Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -568,7 +569,36 @@
       background: #5a3a1f;
     }
 
-    /* Responsive styles */
+    /* ========== UPDATED RESPONSIVE BREAKPOINTS ========== */
+    /* Tablet view: 820x1180 and 1024x768 - hamburger visible */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+      .site-header {
+        padding: 0.8rem 1.5rem;
+      }
+    }
+    
+    /* Desktop styles for larger screens */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
+    }
+
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.85rem; }
@@ -578,10 +608,7 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .action-buttons { display: none; }
-      .site-header { padding: 0.8rem 1.5rem; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
     }
     
     /* Hero Banner */
@@ -921,7 +948,7 @@
     /* Experience Section */
     .experience-section {
       min-height: 500px;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('images/imgchai (3).jpg');
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=1600&h=900&fit=crop');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -1205,7 +1232,28 @@
     
     @media (max-width: 1024px) {
       .premium-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-    }
+    }.social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -1223,7 +1271,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1235,7 +1283,7 @@
         <li><a href="brew story.html" id="navBrew">Tea Ritual</a></li>
         <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1332,15 +1380,15 @@
     <div class="section-subtitle">━━ artisanal blends for the connoisseur ━━</div>
     <div class="premium-grid">
       <div class="premium-card">
-        <div class="card-image"><img src="images\imgchai (11).jpg" alt="Masala Chai"><span class="card-tag">Bestseller</span></div>
+        <div class="card-image"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=500&h=400&fit=crop" alt="Masala Chai"><span class="card-tag">Bestseller</span></div>
         <div class="card-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p><div class="card-price">$24.90</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="images\imgchai (10).jpg" alt="Matcha"><span class="card-tag">Limited</span></div>
+        <div class="card-image"><img src="https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=500&h=400&fit=crop" alt="Matcha"><span class="card-tag">Limited</span></div>
         <div class="card-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p><div class="card-price">$42.00</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="images\imgchai (9).jpg" alt="White Tea"><span class="card-tag">Rare</span></div>
+        <div class="card-image"><img src="https://images.pexels.com/photos/161963/chinese-tea-ceremony-tea-cup-tea-161963.jpeg?w=500&h=400&fit=crop" alt="White Tea"><span class="card-tag">Rare</span></div>
         <div class="card-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p><div class="card-price">$38.00</div></div>
       </div>
     </div>
@@ -1348,7 +1396,7 @@
 
   <section class="story-section">
     <div class="story-grid">
-      <div class="story-image"><img src="images\imgchai (6).jpg" alt="Tea plantation heritage"></div>
+      <div class="story-image"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Tea plantation heritage"></div>
       <div class="story-text"><h2>Rooted in heritage,<br>steeped in passion</h2><p>For three generations, our family has nurtured relationships with tea growers across Assam, Darjeeling, and beyond. Every leaf is ethically sourced, hand-plucked, and master-blended to honor ancient traditions while embracing modern craftsmanship.</p><a href="#" class="story-btn">Our story →</a></div>
     </div>
   </section>
@@ -1378,7 +1426,12 @@
 
   <footer class="unique-footer">
     <div class="footer-container">
-      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">🎵</a></div></div>
+      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div></div>
       <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">New arrivals</a></li><li><a href="#">Best sellers</a></li><li><a href="#">Limited drops</a></li><li><a href="#">Sustainability</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
       <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>

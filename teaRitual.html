@@ -2,12 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Chai Nest · Tea Ritual | The Art of Mindful Brewing</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -224,6 +224,33 @@
 
     body.dark-mode .logo-text {
       color: #ffffff;
+    }
+
+    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
+    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+    }
+    
+    /* Desktop: Show desktop nav only on screens 1200px and above */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
     }
 
     .nav-links {
@@ -680,7 +707,7 @@
     .hero-banner {
       position: relative;
       height: 95vh;
-      background: url('images/imgchai (1).jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -992,21 +1019,26 @@
       background: #5a3a1f;
     }
     
-    /* Responsive */
+    /* Responsive adjustments for tablet and mobile */
     @media (max-width: 1024px) {
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.85rem; }
-      .action-buttons { gap: 0.5rem; }
-      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
-      .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
+      .glass-card h1 { font-size: 2.2rem; }
+      .hero-banner { min-height: 70vh; }
+      .step-card { flex-direction: column; }
+      .step-number { padding: 1rem; font-size: 1.8rem; min-width: auto; }
+      .step-content h3 { font-size: 1.3rem; }
+      .section-title { font-size: 1.6rem; }
+      .tea-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .ritual-cta { margin: 3rem 1.5rem; padding: 2rem; }
+      .ritual-cta h2 { font-size: 1.6rem; }
+      .quote-text { font-size: 1.3rem; }
     }
 
     @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .action-buttons { display: none; }
+      .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.8rem;
+      }
       .site-header { padding: 0.8rem 1.5rem; }
-      .glass-card h1 { font-size: 2.5rem; }
     }
 
     @media (max-width: 768px) {
@@ -1014,32 +1046,51 @@
       .glass-card h1 { font-size: 2rem; }
       .glass-card { padding: 2rem; }
       .glass-card p { font-size: 1rem; }
-      .step-card { flex-direction: column; }
-      .step-number { padding: 1rem; font-size: 1.8rem; min-width: auto; }
-      .step-content h3 { font-size: 1.3rem; }
-      .section-title { font-size: 1.6rem; }
-      .tea-grid { grid-template-columns: 1fr; }
-      .ritual-cta { margin: 3rem 1.5rem; padding: 2rem; }
-      .ritual-cta h2 { font-size: 1.6rem; }
-      .quote-text { font-size: 1.3rem; }
+      .step-content { padding: 1.2rem; }
+      .step-content h3 { font-size: 1.1rem; }
       .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
       .logo-text { font-size: 1.2rem; }
       .logo-icon { width: 32px; height: 32px; }
       .glass-card h1 { font-size: 1.6rem; }
-      .step-content { padding: 1.2rem; }
-      .step-content h3 { font-size: 1.1rem; }
       .ritual-cta { padding: 1.5rem; }
       .cta-button { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
       .quote-text { font-size: 1.1rem; }
-      .footer-container { grid-template-columns: 1fr; }
     }
     
     body.dark-mode .dropdown-content a {
       color: #fa720af5;
     }
+    .social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -1056,7 +1107,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1068,7 +1119,7 @@
         <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
         <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1256,12 +1307,12 @@
           <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
         </div>
         <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
-        <div class="social-links">
-          <a href="#">📘</a>
-          <a href="#">📷</a>
-          <a href="#">🐦</a>
-          <a href="#">🎵</a>
-        </div>
+       <div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>

@@ -6,7 +6,8 @@
   <title>Chai Nest · Premium Tea Experience</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     /* ---------- RESET & BASE ---------- */
@@ -657,7 +658,42 @@
     .footer-bottom a { color: #999; text-decoration: none; margin-left: 1.5rem; }
     .footer-bottom a:hover { color: #7B4B2A; }
 
-    /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+    /* ========== UPDATED RESPONSIVE BREAKPOINTS ========== */
+    /* Tablet view: 820x1180 and 1024x768 - hamburger visible */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+      .site-header {
+        padding: 0.8rem 1.5rem;
+      }
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .hero-content h1 span {
+        font-size: 2.2rem;
+      }
+    }
+    
+    /* Desktop styles for larger screens */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
+    }
+    
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.85rem; }
@@ -666,13 +702,9 @@
     }
     
     @media (max-width: 900px) {
-      .nav-links, .action-buttons { display: none; }
-      .hamburger { display: flex; }
       .footer-container { grid-template-columns: repeat(2, 1fr); }
       .brew-section { grid-template-columns: 1fr; text-align: center; }
       .brew-step { justify-content: center; }
-      .hero-content h1 { font-size: 2.8rem; }
-      .hero-content h1 span { font-size: 2.2rem; }
     }
     
     @media (max-width: 850px) {
@@ -740,6 +772,28 @@
     body.dark-mode .dropdown-content a {
       color: #fa720af5;
     }
+    .social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -757,7 +811,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -769,7 +823,7 @@
         <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
         <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -889,9 +943,9 @@
   <div class="section-container section-spacing">
     <div class="section-title">☕ Our Essentials</div>
     <div class="glass-card-grid">
-      <div class="glass-card"><img src="images\imgchai (3).jpg" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
-      <div class="glass-card"><img src="images\imgchai (4).jpg" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
-      <div class="glass-card"><img src="images\imgchai (5).jpg" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
+      <div class="glass-card"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=500&h=400&fit=crop" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
+      <div class="glass-card"><img src="https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=500&h=400&fit=crop" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
+      <div class="glass-card"><img src="https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=500&h=400&fit=crop" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
     </div>
   </div>
 
@@ -928,7 +982,12 @@
 
   <footer class="unique-footer">
     <div class="footer-container">
-      <div class="footer-brand"><div style="display:flex; align-items:center; gap:8px;"><div class="logo-icon" style="background:#7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color:white; font-size:1.6rem; font-weight:700;">Chai<span style="color:#7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">🎵</a></div></div>
+      <div class="footer-brand"><div style="display:flex; align-items:center; gap:8px;"><div class="logo-icon" style="background:#7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color:white; font-size:1.6rem; font-weight:700;">Chai<span style="color:#7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div></div>
       <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">New arrivals</a></li><li><a href="#">Best sellers</a></li><li><a href="#">Limited drops</a></li><li><a href="#">Sustainability</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
       <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>

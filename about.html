@@ -2,12 +2,13 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Chai Nest · About Us | The Art of Chai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -59,7 +60,7 @@
       color: #f0f0f0;
     }
 
-    /* ========== FIX: Dark mode mobile menu text colors ========== */
+    /* Dark mode mobile menu text colors */
     body.dark-mode .mobile-menu {
       background-color: #1a1a1a;
     }
@@ -212,6 +213,39 @@
       color: #ffffff;
     }
 
+    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
+    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+      .site-header {
+        padding: 0.8rem 1.5rem;
+      }
+      .cinematic-content h1 {
+        font-size: 3rem;
+      }
+    }
+    
+    /* Desktop: Show desktop nav only on screens 1200px and above */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
+    }
+
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -230,6 +264,37 @@
       padding: 0.5rem 0;
       display: inline-block;
       white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #7B4B2A;
+    }
+
+    /* Active link style for desktop */
+    .nav-links a.active {
+      color: #7B4B2A;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #7B4B2A;
+      border-radius: 2px;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #c97e54;
+    }
+
+    body.dark-mode .nav-links a.active::after {
+      background: #c97e54;
     }
 
     .dropdown-content {
@@ -420,6 +485,16 @@
       font-weight: 500;
       display: block;
       padding: 0.75rem 0;
+      transition: color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      color: #7B4B2A;
+    }
+
+    .mobile-nav-link.active {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle {
@@ -434,6 +509,12 @@
       font-size: 1.1rem;
       font-weight: 500;
       color: #111;
+      transition: color 0.2s;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -1054,7 +1135,7 @@
       letter-spacing: 1px;
     }
     
-    /* Responsive */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
       .nav-links { gap: 1.2rem; }
       .nav-links a { font-size: 0.85rem; }
@@ -1064,11 +1145,8 @@
     }
 
     @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .action-buttons { display: none; }
-      .site-header { padding: 0.8rem 1.5rem; }
-      .cinematic-content h1 { font-size: 3rem; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
+      .cinematic-content h1 { font-size: 2.8rem; }
     }
 
     @media (max-width: 768px) {
@@ -1087,6 +1165,12 @@
       .about-box h1 { font-size: 2rem; }
       .about-text { font-size: 1rem; }
       .white-title { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1171,6 +1255,28 @@
       background: #7B4B2A;
       color: white;
     }
+    .social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -1187,19 +1293,19 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="soulful sip.html">Soulful Sips</a></li>
-        <li><a href="teaRitual.html">Tea Ritual</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html" id="navAbout">About</a></li>
+        <li><a href="service.html" id="navService">Service</a></li>
+        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
+        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
+        <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1225,12 +1331,13 @@
   </header>
 
   <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span>Home</span>
+          <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown1">
@@ -1238,14 +1345,14 @@
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
-      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span>Dashboard</span>
+          <span id="mobileDashboardText">Dashboard</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown2">
@@ -1351,7 +1458,12 @@
   
   <footer class="unique-footer">
     <div class="footer-container">
-      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#">📘</a><a href="#">📷</a><a href="#">🐦</a><a href="#">🎵</a></div></div>
+      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div></div>
       <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">New arrivals</a></li><li><a href="#">Best sellers</a></li><li><a href="#">Limited drops</a></li><li><a href="#">Sustainability</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
       <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
@@ -1360,6 +1472,75 @@
   </footer>
 
   <script>
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'about.html';
+    const pageName = currentPage.toLowerCase();
+    
+    // Function to set active class on desktop nav links
+    function setActiveNavLink() {
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      const navHome = document.getElementById('navHome');
+      const navAbout = document.getElementById('navAbout');
+      const navService = document.getElementById('navService');
+      const navSoulful = document.getElementById('navSoulful');
+      const navTeaRitual = document.getElementById('navTeaRitual');
+      const navContact = document.getElementById('navContact');
+      const navDashboard = document.getElementById('navDashboard');
+      
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (navHome) navHome.classList.add('active');
+      } else if (pageName === 'about.html') {
+        if (navAbout) navAbout.classList.add('active');
+      } else if (pageName === 'service.html') {
+        if (navService) navService.classList.add('active');
+      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (navSoulful) navSoulful.classList.add('active');
+      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (navTeaRitual) navTeaRitual.classList.add('active');
+      } else if (pageName === 'contact.html') {
+        if (navContact) navContact.classList.add('active');
+      } else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (navDashboard) navDashboard.classList.add('active');
+      }
+    }
+    
+    // Function to set active class on mobile nav links
+    function setMobileActiveLink() {
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+        toggle.classList.remove('active-toggle');
+      });
+      
+      const mobileAbout = document.getElementById('mobileAbout');
+      const mobileService = document.getElementById('mobileService');
+      const mobileSoulful = document.getElementById('mobileSoulful');
+      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
+      const mobileContact = document.getElementById('mobileContact');
+      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
+      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
+      
+      if (pageName === 'about.html') {
+        if (mobileAbout) mobileAbout.classList.add('active');
+      } else if (pageName === 'service.html') {
+        if (mobileService) mobileService.classList.add('active');
+      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
+        if (mobileSoulful) mobileSoulful.classList.add('active');
+      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
+        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
+      } else if (pageName === 'contact.html') {
+        if (mobileContact) mobileContact.classList.add('active');
+      } else if (pageName === 'user.html' || pageName === 'admin.html') {
+        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
+      } else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
+      }
+    }
+    
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1367,6 +1548,7 @@
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenu = document.getElementById('closeMenuBtn');
+    const overlay = document.getElementById('mobileOverlay');
 
     function setBodyScrollLock(lock) {
       if (lock) document.body.classList.add('menu-open');
@@ -1386,6 +1568,7 @@
 
     hamburger?.addEventListener('click', openMenu);
     closeMenu?.addEventListener('click', closeMenuFn);
+    overlay?.addEventListener('click', closeMenuFn);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
@@ -1395,6 +1578,8 @@
       if(isDark) document.body.classList.add('dark-mode');
       else document.body.classList.remove('dark-mode');
       localStorage.setItem('darkMode', isDark);
+      if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙';
+      if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
     }
     darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
     mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
@@ -1423,6 +1608,10 @@
         }
       });
     });
+    
+    // Initialize active links on page load
+    setActiveNavLink();
+    setMobileActiveLink();
   </script>
 </body>
 </html>

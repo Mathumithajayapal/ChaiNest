@@ -2,11 +2,12 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Chai Nest · Soulful Sips · Tea & Tranquility</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/jpeg" href="images\favicon.jpg">
+  <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -102,6 +103,11 @@
       color: #c28a5c;
     }
     
+    body.dark-mode .glass-card-hero {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
+    }
+
     /* Sticky Navbar */
     .site-header {
       position: sticky;
@@ -157,6 +163,33 @@
 
     body.dark-mode .logo-text {
       color: #ffffff;
+    }
+
+    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
+    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    @media (max-width: 1199px) {
+      .nav-links {
+        display: none !important;
+      }
+      .action-buttons {
+        display: none !important;
+      }
+      .hamburger {
+        display: flex !important;
+      }
+    }
+    
+    /* Desktop: Show desktop nav only on screens 1200px and above */
+    @media (min-width: 1200px) {
+      .nav-links {
+        display: flex !important;
+      }
+      .action-buttons {
+        display: flex !important;
+      }
+      .hamburger {
+        display: none !important;
+      }
     }
 
     .nav-links {
@@ -498,7 +531,7 @@
     .hero-banner {
       position: relative;
       height: 95vh;
-      background: url('images/imgchai (4).jpg') center/cover no-repeat;
+      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -832,25 +865,14 @@
       flex-direction: row-reverse;
     }
 
-    /* ========== RESPONSIVE ========== */
+    /* Responsive adjustments */
     @media (max-width: 1024px) {
-      .nav-links {
-        gap: 1.2rem;
+      .glass-card-hero h1 {
+        font-size: 2.2rem;
       }
-      .nav-links a {
-        font-size: 0.85rem;
-      }
-      .action-buttons {
-        gap: 0.5rem;
-      }
-      .nav-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.85rem;
-      }
-      .dark-toggle, .rtl-toggle {
-        width: 34px;
-        height: 34px;
-        font-size: 0.9rem;
+      .hero-banner {
+        min-height: 70vh;
+        height: auto;
       }
     }
 
@@ -859,30 +881,19 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem 1.8rem;
       }
-      .nav-links {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .action-buttons {
-        display: none;
-      }
-      .site-header {
-        padding: 0.8rem 1.5rem;
-      }
       .glass-card-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
       }
-      .glass-card-hero h1 {
-        font-size: 2.5rem;
+      .site-header {
+        padding: 0.8rem 1.5rem;
       }
     }
 
     @media (max-width: 768px) {
       .hero-banner {
         height: 70vh;
+        min-height: 60vh;
       }
       .glass-card-hero h1 {
         font-size: 2rem;
@@ -907,6 +918,12 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 480px) {
       .logo-text {
         font-size: 1.2rem;
@@ -920,6 +937,14 @@
       }
       .glass-content h3 {
         font-size: 1.1rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .hero-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
       }
     }
     
@@ -976,6 +1001,29 @@
         font-size: 0.9rem;
       }
     }
+    .social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+
+  color: #ccc;
+  font-size: 16px;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #7B4B2A;
+  color: #fff;
+  transform: translateY(-3px);
+}
+    
   </style>
 </head>
 <body>
@@ -992,7 +1040,7 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home▼</a>
+          <a href="#" id="navHome">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1004,7 +1052,7 @@
         <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
         <li><a href="contact.html" id="navContact">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard▼</a>
+          <a href="#" id="navDashboard">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1096,7 +1144,7 @@
     <div class="glass-card-grid">
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\gathering frnds (1).jpg" alt="Masala Chai">
+          <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=400&h=300&fit=crop" alt="Masala Chai">
           <span class="card-tag">Bestseller</span>
         </div>
         <div class="glass-content">
@@ -1107,7 +1155,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\gathering frnds (2).jpg" alt="Matcha Ceremonial">
+          <img src="https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=400&h=300&fit=crop" alt="Matcha Ceremonial">
           <span class="card-tag">Limited</span>
         </div>
         <div class="glass-content">
@@ -1118,7 +1166,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\img (1).jpg" alt="Silver Needle White">
+          <img src="images\img (3).jpg" alt="Silver Needle White">
           <span class="card-tag">Rare</span>
         </div>
         <div class="glass-content">
@@ -1129,7 +1177,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\imgchai (3).jpg" alt="Assam Black Tea">
+          <img src="images\img (1).jpg" alt="Assam Black Tea">
           <span class="card-tag">Classic</span>
         </div>
         <div class="glass-content">
@@ -1140,7 +1188,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\imgchai (4).jpg" alt="Jasmine Pearl Tea">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" alt="Jasmine Pearl Tea">
           <span class="card-tag">Aromatic</span>
         </div>
         <div class="glass-content">
@@ -1151,7 +1199,7 @@
       </div>
       <div class="glass-card">
         <div class="card-image">
-          <img src="images\imgchai (7).jpg" alt="Earl Grey">
+          <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop" alt="Earl Grey">
           <span class="card-tag">Signature</span>
         </div>
         <div class="glass-content">
@@ -1175,12 +1223,12 @@
           <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
         </div>
         <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
-        <div class="social-links">
-          <a href="#">📘</a>
-          <a href="#">📷</a>
-          <a href="#">🐦</a>
-          <a href="#">🎵</a>
-        </div>
+       <div class="social-links">
+  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <a href="#"><i class="fa-brands fa-twitter"></i></a>
+  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+</div>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
