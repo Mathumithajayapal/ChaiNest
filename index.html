@@ -33,26 +33,29 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* ---------- DARK MODE ---------- */
+    /* ---------- DARK MODE - ALL TEXT BECOMES WHITE ---------- */
     body.dark-mode {
       background-color: #0f0f0f;
-      color: #f0f0f0;
+      color: #ffffff;
     }
     body.dark-mode .site-header { background-color: #1a1a1a; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     body.dark-mode .logo-text,
-    body.dark-mode .nav-links a { color: #f0f0f0; }
+    body.dark-mode .nav-links a,
+    body.dark-mode .header-actions a { color: #ffffff; }
     body.dark-mode .dropdown-content { background: #2a2a2a; box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
-    body.dark-mode .dropdown-content a { color: #f0f0f0; }
+    body.dark-mode .dropdown-content a { color: #ffffff; }
     body.dark-mode .login-btn { border-color: #7B4B2A; color: #7B4B2A; }
     body.dark-mode .login-btn:hover { background: #7B4B2A; color: white; }
-    body.dark-mode .signup-btn { background: #7B4B2A; color: white; }
     body.dark-mode .dark-toggle,
     body.dark-mode .rtl-toggle { border-color: #7B4B2A; color: #7B4B2A; }
-    body.dark-mode .hamburger span { background-color: #f0f0f0; }
+    body.dark-mode .hamburger span { background-color: #ffffff; }
     body.dark-mode .mobile-menu { background-color: #1a1a1a; }
     body.dark-mode .mobile-nav-link,
-    body.dark-mode .mobile-dropdown-toggle span:first-child { color: #f0f0f0; }
+    body.dark-mode .mobile-dropdown-toggle span:first-child,
+    body.dark-mode .mobile-dropdown-content a { color: #ffffff !important; }
     body.dark-mode .mobile-nav-item { border-bottom-color: #333; }
+    
+    /* Dark mode sections and cards */
     body.dark-mode .brew-section,
     body.dark-mode .quiz-section,
     body.dark-mode .exp-card,
@@ -63,10 +66,54 @@
     body.dark-mode .testimonial-card { background: #2a2a2a; }
     body.dark-mode .testimonial-text { color: #ccc; }
     body.dark-mode .exp-card p { color: #aaa; }
+    body.dark-mode .exp-card h3 { color: #e6b17e; }
+    body.dark-mode .brew-left h2 { color: #e6b17e; }
+    body.dark-mode .brew-step p { color: #ddd; }
+    body.dark-mode .glass-content h3 { color: #ffffff; }
+    body.dark-mode .glass-content p { color: #e0e0e0; }
     body.dark-mode .unique-footer { background-color: #0a0a0a; }
     body.dark-mode .footer-col a,
     body.dark-mode .footer-brand p { color: #aaa; }
-    body.dark-mode .glass-content { background: rgba(0, 0, 0, 0.6); }
+    body.dark-mode .footer-col h4 { color: #ffffff; }
+    body.dark-mode .newsletter-input input { color: #ffffff; }
+    body.dark-mode .newsletter-input input::placeholder { color: #888; }
+    body.dark-mode .friends-section h2,
+    body.dark-mode .friends-text,
+    body.dark-mode .friends-highlight { color: #ffffff; }
+    body.dark-mode .quiz-title,
+    body.dark-mode .quiz-description { color: #ffffff; }
+    body.dark-mode .section-title { color: #e6b17e; }
+    
+    /* Theme toggles consistent palette for dark mode */
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle {
+      border-color: #e6b17e;
+      color: #e6b17e;
+    }
+    body.dark-mode .dark-toggle:hover,
+    body.dark-mode .rtl-toggle:hover {
+      background: #e6b17e;
+      color: #1a1a1a;
+    }
+    
+    /* Active link styles for dark mode */
+    body.dark-mode .nav-links a.active {
+      color: #e6b17e;
+    }
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
+    }
+    body.dark-mode .mobile-nav-link.active {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    body.dark-mode .mobile-dropdown-toggle span:last-child {
+      color: #e6b17e;
+    }
 
     /* ---------- HEADER & NAVIGATION ---------- */
     .site-header {
@@ -137,12 +184,6 @@
       background: #7B4B2A;
       border-radius: 2px;
     }
-    body.dark-mode .nav-links a.active {
-      color: #c97e54;
-    }
-    body.dark-mode .nav-links a.active::after {
-      background: #c97e54;
-    }
     
     .dropdown-content {
       position: absolute;
@@ -157,6 +198,7 @@
       transform: translateY(8px);
       transition: opacity 0.25s ease, transform 0.25s ease;
       z-index: 100;
+      list-style: none;
     }
     .nav-item:hover .dropdown-content {
       opacity: 1;
@@ -182,8 +224,16 @@
       border: 1.5px solid transparent;
       transition: all 0.2s ease;
     }
-    .login-btn { background: transparent; border-color: #7B4B2A; color: #7B4B2A; }
-    .signup-btn { background: #7B4B2A; color: white; }
+    /* Only Login CTA remains in header - Sign Up removed */
+    .login-btn {
+      background: transparent;
+      border-color: #7B4B2A;
+      color: #7B4B2A;
+    }
+    .login-btn:hover {
+      background: #7B4B2A;
+      color: white;
+    }
     .dark-toggle, .rtl-toggle {
       background: transparent;
       border: 1.5px solid #7B4B2A;
@@ -579,7 +629,6 @@
       border-radius: 40px;
       padding: 4rem 2rem;
       text-align: center;
-      color: white;
       position: relative;
       overflow: hidden;
     }
@@ -589,7 +638,7 @@
       max-width: 700px;
       margin: auto;
     }
-    .friends-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .friends-content h2 { font-size: 2.5rem; margin-bottom: 1rem; color: white; }
     .friends-text { font-size: 1.1rem; color: #e0d6c8; line-height: 1.7; margin-bottom: 1.5rem; }
     .friends-highlight { color: #c97e5a; font-weight: 600; margin-bottom: 2rem; }
     .friends-btn {
@@ -620,7 +669,24 @@
     }
     .footer-brand p { margin: 1.2rem 0 1.8rem; color: #aaa; }
     .social-links { display: flex; gap: 1.4rem; }
-    .social-links a { color: #ccc; text-decoration: none; font-size: 1.2rem; }
+    .social-links a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      color: #ccc;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .social-links a:hover {
+      background: #7B4B2A;
+      color: #fff;
+      transform: translateY(-3px);
+    }
     .footer-col h4 { color: white; font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; text-transform: uppercase; }
     .footer-col ul { list-style: none; }
     .footer-col li { margin-bottom: 0.7rem; }
@@ -659,39 +725,19 @@
     .footer-bottom a:hover { color: #7B4B2A; }
 
     /* ========== UPDATED RESPONSIVE BREAKPOINTS ========== */
-    /* Tablet view: 820x1180 and 1024x768 - hamburger visible */
     @media (max-width: 1199px) {
-      .nav-links {
-        display: none !important;
-      }
-      .action-buttons {
-        display: none !important;
-      }
-      .hamburger {
-        display: flex !important;
-      }
-      .site-header {
-        padding: 0.8rem 1.5rem;
-      }
-      .hero-content h1 {
-        font-size: 2.8rem;
-      }
-      .hero-content h1 span {
-        font-size: 2.2rem;
-      }
+      .nav-links { display: none !important; }
+      .action-buttons { display: none !important; }
+      .hamburger { display: flex !important; }
+      .site-header { padding: 0.8rem 1.5rem; }
+      .hero-content h1 { font-size: 2.8rem; }
+      .hero-content h1 span { font-size: 2.2rem; }
     }
     
-    /* Desktop styles for larger screens */
     @media (min-width: 1200px) {
-      .nav-links {
-        display: flex !important;
-      }
-      .action-buttons {
-        display: flex !important;
-      }
-      .hamburger {
-        display: none !important;
-      }
+      .nav-links { display: flex !important; }
+      .action-buttons { display: flex !important; }
+      .hamburger { display: none !important; }
     }
     
     @media (max-width: 1024px) {
@@ -768,56 +814,6 @@
     .signup-mobile:hover {
       background: #5a3a1f;
     }
-    
-    body.dark-mode .dropdown-content a {
-      color: #fa720af5;
-    }
-    .social-links a {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  color: #ccc;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: #7B4B2A;
-  color: #fff;
-  transform: translateY(-3px);
-}
-.dropdown-content {
-  list-style: none;   /* 🔥 removes bullet */
-  margin: 0;
-  padding: 0.8rem 0; /* keep your spacing */
-}
-
-.dropdown-content li {
-  list-style: none;   /* extra safety */
-}
-
-   body.dark-mode .mobile-dropdown-content a {
-  color: #f0f0f0; /* change to white */
-}
-/* 🌙 Dark mode active link (mobile) */
-body.dark-mode .mobile-nav-link.active {
-  color: #c97e54;   /* highlight color */
-  font-weight: 700;
-}
-
-/* 🌙 Dark mode active dropdown toggle (mobile) */
-body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-  color: #c97e54;
-  font-weight: 700;
-}
   </style>
 </head>
 <body>
@@ -835,7 +831,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home</a>
+          <a href="#" id="navHome" class="active">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -857,8 +853,8 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <div class="header-actions">
         <div class="action-buttons">
+          <!-- Only Login CTA remains in header - Sign Up removed -->
           <a href="login.html" class="nav-btn login-btn">Login</a>
-          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
           <div class="dark-toggle" id="darkToggleBtn">🌙</div>
           <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
         </div>
@@ -878,7 +874,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
+        <div class="mobile-dropdown-toggle active-toggle" data-dropdown="dropdown1">
           <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
@@ -920,10 +916,10 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
   <!-- Hero Slider -->
   <section class="hero-banner">
     <div class="hero-slider">
-      <div class="slider-image active" style="background-image: url('images/img (1).jpg');"></div>
-      <div class="slider-image" style="background-image: url('images/img (2).jpg');"></div>
-      <div class="slider-image" style="background-image: url('images/img (3).jpg');"></div>
-      <div class="slider-image" style="background-image: url('images/img (4).jpg');"></div>
+      <div class="slider-image active" style="background-image: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop');"></div>
+      <div class="slider-image" style="background-image: url('https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=1600&h=900&fit=crop');"></div>
+      <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=1600&h=900&fit=crop');"></div>
+      <div class="slider-image" style="background-image: url('https://images.pexels.com/photos/3679312/pexels-photo-3679312.jpeg?w=1600&h=900&fit=crop');"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -955,21 +951,21 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       <h2 class="quiz-title">🍃 Find Your Perfect Tea</h2>
       <p class="quiz-description">Answer 3 simple questions and get personalized recommendations</p>
       <div class="quiz-options">
-        <div class="quiz-option" data-mood="🌅 Morning Ritual">🌅 Morning Ritual</div>
-        <div class="quiz-option" data-mood="🌙 Evening Relaxation">🌙 Evening Relaxation</div>
-        <div class="quiz-option" data-mood="💪 Energy Boost">💪 Energy Boost</div>
-        <div class="quiz-option" data-mood="🧘 Wellness Focus">🧘 Wellness Focus</div>
+        <div class="quiz-option" data-mood="Morning Ritual">Morning Ritual</div>
+        <div class="quiz-option" data-mood="Evening Relaxation">Evening Relaxation</div>
+        <div class="quiz-option" data-mood="Energy Boost">Energy Boost</div>
+        <div class="quiz-option" data-mood="Wellness Focus">Wellness Focus</div>
       </div>
-      <div class="quiz-result" id="quizResult">✨ Click any option to discover your match ✨</div>
+      <div class="quiz-result" id="quizResult"> Click any option to discover your match </div>
     </div>
   </div>
 
   <div class="section-container section-spacing">
-    <div class="section-title">☕ Our Essentials</div>
+    <div class="section-title"> Our Essentials</div>
     <div class="glass-card-grid">
-      <div class="glass-card"><img src="images\imgchai (3).jpg" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
-      <div class="glass-card"><img src="images\imgchai (8).jpg" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
-      <div class="glass-card"><img src="images\imgchai (6).jpg" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
+      <div class="glass-card"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=500&h=400&fit=crop" alt="Coffee"><div class="glass-content"><h3>Premium Coffee Powder</h3><p>Rich aroma, freshly ground beans</p></div></div>
+      <div class="glass-card"><img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=500&h=400&fit=crop" alt="Tea"><div class="glass-content"><h3>Authentic Tea Powder</h3><p>Handpicked leaves for soulful tea</p></div></div>
+      <div class="glass-card"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Snacks"><div class="glass-content"><h3>Biscuits & Buns</h3><p>Freshly baked snacks for every sip</p></div></div>
     </div>
   </div>
 
@@ -996,9 +992,9 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
   <div class="section-container section-spacing">
     <div class="friends-section">
       <div class="friends-content">
-        <h2>☕ A Place to Connect</h2>
+        <h2> A Place to Connect</h2>
         <p class="friends-text">This isn't just a coffee shop — it's where conversations flow, laughter echoes, and memories are made. Bring your friends, sip slowly, and stay a little longer.</p>
-        <p class="friends-highlight">✨ The perfect place to spend time with friends</p>
+        <p class="friends-highlight"> The perfect place to spend time with friends</p>
         <a href="#" class="friends-btn">Visit Us →</a>
       </div>
     </div>
@@ -1014,89 +1010,28 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
 </div></div>
       <div class="footer-col"><h4>QuickLinks</h4><ul><li><a href="index.html">Home</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="signup.html">Signup</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
-      <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
+      <div class="footer-col newsletter"><h4>MailBox</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
     </div>
     <div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div>
   </footer>
 
   <script>
-    // Get current page filename
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const pageName = currentPage.toLowerCase();
     
-    // Function to set active class on desktop nav links
     function setActiveNavLink() {
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
+      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
       const navHome = document.getElementById('navHome');
-      const navAbout = document.getElementById('navAbout');
-      const navService = document.getElementById('navService');
-      const navSoulful = document.getElementById('navSoulful');
-      const navTeaRitual = document.getElementById('navTeaRitual');
-      const navContact = document.getElementById('navContact');
-      const navDashboard = document.getElementById('navDashboard');
-      
       if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
         if (navHome) navHome.classList.add('active');
       }
-      else if (pageName === 'about.html') {
-        if (navAbout) navAbout.classList.add('active');
-      }
-      else if (pageName === 'service.html') {
-        if (navService) navService.classList.add('active');
-      }
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (navSoulful) navSoulful.classList.add('active');
-      }
-      else if (pageName === 'tearitual.html' || pageName === 'teaRitual.html') {
-        if (navTeaRitual) navTeaRitual.classList.add('active');
-      }
-      else if (pageName === 'contact.html') {
-        if (navContact) navContact.classList.add('active');
-      }
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (navDashboard) navDashboard.classList.add('active');
-      }
     }
     
-    // Function to set active class on mobile nav links
     function setMobileActiveLink() {
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-        toggle.classList.remove('active-toggle');
-      });
-      
-      const mobileAbout = document.getElementById('mobileAbout');
-      const mobileService = document.getElementById('mobileService');
-      const mobileSoulful = document.getElementById('mobileSoulful');
-      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
-      const mobileContact = document.getElementById('mobileContact');
+      document.querySelectorAll('.mobile-nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => toggle.classList.remove('active-toggle'));
       const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
-      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
-      
-      if (pageName === 'about.html') {
-        if (mobileAbout) mobileAbout.classList.add('active');
-      }
-      else if (pageName === 'service.html') {
-        if (mobileService) mobileService.classList.add('active');
-      }
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (mobileSoulful) mobileSoulful.classList.add('active');
-      }
-      else if (pageName === 'tearitual.html' || pageName === 'teaRitual.html') {
-        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
-      }
-      else if (pageName === 'contact.html') {
-        if (mobileContact) mobileContact.classList.add('active');
-      }
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
-      }
-      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
         if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
       }
     }
@@ -1105,7 +1040,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       // Dark Mode
       const darkToggle = document.getElementById('darkToggleBtn');
       const mobileDark = document.getElementById('mobileDarkToggle');
-      const setDark = (on) => { if (on) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode'); localStorage.setItem('darkMode', on); };
+      const setDark = (on) => { if (on) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode'); localStorage.setItem('darkMode', on); if(darkToggle) darkToggle.innerHTML = on ? '☀️' : '🌙'; if(mobileDark) mobileDark.innerHTML = on ? '☀️ Light' : '🌙 Dark'; };
       if (localStorage.getItem('darkMode') === 'true') setDark(true);
       darkToggle?.addEventListener('click', () => setDark(!document.body.classList.contains('dark-mode')));
       mobileDark?.addEventListener('click', () => setDark(!document.body.classList.contains('dark-mode')));
@@ -1158,20 +1093,19 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       const quizResult = document.getElementById('quizResult');
       const quizOptions = document.querySelectorAll('.quiz-option');
       const recommendations = {
-        '🌅 Morning Ritual': '🌿 Assam CTC or Masala Chai — bold, energizing, perfect start!',
-        '🌙 Evening Relaxation': '🍃 Chamomile or White Tea — calming, gentle, unwind naturally.',
-        '💪 Energy Boost': '⚡ Matcha Green Tea — sustained focus and natural energy.',
-        '🧘 Wellness Focus': '🌸 Tulsi & Ginger — immune boosting, soothing and detoxifying.'
+        'Morning Ritual': ' Assam CTC or Masala Chai — bold, energizing, perfect start!',
+        'Evening Relaxation': ' Chamomile or White Tea — calming, gentle, unwind naturally.',
+        'Energy Boost': ' Matcha Green Tea — sustained focus and natural energy.',
+        'Wellness Focus': 'Tulsi & Ginger — immune boosting, soothing and detoxifying.'
       };
       quizOptions.forEach(opt => {
         opt.addEventListener('click', () => {
           const mood = opt.getAttribute('data-mood');
-          const rec = recommendations[mood] || '✨ Discover your perfect blend with our tea guide!';
-          quizResult.innerHTML = `✨ ${mood}: ${rec} ✨`;
+          const rec = recommendations[mood] || ' Discover your perfect blend with our tea guide!';
+          quizResult.innerHTML = ` ✨ ${mood}: ${rec} ✨`;
         });
       });
       
-      // Initialize active links on page load
       setActiveNavLink();
       setMobileActiveLink();
     })();

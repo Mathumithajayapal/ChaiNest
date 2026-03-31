@@ -32,10 +32,10 @@
       height: 100%;
     }
 
-    /* Dark Mode - Complete */
+    /* Dark Mode - Complete - ALL TEXT BECOMES WHITE */
     body.dark-mode {
       background-color: #0a0a0a;
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode .main-content {
@@ -51,7 +51,7 @@
     body.dark-mode .sidebar .admin-badge,
     body.dark-mode .sidebar .nav-link,
     body.dark-mode .sidebar .sidebar-action-btn {
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode .sidebar .nav-link:hover,
@@ -67,7 +67,7 @@
 
     body.dark-mode .page-title h2,
     body.dark-mode .page-title p {
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode .stat-card {
@@ -77,7 +77,7 @@
 
     body.dark-mode .stat-value,
     body.dark-mode .stat-label {
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode .stat-icon i {
@@ -92,7 +92,7 @@
     body.dark-mode .data-table h3,
     body.dark-mode table th,
     body.dark-mode table td {
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode table th {
@@ -119,12 +119,16 @@
     }
 
     body.dark-mode .info-item span:first-child {
-      color: #94a3b8;
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .info-item span:last-child {
+      color: #ffffff;
     }
 
     body.dark-mode .modal-content {
       background: #1e1e2a;
-      color: #f1f5f9;
+      color: #ffffff;
     }
 
     body.dark-mode .form-group label {
@@ -135,11 +139,16 @@
     body.dark-mode .form-group select {
       background: #2a2a35;
       border-color: #3a3a4a;
-      color: #f1f5f9;
+      color: #ffffff;
+    }
+
+    body.dark-mode .form-group input::placeholder {
+      color: #94a3b8;
     }
 
     body.dark-mode .btn-primary {
       background: #9B5E2E;
+      color: #ffffff;
     }
 
     body.dark-mode .btn-primary:hover {
@@ -148,7 +157,56 @@
 
     body.dark-mode .btn-secondary {
       background: #334155;
-      color: white;
+      color: #ffffff;
+    }
+
+    body.dark-mode .btn-edit {
+      background: #3b82f6;
+      color: #ffffff;
+    }
+
+    body.dark-mode .btn-danger {
+      background: #dc2626;
+      color: #ffffff;
+    }
+
+    body.dark-mode .admin-profile strong {
+      color: #ffffff;
+    }
+
+    body.dark-mode .admin-profile span {
+      color: #cbd5e1 !important;
+    }
+
+    body.dark-mode .sidebar-action-btn {
+      color: #ffffff;
+      border-top-color: rgba(255,255,255,0.1);
+    }
+
+    body.dark-mode .sidebar-action-btn:hover {
+      background: rgba(123, 75, 42, 0.2);
+      color: #fbbf24;
+    }
+
+    body.dark-mode .logout-btn {
+      background: rgba(220, 38, 38, 0.15);
+    }
+
+    body.dark-mode .logout-btn:hover {
+      background: rgba(220, 38, 38, 0.3);
+      color: #f87171;
+    }
+
+    body.dark-mode .recent-activity-item {
+      border-bottom-color: #2d2d3a;
+    }
+
+    body.dark-mode .recent-activity-item p {
+      color: #ffffff;
+    }
+
+    body.dark-mode .recent-activity-item span {
+      color: #94a3b8;
     }
 
     /* Admin Container */
@@ -307,12 +365,11 @@
 
     .logout-btn {
       background: rgba(220, 38, 38, 0.1);
-      color: #b91c1c;
+      color: #7B4B2A;
     }
 
     .logout-btn:hover {
-      background: #dc2626;
-      color: white;
+      color: #7B4B2A;
     }
 
     /* Main Content */
@@ -561,7 +618,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Stats Cards - Vertical grid */
+    /* Stats Cards */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -634,7 +691,7 @@
       font-size: 0.85rem;
     }
 
-    /* Tables - Full width, vertical stacking */
+    /* Tables */
     .data-table {
       background: white;
       border-radius: 20px;
@@ -751,7 +808,6 @@
     .status-processing { background: #dbeafe; color: #1e40af; }
     .status-completed { background: #dcfce7; color: #166534; }
 
-    /* Two Columns - Vertical stacking on mobile */
     .two-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -855,6 +911,23 @@
       display: flex;
       gap: 1rem;
       margin-top: 1.5rem;
+    }
+
+    .recent-activity-item {
+      display: flex;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eef2ff;
+    }
+
+    .activity-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(123, 75, 42, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     ::-webkit-scrollbar {
@@ -1033,7 +1106,7 @@
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-value">${activeUsers}</div><div class="stat-label">Active Users</div></div>
         <div class="stat-card"><div class="stat-icon"><i class="fas fa-leaf"></i></div><div class="stat-value">${products.length}</div><div class="stat-label">Products</div></div>`;
       
-      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></tr></thead><tbody>${orders.slice(0,4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td></tr>`).join('')}</tbody></table>`;
+      document.getElementById('recentOrdersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th>Items</th></thead><tbody>${orders.slice(0,4).map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td>${o.items} items</td>`).join('')}</tbody></table>`;
       
       const sortedProducts = [...products].sort((a,b)=>b.sold-a.sold);
       document.getElementById('topProductsList').innerHTML = `<div class="info-list">${sortedProducts.map(p => `<div class="info-item"><span>${p.name}</span><span>${p.sold} units sold</span></div>`).join('')}</div>`;
@@ -1041,24 +1114,25 @@
       const completed = orders.filter(o=>o.status==='Completed');
       const pending = orders.filter(o=>o.status==='Pending');
       const processing = orders.filter(o=>o.status==='Processing');
-      document.getElementById('revenueSummary').innerHTML = `<div class="info-list"><div class="info-item"><span>✅ Completed Orders</span><span>${completed.length} ($${completed.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>⏳ Processing Orders</span><span>${processing.length} ($${processing.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>🕐 Pending Orders</span><span>${pending.length} ($${pending.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>📊 Average Order Value</span><span>$${(totalRevenue/totalOrders).toFixed(2)}</span></div></div>`;
+      const totalRev = orders.reduce((s,o)=>s+o.total,0);
+      document.getElementById('revenueSummary').innerHTML = `<div class="info-list"><div class="info-item"><span>✅ Completed Orders</span><span>${completed.length} ($${completed.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>⏳ Processing Orders</span><span>${processing.length} ($${processing.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>🕐 Pending Orders</span><span>${pending.length} ($${pending.reduce((s,o)=>s+o.total,0).toFixed(2)})</span></div><div class="info-item"><span>📊 Average Order Value</span><span>$${(totalRev/totalOrders).toFixed(2)}</span></div></div>`;
       
-      document.getElementById('recentActivity').innerHTML = users.slice(0,3).map(u => `<div style="display:flex; gap:1rem; padding:0.8rem 0; border-bottom:1px solid #eef2ff;"><div style="width:40px;height:40px;background:rgba(123,75,42,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-user-plus"></i></div><div><p><strong>${u.name}</strong> joined as ${u.role}</p><span style="font-size:0.75rem; color:#94a3b8;">${u.joined}</span></div></div>`).join('');
+      document.getElementById('recentActivity').innerHTML = users.slice(0,3).map(u => `<div class="recent-activity-item"><div class="activity-icon"><i class="fas fa-user-plus"></i></div><div><p><strong>${u.name}</strong> joined as ${u.role}</p><span style="font-size:0.75rem; color:#94a3b8;">${u.joined}</span></div></div>`).join('');
     }
     
     function renderUsers() { 
-      document.getElementById('usersTable').innerHTML = `<table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Orders</th><th>Status</th><th>Actions</th></tr></thead><tbody>${users.map(u => `<tr><td>${u.id}</td><td><strong>${u.name}</strong></td><td>${u.email}</td><td>${u.role}</td><td>${u.orders}</td><td><span class="status-badge status-active">${u.status}</span></td><td><div class="action-group"><button class="btn-edit" onclick="banUser(${u.id})"><i class="fas fa-ban"></i> ${u.status === 'Active' ? 'Ban' : 'Unban'}</button><button class="btn-danger" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i> Delete</button></div></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('usersTable').innerHTML = `<table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Orders</th><th>Status</th><th>Actions</th></tr></thead><tbody>${users.map(u => `<tr><td>${u.id}</td><td><strong>${u.name}</strong></td><td>${u.email}</td><td>${u.role}</td><td>${u.orders}</td><td><span class="status-badge status-active">${u.status}</span></td><td><div class="action-group"><button class="btn-edit" onclick="banUser(${u.id})"><i class="fas fa-ban"></i> ${u.status === 'Active' ? 'Ban' : 'Unban'}</button><button class="btn-danger" onclick="deleteUser(${u.id})"><i class="fas fa-trash"></i> Delete</button></div></td>`).join('')}</tbody></tr>`; 
     }
     
     function renderOrders() { 
       const rev = orders.reduce((s,o)=>s+o.total,0); 
       document.getElementById('orderStats').innerHTML = `<div class="stat-card"><div class="stat-icon"><i class="fas fa-chart-line"></i></div><div class="stat-value">${orders.length}</div><div class="stat-label">Total Orders</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${rev.toLocaleString()}</div><div class="stat-label">Total Revenue</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${orders.filter(o=>o.status==='Pending').length}</div><div class="stat-label">Pending</div></div><div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${orders.filter(o=>o.status==='Completed').length}</div><div class="stat-label">Completed</div></div>`; 
       
-      document.getElementById('ordersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td><button class="btn-edit" onclick="updateOrderStatus('${o.id}')"><i class="fas fa-sync-alt"></i> Update</button></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('ordersTable').innerHTML = `<table><thead><tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr></thead><tbody>${orders.map(o => `<tr><td><strong>${o.id}</strong></td><td>${o.customer}</td><td>${o.date}</td><td>${o.items}</td><td>$${o.total}</td><td><span class="status-badge status-${o.status.toLowerCase()}">${o.status}</span></td><td><button class="btn-edit" onclick="updateOrderStatus('${o.id}')"><i class="fas fa-sync-alt"></i> Update</button></td>`).join('')}</tbody></table>`; 
     }
     
     function renderProducts() { 
-      document.getElementById('productsTable').innerHTML = `<table><thead><tr><th>ID</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Units Sold</th><th>Revenue</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td>${p.id}</td><td><strong>${p.name}</strong></td><td>$${p.price}</td><td>${p.stock}</td><td>${p.sold}</td><td>$${(p.price * p.sold).toFixed(2)}</td><td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button></td></tr>`).join('')}</tbody></table>`; 
+      document.getElementById('productsTable').innerHTML = `<table><thead><tr><th>ID</th><th>Product Name</th><th>Price</th><th>Stock</th><th>Units Sold</th><th>Revenue</th><th>Actions</th></tr></thead><tbody>${products.map(p => `<tr><td>${p.id}</td><td><strong>${p.name}</strong></td><td>$${p.price}</td><td>${p.stock}</td><td>${p.sold}</td><td>$${(p.price * p.sold).toFixed(2)}</td><td><button class="btn-danger" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Delete</button></td>`).join('')}</tbody></table>`; 
     }
     
     function showPage(pageId) { 
@@ -1155,7 +1229,16 @@
     document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => showPage(item.getAttribute('data-page'))));
     document.getElementById('addUserBtn')?.addEventListener('click', () => openModal('userModal'));
     document.getElementById('addProductBtn')?.addEventListener('click', () => openModal('productModal'));
-    document.getElementById('logoutBtn')?.addEventListener('click', (e) => { e.preventDefault(); alert('Logged out successfully!'); });
+    
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        sessionStorage.removeItem('adminLoggedIn');
+        alert('🔐 You have been successfully logged out.');
+        window.location.href = 'login.html';
+      });
+    }
     
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
@@ -1180,6 +1263,8 @@
     });
     
     overlay?.addEventListener('click', closeSidebar);
+    
+    sessionStorage.setItem('adminLoggedIn', 'true');
     
     renderOverview(); 
     showPage('overview');

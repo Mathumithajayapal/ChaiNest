@@ -33,10 +33,10 @@
       height: 100%;
     }
 
-    /* Dark Mode */
+    /* Dark Mode - all text becomes white */
     body.dark-mode {
       background-color: #0f0f0f;
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .site-header {
@@ -48,7 +48,7 @@
     body.dark-mode .nav-links a,
     body.dark-mode .header-actions a,
     body.dark-mode .hamburger span {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .dropdown-content {
@@ -56,10 +56,9 @@
     }
 
     body.dark-mode .dropdown-content a {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
-    /* Dark mode mobile menu text colors */
     body.dark-mode .mobile-menu {
       background-color: #1a1a1a;
     }
@@ -72,64 +71,40 @@
     }
 
     body.dark-mode .mobile-dropdown-toggle span:last-child {
-      color: #c97e5a;
+      color: #e6b17e;
     }
 
     body.dark-mode .mobile-nav-item {
       border-bottom-color: #333;
     }
 
-    body.dark-mode .mobile-dropdown-content a:hover {
-      color: #c97e5a !important;
-    }
-
-    /* ========== FIX: Dark mode active mobile link styles ========== */
     body.dark-mode .mobile-nav-link.active {
-      color: #c97e54 !important;
+      color: #e6b17e !important;
       font-weight: 700;
     }
 
     body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-      color: #c97e54 !important;
+      color: #e6b17e !important;
       font-weight: 700;
     }
 
     body.dark-mode .mobile-btn.login-mobile {
-      border-color: #c97e5a;
-      color: #c97e5a;
+      border-color: #e6b17e;
+      color: #e6b17e;
     }
 
     body.dark-mode .mobile-btn.login-mobile:hover {
-      background: #c97e5a;
+      background: #e6b17e;
       color: #1a1a1a;
     }
 
     body.dark-mode .mobile-btn.signup-mobile {
-      background: #c97e5a;
+      background: #e6b17e;
       color: #1a1a1a;
-    }
-
-    body.dark-mode .mobile-btn.signup-mobile:hover {
-      background: #a55e3a;
-      color: #ffffff;
     }
 
     body.dark-mode .close-menu {
-      color: #c97e5a;
-    }
-
-    body.dark-mode .close-menu:hover {
-      background: rgba(201, 126, 90, 0.2);
-    }
-
-    body.dark-mode .mobile-toggle-btn {
-      border-color: #c97e5a;
-      color: #c97e5a;
-    }
-
-    body.dark-mode .mobile-toggle-btn:hover {
-      background: #c97e5a;
-      color: #1a1a1a;
+      color: #e6b17e;
     }
 
     body.dark-mode .unique-footer {
@@ -138,7 +113,6 @@
     
     body.dark-mode .timeline-card,
     body.dark-mode .kinetic-item,
-    body.dark-mode .artisan-card,
     body.dark-mode .white-card {
       background: #1a1a1a;
       border-color: #2c2c2c;
@@ -148,22 +122,67 @@
       background: linear-gradient(115deg, #1e1a14 0%, #252016 100%);
     }
     
-    body.dark-mode .story-content p {
-      color: #e0d6c8;
-    }
-    
+    body.dark-mode .story-content p,
     body.dark-mode .timeline-card p,
     body.dark-mode .kinetic-item p,
-    body.dark-mode .white-card p {
-      color: #aaa;
+    body.dark-mode .white-card p,
+    body.dark-mode .white-title,
+    body.dark-mode .section-title,
+    body.dark-mode .timeline-card h4,
+    body.dark-mode .kinetic-item h3,
+    body.dark-mode .white-card h3,
+    body.dark-mode .story-content .quote-mark,
+    body.dark-mode .about-text,
+    body.dark-mode .about-highlight,
+    body.dark-mode .footer-brand p,
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-bottom span,
+    body.dark-mode .footer-bottom a,
+    body.dark-mode .newsletter p,
+    body.dark-mode .section-subtitle,
+    body.dark-mode .white-subtitle {
+      color: #ffffff !important;
     }
     
-    body.dark-mode .white-title {
-      color: #f0f0f0;
+    body.dark-mode .timeline-year,
+    body.dark-mode .kinetic-icon,
+    body.dark-mode .white-card h3,
+    body.dark-mode .section-subtitle,
+    body.dark-mode .white-subtitle,
+    body.dark-mode .about-highlight,
+    body.dark-mode .kinetic-item h3 {
+      color: #e6b17e !important;
     }
     
-    body.dark-mode .white-card {
-      background: #1a1a1a;
+    body.dark-mode .footer-col h4 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input::placeholder {
+      color: #888;
+    }
+    
+    body.dark-mode .nav-links a.active {
+      color: #e6b17e;
+    }
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
+    }
+    
+    /* Theme toggles consistent palette */
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle {
+      border-color: #e6b17e;
+      color: #e6b17e;
+    }
+    body.dark-mode .dark-toggle:hover,
+    body.dark-mode .rtl-toggle:hover {
+      background: #e6b17e;
+      color: #1a1a1a;
     }
 
     /* Sticky Navbar */
@@ -223,35 +242,18 @@
       color: #ffffff;
     }
 
-    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
+    /* Responsive Navigation */
     @media (max-width: 1199px) {
-      .nav-links {
-        display: none !important;
-      }
-      .action-buttons {
-        display: none !important;
-      }
-      .hamburger {
-        display: flex !important;
-      }
-      .site-header {
-        padding: 0.8rem 1.5rem;
-      }
-      .cinematic-content h1 {
-        font-size: 3rem;
-      }
+      .nav-links { display: none !important; }
+      .action-buttons { display: none !important; }
+      .hamburger { display: flex !important; }
+      .site-header { padding: 0.8rem 1.5rem; }
     }
     
     @media (min-width: 1200px) {
-      .nav-links {
-        display: flex !important;
-      }
-      .action-buttons {
-        display: flex !important;
-      }
-      .hamburger {
-        display: none !important;
-      }
+      .nav-links { display: flex !important; }
+      .action-buttons { display: flex !important; }
+      .hamburger { display: none !important; }
     }
 
     .nav-links {
@@ -294,14 +296,6 @@
       height: 2px;
       background: #7B4B2A;
       border-radius: 2px;
-    }
-
-    body.dark-mode .nav-links a.active {
-      color: #c97e54;
-    }
-
-    body.dark-mode .nav-links a.active::after {
-      background: #c97e54;
     }
 
     .dropdown-content {
@@ -363,6 +357,7 @@
       border: 1.5px solid transparent;
     }
 
+    /* Only Login CTA remains in header */
     .login-btn {
       background: transparent;
       border-color: #7B4B2A;
@@ -372,15 +367,6 @@
     .login-btn:hover {
       background: #7B4B2A;
       color: white;
-    }
-
-    .signup-btn {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    .signup-btn:hover {
-      background: #5a3a1f;
     }
 
     .dark-toggle, .rtl-toggle {
@@ -495,17 +481,7 @@
       transition: color 0.2s;
     }
 
-    .mobile-nav-link:hover {
-      color: #7B4B2A;
-    }
-
-    /* ========== Light mode active mobile link styles ========== */
     .mobile-nav-link.active {
-      color: #7B4B2A;
-      font-weight: 700;
-    }
-
-    .mobile-dropdown-toggle.active-toggle span:first-child {
       color: #7B4B2A;
       font-weight: 700;
     }
@@ -523,6 +499,11 @@
       font-weight: 500;
       color: #111;
       transition: color 0.2s;
+    }
+
+    .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #7B4B2A;
+      font-weight: 700;
     }
 
     .mobile-dropdown-toggle span:last-child {
@@ -557,10 +538,6 @@
       font-weight: 500;
     }
 
-    .mobile-dropdown-content a:hover {
-      color: #7B4B2A;
-    }
-
     .close-menu {
       position: absolute;
       top: 1.2rem;
@@ -579,15 +556,6 @@
       transition: background 0.2s;
     }
 
-    .close-menu:hover {
-      background: rgba(123, 75, 42, 0.1);
-    }
-
-    [dir="rtl"] .close-menu {
-      right: auto;
-      left: 1.5rem;
-    }
-    
     /* Footer styles */
     .unique-footer {
       background-color: #000000;
@@ -719,67 +687,25 @@
 
     .footer-bottom a:hover { color: #7B4B2A; }
 
-    [dir="rtl"] .dropdown-content {
-      left: auto;
-      right: -12px;
-    }
-
-    [dir="rtl"] .action-buttons {
-      flex-direction: row-reverse;
-    }
-
-    /* Responsive Footer */
-    @media (max-width: 900px) {
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1.8rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 0.8rem;
-        text-align: center;
-      }
-      .footer-bottom a {
-        margin: 0 0.75rem;
-      }
-    }
-
     /* Cinematic Hero */
     .cinematic-hero {
       position: relative;
-      min-height: 105vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat fixed;
+      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
+      background-attachment: fixed;
       isolation: isolate;
+      margin-bottom: 3rem;
     }
     
     .cinematic-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 100%);
-      z-index: 1;
-    }
-    
-    .hero-particles {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: radial-gradient(circle at 20% 40%, rgba(123,75,42,0.2) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
       z-index: 1;
     }
     
@@ -805,7 +731,7 @@
     }
     
     .cinematic-content h1 {
-      font-size: 5rem;
+      font-size: 4.8rem;
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -0.03em;
@@ -831,7 +757,7 @@
     /* Floating Timeline */
     .floating-timeline {
       max-width: 1280px;
-      margin: -80px auto 5rem;
+      margin: 0 auto 5rem auto;
       padding: 0 2rem;
       position: relative;
       z-index: 5;
@@ -841,7 +767,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
     }
     
     .timeline-card {
@@ -850,7 +776,7 @@
       padding: 2rem;
       border-radius: 32px;
       flex: 1;
-      min-width: 200px;
+      min-width: 220px;
       text-align: center;
       transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
@@ -881,13 +807,14 @@
     /* Split Screen Story */
     .split-story {
       max-width: 1400px;
-      margin: 5rem auto;
+      margin: 0 auto 5rem auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
       background: linear-gradient(115deg, #f9efe2 0%, #f5e6d6 100%);
       border-radius: 48px;
       overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
     }
     
     .story-visual {
@@ -921,10 +848,10 @@
       margin: 1rem 0;
     }
     
-    /* Kinetic Values Grid */
+    /* Kinetic Values */
     .kinetic-values {
       max-width: 1280px;
-      margin: 5rem auto;
+      margin: 0 auto 5rem auto;
       padding: 0 2rem;
       text-align: center;
     }
@@ -997,6 +924,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      margin-bottom: 5rem;
     }
     
     .parallax-quote::before {
@@ -1007,16 +935,6 @@
       font-family: serif;
       top: -50px;
       left: 20px;
-    }
-    
-    .parallax-quote::after {
-      content: '”';
-      position: absolute;
-      font-size: 15rem;
-      opacity: 0.05;
-      font-family: serif;
-      bottom: -80px;
-      right: 20px;
     }
     
     .parallax-quote .quote-text {
@@ -1039,6 +957,7 @@
     .pure-white-section {
       background: #ffffff;
       padding: 5rem 2rem;
+      margin-bottom: 0;
     }
     
     body.dark-mode .pure-white-section {
@@ -1095,14 +1014,15 @@
     
     /* Luxury Section */
     .about-luxury {
-      min-height: 80vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       background: linear-gradient(135deg, #1a120b, #3a2e22);
       position: relative;
       overflow: hidden;
+      margin-top: 0;
     }
     
     .about-luxury::before {
@@ -1154,71 +1074,42 @@
       letter-spacing: 1px;
     }
     
-    /* Responsive adjustments */
+    /* Responsive */
     @media (max-width: 1024px) {
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: 0.85rem; }
-      .action-buttons { gap: 0.5rem; }
-      .nav-btn { padding: 0.4rem 1rem; font-size: 0.85rem; }
-      .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
+      .cinematic-content h1 { font-size: 3.5rem; }
+      .white-title { font-size: 2rem; }
     }
-
     @media (max-width: 900px) {
-      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
-      .cinematic-content h1 { font-size: 2.8rem; }
+      .footer-container { grid-template-columns: repeat(2, 1fr); }
     }
-
     @media (max-width: 768px) {
       .cinematic-hero { min-height: 70vh; background-attachment: scroll; }
       .cinematic-content h1 { font-size: 2.2rem; }
-      .cinematic-desc { font-size: 1rem; }
-      .floating-timeline { margin-top: -40px; }
       .timeline-container { flex-direction: column; }
-      .split-story { grid-template-columns: 1fr; margin: 3rem 1rem; }
+      .split-story { grid-template-columns: 1fr; margin: 0 1rem 3rem 1rem; }
       .story-visual { min-height: 300px; }
       .story-content { padding: 2rem; }
-      .story-content p { font-size: 1rem; }
       .section-title { font-size: 1.8rem; }
       .kinetic-grid { grid-template-columns: 1fr; }
       .parallax-quote .quote-text { font-size: 1.2rem; }
       .about-box h1 { font-size: 2rem; }
-      .about-text { font-size: 1rem; }
-      .white-title { font-size: 1.8rem; }
+      .white-title { font-size: 1.6rem; }
+      .white-grid { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
+      .footer-container { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 480px) {
       .logo-text { font-size: 1.2rem; }
       .logo-icon { width: 32px; height: 32px; }
       .cinematic-content h1 { font-size: 1.8rem; }
-      .timeline-year { font-size: 1.8rem; }
-    }
-
-    /* Tablet view - force 2x2 grid */
-    @media (min-width: 768px) and (max-width: 1100px) {
-      .kinetic-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
     }
     
-    @media (max-width: 1100px) {
-      .white-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     .mobile-auth-buttons {
       display: flex;
       gap: 1rem;
       padding: 1rem 0;
     }
-
     .mobile-btn {
       flex: 1;
       text-align: center;
@@ -1229,33 +1120,24 @@
       font-size: 0.95rem;
       transition: all 0.3s ease;
     }
-
     .login-mobile {
       border: 1.5px solid #7B4B2A;
       color: #7B4B2A;
       background: transparent;
     }
-
     .login-mobile:hover {
       background: #7B4B2A;
       color: #fff;
     }
-
     .signup-mobile {
       background: #7B4B2A;
       color: #fff;
     }
-
-    .signup-mobile:hover {
-      background: #5a3a1f;
-    }
-
     .mobile-toggle-row {
       display: flex;
       gap: 1rem;
       padding: 1rem 0;
     }
-
     .mobile-toggle-btn {
       flex: 1;
       text-align: center;
@@ -1268,11 +1150,6 @@
       background: transparent;
       color: #7B4B2A;
       transition: all 0.3s ease;
-    }
-
-    .mobile-toggle-btn:hover {
-      background: #7B4B2A;
-      color: white;
     }
   </style>
 </head>
@@ -1290,19 +1167,19 @@
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home</a>
+          <a href="#">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html" id="navAbout">About</a></li>
-        <li><a href="service.html" id="navService">Service</a></li>
-        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
-        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
-        <li><a href="contact.html" id="navContact">Contact</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html">Soulful Sips</a></li>
+        <li><a href="teaRitual.html">Tea Ritual</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard</a>
+          <a href="#">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1312,8 +1189,8 @@
       
       <div class="header-actions">
         <div class="action-buttons">
+          <!-- Only Login CTA remains in header -->
           <a href="login.html" class="nav-btn login-btn">Login</a>
-          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
           <div class="dark-toggle" id="darkToggleBtn">🌙</div>
           <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
         </div>
@@ -1334,7 +1211,7 @@
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span id="mobileHomeText">Home</span>
+          <span>Home</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown1">
@@ -1342,14 +1219,14 @@
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
-      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link active">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span id="mobileDashboardText">Dashboard</span>
+          <span>Dashboard</span>
           <span>▼</span>
         </div>
         <div class="mobile-dropdown-content" id="dropdown2">
@@ -1373,7 +1250,6 @@
   </div>
 
   <section class="cinematic-hero">
-    <div class="hero-particles"></div>
     <div class="cinematic-content">
       <div class="cinematic-badge">EST. 1985 · THREE GENERATIONS</div>
       <h1>We don't just brew tea.<br>We <span>cultivate moments</span>.</h1>
@@ -1404,26 +1280,10 @@
     <h2 class="section-title">Our kinetic philosophy</h2>
     <div class="section-subtitle">━━ where tradition moves forward ━━</div>
     <div class="kinetic-grid">
-      <div class="kinetic-item">
-        <div class="kinetic-icon"><i class="fa-solid fa-leaf"></i></div>
-        <h3>Regenerative</h3>
-        <p>We give back more than we take — nurturing soil, farmers, and future harvests.</p>
-      </div>
-      <div class="kinetic-item">
-        <div class="kinetic-icon"><i class="fa-solid fa-mug-hot"></i></div>
-        <h3>Handcrafted</h3>
-        <p>No machines, no shortcuts. Every blend is touched by human intuition.</p>
-      </div>
-      <div class="kinetic-item">
-        <div class="kinetic-icon"><i class="fa-solid fa-spa"></i></div>
-        <h3>Ritualistic</h3>
-        <p>We design teas that demand presence — slow down, inhale, connect.</p>
-      </div>
-      <div class="kinetic-item">
-        <div class="kinetic-icon"><i class="fa-solid fa-seedling"></i></div>
-        <h3>Honest</h3>
-        <p>Transparent sourcing, real ingredients, zero hidden additives.</p>
-      </div>
+      <div class="kinetic-item"><div class="kinetic-icon"><i class="fa-solid fa-leaf"></i></div><h3>Regenerative</h3><p>We give back more than we take — nurturing soil, farmers, and future harvests.</p></div>
+      <div class="kinetic-item"><div class="kinetic-icon"><i class="fa-solid fa-mug-hot"></i></div><h3>Handcrafted</h3><p>No machines, no shortcuts. Every blend is touched by human intuition.</p></div>
+      <div class="kinetic-item"><div class="kinetic-icon"><i class="fa-solid fa-spa"></i></div><h3>Ritualistic</h3><p>We design teas that demand presence — slow down, inhale, connect.</p></div>
+      <div class="kinetic-item"><div class="kinetic-icon"><i class="fa-solid fa-seedling"></i></div><h3>Honest</h3><p>Transparent sourcing, real ingredients, zero hidden additives.</p></div>
     </div>
   </div>
   
@@ -1437,7 +1297,7 @@
       <h2 class="white-title">Why Choose Chai Nest?</h2>
       <p class="white-subtitle">Because every sip should feel like home.</p>
       <div class="white-grid">
-        <div class="white-card"><h3>🌿 Natural Ingredients</h3><p>No chemicals. No shortcuts. Only pure tea leaves sourced from trusted farms.</p></div>
+        <div class="white-card"><h3>🌿 Natural Ingredients</h3><p>No chemicals. No shortcuts. Only pure tea leaves from trusted farms.</p></div>
         <div class="white-card"><h3>🔥 Freshly Blended</h3><p>Each batch is crafted in small quantities to preserve aroma and flavor.</p></div>
         <div class="white-card"><h3>🚚 Fast Delivery</h3><p>From our nest to your cup — quick, safe, and fresh delivery.</p></div>
       </div>
@@ -1455,89 +1315,15 @@
   
   <footer class="unique-footer">
     <div class="footer-container">
-      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links">
-  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#"><i class="fa-brands fa-twitter"></i></a>
-  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-</div></div>
+      <div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-tiktok"></i></a></div></div>
       <div class="footer-col"><h4>QuickLinks</h4><ul><li><a href="index.html">Home</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="signup.html">Signup</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
-      <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
+      <div class="footer-col newsletter"><h4>MailBox</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
     </div>
     <div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div>
   </footer>
 
   <script>
-    // Get current page filename
-    const currentPage = window.location.pathname.split('/').pop() || 'about.html';
-    const pageName = currentPage.toLowerCase();
-    
-    // Function to set active class on desktop nav links
-    function setActiveNavLink() {
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      const navHome = document.getElementById('navHome');
-      const navAbout = document.getElementById('navAbout');
-      const navService = document.getElementById('navService');
-      const navSoulful = document.getElementById('navSoulful');
-      const navTeaRitual = document.getElementById('navTeaRitual');
-      const navContact = document.getElementById('navContact');
-      const navDashboard = document.getElementById('navDashboard');
-      
-      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (navHome) navHome.classList.add('active');
-      } else if (pageName === 'about.html') {
-        if (navAbout) navAbout.classList.add('active');
-      } else if (pageName === 'service.html') {
-        if (navService) navService.classList.add('active');
-      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (navSoulful) navSoulful.classList.add('active');
-      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (navTeaRitual) navTeaRitual.classList.add('active');
-      } else if (pageName === 'contact.html') {
-        if (navContact) navContact.classList.add('active');
-      } else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (navDashboard) navDashboard.classList.add('active');
-      }
-    }
-    
-    // Function to set active class on mobile nav links
-    function setMobileActiveLink() {
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-        toggle.classList.remove('active-toggle');
-      });
-      
-      const mobileAbout = document.getElementById('mobileAbout');
-      const mobileService = document.getElementById('mobileService');
-      const mobileSoulful = document.getElementById('mobileSoulful');
-      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
-      const mobileContact = document.getElementById('mobileContact');
-      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
-      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
-      
-      if (pageName === 'about.html') {
-        if (mobileAbout) mobileAbout.classList.add('active');
-      } else if (pageName === 'service.html') {
-        if (mobileService) mobileService.classList.add('active');
-      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (mobileSoulful) mobileSoulful.classList.add('active');
-      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
-      } else if (pageName === 'contact.html') {
-        if (mobileContact) mobileContact.classList.add('active');
-      } else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
-      } else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
-      }
-    }
-    
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1551,25 +1337,13 @@
       if (lock) document.body.classList.add('menu-open');
       else document.body.classList.remove('menu-open');
     }
-
-    function openMenu() {
-      mobileMenu.classList.add('active');
-      setBodyScrollLock(true);
-    }
-
-    function closeMenuFn() {
-      mobileMenu.classList.remove('active');
-      setBodyScrollLock(false);
-      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
-    }
+    function openMenu() { mobileMenu.classList.add('active'); setBodyScrollLock(true); }
+    function closeMenuFn() { mobileMenu.classList.remove('active'); setBodyScrollLock(false); document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = ''); }
 
     hamburger?.addEventListener('click', openMenu);
     closeMenu?.addEventListener('click', closeMenuFn);
     overlay?.addEventListener('click', closeMenuFn);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn(); });
 
     function setDarkMode(isDark) {
       if(isDark) document.body.classList.add('dark-mode');
@@ -1605,10 +1379,6 @@
         }
       });
     });
-    
-    // Initialize active links on page load
-    setActiveNavLink();
-    setMobileActiveLink();
   </script>
 </body>
 </html>

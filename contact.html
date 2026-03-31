@@ -7,7 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -32,10 +33,10 @@
       height: 100%;
     }
 
-    /* Dark Mode */
+    /* Dark Mode - Consistent palette */
     body.dark-mode {
       background-color: #0f0f0f;
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .site-header {
@@ -47,7 +48,7 @@
     body.dark-mode .nav-links a,
     body.dark-mode .header-actions a,
     body.dark-mode .hamburger span {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .dropdown-content {
@@ -55,7 +56,7 @@
     }
 
     body.dark-mode .dropdown-content a {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .mobile-menu {
@@ -63,8 +64,10 @@
     }
 
     body.dark-mode .mobile-nav-link,
-    body.dark-mode .mobile-dropdown-toggle span:first-child {
-      color: #f0f0f0;
+    body.dark-mode .mobile-dropdown-toggle span:first-child,
+    body.dark-mode .mobile-dropdown-content a,
+    body.dark-mode .mobile-nav-item .mobile-nav-link {
+      color: #ffffff !important;
     }
 
     body.dark-mode .mobile-nav-item {
@@ -75,6 +78,7 @@
       background-color: #0a0a0a;
     }
     
+    /* Dark mode card backgrounds */
     body.dark-mode .info-card,
     body.dark-mode .contact-form-wrapper,
     body.dark-mode .faq-glass-card {
@@ -82,14 +86,30 @@
       border-color: #2c2c2c;
     }
     
+    /* Dark mode text overrides - all text white */
     body.dark-mode .info-details p,
     body.dark-mode .info-details a,
-    body.dark-mode .faq-answer {
-      color: #aaa;
+    body.dark-mode .faq-answer,
+    body.dark-mode .contact-form-wrapper h2,
+    body.dark-mode .form-subtitle,
+    body.dark-mode .section-title,
+    body.dark-mode .section-subtitle,
+    body.dark-mode .footer-brand p,
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-bottom span,
+    body.dark-mode .footer-bottom a,
+    body.dark-mode .newsletter p,
+    body.dark-mode .info-details h3 {
+      color: #ffffff !important;
     }
     
-    body.dark-mode .contact-form-wrapper h2 {
-      color: #f0f0f0;
+    /* Keep accent colors for specific elements */
+    body.dark-mode .info-icon,
+    body.dark-mode .faq-question,
+    body.dark-mode .faq-arrow,
+    body.dark-mode .section-subtitle,
+    body.dark-mode .form-subtitle {
+      color: #e6b17e !important;
     }
     
     body.dark-mode .form-group input,
@@ -97,21 +117,63 @@
     body.dark-mode .form-group textarea {
       background: #2a2a2a;
       border-color: #3a3a3a;
-      color: #f0f0f0;
+      color: #ffffff;
+    }
+    
+    body.dark-mode .form-group input::placeholder,
+    body.dark-mode .form-group textarea::placeholder {
+      color: #94a3b8;
     }
     
     body.dark-mode .map-container {
       border-color: #2c2c2c;
     }
     
-    body.dark-mode .faq-question {
-      color: #c97e5a;
+    body.dark-mode .footer-col h4 {
+      color: #ffffff;
     }
     
-    body.dark-mode .faq-arrow {
-      color: #c97e5a;
+    body.dark-mode .newsletter-input input {
+      color: #ffffff;
     }
     
+    body.dark-mode .newsletter-input input::placeholder {
+      color: #888;
+    }
+    
+    body.dark-mode .mobile-nav-link.active {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    
+    body.dark-mode .mobile-dropdown-toggle span:last-child {
+      color: #e6b17e;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #e6b17e;
+    }
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
+    }
+    
+    /* Theme toggles consistent palette */
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle {
+      border-color: #e6b17e;
+      color: #e6b17e;
+    }
+    body.dark-mode .dark-toggle:hover,
+    body.dark-mode .rtl-toggle:hover {
+      background: #e6b17e;
+      color: #1a1a1a;
+    }
+
     /* Sticky Navbar */
     .site-header {
       position: sticky;
@@ -169,8 +231,7 @@
       color: #ffffff;
     }
 
-    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
-    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    /* Responsive Navigation */
     @media (max-width: 1199px) {
       .nav-links {
         display: none !important;
@@ -186,7 +247,6 @@
       }
     }
     
-    /* Desktop: Show desktop nav only on screens 1200px and above */
     @media (min-width: 1200px) {
       .nav-links {
         display: flex !important;
@@ -241,14 +301,6 @@
       border-radius: 2px;
     }
 
-    body.dark-mode .nav-links a.active {
-      color: #c97e54;
-    }
-
-    body.dark-mode .nav-links a.active::after {
-      background: #c97e54;
-    }
-
     .dropdown-content {
       position: absolute;
       top: 100%;
@@ -263,6 +315,7 @@
       transform: translateY(8px);
       transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
       z-index: 100;
+      list-style: none;
     }
 
     .nav-item:hover .dropdown-content {
@@ -308,6 +361,7 @@
       border: 1.5px solid transparent;
     }
 
+    /* Only Login CTA remains in header - Sign Up removed */
     .login-btn {
       background: transparent;
       border-color: #7B4B2A;
@@ -317,15 +371,6 @@
     .login-btn:hover {
       background: #7B4B2A;
       color: white;
-    }
-
-    .signup-btn {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    .signup-btn:hover {
-      background: #5a3a1f;
     }
 
     .dark-toggle, .rtl-toggle {
@@ -440,10 +485,6 @@
       transition: color 0.2s;
     }
 
-    .mobile-nav-link:hover {
-      color: #7B4B2A;
-    }
-
     .mobile-nav-link.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -501,10 +542,6 @@
       font-weight: 500;
     }
 
-    .mobile-dropdown-content a:hover {
-      color: #7B4B2A;
-    }
-
     .close-menu {
       position: absolute;
       top: 1.2rem;
@@ -523,15 +560,102 @@
       transition: background 0.2s;
     }
 
-    .close-menu:hover {
-      background: rgba(123, 75, 42, 0.1);
+    /* Hero Banner */
+    .hero-banner {
+      position: relative;
+      min-height: 95vh;
+      height: auto;
+      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    [dir="rtl"] .close-menu {
-      right: auto;
-      left: 1.5rem;
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
     }
-    
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .glass-card {
+      backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 40px;
+      padding: 3.5rem 3rem;
+      max-width: 750px;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .glass-card h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .glass-card p {
+      color: #f5f0e6;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .hero-btn.primary {
+      background: #7B4B2A;
+      color: #fff;
+      border: none;
+    }
+
+    .hero-btn.primary:hover {
+      background: #5a3a1f;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .hero-btn.secondary {
+      background: transparent;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+    }
+
+    .hero-btn.secondary:hover {
+      background: #ffffff;
+      color: #7B4B2A;
+      transform: translateY(-3px);
+    }
+
     /* Footer styles */
     .unique-footer {
       background-color: #000000;
@@ -557,17 +681,28 @@
 
     .social-links {
       display: flex;
-      gap: 1.4rem;
+      gap: 1rem;
     }
 
     .social-links a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
       color: #ccc;
+      font-size: 16px;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
 
-    .social-links a:hover { color: #7B4B2A; }
+    .social-links a:hover {
+      background: #7B4B2A;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
     .footer-col h4 {
       color: white;
@@ -652,119 +787,6 @@
 
     .footer-bottom a:hover { color: #7B4B2A; }
 
-    [dir="rtl"] .dropdown-content {
-      left: auto;
-      right: -12px;
-    }
-
-    [dir="rtl"] .action-buttons {
-      flex-direction: row-reverse;
-    }
-
-    /* Responsive Footer */
-    @media (max-width: 900px) {
-      .footer-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1.8rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 0.8rem;
-        text-align: center;
-      }
-      .footer-bottom a {
-        margin: 0 0.75rem;
-      }
-    }
-
-    /* Hero Banner */
-    .hero-banner {
-      position: relative;
-      height: 95vh;
-      background: url('https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=1600&h=900&fit=crop') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .glass-card {
-      backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 30px;
-      padding: 3rem 2.5rem;
-      max-width: 600px;
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .glass-card h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .glass-card p {
-      color: #eee;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      padding: 0.8rem 1.6rem;
-      border-radius: 40px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .hero-btn.primary {
-      background: #7B4B2A;
-      color: #fff;
-    }
-
-    .hero-btn.primary:hover {
-      background: #5a3a1f;
-    }
-
-    .hero-btn.secondary {
-      border: 1.5px solid #fff;
-      color: #fff;
-    }
-
-    .hero-btn.secondary:hover {
-      background: #fff;
-      color: #000;
-    }
-
     /* Contact Grid */
     .contact-grid {
       max-width: 1280px;
@@ -805,8 +827,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       flex-shrink: 0;
+      color: #7B4B2A;
     }
     
     .info-details h3 {
@@ -907,7 +930,6 @@
       height: 450px;
       width: 100%;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      position: relative;
     }
     
     .map-container iframe {
@@ -917,13 +939,9 @@
       display: block;
     }
     
-    body.dark-mode .map-container iframe {
-      filter: brightness(0.85) contrast(1.05);
-    }
-    
-    /* FAQ SECTION - 3 GLASS CARDS IN A ROW */
+    /* FAQ SECTION - ONE COLUMN (VERTICAL) */
     .faq-section {
-      max-width: 1280px;
+      max-width: 900px;
       margin: 5rem auto;
       padding: 0 2rem;
       text-align: center;
@@ -933,6 +951,7 @@
       font-size: 2rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      color: #7B4B2A;
     }
     
     .section-subtitle {
@@ -940,59 +959,47 @@
       margin-bottom: 3rem;
     }
     
-    /* 3-column grid for FAQ cards - desktop */
     .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    
-    /* Glass card styling */
-    .faq-glass-card {
-      background: white;
-      backdrop-filter: blur(8px);
-      border-radius: 32px;
-      padding: 2rem 1.8rem;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      border: 1px solid rgba(123, 75, 42, 0.2);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-      cursor: pointer;
-      text-align: left;
-      height: 100%;
       display: flex;
       flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .faq-glass-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem 2rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(123, 75, 42, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
     }
     
     .faq-glass-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 35px rgba(123, 75, 42, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(123, 75, 42, 0.12);
       border-color: rgba(123, 75, 42, 0.4);
     }
     
     .faq-glass-card.active {
       border-color: #7B4B2A;
-      box-shadow: 0 15px 30px rgba(123, 75, 42, 0.2);
+      background: rgba(123, 75, 42, 0.02);
     }
     
-    /* Card icon */
-    .faq-card-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1.2rem;
-      display: inline-block;
-      color: #7B4B2A;
-    }
-    
-    /* Question styling */
     .faq-question {
       font-weight: 700;
       font-size: 1.2rem;
-      margin-bottom: 1rem;
       color: #7B4B2A;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
       line-height: 1.4;
     }
     
@@ -1001,7 +1008,7 @@
     }
     
     .faq-arrow {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       transition: transform 0.3s ease;
       color: #7B4B2A;
       flex-shrink: 0;
@@ -1011,7 +1018,6 @@
       transform: rotate(180deg);
     }
     
-    /* Answer styling */
     .faq-answer {
       color: #666;
       line-height: 1.6;
@@ -1027,88 +1033,51 @@
       margin-top: 1rem;
     }
     
-    body.dark-mode .faq-glass-card {
-      background: #1a1a1a;
-      border-color: #2c2c2c;
-    }
-    
-    body.dark-mode .faq-answer {
-      color: #aaa;
-    }
-    
-    /* Responsive: Tablet - 2 columns for FAQ */
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .faq-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.8rem;
-      }
-    }
-    
-    /* Responsive: Mobile - 1 column for FAQ */
-    @media (max-width: 768px) {
-      .faq-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      
-      .faq-glass-card {
-        padding: 1.5rem;
-      }
-      
-      .faq-question {
-        font-size: 1.1rem;
-      }
-    }
-    
+    /* Responsive */
     @media (max-width: 1024px) {
+      .glass-card h1 { font-size: 3rem; }
+      .glass-card p { font-size: 1.1rem; }
       .map-container { height: 380px; }
     }
 
     @media (max-width: 900px) {
       .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .glass-card { padding: 2.5rem 2rem; }
       .glass-card h1 { font-size: 2.5rem; }
       .map-container { height: 350px; }
+      .faq-section { margin: 3rem auto; }
     }
 
     @media (max-width: 768px) {
-      .hero-banner { height: 70vh; }
-      .glass-card h1 { font-size: 2rem; }
-      .glass-card { padding: 2rem; }
+      .hero-banner { min-height: auto; padding: 4rem 0; }
+      .glass-card h1 { font-size: 2.2rem; }
       .glass-card p { font-size: 1rem; }
+      .glass-card { padding: 2rem 1.5rem; }
       .contact-grid { margin: 3rem auto; padding: 0 1.5rem; }
       .info-card { padding: 1.2rem; }
       .info-icon { width: 45px; height: 45px; font-size: 1.3rem; }
-      .contact-form-wrapper { padding: 1.5rem; }
-      .contact-form-wrapper h2 { font-size: 1.4rem; }
-      .section-title { font-size: 1.6rem; }
       .map-container { height: 300px; }
+      .section-title { font-size: 1.6rem; }
+      .faq-question { font-size: 1rem; }
+      .faq-glass-card { padding: 1.2rem 1.5rem; }
     }
 
     @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
+      .footer-container { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
       .logo-text { font-size: 1.2rem; }
       .logo-icon { width: 32px; height: 32px; }
-      .glass-card h1 { font-size: 1.6rem; }
+      .glass-card h1 { font-size: 1.8rem; }
+      .glass-card p { font-size: 0.9rem; }
+      .hero-btn { padding: 0.7rem 1.5rem; font-size: 0.85rem; }
       .info-card { flex-direction: column; text-align: center; }
       .info-icon { margin-bottom: 0.5rem; }
-      .form-group input, .form-group select, .form-group textarea { padding: 0.7rem 0.9rem; }
       .map-container { height: 220px; }
-      .section-title { font-size: 1.4rem; }
-      .section-subtitle { font-size: 0.8rem; }
-      .hero-banner { height: 60vh; }
-      .glass-card { padding: 1.5rem; }
-      .faq-question { font-size: 1rem; }
-      .faq-answer { font-size: 0.85rem; }
-    }
-    
-    body.dark-mode .dropdown-content a {
-      color: #fa720af5;
+      .faq-question { font-size: 0.95rem; }
+      .faq-glass-card { padding: 1rem 1.2rem; }
     }
     
     .mobile-auth-buttons {
@@ -1147,63 +1116,10 @@
     .signup-mobile:hover {
       background: #5a3a1f;
     }
-    .social-links a {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  color: #ccc;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: #7B4B2A;
-  color: #fff;
-  transform: translateY(-3px);
-}
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* ✅ ONE BY ONE */
-  gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.dropdown-content {
-  list-style: none;   /* 🔥 removes bullet */
-  margin: 0;
-  padding: 0.8rem 0; /* keep your spacing */
-}
-
-.dropdown-content li {
-  list-style: none;   /* extra safety */
-}
-
-   body.dark-mode .mobile-dropdown-content a {
-  color: #f0f0f0; /* change to white */
-}
-/* 🌙 Dark mode active link (mobile) */
-body.dark-mode .mobile-nav-link.active {
-  color: #c97e54;   /* highlight color */
-  font-weight: 700;
-}
-
-/* 🌙 Dark mode active dropdown toggle (mobile) */
-body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-  color: #c97e54;
-  font-weight: 700;
-}
+    body.dark-mode .mobile-dropdown-content a {
+      color: #f0f0f0;
+    }
   </style>
 </head>
 <body>
@@ -1220,19 +1136,19 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home</a>
+          <a href="#">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
           </ul>
         </li>
-        <li><a href="about.html" id="navAbout">About</a></li>
-        <li><a href="service.html" id="navService">Service</a></li>
-        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
-        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
-        <li><a href="contact.html" id="navContact">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html">Soulful Sips</a></li>
+        <li><a href="teaRitual.html">Tea Ritual</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
         <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard</a>
+          <a href="#">Dashboard</a>
           <ul class="dropdown-content">
             <li><a href="user.html">User Dashboard</a></li>
             <li><a href="admin.html">Admin Dashboard</a></li>
@@ -1242,8 +1158,8 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <div class="header-actions">
         <div class="action-buttons">
+          <!-- Only Login CTA remains in header - Sign Up removed -->
           <a href="login.html" class="nav-btn login-btn">Login</a>
-          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
           <div class="dark-toggle" id="darkToggleBtn">🌙</div>
           <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
         </div>
@@ -1272,11 +1188,11 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
           <a href="home2.html">Home 2</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
-      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
       <li class="mobile-nav-item">
         <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
           <span id="mobileDashboardText">Dashboard</span>
@@ -1321,28 +1237,28 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
   <div class="contact-grid">
     <div class="contact-info">
       <div class="info-card">
-        <div class="info-icon">📍</div>
+        <div class="info-icon"><i class="fas fa-location-dot"></i></div>
         <div class="info-details">
           <h3>Visit Our Flagship Store</h3>
           <p>42 Chai Lane, Koregaon Park<br>Pune, Maharashtra 411001<br>India</p>
         </div>
       </div>
       <div class="info-card">
-        <div class="info-icon">📞</div>
+        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
         <div class="info-details">
           <h3>Call Us</h3>
           <p><a href="tel:+912012345678">+91 20 1234 5678</a><br>Mon-Sat, 10AM - 7PM IST</p>
         </div>
       </div>
       <div class="info-card">
-        <div class="info-icon">✉️</div>
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
         <div class="info-details">
           <h3>Email Us</h3>
           <p><a href="mailto:hello@chainest.com">hello@chainest.com</a><br>For wholesale: <a href="mailto:wholesale@chainest.com">wholesale@chainest.com</a></p>
         </div>
       </div>
       <div class="info-card">
-        <div class="info-icon">⏰</div>
+        <div class="info-icon"><i class="fas fa-clock"></i></div>
         <div class="info-details">
           <h3>Store Hours</h3>
           <p>Monday - Friday: 10:00 AM - 8:00 PM<br>Saturday - Sunday: 11:00 AM - 6:00 PM</p>
@@ -1391,15 +1307,13 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     </div>
   </div>
   
-  <!-- FAQ SECTION - 3 GLASS CARDS IN A ROW -->
+  <!-- FAQ SECTION -->
   <div class="faq-section">
     <h2 class="section-title">Frequently asked questions</h2>
     <div class="section-subtitle">━━ quick answers to common questions ━━</div>
     <div class="faq-grid" id="faqGrid">
       
-      <!-- Card 1: Shipping -->
       <div class="faq-glass-card">
-        <div class="faq-card-icon"></div>
         <div class="faq-question">
           <span class="faq-question-text">Do you ship internationally?</span>
           <span class="faq-arrow">▼</span>
@@ -1407,9 +1321,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         <div class="faq-answer">Yes! We ship worldwide. International shipping typically takes 5-10 business days. Free shipping on orders over $75. We use eco-friendly, compostable packaging for all international orders to minimize our carbon footprint.</div>
       </div>
       
-      <!-- Card 2: Tasting Experience -->
       <div class="faq-glass-card">
-        <div class="faq-card-icon"></div>
         <div class="faq-question">
           <span class="faq-question-text">Can I visit for a tea tasting?</span>
           <span class="faq-arrow">▼</span>
@@ -1417,9 +1329,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         <div class="faq-answer">Absolutely! Our flagship store in Pune offers daily guided tastings from 11 AM to 6 PM. Walk-ins are welcome, or you can book a private chai ceremony for groups of 4+ people. Contact us to reserve your spot and experience our curated blends firsthand.</div>
       </div>
       
-      <!-- Card 3: Wholesale -->
       <div class="faq-glass-card">
-        <div class="faq-card-icon"></div>
         <div class="faq-question">
           <span class="faq-question-text">Do you offer wholesale pricing?</span>
           <span class="faq-arrow">▼</span>
@@ -1443,11 +1353,11 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         </div>
         <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
         <div class="social-links">
-  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#"><i class="fa-brands fa-twitter"></i></a>
-  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-</div>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
       </div>
       <div class="footer-col">
         <h4>QuickLinks</h4>
@@ -1469,7 +1379,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         </ul>
       </div>
       <div class="footer-col newsletter">
-        <h4>First access</h4>
+        <h4>MailBox</h4>
         <p>Subscribe for early releases & 15% off.</p>
         <div class="newsletter-input">
           <input type="email" placeholder="Your email">
@@ -1488,76 +1398,21 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
   </footer>
 
   <script>
-    // Get current page filename
     const currentPage = window.location.pathname.split('/').pop() || 'contact.html';
     const pageName = currentPage.toLowerCase();
     
-    // Function to set active class on desktop nav links
     function setActiveNavLink() {
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      const navHome = document.getElementById('navHome');
-      const navAbout = document.getElementById('navAbout');
-      const navService = document.getElementById('navService');
-      const navSoulful = document.getElementById('navSoulful');
-      const navTeaRitual = document.getElementById('navTeaRitual');
-      const navContact = document.getElementById('navContact');
-      const navDashboard = document.getElementById('navDashboard');
-      
-      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (navHome) navHome.classList.add('active');
-      } else if (pageName === 'about.html') {
-        if (navAbout) navAbout.classList.add('active');
-      } else if (pageName === 'service.html') {
-        if (navService) navService.classList.add('active');
-      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (navSoulful) navSoulful.classList.add('active');
-      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (navTeaRitual) navTeaRitual.classList.add('active');
-      } else if (pageName === 'contact.html') {
-        if (navContact) navContact.classList.add('active');
-      } else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (navDashboard) navDashboard.classList.add('active');
-      }
+      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+      const navContact = document.querySelector('.nav-links a[href="contact.html"]');
+      if (navContact) navContact.classList.add('active');
     }
     
-    // Function to set active class on mobile nav links
     function setMobileActiveLink() {
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-        toggle.classList.remove('active-toggle');
-      });
-      
-      const mobileAbout = document.getElementById('mobileAbout');
-      const mobileService = document.getElementById('mobileService');
-      const mobileSoulful = document.getElementById('mobileSoulful');
-      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
-      const mobileContact = document.getElementById('mobileContact');
-      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
-      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
-      
-      if (pageName === 'about.html') {
-        if (mobileAbout) mobileAbout.classList.add('active');
-      } else if (pageName === 'service.html') {
-        if (mobileService) mobileService.classList.add('active');
-      } else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (mobileSoulful) mobileSoulful.classList.add('active');
-      } else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
-      } else if (pageName === 'contact.html') {
-        if (mobileContact) mobileContact.classList.add('active');
-      } else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
-      } else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
-      }
+      document.querySelectorAll('.mobile-nav-link').forEach(link => link.classList.remove('active'));
+      const mobileContact = document.querySelector('.mobile-nav-link[href="contact.html"]');
+      if (mobileContact) mobileContact.classList.add('active');
     }
     
-    // Dark mode and RTL logic
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1615,7 +1470,6 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
     if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
     
-    // Mobile dropdown toggles
     document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
       toggle.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -1629,13 +1483,12 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       });
     });
     
-    // FAQ ACCORDION FOR GLASS CARDS
+    // FAQ ACCORDION
     const faqCards = document.querySelectorAll('.faq-glass-card');
     faqCards.forEach(card => {
       const questionDiv = card.querySelector('.faq-question');
       questionDiv.addEventListener('click', (e) => {
         e.stopPropagation();
-        // Close other cards and open current one
         faqCards.forEach(otherCard => {
           if (otherCard !== card && otherCard.classList.contains('active')) {
             otherCard.classList.remove('active');
@@ -1645,7 +1498,6 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       });
     });
     
-    // Contact form submission
     const contactForm = document.getElementById('contactForm');
     if(contactForm) {
       contactForm.addEventListener('submit', function(e) {
@@ -1655,7 +1507,6 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       });
     }
     
-    // Initialize active links
     setActiveNavLink();
     setMobileActiveLink();
   </script>

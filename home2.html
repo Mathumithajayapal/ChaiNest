@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/jpeg" href="images/favicon.jpg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -26,7 +25,6 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* prevent scroll when menu is open */
     body.menu-open {
       overflow: hidden;
       position: fixed;
@@ -34,10 +32,10 @@
       height: 100%;
     }
 
-    /* Dark Mode */
+    /* Dark Mode - Consistent palette */
     body.dark-mode {
       background-color: #0f0f0f;
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .site-header {
@@ -49,7 +47,7 @@
     body.dark-mode .nav-links a,
     body.dark-mode .header-actions a,
     body.dark-mode .hamburger span {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .dropdown-content {
@@ -57,7 +55,7 @@
     }
 
     body.dark-mode .dropdown-content a {
-      color: #fa720af5;
+      color: #ffffff;
     }
 
     body.dark-mode .mobile-menu {
@@ -65,8 +63,10 @@
     }
 
     body.dark-mode .mobile-nav-link,
-    body.dark-mode .mobile-dropdown-toggle span:first-child {
-      color: #f0f0f0;
+    body.dark-mode .mobile-dropdown-toggle span:first-child,
+    body.dark-mode .mobile-dropdown-content a,
+    body.dark-mode .mobile-nav-item .mobile-nav-link {
+      color: #ffffff !important;
     }
 
     body.dark-mode .mobile-nav-item {
@@ -77,15 +77,6 @@
       background-color: #0a0a0a;
     }
     
-    body.dark-mode .mobile-dropdown-content a {
-      color: #ffffff;
-    }
-    
-    /* Hero Banner Dark Mode */
-    body.dark-mode .hero-banner {
-      background: linear-gradient(115deg, #1a1a1a 0%, #0a0a0a 100%);
-    }
-    
     body.dark-mode .feature-card,
     body.dark-mode .premium-card {
       background: #1a1a1a;
@@ -93,12 +84,12 @@
     }
     
     body.dark-mode .section-title {
-      color: #f0f0f0;
+      color: #e6b17e;
     }
     
     body.dark-mode .hero-badge {
       background: rgba(123, 75, 42, 0.25);
-      color: #c97e54;
+      color: #e6b17e;
     }
     
     body.dark-mode .hero-content h1 {
@@ -129,7 +120,7 @@
     body.dark-mode .testimonial-card {
       background: rgba(30, 30, 30, 0.8);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(123, 75, 42, 0.3);
+      border: 1px solid rgba(230, 177, 126, 0.3);
     }
     
     body.dark-mode .testimonial-card p {
@@ -137,7 +128,78 @@
     }
     
     body.dark-mode .testimonial-card h4 {
-      color: #c97e54;
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .story-text h2 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .card-content h3,
+    body.dark-mode .feature-card h3 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .card-price {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .footer-col h4 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .footer-brand p,
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-bottom span,
+    body.dark-mode .footer-bottom a,
+    body.dark-mode .newsletter p {
+      color: #ccc;
+    }
+    
+    body.dark-mode .newsletter-input input {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input::placeholder {
+      color: #888;
+    }
+    
+    body.dark-mode .mobile-nav-link.active {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    
+    body.dark-mode .mobile-dropdown-toggle span:last-child {
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .experience-overlay h2,
+    body.dark-mode .experience-overlay p {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .nav-links a.active {
+      color: #e6b17e;
+    }
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
+    }
+    
+    /* Theme toggles consistent palette */
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle {
+      border-color: #e6b17e;
+      color: #e6b17e;
+    }
+    body.dark-mode .dark-toggle:hover,
+    body.dark-mode .rtl-toggle:hover {
+      background: #e6b17e;
+      color: #1a1a1a;
     }
 
     /* Sticky Navbar */
@@ -222,7 +284,6 @@
       color: #7B4B2A;
     }
 
-    /* Active link style for desktop */
     .nav-links a.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -240,14 +301,6 @@
       border-radius: 2px;
     }
 
-    body.dark-mode .nav-links a.active {
-      color: #c97e54;
-    }
-
-    body.dark-mode .nav-links a.active::after {
-      background: #c97e54;
-    }
-
     .dropdown-content {
       position: absolute;
       top: 100%;
@@ -262,6 +315,7 @@
       transform: translateY(8px);
       transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
       z-index: 100;
+      list-style: none;
     }
 
     .nav-item:hover .dropdown-content {
@@ -307,6 +361,7 @@
       border: 1.5px solid transparent;
     }
 
+    /* Only Login CTA remains in header - Sign Up removed */
     .login-btn {
       background: transparent;
       border-color: #7B4B2A;
@@ -316,15 +371,6 @@
     .login-btn:hover {
       background: #7B4B2A;
       color: white;
-    }
-
-    .signup-btn {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    .signup-btn:hover {
-      background: #5a3a1f;
     }
 
     .dark-toggle, .rtl-toggle {
@@ -443,7 +489,6 @@
       color: #7B4B2A;
     }
 
-    /* Active link style for mobile */
     .mobile-nav-link.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -569,34 +614,18 @@
       background: #5a3a1f;
     }
 
-    /* ========== UPDATED RESPONSIVE BREAKPOINTS ========== */
-    /* Tablet view: 820x1180 and 1024x768 - hamburger visible */
+    /* Responsive Navigation */
     @media (max-width: 1199px) {
-      .nav-links {
-        display: none !important;
-      }
-      .action-buttons {
-        display: none !important;
-      }
-      .hamburger {
-        display: flex !important;
-      }
-      .site-header {
-        padding: 0.8rem 1.5rem;
-      }
+      .nav-links { display: none !important; }
+      .action-buttons { display: none !important; }
+      .hamburger { display: flex !important; }
+      .site-header { padding: 0.8rem 1.5rem; }
     }
     
-    /* Desktop styles for larger screens */
     @media (min-width: 1200px) {
-      .nav-links {
-        display: flex !important;
-      }
-      .action-buttons {
-        display: flex !important;
-      }
-      .hamburger {
-        display: none !important;
-      }
+      .nav-links { display: flex !important; }
+      .action-buttons { display: flex !important; }
+      .hamburger { display: none !important; }
     }
 
     @media (max-width: 1024px) {
@@ -607,10 +636,6 @@
       .dark-toggle, .rtl-toggle { width: 34px; height: 34px; font-size: 0.9rem; }
     }
 
-    @media (max-width: 900px) {
-      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
-    }
-    
     /* Hero Banner */
     .hero-banner {
       background: linear-gradient(115deg, #f9efe2 0%, #e8dccc 100%);
@@ -619,6 +644,10 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+    }
+    
+    body.dark-mode .hero-banner {
+      background: linear-gradient(115deg, #1a1a1a 0%, #0a0a0a 100%);
     }
     
     .hero-container {
@@ -670,18 +699,6 @@
       color: #7B4B2A;
       position: relative;
       display: inline-block;
-    }
-    
-    .hero-content h1 span::after {
-      content: '';
-      position: absolute;
-      bottom: 8px;
-      left: 0;
-      width: 100%;
-      height: 8px;
-      background: rgba(123, 75, 42, 0.3);
-      z-index: -1;
-      border-radius: 4px;
     }
     
     .hero-desc {
@@ -793,6 +810,7 @@
       font-weight: 700;
       margin-bottom: 1rem;
       letter-spacing: -0.3px;
+      color: #7B4B2A;
     }
     
     .section-subtitle {
@@ -920,6 +938,7 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       font-weight: 700;
+      color: #7B4B2A;
     }
     
     .story-text p {
@@ -1104,13 +1123,24 @@
     }
 
     .social-links a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
       color: #ccc;
+      font-size: 16px;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
 
-    .social-links a:hover { color: #7B4B2A; }
+    .social-links a:hover {
+      background: #7B4B2A;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
     .footer-col h4 {
       color: white;
@@ -1232,62 +1262,16 @@
     
     @media (max-width: 1024px) {
       .premium-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-    }.social-links a {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  color: #ccc;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: #7B4B2A;
-  color: #fff;
-  transform: translateY(-3px);
-}
-.dropdown-content {
-  list-style: none;   /* 🔥 removes bullet */
-  margin: 0;
-  padding: 0.8rem 0; /* keep your spacing */
-}
-
-.dropdown-content li {
-  list-style: none;   /* extra safety */
-}
-
-   body.dark-mode .mobile-dropdown-content a {
-  color: #f0f0f0; /* change to white */
-}
-/* 🌙 Dark mode active link (mobile) */
-body.dark-mode .mobile-nav-link.active {
-  color: #c97e54;   /* highlight color */
-  font-weight: 700;
-}
-
-/* 🌙 Dark mode active dropdown toggle (mobile) */
-body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-  color: #c97e54;
-  font-weight: 700;
-}
-/* Tablet view → 2x2 grid */
-@media (max-width: 1024px) and (min-width: 600px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    }
+    
+    @media (max-width: 1024px) and (min-width: 600px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="logo">
@@ -1301,7 +1285,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <ul class="nav-links">
         <li class="nav-item">
-          <a href="#" id="navHome">Home</a>
+          <a href="#" id="navHome" class="active">Home</a>
           <ul class="dropdown-content">
             <li><a href="index.html">Home 1</a></li>
             <li><a href="home2.html">Home 2</a></li>
@@ -1323,8 +1307,8 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
       
       <div class="header-actions">
         <div class="action-buttons">
+          <!-- Only Login CTA remains in header - Sign Up removed -->
           <a href="login.html" class="nav-btn login-btn">Login</a>
-          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
           <div class="dark-toggle" id="darkToggleBtn">🌙</div>
           <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
         </div>
@@ -1338,13 +1322,12 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     </div>
   </header>
   
-  <!-- Mobile Menu -->
   <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn" aria-label="Close menu">✕</button>
     <ul class="mobile-nav-links">
       <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="mobileDropdown1">
+        <div class="mobile-dropdown-toggle active-toggle" data-dropdown="mobileDropdown1">
           <span id="mobileHomeText">Home</span>
           <span>▼</span>
         </div>
@@ -1383,7 +1366,6 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     </ul>
   </div>
 
-  <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="hero-container">
       <div class="hero-grid">
@@ -1414,11 +1396,11 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         <div class="card-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p><div class="card-price">$24.90</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="images\imgchai (10).jpg" alt="Matcha"><span class="card-tag">Limited</span></div>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Matcha"><span class="card-tag">Limited</span></div>
         <div class="card-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p><div class="card-price">$42.00</div></div>
       </div>
       <div class="premium-card">
-        <div class="card-image"><img src="images\imgchai (12).jpg" alt="White Tea"><span class="card-tag">Rare</span></div>
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1597481499750-3e6b8c3a6b5c?w=500&h=400&fit=crop" alt="White Tea"><span class="card-tag">Rare</span></div>
         <div class="card-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p><div class="card-price">$38.00</div></div>
       </div>
     </div>
@@ -1464,106 +1446,32 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
 </div></div>
       <div class="footer-col"><h4>QuickLinks</h4><ul><li><a href="index.html">Home</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="signup.html">Signup</a></li></ul></div>
       <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
-      <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
+      <div class="footer-col newsletter"><h4>MailBox</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
     </div>
     <div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div>
   </footer>
 
   <script>
-    // Get current page filename
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const pageName = currentPage.toLowerCase();
     
-    // Function to set active class on desktop nav links
     function setActiveNavLink() {
-      // Remove all active classes first
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      // Check each nav link's href
+      document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
       const navHome = document.getElementById('navHome');
-      const navAbout = document.getElementById('navAbout');
-      const navService = document.getElementById('navService');
-      const navSoulful = document.getElementById('navSoulful');
-      const navBrew = document.getElementById('navBrew');
-      const navContact = document.getElementById('navContact');
-      const navDashboard = document.getElementById('navDashboard');
-      
-      // Home page (index.html or empty)
       if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
         if (navHome) navHome.classList.add('active');
       }
-      // About page
-      else if (pageName === 'about.html') {
-        if (navAbout) navAbout.classList.add('active');
-      }
-      // Service page
-      else if (pageName === 'service.html') {
-        if (navService) navService.classList.add('active');
-      }
-      // Soulful Sips page
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (navSoulful) navSoulful.classList.add('active');
-      }
-      // Brew Story / Tea Ritual page
-      else if (pageName === 'brew story.html' || pageName === 'brew%20story.html') {
-        if (navBrew) navBrew.classList.add('active');
-      }
-      // Contact page
-      else if (pageName === 'contact.html') {
-        if (navContact) navContact.classList.add('active');
-      }
-      // Dashboard pages (user.html or admin.html)
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (navDashboard) navDashboard.classList.add('active');
-      }
     }
     
-    // Function to set active class on mobile nav links
     function setMobileActiveLink() {
-      // Remove all active classes from mobile links
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      // Remove active class from dropdown toggles
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-        toggle.classList.remove('active-toggle');
-      });
-      
-      const mobileAbout = document.getElementById('mobileAbout');
-      const mobileService = document.getElementById('mobileService');
-      const mobileSoulful = document.getElementById('mobileSoulful');
-      const mobileBrew = document.getElementById('mobileBrew');
-      const mobileContact = document.getElementById('mobileContact');
+      document.querySelectorAll('.mobile-nav-link').forEach(link => link.classList.remove('active'));
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => toggle.classList.remove('active-toggle'));
       const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
-      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
-      
-      if (pageName === 'about.html') {
-        if (mobileAbout) mobileAbout.classList.add('active');
-      }
-      else if (pageName === 'service.html') {
-        if (mobileService) mobileService.classList.add('active');
-      }
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (mobileSoulful) mobileSoulful.classList.add('active');
-      }
-      else if (pageName === 'brew story.html' || pageName === 'brew%20story.html') {
-        if (mobileBrew) mobileBrew.classList.add('active');
-      }
-      else if (pageName === 'contact.html') {
-        if (mobileContact) mobileContact.classList.add('active');
-      }
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
-      }
-      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
+      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
         if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
       }
     }
     
-    // Dark mode and RTL toggles
     const darkToggle = document.getElementById('darkToggleBtn');
     const mobileDark = document.getElementById('mobileDarkToggle');
     const rtlToggle = document.getElementById('rtlToggleBtn');
@@ -1574,11 +1482,8 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     const overlay = document.getElementById('mobileOverlay');
     
     function setBodyScrollLock(lock) {
-      if (lock) {
-        document.body.classList.add('menu-open');
-      } else {
-        document.body.classList.remove('menu-open');
-      }
+      if (lock) document.body.classList.add('menu-open');
+      else document.body.classList.remove('menu-open');
     }
     
     function openMenu() {
@@ -1589,9 +1494,7 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
     function closeMenuFn() {
       mobileMenu.classList.remove('active');
       setBodyScrollLock(false);
-      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => {
-        arrow.style.transform = '';
-      });
+      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
     }
     
     hamburger?.addEventListener('click', openMenu);
@@ -1630,20 +1533,15 @@ body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
         if(content) {
           content.classList.toggle('active');
           const arrow = toggle.querySelector('span:last-child');
-          if(arrow) {
-            arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
-          }
+          if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
         }
       });
     });
     
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-        closeMenuFn();
-      }
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
     });
     
-    // Initialize active links on page load
     setActiveNavLink();
     setMobileActiveLink();
   </script>

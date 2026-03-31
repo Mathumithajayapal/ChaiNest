@@ -25,7 +25,6 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
-    /* Prevent scroll when menu is open */
     body.menu-open {
       overflow: hidden;
       position: fixed;
@@ -33,10 +32,10 @@
       height: 100%;
     }
 
-    /* Dark Mode */
+    /* Dark Mode - Consistent palette */
     body.dark-mode {
       background-color: #0f0f0f;
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .site-header {
@@ -48,7 +47,7 @@
     body.dark-mode .nav-links a,
     body.dark-mode .header-actions a,
     body.dark-mode .hamburger span {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .dropdown-content {
@@ -56,7 +55,7 @@
     }
 
     body.dark-mode .dropdown-content a {
-      color: #f0f0f0;
+      color: #ffffff;
     }
 
     body.dark-mode .mobile-menu {
@@ -64,8 +63,10 @@
     }
 
     body.dark-mode .mobile-nav-link,
-    body.dark-mode .mobile-dropdown-toggle span:first-child {
-      color: #f0f0f0;
+    body.dark-mode .mobile-dropdown-toggle span:first-child,
+    body.dark-mode .mobile-dropdown-content a,
+    body.dark-mode .mobile-nav-item .mobile-nav-link {
+      color: #ffffff !important;
     }
 
     body.dark-mode .mobile-nav-item {
@@ -97,7 +98,7 @@
     body.dark-mode .glass-card-item {
       background: rgba(30, 30, 40, 0.9);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(123, 75, 42, 0.3);
+      border: 1px solid rgba(230, 177, 126, 0.3);
     }
     
     body.dark-mode .glass-content h3 {
@@ -105,7 +106,7 @@
     }
     
     body.dark-mode .glass-content p {
-      color: #ccc;
+      color: #cccccc;
     }
     
     body.dark-mode .story-section {
@@ -118,21 +119,26 @@
     }
     
     body.dark-mode .story-text p {
-      color: #bbb;
+      color: #bbbbbb;
     }
     
     body.dark-mode .story-btn {
-      border-color: #c97e5a;
-      color: #c97e5a;
+      border-color: #e6b17e;
+      color: #e6b17e;
     }
     
     body.dark-mode .story-btn:hover {
-      background: #c97e5a;
+      background: #e6b17e;
       color: #1a1a1a;
     }
     
     body.dark-mode .mindfulness-section {
       background: linear-gradient(115deg, #5a3a1f 0%, #7B4B2A 100%);
+    }
+    
+    body.dark-mode .mindfulness-section h2,
+    body.dark-mode .mindfulness-text {
+      color: #ffffff;
     }
     
     body.dark-mode .gallery-section {
@@ -145,7 +151,58 @@
     }
     
     body.dark-mode .gallery-subtitle {
-      color: #c97e5a;
+      color: #e6b17e;
+    }
+    
+    body.dark-mode .footer-col h4 {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .footer-brand p,
+    body.dark-mode .footer-col a,
+    body.dark-mode .footer-bottom span,
+    body.dark-mode .footer-bottom a,
+    body.dark-mode .newsletter p {
+      color: #cccccc;
+    }
+    
+    body.dark-mode .newsletter-input input {
+      color: #ffffff;
+    }
+    
+    body.dark-mode .newsletter-input input::placeholder {
+      color: #888;
+    }
+    
+    body.dark-mode .cta-btn {
+      background: linear-gradient(135deg, #9a6a44, #7B4B2A);
+      color: #ffffff;
+    }
+    
+    body.dark-mode .cta-btn:hover {
+      background: linear-gradient(135deg, #ad7a54, #8b5a38);
+    }
+    
+    body.dark-mode .mobile-nav-link.active {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+
+    body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
+      color: #e6b17e !important;
+      font-weight: 700;
+    }
+    
+    body.dark-mode .mobile-dropdown-toggle span:last-child {
+      color: #e6b17e;
+    }
+
+    body.dark-mode .nav-links a.active {
+      color: #e6b17e;
+    }
+
+    body.dark-mode .nav-links a.active::after {
+      background: #e6b17e;
     }
 
     /* Sticky Navbar */
@@ -205,8 +262,7 @@
       color: #ffffff;
     }
 
-    /* ========== RESPONSIVE NAVIGATION: HAMBURGER FOR ALL TABLET & MOBILE ========== */
-    /* Default: Hide desktop nav on all screens below 1200px (covers 1024x768, 820x1180, all tablets) */
+    /* ========== RESPONSIVE NAVIGATION ========== */
     @media (max-width: 1199px) {
       .nav-links {
         display: none !important;
@@ -219,7 +275,6 @@
       }
     }
     
-    /* Desktop: Show desktop nav only on screens 1200px and above */
     @media (min-width: 1200px) {
       .nav-links {
         display: flex !important;
@@ -257,7 +312,6 @@
       color: #7B4B2A;
     }
 
-    /* Active link style for desktop */
     .nav-links a.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -275,14 +329,6 @@
       border-radius: 2px;
     }
 
-    body.dark-mode .nav-links a.active {
-      color: #c97e54;
-    }
-
-    body.dark-mode .nav-links a.active::after {
-      background: #c97e54;
-    }
-
     .dropdown-content {
       position: absolute;
       top: 100%;
@@ -297,6 +343,7 @@
       transform: translateY(8px);
       transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
       z-index: 100;
+      list-style: none;
     }
 
     .nav-item:hover .dropdown-content {
@@ -330,6 +377,7 @@
       gap: 0.8rem;
     }
 
+    /* Only Login CTA remains in header - Sign Up removed */
     .nav-btn {
       padding: 0.5rem 1.2rem;
       border-radius: 40px;
@@ -353,15 +401,7 @@
       color: white;
     }
 
-    .signup-btn {
-      background: #7B4B2A;
-      color: white;
-    }
-
-    .signup-btn:hover {
-      background: #5a3a1f;
-    }
-
+    /* Theme toggles - consistent palette for both modes */
     .dark-toggle, .rtl-toggle {
       background: transparent;
       border: 1.5px solid #7B4B2A;
@@ -380,6 +420,18 @@
     .dark-toggle:hover, .rtl-toggle:hover {
       background: #7B4B2A;
       color: white;
+    }
+
+    body.dark-mode .dark-toggle,
+    body.dark-mode .rtl-toggle {
+      border-color: #e6b17e;
+      color: #e6b17e;
+    }
+
+    body.dark-mode .dark-toggle:hover,
+    body.dark-mode .rtl-toggle:hover {
+      background: #e6b17e;
+      color: #1a1a1a;
     }
 
     .hamburger {
@@ -478,7 +530,6 @@
       color: #7B4B2A;
     }
 
-    /* Active link style for mobile */
     .mobile-nav-link.active {
       color: #7B4B2A;
       font-weight: 700;
@@ -683,7 +734,7 @@
       transform: translateY(-2px);
     }
     
-    /* GLASS CARDS SECTION - 2x2 GRID */
+    /* GLASS CARDS SECTION - 2x2 Grid */
     .glass-cards-section {
       max-width: 1280px;
       margin: 5rem auto;
@@ -781,30 +832,32 @@
       line-height: 1.5;
     }
     
-    .view-more-wrapper {
+    /* CTA Button */
+    .cta-button-wrapper {
       text-align: center;
       margin-top: 3rem;
     }
     
-    .view-more-btn {
+    .cta-btn {
       display: inline-block;
-      background: transparent;
-      border: 2px solid #7B4B2A;
-      color: #7B4B2A;
-      padding: 0.9rem 2.5rem;
-      border-radius: 48px;
-      font-weight: 600;
-      font-size: 1rem;
+      background: linear-gradient(135deg, #7B4B2A, #9a6a44);
+      border: none;
+      color: white;
+      padding: 1rem 2.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1.1rem;
       text-decoration: none;
       transition: all 0.3s ease;
       cursor: pointer;
+      box-shadow: 0 8px 20px rgba(123, 75, 42, 0.3);
+      letter-spacing: 0.5px;
     }
     
-    .view-more-btn:hover {
-      background: #7B4B2A;
-      color: white;
+    .cta-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(123,75,42,0.2);
+      box-shadow: 0 15px 30px rgba(123, 75, 42, 0.4);
+      background: linear-gradient(135deg, #8b5a38, #ad7a54);
     }
     
     /* Story Section */
@@ -996,13 +1049,24 @@
     }
 
     .social-links a {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
       color: #ccc;
+      font-size: 16px;
       text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
     }
 
-    .social-links a:hover { color: #7B4B2A; }
+    .social-links a:hover { 
+      background: #7B4B2A;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
     .footer-col h4 {
       color: white;
@@ -1087,59 +1151,7 @@
 
     .footer-bottom a:hover { color: #7B4B2A; }
 
-    /* Responsive adjustments */
-    @media (max-width: 1024px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .glass-card h1 { font-size: 2.2rem; }
-      .hero-banner { min-height: 70vh; height: auto; }
-      .glass-card-grid { gap: 1.5rem; }
-    }
-
-    @media (max-width: 900px) {
-      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
-      .glass-card-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .glass-card { padding: 2rem; }
-      .glass-card h1 { font-size: 2rem; }
-    }
-
-    @media (max-width: 768px) {
-      .hero-banner { min-height: 80vh; height: auto; padding: 4rem 0; }
-      .glass-card { padding: 1.8rem; margin: 0 1rem; }
-      .glass-card h1 { font-size: 1.8rem; }
-      .glass-card p { font-size: 1rem; }
-      .hero-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
-      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
-      .section-title { font-size: 1.8rem; }
-      .story-section { flex-direction: column; text-align: center; padding: 2rem; }
-      .mindfulness-section { padding: 2rem; }
-      .mindfulness-section h2 { font-size: 1.6rem; }
-      .gallery-section { padding: 2rem; }
-      .glass-card-item { height: auto; min-height: 360px; }
-    }
-
-    @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .logo-text { font-size: 1.2rem; }
-      .logo-icon { width: 32px; height: 32px; }
-      .glass-card { padding: 1.5rem; }
-      .glass-card h1 { font-size: 1.5rem; }
-      .glass-content h3 { font-size: 1.2rem; }
-      .hero-buttons { gap: 0.8rem; }
-      .hero-btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
-      .site-header { padding: 0.8rem 1rem; }
-    }
-    
-    body.dark-mode .dropdown-content a {
-      color: #fa720af5;
-    }
-    
+    /* Mobile auth buttons */
     .mobile-auth-buttons {
       display: flex;
       gap: 1rem;
@@ -1176,402 +1188,131 @@
     .signup-mobile:hover {
       background: #5a3a1f;
     }
-    .social-links a {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  background: rgba(255,255,255,0.05);
-  border-radius: 50%;
-
-  color: #ccc;
-  font-size: 16px;
-  text-decoration: none;
-
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  background: #7B4B2A;
-  color: #fff;
-  transform: translateY(-3px);
-}
-.dropdown-content {
-  list-style: none;   /* 🔥 removes bullet */
-  margin: 0;
-  padding: 0.8rem 0; /* keep your spacing */
-}
-
-.dropdown-content li {
-  list-style: none;   /* extra safety */
-}
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .footer-col h4 {
-    font-size: 0.95rem;
-  }
-
-  .footer-col a {
-    font-size: 0.9rem;
-  }
-}
-
-   body.dark-mode .mobile-dropdown-content a {
-  color: #f0f0f0; /* change to white */
-}
-/* 🌙 Dark mode active link (mobile) */
-body.dark-mode .mobile-nav-link.active {
-  color: #c97e54;   /* highlight color */
-  font-weight: 700;
-}
-
-/* 🌙 Dark mode active dropdown toggle (mobile) */
-body.dark-mode .mobile-dropdown-toggle.active-toggle span:first-child {
-  color: #c97e54;
-  font-weight: 700;
-}
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .glass-card h1 { font-size: 2.2rem; }
+      .hero-banner { min-height: 70vh; height: auto; }
+      .glass-card-grid { gap: 1.5rem; }
+    }
+    @media (max-width: 900px) {
+      .footer-container { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.8rem; }
+      .glass-card-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .glass-card { padding: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .hero-banner { min-height: 80vh; padding: 4rem 0; }
+      .glass-card { padding: 1.8rem; margin: 0 1rem; }
+      .glass-card h1 { font-size: 1.8rem; }
+      .section-title { font-size: 1.8rem; }
+      .story-section { flex-direction: column; text-align: center; padding: 2rem; }
+      .mindfulness-section { padding: 2rem; }
+      .mindfulness-section h2 { font-size: 1.6rem; }
+      .gallery-section { padding: 2rem; }
+      .glass-card-item { height: auto; min-height: 360px; }
+    }
+    @media (max-width: 480px) {
+      .logo-text { font-size: 1.2rem; }
+      .logo-icon { width: 32px; height: 32px; }
+      .glass-card { padding: 1.5rem; }
+      .glass-card h1 { font-size: 1.5rem; }
+      .cta-btn { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-        </div>
+        <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <span class="logo-text">Chai<span>Nest</span></span>
       </a>
-      
       <ul class="nav-links">
-        <li class="nav-item">
-          <a href="#" id="navHome">Home</a>
-          <ul class="dropdown-content">
-            <li><a href="index.html">Home 1</a></li>
-            <li><a href="home2.html">Home 2</a></li>
-          </ul>
-        </li>
-        <li><a href="about.html" id="navAbout">About</a></li>
-        <li><a href="service.html" id="navService">Service</a></li>
-        <li><a href="soulful sip.html" id="navSoulful">Soulful Sips</a></li>
-        <li><a href="teaRitual.html" id="navTeaRitual">Tea Ritual</a></li>
-        <li><a href="contact.html" id="navContact">Contact</a></li>
-        <li class="nav-item">
-          <a href="#" id="navDashboard">Dashboard</a>
-          <ul class="dropdown-content">
-            <li><a href="user.html">User Dashboard</a></li>
-            <li><a href="admin.html">Admin Dashboard</a></li>
-          </ul>
-        </li>
+        <li class="nav-item"><a href="#">Home</a><ul class="dropdown-content"><li><a href="index.html">Home 1</a></li><li><a href="home2.html">Home 2</a></li></ul></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="soulful sip.html" class="active">Soulful Sips</a></li>
+        <li><a href="teaRitual.html">Tea Ritual</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="nav-item"><a href="#">Dashboard</a><ul class="dropdown-content"><li><a href="user.html">User Dashboard</a></li><li><a href="admin.html">Admin Dashboard</a></li></ul></li>
       </ul>
-      
       <div class="header-actions">
         <div class="action-buttons">
           <a href="login.html" class="nav-btn login-btn">Login</a>
-          <a href="signup.html" class="nav-btn signup-btn">Sign Up</a>
           <div class="dark-toggle" id="darkToggleBtn">🌙</div>
           <div class="rtl-toggle" id="rtlToggleBtn">LTR</div>
         </div>
       </div>
-      
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu-overlay" id="mobileOverlay"></div>
   <div class="mobile-menu" id="mobileMenu">
     <button class="close-menu" id="closeMenuBtn">✕</button>
     <ul class="mobile-nav-links">
-      <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="dropdown1">
-          <span id="mobileHomeText">Home</span>
-          <span>▼</span>
-        </div>
-        <div class="mobile-dropdown-content" id="dropdown1">
-          <a href="index.html">Home 1</a>
-          <a href="home2.html">Home 2</a>
-        </div>
-      </li>
-      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link" id="mobileAbout">About</a></li>
-      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link" id="mobileService">Service</a></li>
-      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link" id="mobileSoulful">Soulful sips</a></li>
-      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link" id="mobileTeaRitual">TeaRitual</a></li>
-      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link" id="mobileContact">Contact</a></li>
-      <li class="mobile-nav-item">
-        <div class="mobile-dropdown-toggle" data-dropdown="dropdown2">
-          <span id="mobileDashboardText">Dashboard</span>
-          <span>▼</span>
-        </div>
-        <div class="mobile-dropdown-content" id="dropdown2">
-          <a href="user.html">User Dashboard</a>
-          <a href="admin.html">Admin Dashboard</a>
-        </div>
-      </li>
-      <li class="mobile-nav-item">
-        <div class="mobile-auth-buttons">
-          <a href="login.html" class="mobile-btn login-mobile">Login</a>
-          <a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a>
-        </div>
-      </li>
-      <li class="mobile-nav-item">
-        <div style="display: flex; gap: 1rem; padding: 1rem 0;">
-          <div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div>
-          <div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div>
-        </div>
-      </li>
+      <li class="mobile-nav-item"><div class="mobile-dropdown-toggle" data-dropdown="dropdown1"><span>Home</span><span>▼</span></div><div class="mobile-dropdown-content" id="dropdown1"><a href="index.html">Home 1</a><a href="home2.html">Home 2</a></div></li>
+      <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">About</a></li>
+      <li class="mobile-nav-item"><a href="service.html" class="mobile-nav-link">Service</a></li>
+      <li class="mobile-nav-item"><a href="soulful sip.html" class="mobile-nav-link active">Soulful sips</a></li>
+      <li class="mobile-nav-item"><a href="teaRitual.html" class="mobile-nav-link">TeaRitual</a></li>
+      <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link">Contact</a></li>
+      <li class="mobile-nav-item"><div class="mobile-dropdown-toggle" data-dropdown="dropdown2"><span>Dashboard</span><span>▼</span></div><div class="mobile-dropdown-content" id="dropdown2"><a href="user.html">User Dashboard</a><a href="admin.html">Admin Dashboard</a></div></li>
+      <li class="mobile-nav-item"><div class="mobile-auth-buttons"><a href="login.html" class="mobile-btn login-mobile">Login</a><a href="signup.html" class="mobile-btn signup-mobile">Sign Up</a></div></li>
+      <li class="mobile-nav-item"><div style="display: flex; gap: 1rem; padding: 1rem 0;"><div class="dark-toggle" id="mobileDarkToggle" style="width: 100%;">🌙 Dark</div><div class="rtl-toggle" id="mobileRtlToggle" style="width: 100%;">LTR</div></div></li>
     </ul>
   </div>
 
-  <!-- Hero Banner -->
-  <section class="hero-banner">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="glass-card">
-        <h1>Sips that soothe the soul.</h1>
-        <p>Every cup is more than a drink — it's a pause, a breath, a moment of quiet joy crafted just for you.</p>
-        <div class="hero-buttons">
-          <a href="#" class="hero-btn primary">Explore Blends</a>
-          <a href="#" class="hero-btn secondary">Find Your Sip</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="hero-banner"><div class="hero-overlay"></div><div class="hero-content"><div class="glass-card"><h1>Sips that soothe the soul.</h1><p>Every cup is more than a drink — it's a pause, a breath, a moment of quiet joy crafted just for you.</p><div class="hero-buttons"><a href="#" class="hero-btn primary">Explore Blends</a><a href="#" class="hero-btn secondary">Find Your Sip</a></div></div></div></section>
 
-  <!-- Glass Cards Section - 2x2 Grid -->
   <div class="glass-cards-section">
     <h2 class="section-title">Soulful Selections</h2>
     <div class="section-subtitle">━━ handcrafted blends for the mindful soul ━━</div>
     <div class="glass-card-grid">
-      <div class="glass-card-item"><div class="card-image"><img src="images\imgchai (9).jpg" alt="Masala Chai"><span class="card-tag">Bestseller</span></div><div class="glass-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\imgchai (10).jpg" alt="Matcha"><span class="card-tag">Limited</span></div><div class="glass-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\imgchai (8).jpg" alt="White Tea"><span class="card-tag">Rare</span></div><div class="glass-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p></div></div>
-      <div class="glass-card-item"><div class="card-image"><img src="images\imgchai (12).jpg" alt="Assam"><span class="card-tag">Classic</span></div><div class="glass-content"><h3>Assam Bold</h3><p>Malty, full-bodied & robust — the perfect morning awakening cup.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?w=400&h=300&fit=crop" alt="Masala Chai"><span class="card-tag">Bestseller</span></div><div class="glass-content"><h3>Masala Chai Gold</h3><p>Whole spices, bold CTC leaves, and a secret family recipe that warms the soul.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.pexels.com/photos/4110256/pexels-photo-4110256.jpeg?w=400&h=300&fit=crop" alt="Matcha"><span class="card-tag">Limited</span></div><div class="glass-content"><h3>Matcha Ceremonial</h3><p>Stone-ground tencha from Uji, vibrant umami and smooth creamy finish.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=400&h=300&fit=crop" alt="White Tea"><span class="card-tag">Rare</span></div><div class="glass-content"><h3>Silver Needle White</h3><p>Delicate, floral & ethereal — hand-harvested only during spring dawns.</p></div></div>
+      <div class="glass-card-item"><div class="card-image"><img src="https://images.unsplash.com/photo-1597481499750-3e6b5c1c3b5e?w=400&h=300&fit=crop" alt="Assam"><span class="card-tag">Classic</span></div><div class="glass-content"><h3>Assam Bold</h3><p>Malty, full-bodied & robust — the perfect morning awakening cup.</p></div></div>
     </div>
-    <div class="view-more-wrapper"><button class="view-more-btn" id="viewMoreBtn">View More →</button></div>
+    <div class="cta-button-wrapper"><a href="#" class="cta-btn" id="soulfulCtaBtn">Discover Your Soulful Sip →</a></div>
   </div>
 
-  <!-- Story Section -->
-  <div class="story-section">
-    <div class="story-image">
-      <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Tea plantation heritage">
-    </div>
-    <div class="story-text">
-      <h2>Rooted in heritage, steeped in passion</h2>
-      <p>For three generations, our family has nurtured relationships with tea growers across Assam, Darjeeling, and beyond. Every leaf is ethically sourced, hand-plucked, and master-blended to honor ancient traditions while embracing modern craftsmanship.</p>
-      <a href="#" class="story-btn">Our story →</a>
-    </div>
-  </div>
+  <div class="story-section"><div class="story-image"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&h=400&fit=crop" alt="Tea plantation heritage"></div><div class="story-text"><h2>Rooted in heritage, steeped in passion</h2><p>For three generations, our family has nurtured relationships with tea growers across Assam, Darjeeling, and beyond. Every leaf is ethically sourced, hand-plucked, and master-blended to honor ancient traditions while embracing modern craftsmanship.</p><a href="#" class="story-btn">Our story →</a></div></div>
 
-  <!-- Mindfulness Section -->
-  <div class="mindfulness-section">
-    <div class="mindfulness-icon">🧘‍♀️</div>
-    <h2>Not just tea — an experience</h2>
-    <p class="mindfulness-text">Immerse yourself in calming rituals, slow brewing, and soulful aromas crafted for mindful living. Each cup is an invitation to pause, breathe, and reconnect with yourself.</p>
-    <a href="#" class="mindfulness-btn">Explore rituals →</a>
-  </div>
+  <div class="mindfulness-section"><div class="mindfulness-icon">🧘‍♀️</div><h2>Not just tea — an experience</h2><p class="mindfulness-text">Immerse yourself in calming rituals, slow brewing, and soulful aromas crafted for mindful living. Each cup is an invitation to pause, breathe, and reconnect with yourself.</p><a href="#" class="mindfulness-btn">Explore rituals →</a></div>
 
-  <!-- Gallery Section -->
-  <div class="gallery-section">
-    <h2>Tea Ceremony Moments</h2>
-    <div class="gallery-subtitle">━━ the art of mindful pouring ━━</div>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" alt="Tea ceremony"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400&h=300&fit=crop" alt="Pouring tea"></div>
-      <div class="gallery-item"><img src="images\imgchai (4).jpg" alt="Tea meditation"></div>
-    </div>
-  </div>
+  <div class="gallery-section"><h2>Tea Ceremony Moments</h2><div class="gallery-subtitle">━━ the art of mindful pouring ━━</div><div class="gallery-grid"><div class="gallery-item"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop" alt="Tea ceremony"></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400&h=300&fit=crop" alt="Pouring tea"></div><div class="gallery-item"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&h=300&fit=crop" alt="Tea meditation"></div></div></div>
 
-  <footer class="unique-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
-          <div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span>
-        </div>
-        <p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p>
-<div class="social-links">
-  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#"><i class="fa-brands fa-twitter"></i></a>
-  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-</div>      </div>
-      <div class="footer-col"><h4>QuickLinks</h4><ul><li><a href="index.html">Home</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="signup.html">Signup</a></li></ul></div>
-      <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div>
-      <div class="footer-col newsletter"><h4>First access</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div>
-  </footer>
+  <footer class="unique-footer"><div class="footer-container"><div class="footer-brand"><div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;"><div class="logo-icon" style="background: #7B4B2A;"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span style="color: white; font-size: 1.6rem; font-weight: 700;">Chai<span style="color: #7B4B2A;">Nest</span></span></div><p>Authentic teas, warm moments. Bringing the finest blends to your cup.</p><div class="social-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-tiktok"></i></a></div></div><div class="footer-col"><h4>QuickLinks</h4><ul><li><a href="index.html">Home</a></li><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li><li><a href="service.html">Service</a></li><li><a href="signup.html">Signup</a></li></ul></div><div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Wholesale</a></li></ul></div><div class="footer-col newsletter"><h4>MailBox</h4><p>Subscribe for early releases & 15% off.</p><div class="newsletter-input"><input type="email" placeholder="Your email"><button>→</button></div></div></div><div class="footer-bottom"><span>© 2026 Chai Nest. All rights reserved</span><span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Accessibility</a></span></div></footer>
 
   <script>
-    // Get current page filename
-    const currentPage = window.location.pathname.split('/').pop() || 'soulful sip.html';
-    const pageName = currentPage.toLowerCase();
-    
-    // Function to set active class on desktop nav links
-    function setActiveNavLink() {
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      const navHome = document.getElementById('navHome');
-      const navAbout = document.getElementById('navAbout');
-      const navService = document.getElementById('navService');
-      const navSoulful = document.getElementById('navSoulful');
-      const navTeaRitual = document.getElementById('navTeaRitual');
-      const navContact = document.getElementById('navContact');
-      const navDashboard = document.getElementById('navDashboard');
-      
-      if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (navHome) navHome.classList.add('active');
-      }
-      else if (pageName === 'about.html') {
-        if (navAbout) navAbout.classList.add('active');
-      }
-      else if (pageName === 'service.html') {
-        if (navService) navService.classList.add('active');
-      }
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (navSoulful) navSoulful.classList.add('active');
-      }
-      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (navTeaRitual) navTeaRitual.classList.add('active');
-      }
-      else if (pageName === 'contact.html') {
-        if (navContact) navContact.classList.add('active');
-      }
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (navDashboard) navDashboard.classList.add('active');
-      }
-    }
-    
-    // Function to set active class on mobile nav links
-    function setMobileActiveLink() {
-      document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.classList.remove('active');
-      });
-      document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-        toggle.classList.remove('active-toggle');
-      });
-      
-      const mobileAbout = document.getElementById('mobileAbout');
-      const mobileService = document.getElementById('mobileService');
-      const mobileSoulful = document.getElementById('mobileSoulful');
-      const mobileTeaRitual = document.getElementById('mobileTeaRitual');
-      const mobileContact = document.getElementById('mobileContact');
-      const mobileHomeToggle = document.getElementById('mobileHomeText')?.parentElement;
-      const mobileDashboardToggle = document.getElementById('mobileDashboardText')?.parentElement;
-      
-      if (pageName === 'about.html') {
-        if (mobileAbout) mobileAbout.classList.add('active');
-      }
-      else if (pageName === 'service.html') {
-        if (mobileService) mobileService.classList.add('active');
-      }
-      else if (pageName === 'soulful sip.html' || pageName === 'soulful%20sip.html') {
-        if (mobileSoulful) mobileSoulful.classList.add('active');
-      }
-      else if (pageName === 'tearitual.html' || pageName === 'tearitual') {
-        if (mobileTeaRitual) mobileTeaRitual.classList.add('active');
-      }
-      else if (pageName === 'contact.html') {
-        if (mobileContact) mobileContact.classList.add('active');
-      }
-      else if (pageName === 'user.html' || pageName === 'admin.html') {
-        if (mobileDashboardToggle) mobileDashboardToggle.classList.add('active-toggle');
-      }
-      else if (pageName === 'index.html' || pageName === '' || pageName === 'home2.html') {
-        if (mobileHomeToggle) mobileHomeToggle.classList.add('active-toggle');
-      }
-    }
-    
-    const darkToggle = document.getElementById('darkToggleBtn');
-    const mobileDark = document.getElementById('mobileDarkToggle');
-    const rtlToggle = document.getElementById('rtlToggleBtn');
-    const mobileRtl = document.getElementById('mobileRtlToggle');
-    const hamburger = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenuBtn');
-    const overlay = document.getElementById('mobileOverlay');
-    const viewMoreBtn = document.getElementById('viewMoreBtn');
-
-    function setBodyScrollLock(lock) {
-      if (lock) document.body.classList.add('menu-open');
-      else document.body.classList.remove('menu-open');
-    }
-
-    function openMenu() {
-      mobileMenu.classList.add('active');
-      setBodyScrollLock(true);
-    }
-
-    function closeMenuFn() {
-      mobileMenu.classList.remove('active');
-      setBodyScrollLock(false);
-      document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = '');
-    }
-
-    hamburger?.addEventListener('click', openMenu);
-    closeMenu?.addEventListener('click', closeMenuFn);
-    overlay?.addEventListener('click', closeMenuFn);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn();
-    });
-
-    function setDarkMode(isDark) {
-      if(isDark) document.body.classList.add('dark-mode');
-      else document.body.classList.remove('dark-mode');
-      localStorage.setItem('darkMode', isDark);
-      if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙';
-      if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark';
-    }
-    darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
-    mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode')));
-    if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
-    
-    function setRTL(isRTL) {
-      if(isRTL) document.documentElement.setAttribute('dir', 'rtl');
-      else document.documentElement.setAttribute('dir', 'ltr');
-      localStorage.setItem('rtlMode', isRTL);
-      if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR';
-      if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR';
-    }
-    rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
-    mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
-    if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
-    
-    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const targetId = toggle.getAttribute('data-dropdown');
-        const content = document.getElementById(targetId);
-        if(content) {
-          content.classList.toggle('active');
-          const arrow = toggle.querySelector('span:last-child');
-          if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : '';
-        }
-      });
-    });
-    
-    if(viewMoreBtn) {
-      viewMoreBtn.addEventListener('click', () => alert('✨ Discover more soulful blends coming soon! Stay tuned for our new collection. ✨'));
-    }
-    
-    // Initialize active links on page load
-    setActiveNavLink();
-    setMobileActiveLink();
+    const pageName = (window.location.pathname.split('/').pop() || 'soulful sip.html').toLowerCase();
+    const setActiveLinks = () => {
+      document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll('.mobile-nav-link').forEach(l => l.classList.remove('active'));
+      const desktopActive = document.querySelector('.nav-links a[href="soulful sip.html"]');
+      const mobileActive = document.querySelector('.mobile-nav-link[href="soulful sip.html"]');
+      if(desktopActive) desktopActive.classList.add('active');
+      if(mobileActive) mobileActive.classList.add('active');
+    };
+    const darkToggle = document.getElementById('darkToggleBtn'), mobileDark = document.getElementById('mobileDarkToggle');
+    const rtlToggle = document.getElementById('rtlToggleBtn'), mobileRtl = document.getElementById('mobileRtlToggle');
+    const hamburger = document.getElementById('hamburgerBtn'), mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenuBtn'), overlay = document.getElementById('mobileOverlay');
+    const setBodyScrollLock = (lock) => lock ? document.body.classList.add('menu-open') : document.body.classList.remove('menu-open');
+    const openMenu = () => { mobileMenu.classList.add('active'); setBodyScrollLock(true); };
+    const closeMenuFn = () => { mobileMenu.classList.remove('active'); setBodyScrollLock(false); document.querySelectorAll('.mobile-dropdown-toggle span:last-child').forEach(arrow => arrow.style.transform = ''); };
+    hamburger?.addEventListener('click', openMenu); closeMenu?.addEventListener('click', closeMenuFn); overlay?.addEventListener('click', closeMenuFn);
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && mobileMenu.classList.contains('active')) closeMenuFn(); });
+    const setDarkMode = (isDark) => { if(isDark) document.body.classList.add('dark-mode'); else document.body.classList.remove('dark-mode'); localStorage.setItem('darkMode', isDark); if(darkToggle) darkToggle.innerHTML = isDark ? '☀️' : '🌙'; if(mobileDark) mobileDark.innerHTML = isDark ? '☀️ Light' : '🌙 Dark'; };
+    darkToggle?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode'))); mobileDark?.addEventListener('click', () => setDarkMode(!document.body.classList.contains('dark-mode'))); if(localStorage.getItem('darkMode') === 'true') setDarkMode(true);
+    const setRTL = (isRTL) => { if(isRTL) document.documentElement.setAttribute('dir', 'rtl'); else document.documentElement.setAttribute('dir', 'ltr'); localStorage.setItem('rtlMode', isRTL); if(rtlToggle) rtlToggle.innerText = isRTL ? 'RTL' : 'LTR'; if(mobileRtl) mobileRtl.innerText = isRTL ? 'RTL' : 'LTR'; };
+    rtlToggle?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl')); mobileRtl?.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl')); if(localStorage.getItem('rtlMode') === 'true') setRTL(true);
+    document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => { toggle.addEventListener('click', (e) => { e.stopPropagation(); const content = document.getElementById(toggle.getAttribute('data-dropdown')); if(content) { content.classList.toggle('active'); const arrow = toggle.querySelector('span:last-child'); if(arrow) arrow.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : ''; } }); });
+    document.getElementById('soulfulCtaBtn')?.addEventListener('click', (e) => { e.preventDefault(); alert('✨ Discover our full collection of soulful blends! Visit our shop to explore more. ✨'); });
+    setActiveLinks();
   </script>
 </body>
 </html>

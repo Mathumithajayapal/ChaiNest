@@ -40,6 +40,9 @@
       --success-bg: rgba(34, 197, 94, 0.15);
       --success-border: #22c55e;
       --success-text: #86efac;
+      --social-btn-bg: rgba(255, 255, 255, 0.05);
+      --social-btn-border: rgba(123, 75, 42, 0.3);
+      --social-btn-hover: rgba(123, 75, 42, 0.2);
     }
 
     /* Light Mode */
@@ -65,6 +68,9 @@
       --body-before-gradient-2: rgba(123, 75, 42, 0.03);
       --success-bg: rgba(34, 197, 94, 0.1);
       --success-text: #15803d;
+      --social-btn-bg: rgba(0, 0, 0, 0.03);
+      --social-btn-border: rgba(123, 75, 42, 0.2);
+      --social-btn-hover: rgba(123, 75, 42, 0.1);
     }
 
     body {
@@ -116,51 +122,13 @@
       border-color: rgba(123, 75, 42, 0.3);
     }
 
-    /* RTL mode - move control panel to left side */
     body[dir="rtl"] .control-panel {
       right: auto;
       left: 1.5rem;
     }
 
-    /* RTL Support - Proper icon alignment */
     body[dir="rtl"] {
       direction: rtl;
-    }
-
-    /* Input icon positioning - in RTL, icons stay on the LEFT side */
-    body[dir="rtl"] .input-icon {
-      left: 1rem;
-      right: auto;
-    }
-
-    body[dir="rtl"] .input-field {
-      padding: 0.9rem 2.8rem 0.9rem 1rem;
-      text-align: right;
-    }
-
-    body[dir="rtl"] .form-options {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    body[dir="rtl"] .checkbox-label {
-      flex-direction: row;
-    }
-
-    body[dir="rtl"] .login-btn i {
-      transform: none;
-    }
-
-    body[dir="rtl"] .error-message {
-      flex-direction: row;
-      border-left: 3px solid #dc2626;
-      border-right: none;
-    }
-
-    body[dir="rtl"] .success-message {
-      flex-direction: row;
-      border-left: 3px solid #22c55e;
-      border-right: none;
     }
 
     /* Logo section - HORIZONTAL LAYOUT */
@@ -222,7 +190,6 @@
       color: inherit;
     }
 
-    /* Dark mode only change for logo text */
     body:not(.light-mode) .logo-text a {
       color: white;
     }
@@ -313,7 +280,6 @@
       color: #7B4B2A;
       font-size: 1.1rem;
       pointer-events: none;
-      transition: left 0.2s ease;
       z-index: 1;
     }
 
@@ -341,6 +307,42 @@
       font-weight: 400;
     }
 
+    /* Password toggle button */
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+      z-index: 2;
+    }
+
+    .password-toggle:hover {
+      color: #7B4B2A;
+    }
+
+    body[dir="rtl"] .password-toggle {
+      right: auto;
+      left: 1rem;
+    }
+
+    body[dir="rtl"] .input-icon {
+      left: auto;
+      right: 1rem;
+    }
+
+    body[dir="rtl"] .input-field {
+      padding: 0.9rem 2.8rem 0.9rem 1rem;
+      text-align: right;
+    }
+
     /* Options row */
     .form-options {
       display: flex;
@@ -348,6 +350,11 @@
       align-items: center;
       margin-bottom: 1.8rem;
       font-size: 0.8rem;
+    }
+
+    body[dir="rtl"] .form-options {
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     .checkbox-label {
@@ -422,7 +429,48 @@
       transform: none;
     }
 
-    /* Success message style */
+    /* Social Login Options */
+    .social-login {
+      margin-top: 1rem;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.8rem;
+    }
+
+    .social-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.75rem;
+      background: var(--social-btn-bg);
+      border: 1px solid var(--social-btn-border);
+      border-radius: 1rem;
+      color: var(--text-primary);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background: var(--social-btn-hover);
+      border-color: #7B4B2A;
+      transform: translateY(-2px);
+    }
+
+    .social-btn i {
+      font-size: 1.1rem;
+      color: #7B4B2A;
+    }
+
+    /* Success/Error messages */
     .success-message {
       background: var(--success-bg);
       border-left: 3px solid var(--success-border);
@@ -440,7 +488,6 @@
       display: flex;
     }
 
-    /* Error message style */
     .error-message {
       background: rgba(220, 38, 38, 0.15);
       border-left: 3px solid #dc2626;
@@ -460,6 +507,20 @@
 
     .error-message.show {
       display: flex;
+    }
+
+    body[dir="rtl"] .error-message,
+    body[dir="rtl"] .success-message {
+      border-left: none;
+      border-right: 3px solid;
+    }
+
+    body[dir="rtl"] .error-message {
+      border-right-color: #dc2626;
+    }
+
+    body[dir="rtl"] .success-message {
+      border-right-color: var(--success-border);
     }
 
     /* Loading spinner animation */
@@ -592,6 +653,13 @@
         min-width: 140px;
         font-size: 0.9rem;
       }
+      .social-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .social-btn {
+        padding: 0.65rem;
+      }
     }
   </style>
 </head>
@@ -606,7 +674,7 @@
 <div class="login-container">
   <div class="login-card">
     
-    <!-- Logo & Branding - SIDE BY SIDE (HORIZONTAL LAYOUT) -->
+    <!-- Logo & Branding - HORIZONTAL LAYOUT -->
     <div class="logo-section">
       <div class="logo-wrapper">
         <div class="logo-icon">
@@ -649,14 +717,17 @@
       <div class="form-group">
         <div class="input-group">
           <i class="fas fa-envelope input-icon"></i>
-          <input type="email" id="emailInput" class="input-field" placeholder="Admin email address" value="admin@chainest.com" autocomplete="email">
+          <input type="email" id="emailInput" class="input-field" placeholder="Admin email address" autocomplete="email">
         </div>
       </div>
 
       <div class="form-group">
         <div class="input-group">
           <i class="fas fa-lock input-icon"></i>
-          <input type="password" id="passwordInput" class="input-field" placeholder="Password" value="admin123" autocomplete="current-password">
+          <input type="password" id="passwordInput" class="input-field" placeholder="Password" autocomplete="current-password">
+          <button type="button" class="password-toggle" id="togglePassword">
+            <i class="fas fa-eye-slash"></i>
+          </button>
         </div>
       </div>
 
@@ -675,8 +746,19 @@
       </div>
     </form>
 
-    <div class="divider">
-      <span>secure access only</span>
+    <!-- Additional Sign-in Options -->
+    <div class="social-login">
+      <div class="divider">
+        <span>Or continue with</span>
+      </div>
+      <div class="social-buttons">
+        <button class="social-btn" id="googleLogin">
+          <i class="fab fa-google"></i> Google
+        </button>
+        <button class="social-btn" id="microsoftLogin">
+          <i class="fab fa-microsoft"></i> Microsoft
+        </button>
+      </div>
     </div>
 
     <div class="register-link">
@@ -703,6 +785,18 @@
   const signInBtn = document.getElementById('signInBtn');
   const darkModeToggleBtn = document.getElementById('darkModeToggleBtn');
   const rtlToggleBtn = document.getElementById('rtlToggleBtn');
+  const togglePasswordBtn = document.getElementById('togglePassword');
+
+  // Password visibility toggle
+  if (togglePasswordBtn) {
+    togglePasswordBtn.addEventListener('click', function() {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      const icon = togglePasswordBtn.querySelector('i');
+      icon.classList.toggle('fa-eye');
+      icon.classList.toggle('fa-eye-slash');
+    });
+  }
 
   // Helper to hide all notification boxes
   function hideAllNotifications() {
@@ -730,7 +824,7 @@
     }, 4000);
   }
 
-  // Handle successful login - NO REDIRECT, just shows success message
+  // Handle successful login
   function handleSuccessfulLogin() {
     if (rememberCheckbox.checked) {
       localStorage.setItem('chaiNest_remembered', 'true');
@@ -753,7 +847,7 @@
     showSuccess('✨ Login successful! Welcome back, Admin. You are now signed in. ✨');
   }
 
-  // Login submission handler - STAYS ON PAGE, NO REDIRECT
+  // Login submission handler
   loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -768,7 +862,7 @@
     if (email === VALID_EMAIL && password === VALID_PASSWORD) {
       handleSuccessfulLogin();
     } else {
-      showError('Incorrect email or password. Please use admin@chainest.com / admin123');
+      showError('Incorrect email or password.');
       // Shake animation effect on error
       const card = document.querySelector('.login-card');
       card.style.transform = 'translateX(4px)';
@@ -778,11 +872,27 @@
     }
   });
   
-  // Forgot password - Demo alert
+  // Forgot password
   forgotLink.addEventListener('click', function(e) {
     e.preventDefault();
-    alert('🔐 Password reset link would be sent to admin@chainest.com. For demo, use admin123.');
+    alert('🔐 Password reset link will be sent to your registered email address.');
   });
+  
+  // Social login handlers
+  const googleBtn = document.getElementById('googleLogin');
+  const microsoftBtn = document.getElementById('microsoftLogin');
+  
+  if (googleBtn) {
+    googleBtn.addEventListener('click', function() {
+      alert('🔐 Google Sign-In is available for authorized users only. Please use email login for demo.');
+    });
+  }
+  
+  if (microsoftBtn) {
+    microsoftBtn.addEventListener('click', function() {
+      alert('🔐 Microsoft Sign-In is available for authorized users only. Please use email login for demo.');
+    });
+  }
   
   // ==================== DARK MODE FUNCTIONALITY ====================
   function initDarkMode() {
